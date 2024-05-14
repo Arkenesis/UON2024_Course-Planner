@@ -1,23 +1,23 @@
-import CourseModule from './CourseModule.jsx'
-import React, {useState, useEffect} from "react";
+// import CourseModule from './CourseModule.jsx'
+// import React, {useState, useEffect} from "react";
 
-const oldTasks = localStorage.getItem("tasks")
+// const oldTasks = localStorage.getItem("tasks")
 
-function App(){
+// function App(){
 
-  return(
+//   return(
 
-  <div className='path'>
+//   <div className='path'>
   
-  <Trimester/>
+//   <Trimester/>
  
 
-  </div>   
+//   </div>   
 
-  );
+//   );
 
 
 
-}
+// }
 
-export default App
+// export default App
