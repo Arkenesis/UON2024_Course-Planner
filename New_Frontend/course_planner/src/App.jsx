@@ -1,14 +1,12 @@
-import { useState } from 'react';
-import './App.css';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from './pages/login/Login.jsx';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>hi</div>
-      <div>Count: {count}</div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      {/* <Login/> Uncomment to see the effect */}
     </>
   );
 }
