@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
+import Register from './pages/Register/Register';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -34,6 +35,7 @@ function App() {
   
       <AboutUs />
       <Contact />
+      <Register/>
     </>
   )
 }
