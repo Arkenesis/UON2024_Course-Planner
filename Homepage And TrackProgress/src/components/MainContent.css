@@ -1,0 +1,245 @@
+/* src/components/CourseActivity.css */
+.course-activity {
+  padding: 0px 0px 10px 20px;
+  margin: 0px 10px 20px 30px;
+}
+
+.current-date {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.course-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.course-list {
+  background-color: #fff;
+  color: #333;
+  padding-top: 30px;
+}
+
+.course-list ul {
+  list-style-type: none;
+  font-weight: bolder;
+}
+
+
+.course-completed,
+.my-info {
+  color:white;
+  background-color: #1577BD;
+  padding: 15px 25px 25px;
+  border-radius: 40px;
+  width: 400px;
+}
+
+.course-completed h2,
+.my-info h2 {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  background-color: #D0E1F9;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+  width: 73%;
+}
+
+.progress-section {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.progress {
+  height: 10px;
+  background-color: #FFFFFF;
+}
+
+.course-list {
+  margin-top: 30px;
+  margin-left:30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.right{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 5px;
+}
+
+.course-list h2 {
+  margin-bottom: 10px;
+}
+
+.course-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-list li {
+  margin-bottom: 10px;
+}
+
+.DetailButton {
+  float: right;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #25a2fc;
+  background: linear-gradient(45deg, #fff, #fff);
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.DetailButton:hover {
+  background: linear-gradient(45deg, #25a2fc, #fff);
+  transform: translateY(-2px);
+}
+
+.DetailButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 2nd page */
+
+.main-content {
+  padding: 5px 0px 10px 0px;
+  margin: 0px -150px 0px 0px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  margin-right: 20px;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+
+
+
+
+.courseStatus {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.smallBar {
+  background-color: #307FE2;
+  padding: 5px;
+  border-radius: 1px;
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.statusItem {
+  background-color: rgba(48,127,226,0.3);
+  color:#187FFF;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.courses {
+  margin-top: 30px;
+  background-color: #f9f9f9;
+  padding: 20px 20px 1px;
+  border-radius: 10px;
+}
+
+.currentTrimester {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+}
+
+.trimesterInfo {
+  margin: 0 0 20px 0;
+  font-style: italic;
+}
+
+.courseList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.courseItem {
+  display: flex;
+  background-color: #EFF2EE;
+  color: #A5A5A5;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+
+/* src/components/CourseList.css */
+.current-courses {
+  border-radius: 10px;
+  max-width: 600px;
+  padding-top: 60px;
+}
+
+.course-title {
+  opacity: 0.5;
+  margin-bottom: 20px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.course-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.course-code {
+  font-weight:700;
+  font-size: larger;
+  margin-bottom: 5px;
+}
+
+.course-name {
+  font-weight: bolder;
+  color: #1577BD;
+  font-size: 15px;
+}
