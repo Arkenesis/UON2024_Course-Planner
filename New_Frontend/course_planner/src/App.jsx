@@ -9,6 +9,9 @@ import Contact from './pages/Contact/Contact';
 import Register from './pages/Register/Register';
 import Login from './pages/login/Login.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
+import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
+import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
 
@@ -17,8 +20,11 @@ function App() {
       <AboutUs />
       <Contact />
       <Register/>
-      {/* <Login/>
-      <ResetPassword/> */}
+      <Login/>
+      <ResetPassword/>
+      <TermsAndConditions/>
+      <PrivacyPolicy/>
+      <Footer/>
     </>
   );
 }

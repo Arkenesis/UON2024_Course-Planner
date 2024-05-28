@@ -40,7 +40,7 @@ const Register =() =>{
                     <h1 className="title-2">UON Course Planner</h1>
                     <form onSubmit={handleRegister}>
                         <p className="subtitle-1">Sign Up Account</p>
-                        <p className="subtitle-2">Already have account? Sign in</p>
+                        <p className="subtitle-2">Already have account? <Link to='../login'> Sign in </Link></p>
 
                         
                         <div className="input-field-main">
