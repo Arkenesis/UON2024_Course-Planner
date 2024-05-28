@@ -10,10 +10,16 @@ import Register from './pages/Register/Register';
 import Login from './pages/login/Login.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 
+import HomePage from './pages/Homepage/HomePage';
+import TrackProgress from './pages/TrackProgress/TrackProgress';
+
 function App() {
 
   return (
     <>
+      <HomePage/>
+      <TrackProgress/>
+      
       <AboutUs />
       <Contact />
       <Register/>
