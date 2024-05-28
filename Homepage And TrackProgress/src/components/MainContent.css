@@ -102,7 +102,6 @@
   font-size: 13px;
   font-weight: bold;
   color: #25a2fc;
-  background: linear-gradient(45deg, #fff, #fff);
   border: none;
   border-radius: 25px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -111,7 +110,8 @@
 }
 
 .DetailButton:hover {
-  background: linear-gradient(45deg, #25a2fc, #fff);
+  background-color: #25a2fc;
+  color: white;
   transform: translateY(-2px);
 }
 
