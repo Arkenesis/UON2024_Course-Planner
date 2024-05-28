@@ -31,15 +31,6 @@ function App() {
     <>
       <HomePage/>
       <TrackProgress/>
-
-      <div className="App">
-        <NavigationBar />
-        <div className="container">
-          <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-          <MainContent />
-        </div>
-      </div>
-
       <AboutUs />
       <Contact />
       <Register/>
