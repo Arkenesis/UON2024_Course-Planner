@@ -16,6 +16,7 @@ import Footer from "./components/Footer.jsx";
 import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/Homepage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
+import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,18 +27,20 @@ function App() {
 
   return (
     <>
-      <NavigationBar />
+      {/* <NavigationBar />
       <HomePage/>
-      <TrackProgress/>
+      <TrackProgress/> */}
 
-      <AboutUs />
+      {/* <AboutUs />
       <Contact />
       <Register/>
       <Login/>
-      <ResetPassword/>
-      <TermsAndConditions/>
+      <ResetPassword/> */}
+      <ChangePassword/>
+      {/* <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/>
+      <Footer/> */}
+
     </>
   );
 }
