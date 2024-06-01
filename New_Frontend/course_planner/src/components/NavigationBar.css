@@ -1,0 +1,39 @@
+.navbar {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00467f;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .navbar-left a {
+    margin-right: 40px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .logo {
+    height: 60px;
+    margin-right: -100px;
+    margin-top: -10px;
+    margin-left: -20px;
+    margin-bottom: -10px;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar {
+    padding: 5px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  
+  .profile-icon {
+    cursor: pointer;
+    margin-left: 50px;
+  }
