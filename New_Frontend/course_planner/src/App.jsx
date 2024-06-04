@@ -2,6 +2,8 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react'
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import './App.css'
 import AboutUs from './pages/AboutUs/AboutUs';
@@ -17,6 +19,8 @@ import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/Homepage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 
+import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
+
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -26,7 +30,12 @@ function App() {
 
   return (
     <>
-      <NavigationBar />
+      <DndProvider backend={HTML5Backend}>
+        <div className="App">
+          <DragDrop />
+        </div>
+      </DndProvider>
+      {/* <NavigationBar />
       <HomePage/>
       <TrackProgress/>
 
@@ -37,7 +46,7 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/>
+      <Footer/> */}
     </>
   );
 }
