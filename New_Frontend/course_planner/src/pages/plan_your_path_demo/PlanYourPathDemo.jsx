@@ -18,6 +18,15 @@ const Courses = [{
   "INFT2060": {Level: 2, Units: 10, Name: "Applied Artificial Intelligence"}
 }];
 
+const box = [{
+
+  "sdfdsf",
+  "sdfsd"
+
+
+}]
+
+
 function DragDrop() {
   let coursesObject = Courses[0];
   let courseEntries = Object.entries(coursesObject);
@@ -27,27 +36,30 @@ function DragDrop() {
   const [key, setKey] = useState(0);
 
   const [studentTrimester, setStudentTrimester] = useState([
+    
     {
       year: 2023,
       term: 1,
-      course: ["ECON1001", "SENG1110", "", ""]
+      course: ["", "", "", ""]
     },
     {
       year: 2023,
       term: 2,
-      course: ["COMP3350", "EBUS3050", "SENG1120", ""]
+      course: ["", "", "", ""]
     },
     {
       year: 2023,
       term: 3,
-      course: ["INFT3100", "SENG1050", "SENG2130", ""]
+      course: ["", "", "", ""]
     },
     {
       year: 2023,
       term: 4,
-      course: ["COMP3851A", "INFT2051", "SENG2260", "INFT2060"]
+      course: ["", "", "", ""]
     },
   ]);
+
+
 
   const addCourseToTrimester = (courseId, parent_index, index) => {
     if(courseId != ''){
@@ -61,6 +73,9 @@ function DragDrop() {
     else
       setKey((k) => k - 1);
   };
+
+
+  
 
   const removeCourse = (parent_index, index) => {
     if(parent_index !== undefined && index !== undefined){
@@ -86,20 +101,35 @@ function DragDrop() {
     setStudentTrimester(updatedTrimester);
   }
   
+  function removeTrimester(){
+    let updatedTrimester = [...studentTrimester];
+
+
+    if(updatedTrimester.length > 4){
+      updatedTrimester.pop();
+      setStudentTrimester(updatedTrimester);
+    }
+  }
 
   return (
     <div key={key}>
+      {/* This div holds the objects of the courses */}
       <div className="Available Courses" style={{ display: "flex" }}>
         {courseEntries.map(([code, details]) => (
           <Course key={code} id={code} name={details.Name} level={details.Level} units={details.Units}/>
         ))}
       </div>
+
+
+{/* This div holds the objects of the trimesters */}
       <div className="Trimesters">
         {studentTrimester.map((trimesters, index) => (
-          <Trimesters key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
+          <Trimesters key={index} id={index}  year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
         ))}
       </div>
       <button onClick={() => addTrimester()}>Add more trimester</button>
+      <button onClick={() => removeTrimester()}>Delete trimester</button>
+
     </div>
   );
 }
