@@ -1,8 +1,9 @@
-import React, {forwardRef} from "react";
+import React, {forwardRef, useState} from "react";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
+import Course from "./Course";
 
-const Trimester = ({ parent_index, item, index, addCourseToTrimester, removeCourse}) => {
+const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, removeCourse}) => {
 
   // Enables the components to give item(drag) 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -15,26 +16,37 @@ const Trimester = ({ parent_index, item, index, addCourseToTrimester, removeCour
     }),
   }));
 
+
+
+
   // Enables the components to receive item
-  const [{ isOver }, drop] = useDrop(() => ({
+  const [{ isOver, canDrop }, drop] = useDrop(() => ({
     accept: "course",
-    drop: (dropItem) => {
-      addCourseToTrimester(dropItem.id, parent_index, index);
-      removeCourse(dropItem.parent_index, dropItem.index);
+    drop: (item) => { 
+      addCourseToTrimester(item.id, item.name,parent_index, index);
+      removeCourse(item.parent_index, item.index);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
+      canDrop: monitor.canDrop(),
     }),
   }));
+
+
+
+  
+   const isActive = isOver && canDrop
+
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
     <div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "240px", width: "40px"}}>
-      <div style={{backgroundColor: "lightblue", height:"200px", width:"100px"}}>
-      {item}
-
+      <div style={{backgroundColor: isActive? "green" : "lightblue", height:"240px", width:"200px"}}>
+      {item ? `Id: ${item} ` : ``}
+   
+  
       </div>
-      <button style={{padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeCourse(parent_index, index)}>Remove</button>
+      <button style={{ position: "relative", bottom: "30px",padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeCourse(parent_index, index)}>Remove</button>
     </div>
   );
 };
