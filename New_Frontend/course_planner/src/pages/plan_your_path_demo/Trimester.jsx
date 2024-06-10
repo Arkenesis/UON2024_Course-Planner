@@ -3,6 +3,8 @@ import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";
 
+import "./Trimester.css"
+
 const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, removeCourse}) => {
 
   // Enables the components to give item(drag) 
@@ -40,8 +42,8 @@ const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, remo
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
-    <div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "240px", width: "40px"}}>
-      <div style={{backgroundColor: isActive? "green" : "lightblue", height:"240px", width:"200px"}}>
+    <div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "240px", width: "40px"}} className="trimesterBox">
+      <div style={{backgroundColor: isActive? "green" : "#FFEFD7", height:"240px", width:"200px"}}>
       {item ? `Id: ${item} ` : ``}
    
   

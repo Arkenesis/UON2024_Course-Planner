@@ -3,6 +3,7 @@ import Trimesters from "./Trimesters";
 import Course from "./Course";
 import { DndProvider, useDrop } from "react-dnd";
 import {HTML5Backend} from 'react-dnd-html5-backend'
+import "./PlanYourPathDemo.css"
 
 // const Courses = [{
 //   "ECON1001": {Level: 1, Units: 10, Name: "Microeconomics for business decision"}, 
@@ -131,7 +132,7 @@ function DragDrop() {
     <DndProvider backend={HTML5Backend}>
     <div key={key}>
       {/* This div holds the objects of the courses */}
-      <div className="Available Courses" style={{ display: "flex" }}>
+      <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
         {courses.map((code) => (
           <Course key={code} id={code.ID} name={code.Name} level={code.Level} units={code.Units}/>
         ))}
@@ -149,20 +150,16 @@ function DragDrop() {
         
         ))} */}
 
-         <div className="Trimesters">
-  {studentTrimester.map((trimesters, index) => (
-    courses.map((code) => (
-      <Trimesters
-      key={index} id={index} name={code.Name} units={code.Units} level={code.Level} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
-    />
-    ))
-  ))}
-           
+      <div className="Trimesters" style={{ display: "flex", flexDirection: "row", margin: "10px"}}>
+        {studentTrimester.map((trimesters, index) => (
 
-
-        
-        
+            <Trimesters 
+            key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+          />
+          )
+        )}
       </div>
+      
       <button onClick={() => addTrimester()}>Add more trimester</button>
       <button onClick={() => removeTrimester()}>Delete trimester</button>
 

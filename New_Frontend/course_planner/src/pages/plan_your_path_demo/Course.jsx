@@ -16,9 +16,9 @@ function Course({ id, name, level, units}) {
 
 
   return (
-    <div ref={drag} style={{ opacity: isDragging ? "50%" : "100%", height: "10em", width: "150px", background: "lightblue", margin: "10px"}}>
+    <div ref={drag} className="course"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7"}}>
 
-      <div>       Code: {id}</div>
+      <div>   {id}</div>
     <h3>  Modules: {name} </h3>  
        
 <div>
