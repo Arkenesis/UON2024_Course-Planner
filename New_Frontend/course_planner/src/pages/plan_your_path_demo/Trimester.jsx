@@ -23,7 +23,7 @@ const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, remo
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
     accept: "course",
     drop: (item) => { 
-      addCourseToTrimester(item.id, item.name,parent_index, index);
+      addCourseToTrimester(item.id, item.name, item.level, item.units, parent_index, index);
       removeCourse(item.parent_index, item.index);
     },
     collect: (monitor) => ({
