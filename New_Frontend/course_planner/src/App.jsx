@@ -17,16 +17,20 @@ import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/Homepage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
+import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
+import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
+import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+  // const toggleSidebar = () => {
+  //   setSidebarOpen(!sidebarOpen);
+  // };
 
   return (
     <>
+
       {/* <NavigationBar />
       <HomePage/>
       <TrackProgress/> */}
@@ -36,10 +40,12 @@ function App() {
       <Register/>
       <Login/>
       <ResetPassword/> */}
-      <ChangePassword/>
+      {/* <ChangePassword/> */}
       {/* <TermsAndConditions/>
       <PrivacyPolicy/>
       <Footer/> */}
+      
+      <AdminPolicy/>
 
     </>
   );
