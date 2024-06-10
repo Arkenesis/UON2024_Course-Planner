@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Trimester from "./Trimester";
 
-const Trimesters = ({ id, year, term, course, addCourseToTrimester, removeCourse}) => {
+const Trimesters = ({ id, year, term, course, addCourseToTrimester, removeCourse, removeTrimester}) => {
 
   return (
     <div>
@@ -13,6 +13,7 @@ const Trimesters = ({ id, year, term, course, addCourseToTrimester, removeCourse
           <Trimester item={i} parent_index={id} index={index} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
         </div>
       )}
+      <button style={{display: "inline", padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeTrimester(id)}>Remove Trimester</button>
     </div>
   );
 };

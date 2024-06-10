@@ -31,7 +31,7 @@ const Trimester = ({ parent_index, item, index, addCourseToTrimester, removeCour
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
     <div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "48px"}}>
       {item}
-      {/* <button style={{display: "inline", padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeCourse(parent_index, index)}>Remove</button> */}
+      <button style={{display: "inline", padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeCourse(parent_index, index)}>Delete Course</button>
     </div>
   );
 };
