@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDrop } from "react-dnd";
+
 import Trimesters from "./Trimesters";
 import Course from "./Course";
-import { useDrop } from "react-dnd";
 
 const Courses = [{
   "ECON1001": {Level: 1, Units: 10, Name: "Microeconomics for business decision"}, 
@@ -17,6 +18,12 @@ const Courses = [{
   "SENG2260": {Level: 2, Units: 10, Name: "Human-Computer Interaction"}, 
   "INFT2060": {Level: 2, Units: 10, Name: "Applied Artificial Intelligence"}
 }];
+
+const getTrimester = () => {
+  const month = new Date().getMonth();
+  const trimester = month / 4;
+  return trimester <= 0 ? 0 : Math.floor(trimester);
+};
 
 function DragDrop() {
   let coursesObject = Courses[0];
@@ -43,8 +50,8 @@ function DragDrop() {
       course: ["INFT3100", "SENG1050", "SENG2130", ""]
     },
     {
-      year: 2023,
-      term: 4,
+      year: 2024,
+      term: 1,
       course: ["COMP3851A", "INFT2051", "SENG2260", "INFT2060"]
     },
   ]);
@@ -77,15 +84,24 @@ function DragDrop() {
   };
 
   function addTrimester() {
-    const newTrimester = {
-      year: 2023,
-      term: 4,
-      course: ["", "", "", ""]
-    };
+    const newTrimester = { year: inputs.year, term: inputs.trimester, course: ["", "", "", ""] };
     let updatedTrimester = [...studentTrimester, newTrimester];
     setStudentTrimester(updatedTrimester);
   }
+  function removeTrimester(parent_index) {
+    let updatedTrimester = studentTrimester.filter((_, index) => index !== parent_index);
+    setStudentTrimester(updatedTrimester);
+  }
   
+
+  const [inputs, setInputs] = useState({
+    year: new Date().getFullYear(),
+    trimester: getTrimester(),
+  });
+
+  const handleChange = (e) => {
+      setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
     <div key={key}>
@@ -95,11 +111,38 @@ function DragDrop() {
         ))}
       </div>
       <div className="Trimesters">
-        {studentTrimester.map((trimesters, index) => (
-          <Trimesters key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
+        {studentTrimester.map((trimesters, index) => (  
+          <Trimesters key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse} removeTrimester={removeTrimester}/>
         ))}
       </div>
-      <button onClick={() => addTrimester()}>Add more trimester</button>
+
+      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Add new trimester
+      </button>
+
+      <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">When do you want to start?</h5>
+            </div>
+            <div className="modal-body d-flex flex-column">
+              <div>
+                <p>Year: </p>
+                <input type="text" placeholder="Enter Year" name="year" onChange={handleChange} value={inputs.year} />
+              </div>
+              <div>
+                <p>Trimester: </p>
+                <input type="text" placeholder="Enter Trimester" name="trimester" onChange={handleChange} value={inputs.trimester} />
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => addTrimester()}>Add trimester</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
