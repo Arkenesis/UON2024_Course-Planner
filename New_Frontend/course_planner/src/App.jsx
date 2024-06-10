@@ -20,6 +20,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
 import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
+import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -30,7 +31,6 @@ function App() {
 
   return (
     <>
-
       {/* <NavigationBar />
       <HomePage/>
       <TrackProgress/> */}
@@ -45,8 +45,9 @@ function App() {
       <PrivacyPolicy/>
       <Footer/> */}
       
-      <AdminPolicy/>
+      {/* <AdminPolicy/> */}
 
+      <ImageUpload/>
     </>
   );
 }
