@@ -2,7 +2,16 @@
 
 .course{
 
-     height: "10em";
-     width: "150px";
-     margin: 10px;
+
+}
+
+.courseHeader{
+     background: #FED766;
+     display: flex;
+     width: auto;
+     padding: 0 10px;
+}
+
+.courseHeader .subDetails{
+     margin: 18px 10%;
 }

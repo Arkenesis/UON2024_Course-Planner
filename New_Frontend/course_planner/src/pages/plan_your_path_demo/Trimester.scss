@@ -1,0 +1,18 @@
+.trimesterBox{
+    margin-bottom: "10px";
+    margin: 10px 100px;
+    border: 1px solid black;
+    /* style={{ marginBottom: "10px", width: "240px"}} */
+   
+}
+.courseBox{
+    background: #FED766;
+    display: flex;
+    width: auto;
+    padding: 0 10px;
+
+    div{
+        margin: 18px 10%;
+    }
+}
+

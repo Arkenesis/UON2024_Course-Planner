@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";
 
-import "./Trimester.css"
+import "./Trimester.scss"
 
 const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, removeCourse}) => {
 
@@ -25,8 +25,17 @@ const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, remo
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
     accept: "course",
     drop: (item) => { 
-      addCourseToTrimester(item.id, item.name, item.level, item.units, parent_index, index);
-      removeCourse(item.parent_index, item.index);
+      if(item && item.name)
+        {
+          addCourseToTrimester(item.id, item.name, item.level, item.units, parent_index, index);
+        }
+        else{
+          addCourseToTrimester(item.id, "no name", "no level",  "no units", parent_index, index);
+          
+        }
+          removeCourse(item.parent_index, item.index);
+
+      
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -42,13 +51,13 @@ const Trimester = ({ parent_index, item, name, index, addCourseToTrimester, remo
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
-    <div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "240px", width: "40px"}} className="trimesterBox">
-      <div style={{backgroundColor: isActive? "green" : "#FFEFD7", height:"240px", width:"200px"}}>
-      {item ? `Id: ${item} ` : ``}
-   
-  
-      </div>
-      <button style={{ position: "relative", bottom: "30px",padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeCourse(parent_index, index)}>Remove</button>
+    <div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "240px", width: "400px"}} className="trimesterBox">
+      {item && 
+          <div className="courseBox" style={{backgroundColor: isActive? "#FFEFD7" : "", height:"240px", width:"200p"}}>
+            {/* {item ? `Id: ${item} ` : ``} */}
+            <button style={{ position: "relative", bottom: "30px",padding: "0px", color: "black", backgroundColor: "transparent"}} onClick={() => removeCourse(parent_index, index)}>Remove</button>
+          </div>
+        }
     </div>
   );
 };

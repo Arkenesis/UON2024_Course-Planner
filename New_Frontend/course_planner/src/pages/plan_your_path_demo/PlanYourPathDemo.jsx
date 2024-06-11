@@ -21,20 +21,19 @@ import "./PlanYourPathDemo.css"
 // }];
 
 const Courses = [
-  {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision"}, 
-  {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming"}, 
-  {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database"}, 
-  {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy"}, 
-  {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure"}, 
-  {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management"}, 
-  {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies"}, 
-  {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design"}, 
-  {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A"}, 
-  {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming"}, 
-  {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction"}, 
-  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence"}
+  {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", TYPE: "ECON"}, 
+  {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", TYPE: "SENG"}, 
+  {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database", TYPE: "COMP"}, 
+  {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy", TYPE: "EBUS"}, 
+  {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", TYPE: "SENG"}, 
+  {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", TYPE: "INFT"}, 
+  {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", TYPE: "SENG"}, 
+  {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", TYPE: "SENG"}, 
+  {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", TYPE: "COMP"}, 
+  {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", TYPE: "INFT"}, 
+  {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", TYPE: "SENG"}, 
+  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", TYPE: "INFT"}
 ];
-
 
 
 function DragDrop() {
@@ -76,12 +75,20 @@ function DragDrop() {
 
 
   
-  const addCourseToTrimester = (courseId, name, level, units,parent_index, index) => {
+  const addCourseToTrimester = (courseId, name, level, units, parent_index, index) => {
     if(courseId != ''){
       let selectedCourse   = coursesObject[courseId];
       let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = `${courseId} | Name: ${name} | Level: ${level} | Units: ${units}`;
-      setStudentTrimester(() => updatedTrimester);
+    //  This prevents undefined name from adding on to the column
+      if(name != 'no name'){
+        updatedTrimester[parent_index].course[index] = `ID: ${courseId} Name: ${name}  Units: ${units} ID: ${level}`;
+        setStudentTrimester(() => updatedTrimester);
+      }
+      else{
+        updatedTrimester[parent_index].course[index] = `${courseId}`;
+        setStudentTrimester(() => updatedTrimester);
+      }
+     
     }
     if(key < 2)
       setKey((k) => k + 1);
@@ -127,16 +134,25 @@ function DragDrop() {
     }
   }
 
+
+
+  
+
+
+
   return (
 
     <DndProvider backend={HTML5Backend}>
-    <div key={key}>
+    <div key={key} className="planYourPathPage">
       {/* This div holds the objects of the courses */}
-      <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
+      {/* <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
         {courses.map((code) => (
           <Course key={code} id={code.ID} name={code.Name} level={code.Level} units={code.Units}/>
         ))}
-      </div>
+      </div> */}
+
+
+    
 
 
 {/* This div holds the objects of the trimesters */}
@@ -150,18 +166,94 @@ function DragDrop() {
         
         ))} */}
 
-      <div className="Trimesters" style={{ display: "flex", flexDirection: "row", margin: "10px"}}>
+    <div>
+      <div className="trimestersDetails">
         {studentTrimester.map((trimesters, index) => (
 
             <Trimesters 
-            key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+            key={index} id={index} name={courses.name} units={courses.units} level={courses.level} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
           />
           )
         )}
+
+ 
       </div>
-      
-      <button onClick={() => addTrimester()}>Add more trimester</button>
-      <button onClick={() => removeTrimester()}>Delete trimester</button>
+      <span>      <button onClick={() => addTrimester()}>Add more trimester</button>
+      <button onClick={() => removeTrimester()}>Delete trimester</button></span>
+      </div>
+
+
+
+      <div className="trimesterLibrary">
+        
+        <div>
+        <hr />
+  
+          <h3>Econ </h3>
+          {courses.map((course) => (
+              
+              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+            course.TYPE === "ECON" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+  
+            
+          )
+          
+        )
+          }
+  
+          </div>
+          <div>
+          <hr />
+  
+          <h3>Ebus</h3>
+          {courses.map((course) => (
+              
+              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+            course.TYPE === "EBUS" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+  
+            
+          )
+          
+        )
+          }
+  
+          </div>
+          <div>
+          <hr />
+  
+          <h3>INFT</h3>
+          {courses.map((course) => (
+              
+              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+            course.TYPE === "INFT" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+  
+            
+          )
+          
+        )
+          }
+  
+          </div>
+          <div>
+          <hr />
+  
+          <h3>SENG</h3>
+          
+          {courses.map((course) => (
+              
+              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+            course.TYPE === "SENG" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+  
+            
+          )
+          
+        )
+          }
+  
+          </div>
+  
+          
+        </div>
 
     </div>
     </DndProvider>
