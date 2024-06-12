@@ -42,6 +42,7 @@ import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 
 
 // Login
+import AdminManageCourse from "./pages/AdminManageCourse/AdminManageCourse.jsx";
 
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -98,10 +99,13 @@ function App() {
      <EditLoginPage/>
      <EditRegisterPage/>
    
-  <AdminNav/>
+      <AdminNav/>
 
 
 
+      <Footer/>
+      
+      <AdminManageCourse/>
 
     </>
 
