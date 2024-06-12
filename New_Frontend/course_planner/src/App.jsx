@@ -20,6 +20,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
 import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
+import AdminManageCourse from "./pages/AdminManageCourse/AdminManageCourse.jsx";
 
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -45,7 +46,7 @@ function App() {
       <PrivacyPolicy/>
       <Footer/> */}
       
-      <AdminPolicy/>
+      <AdminManageCourse/>
 
     </>
   );
