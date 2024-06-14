@@ -81,6 +81,9 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
     //  This prevents undefined name from adding on to the column
       if(name != 'no name'){
+        
+        const card = <div style={{backgroundColor: "orange"}}> <p> {courseId}</p> <h3>{name} </h3> <div><p>Units: {units} </p></div></div>
+
         updatedTrimester[parent_index].course[index] = `ID: ${courseId} Name: ${name}  Units: ${units} ID: ${level}`;
         setStudentTrimester(() => updatedTrimester);
       }
