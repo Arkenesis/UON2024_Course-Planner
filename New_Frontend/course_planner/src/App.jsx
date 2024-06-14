@@ -100,11 +100,8 @@ function App() {
      <EditRegisterPage/>
    
       <AdminNav/>
-
-
-
       <Footer/>
-      
+      {/* <Contact /> */}
       <AdminManageCourse/>
 
     </>
