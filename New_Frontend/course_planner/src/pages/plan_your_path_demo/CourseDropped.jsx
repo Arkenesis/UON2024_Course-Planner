@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import "./Course.css"
 
-function Course({ id, name, level, units, grade}) {
+function CourseDropped({ id, name, level, units, grade}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "course",
     item: { id, name, units, level, grade },
@@ -37,4 +37,4 @@ Level: {level} | Units: {units}
   );
 }
 
-export default Course;
+export default CourseDropped;

@@ -21,18 +21,18 @@ import "./PlanYourPathDemo.css"
 // }];
 
 const Courses = [
-  {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", TYPE: "ECON"}, 
-  {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", TYPE: "SENG"}, 
-  {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database", TYPE: "COMP"}, 
-  {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy", TYPE: "EBUS"}, 
-  {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", TYPE: "SENG"}, 
-  {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", TYPE: "INFT"}, 
-  {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", TYPE: "SENG"}, 
+  {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", GRADE: "HD", TYPE: "ECON"}, 
+  {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", GRADE: "HD", TYPE: "SENG"}, 
+  {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database", GRADE: "HD", TYPE: "COMP"}, 
+  {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy", GRADE: "HD", TYPE: "EBUS"}, 
+  {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", GRADE: "HD", TYPE: "SENG"}, 
+  {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", GRADE: "HD", TYPE: "INFT"}, 
+  {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", GRADE: "HD", TYPE: "SENG"}, 
   {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", TYPE: "SENG"}, 
-  {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", TYPE: "COMP"}, 
-  {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", TYPE: "INFT"}, 
-  {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", TYPE: "SENG"}, 
-  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", TYPE: "INFT"}
+  {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", GRADE: "HD", TYPE: "COMP"}, 
+  {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", GRADE: "HD", TYPE: "INFT"}, 
+  {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", GRADE: "HD", TYPE: "SENG"}, 
+  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", GRADE: "HD", TYPE: "INFT"}
 ];
 
 
@@ -75,20 +75,24 @@ function DragDrop() {
 
 
   
-  const addCourseToTrimester = (courseId, name, level, units, parent_index, index) => {
+  const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
     if(courseId != ''){
       let selectedCourse   = coursesObject[courseId];
       let updatedTrimester = [...studentTrimester];
     //  This prevents undefined name from adding on to the column
       if(name != 'no name'){
         
-        const card = <div style={{backgroundColor: "orange"}}> <p> {courseId}</p> <h3>{name} </h3> <div><p>Units: {units} </p></div></div>
 
-        updatedTrimester[parent_index].course[index] = `ID: ${courseId} Name: ${name}  Units: ${units} ID: ${level}`;
+      updatedTrimester[parent_index].course[index] = 
+       [courseId, name, units, level];
+   
+
         setStudentTrimester(() => updatedTrimester);
+
+        
       }
       else{
-        updatedTrimester[parent_index].course[index] = `${courseId}`;
+        updatedTrimester[parent_index].course[index]=  "";
         setStudentTrimester(() => updatedTrimester);
       }
      
@@ -115,6 +119,7 @@ function DragDrop() {
     else
       setKey((k) => k - 1);
   };
+
 
 
   function addTrimester() {
@@ -174,7 +179,7 @@ function DragDrop() {
         {studentTrimester.map((trimesters, index) => (
 
             <Trimesters 
-            key={index} id={index} name={courses.name} units={courses.units} level={courses.level} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+            key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
           />
           )
         )}
