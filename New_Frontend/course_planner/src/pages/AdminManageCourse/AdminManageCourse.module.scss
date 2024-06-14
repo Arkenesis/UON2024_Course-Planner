@@ -1,8 +1,9 @@
-.manage-course {
+// AdminManageCourse.module.scss
+.manageCourse {
     padding: 20px;
     font-family: 'Roboto', sans-serif;
 
-    .table-container {
+    .tableContainer {
         position: relative;
     }
 
@@ -29,9 +30,8 @@
             background-color: #ddd;
         }
 
-        .action-buttons {
+        .actionButtons {
             display: flex;
-            gap: 10px;
         }
 
         img {
@@ -46,21 +46,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-
-            &:hover img {
-                opacity: 0.7;
-            }
         }
     }
 
-    .add-course-container {
-        // display: flex;
-        // justify-content: flex-end;
-        float: right;
+    .addCourseContainer {
+        display: flex;
+        justify-content: flex-end;
         margin-top: -10px; 
-        // margin-bottom: -10px;
+        margin-bottom: -10px;
 
-        .add-course {
+        .addCourse {
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
@@ -84,21 +79,22 @@
 
         button {
             padding: 10px 20px;
-            // border-color:#008CBA;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;s
-            // transition: background-color 0.3s;
+            font-size: 16px;
 
             &.cancel {
+                width: 150px;
                 background-color: white;
-                color: #008CBA;
-                
+                color: #008CBA;  
+                border: 1px solid #008CBA;
             }
 
             &.save {
+                width: 150px;
                 background-color: #008CBA;
                 color: white;
+                border: none;
             }
 
             &:hover {
@@ -107,5 +103,3 @@
         }
     }
 }
-
-          

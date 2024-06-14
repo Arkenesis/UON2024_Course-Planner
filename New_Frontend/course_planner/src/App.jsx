@@ -45,7 +45,7 @@ function App() {
       {/* <TermsAndConditions/>
       <PrivacyPolicy/>
       <Footer/> */}
-      
+      {/* <Contact /> */}
       <AdminManageCourse/>
 
     </>

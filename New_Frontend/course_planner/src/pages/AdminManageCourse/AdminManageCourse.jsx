@@ -1,5 +1,6 @@
+// ManageCourse.jsx
 import React from 'react';
-import './AdminManageCourse.scss';
+import styles from './AdminManageCourse.module.scss';
 
 import edit from '../../assets/editIcon.png';
 import remove from '../../assets/removeIcon.png';
@@ -36,8 +37,8 @@ const ManageCourse = () => {
     ];
 
     return (
-        <div className="manage-course">
-            <div className="table-container">
+        <div className={styles.manageCourse}>
+            <div className={styles.tableContainer}>
                 <table>
                     <thead>
                         <tr>
@@ -59,7 +60,7 @@ const ManageCourse = () => {
                                 <td>{course.prerequisite}</td>
                                 <td>{course.requiredCredit}</td>
                                 <td>{course.availability}</td>
-                                <td className="action-buttons">
+                                <td className={styles.actionButtons}>
                                     <button onClick={() => handleEdit(course.courseCode)}>
                                         <img src={edit} alt="Edit" />
                                     </button>
@@ -71,13 +72,13 @@ const ManageCourse = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="add-course-container">
-                    <button className="add-course">Add Course</button>
+                <div className={styles.addCourseContainer}>
+                    <button className={styles.addCourse}>Add Course</button>
                 </div>
             </div>
-            <div className="actions">
-                <button className="cancel" onClick={handleCancel}>Cancel</button>
-                <button className="save" onClick={handleSave}>Save</button>
+            <div className={styles.actions}>
+                <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+                <button className={styles.save} onClick={handleSave}>Save</button>
             </div>
         </div>
     );
