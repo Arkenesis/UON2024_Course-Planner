@@ -102,8 +102,8 @@ function App() {
       <AdminNav/>
       <Footer/>
       {/* <Contact /> */}
-      <AdminManageCourse/>
-
+      {/* <AdminManageCourse/> */}
+      <AdminPolicy/>
     </>
 
 
