@@ -46,8 +46,8 @@ function App() {
       <PrivacyPolicy/>
       <Footer/> */}
       {/* <Contact /> */}
-      <AdminManageCourse/>
-
+      {/* <AdminManageCourse/> */}
+      <AdminPolicy/>
     </>
   );
 }

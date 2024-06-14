@@ -1,4 +1,3 @@
-// ManageCourse.jsx
 import React from 'react';
 import styles from './AdminManageCourse.module.scss';
 
