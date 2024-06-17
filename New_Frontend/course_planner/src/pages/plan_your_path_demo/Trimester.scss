@@ -8,9 +8,25 @@
     display: flex;
     width: auto;
     padding: 0 10px;
+    margin: auto;
 
     div{
         margin: 18px 10%;
     }
 }
 
+
+.addCoursebtn{
+    margin: 100px;
+    background-color: rgb(95, 168, 228);
+}
+
+.addCoursebtn:hover{
+    margin: 100px;
+    background-color: rgb(45, 76, 163);
+}
+
+
+.courseName:hover{
+    background-color: rgb(240, 209, 253);
+}

@@ -9,19 +9,7 @@ import CourseDropped from "./CourseDropped";
 
 const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton}) => {
 
-  const addCourse = (courseIndex, course) => {
-    setStudentTrimester(trimesters => trimesters.map((tri, index) => {
-      if (index === trimesterIndex) {
-        const updatedTrimester = [...tri.courses];
-        updatedTrimester[courseIndex] = course;
-        return{ ...tri, courses: updatedTrimester };
 
-      }
-      return tri;
-    }
-  
-  ));
-};
 
 
 
@@ -71,8 +59,7 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
    
 
    
-   //const card = <div style={{backgroundColor: "orange"}}> <p>{item[0]}</p> <h3>{item[1]} </h3> <div><p>{item[2]}</p></div></div>;
-
+   
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
@@ -89,11 +76,11 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
           alignItems: 'center',
           justifyContent: 'center'}}>
           
-          <button onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
+          <button className="addCoursebtn" onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
      {showDropdown && (
-  <div style={{ position: 'relative', overflowY: 'auto', top: '80px', zIndex: 1, background: '#ffe5e3', height: '100px', width: '240px', margin:'0 0 0 -30px', color: 'black'}}>
+  <div style={{ position: 'relative', height: '200px', overflowY: 'auto', top: '80px', zIndex: 1, background: '#ffe5e3', margin:'70px 0 0 -200px', color: 'black'}}>
     {courses.map((course) => (
-      <div key={course.id} style={{height: '60px'}} onClick={() => {
+      <div className="courseName" key={course.id} style={{margin: '10% 10px', cursor: 'pointer' }} onClick={() => {
           addCourseToTrimester(item.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
      
         setShowDropDown(false);
