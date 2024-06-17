@@ -9,7 +9,7 @@ const Trimesters = ({ id, name, level, units, grade, year, term, course, addCour
 
   return (
     <div className="trimestersBox">
-      <p>{year} Trimester {term}</p>
+      <div className="trimesterName">{year} Trimester {term}</div>
       {course.map((i, index) => 
         <div key={index}  >
           <Trimester item={i} name={name} level={level} units={units} grade={grade} parent_index={id} index={index} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester}/>

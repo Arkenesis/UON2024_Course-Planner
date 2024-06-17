@@ -4,6 +4,7 @@ import Course from "./Course";
 import { DndProvider, useDrop } from "react-dnd";
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import "./PlanYourPathDemo.css"
+import shareImg from "../../assets/shareImg.png"
 
 // const Courses = [{
 //   "ECON1001": {Level: 1, Units: 10, Name: "Microeconomics for business decision"}, 
@@ -28,7 +29,7 @@ const Courses = [
   {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", GRADE: "HD", TYPE: "SENG"}, 
   {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", GRADE: "HD", TYPE: "INFT"}, 
   {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", TYPE: "SENG"}, 
+  {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", GRADE: "HD", TYPE: "SENG"}, 
   {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", GRADE: "HD", TYPE: "COMP"}, 
   {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", GRADE: "HD", TYPE: "INFT"}, 
   {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", GRADE: "HD", TYPE: "SENG"}, 
@@ -121,22 +122,35 @@ function DragDrop() {
   };
 
 
+  
+//Tracks count of the trimester number
+   const [count, setCount] = useState(5);
 
   function addTrimester() {
+
+    setCount((prevCount) => prevCount + 1);
+
     const newTrimester = {
       year: 2023,
-      term: 4,
+      term: count,
       course: ["", "", "", ""]
     };
     let updatedTrimester = [...studentTrimester, newTrimester];
     setStudentTrimester(updatedTrimester);
   }
   
-  function removeTrimester(){
+
+
+function removeTrimester(){
+
+
+
     let updatedTrimester = [...studentTrimester];
 
 
     if(updatedTrimester.length > 4){
+      setCount((prevCount) => prevCount - 1);
+  
       updatedTrimester.pop();
       setStudentTrimester(updatedTrimester);
     }
@@ -150,8 +164,15 @@ function DragDrop() {
 
   return (
 
-    <DndProvider backend={HTML5Backend}>
+    <div>
+     <div className="topData">
+   <h1 className="title">Plan Your Path</h1>
+   <p className="share">Share  <img className="shareImg" src={shareImg} alt="share icon" /></p>
+      </div> 
+
     <div key={key} className="planYourPathPage">
+
+      
       {/* This div holds the objects of the courses */}
       {/* <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
         {courses.map((code) => (
@@ -201,7 +222,7 @@ function DragDrop() {
           {courses.map((course) => (
               
               // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "ECON" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+            course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
   
             
           )
@@ -217,7 +238,7 @@ function DragDrop() {
           {courses.map((course) => (
               
               // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "EBUS" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+            course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
   
             
           )
@@ -233,7 +254,7 @@ function DragDrop() {
           {courses.map((course) => (
               
               // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "INFT" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+            course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
   
             
           )
@@ -250,7 +271,7 @@ function DragDrop() {
           {courses.map((course) => (
               
               // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "SENG" && <Course key={course} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+            course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
   
             
           )
@@ -264,7 +285,8 @@ function DragDrop() {
         </div>
 
     </div>
-    </DndProvider>
+
+    </div>
   );
 }
 

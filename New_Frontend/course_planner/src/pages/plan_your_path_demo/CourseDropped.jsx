@@ -16,18 +16,18 @@ function CourseDropped({ id, name, level, units, grade}) {
 
 
   return (
-    <div ref={drag} className="course"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "10em",
-      width: "400px", margin: "10px", background: "#FFEFD7"}}>
+    <div ref={drag} className="course"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "14em",
+      width: "240px", margin: "10px", background: "#FFEFD7"}}>
 
 <div className="courseHeader">
-      <div> <h3>{id}</h3>  </div>
-      <div className="subDetails">
-Level: {level} | Units: {units} 
+      <div> <h3>Core</h3>  </div>
+
 
 </div>
-
+<div className="subDetails">
+<span> <h3>  Modules: {name} </h3>  Level: {level} | Units: {units} </span>
+<p>Grade: {grade}</p>
 </div>
-    <h3>  Modules: {name} </h3>  
        
 
     </div>
