@@ -2,17 +2,37 @@ import React, {forwardRef, useState} from "react";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";
+import "./CourseDropped.css"
 
 import "./Trimester.scss"
 import CourseDropped from "./CourseDropped";
 
-const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCourse, studentTrimester, setStudentTrimester}) => {
+const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton}) => {
 
+  const addCourse = (courseIndex, course) => {
+    setStudentTrimester(trimesters => trimesters.map((tri, index) => {
+      if (index === trimesterIndex) {
+        const updatedTrimester = [...tri.courses];
+        updatedTrimester[courseIndex] = course;
+        return{ ...tri, courses: updatedTrimester };
+
+      }
+      return tri;
+    }
+  
+  ));
+};
+
+
+
+
+ 
+ 
   // Enables the components to give item(drag) 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "course",
     // Define the Drop Item details can be obtained when drop
-    item: { id:item, name:item, parent_index: parent_index, index: index,},
+    item: { id: item[0], parent_index: parent_index, index: index,},
     // Used to alert user
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -25,51 +45,32 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
   // Enables the components to receive item
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
     accept: "course",
+    // drop: (item) => {
+    //   // addCourseToTrimester(dropItem.id, parent_index, index);
+    //   addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
+    //   removeCourse(dropItem.parent_index, dropItem.index);
+    // },
+    drop: (item) => {
+      removeCourse(item.parent_index, item.index);
 
-  //  hover(item) {
-   
-  //    if (item.index !== index || item.parent_index !== parent_index) {
-
-  //     removeCourse(item.parent_index, item.index);
-  //     addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
-      
-  //     item.index = index;
-  //     item.parent_index = parent_index;
-  //   }
-
-  //  },
-  //  collect: (monitor) => ({
-  //     isOver: !!monitor.isOver(),
-  //     canDrop: monitor.canDrop(),
-  //   }),
-   
-
-
-    drop: (item) => { 
-      if (item.index !== index || item.parent_index !== parent_index) {
-
-        removeCourse(item.parent_index, item.index);
-        addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
-     
-      }
-
-
-      
+      addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
     },
+    
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
-      canDrop: monitor.canDrop(),
+      canDrop: monitor.canDrop()
     }),
 
-
+    
 
   }));
 
-
-
+  const [showDropdown, setShowDropDown] = useState(false);
   
    const isActive = isOver && canDrop
+   
 
+   
    //const card = <div style={{backgroundColor: "orange"}}> <p>{item[0]}</p> <h3>{item[1]} </h3> <div><p>{item[2]}</p></div></div>;
 
 
@@ -79,7 +80,36 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
      
     <div ref={node => drag(drop(node))} key={index} style={{ opacity: isDragging? 0.5: 1, height: "240px",display: "flex", alignItems: "center", width: "300px", background: isActive ? "#FED766" : "" }} className="trimesterBox"  >
     
-       {item && <CourseDropped  id={item[0]} name={item[1]} units={item[2]} level={item[3]} /> }   
+    
+        {item ? <div><CourseDropped key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
+       
+       </div> : 
+         <div style={{  height: '100%',
+          display: 'flex',          
+          alignItems: 'center',
+          justifyContent: 'center'}}>
+          
+          <button onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
+     {showDropdown && (
+  <div style={{ position: 'relative', overflowY: 'auto', top: '80px', zIndex: 1, background: '#ffe5e3', height: '100px', width: '240px', margin:'0 0 0 -30px', color: 'black'}}>
+    {courses.map((course) => (
+      <div key={course.id} style={{height: '60px'}} onClick={() => {
+          addCourseToTrimester(item.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
+     
+        setShowDropDown(false);
+      }}>
+        {course.Name}
+      </div>
+    ))}
+  </div>
+)}
+
+         </div>
+       
+      
+
+       
+      }
      
   
     </div>

@@ -33,8 +33,10 @@ const Courses = [
   {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", GRADE: "HD", TYPE: "COMP"}, 
   {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", GRADE: "HD", TYPE: "INFT"}, 
   {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", GRADE: "HD", TYPE: "INFT"}
+  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", GRADE: "HD", TYPE: "INFT"},
+  
 ];
+
 
 
 function DragDrop() {
@@ -122,6 +124,30 @@ function DragDrop() {
   };
 
 
+const menuButton = (parent_index, index) =>{
+  
+
+      var courseOptions = document.getElementById('courseOptions');
+        if (courseOptions.style.display === 'none') {
+          courseOptions.style.display = 'block'
+        } else{
+          courseOptions.style.display = 'none';
+        }
+  
+      
+
+        // Force render the sub components
+    // Used to solve the weird display bug
+    if(key < 2)
+      setKey((k) => k + 1);
+    else
+      setKey((k) => k - 1);
+
+
+    }
+  
+
+
   
 //Tracks count of the trimester number
    const [count, setCount] = useState(5);
@@ -201,14 +227,16 @@ function removeTrimester(){
 
             <Trimesters 
             key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+         courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton}
+
           />
           )
         )}
 
  
       </div>
-      <span>      <button onClick={() => addTrimester()}>Add more trimester</button>
-      <button onClick={() => removeTrimester()}>Delete trimester</button></span>
+      <div>      <button onClick={() => addTrimester()}>Add more trimester</button>
+      <button onClick={() => removeTrimester()}>Delete trimester</button></div>
       </div>
 
 

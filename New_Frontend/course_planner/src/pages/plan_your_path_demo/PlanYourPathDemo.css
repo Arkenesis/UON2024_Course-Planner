@@ -75,3 +75,8 @@
     background: linear-gradient(#2b39ff, #2273ff);
     border-radius: 10px;
 }
+
+
+.hamburgerMenu{
+    height: 10px;
+}
