@@ -13,7 +13,7 @@
 }
 
 .trimestersDetails{
-   border: 4px solid rgb(132, 0, 255);
+   border: 4px solid rgb(0, 0, 0);
    display: flex; 
    flex-direction: column;
    overflow: auto;

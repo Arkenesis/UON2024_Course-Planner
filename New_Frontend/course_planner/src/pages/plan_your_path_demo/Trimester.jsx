@@ -39,9 +39,18 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
     //   removeCourse(dropItem.parent_index, dropItem.index);
     // },
     drop: (item) => {
-      removeCourse(item.parent_index, item.index);
 
-      addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
+      //The conditional statement prevents you from dragging empty trimester boxes with no data
+      if(item.id !== undefined && item.name !== undefined) {
+        addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
+
+        removeCourse(Oldparent_index, Oldindex);
+      }
+       
+          let Oldparent_index = [...parent_index];
+          let Oldindex = [...index];
+     
+       
     },
     
     collect: (monitor) => ({
@@ -71,7 +80,8 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
         {item ? <div><CourseDropped key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
        
        </div> : 
-         <div style={{  height: '100%',
+
+         <div ref={node => drag(drop(node))} style={{  height: '100%',
           display: 'flex',          
           alignItems: 'center',
           justifyContent: 'center'}}>

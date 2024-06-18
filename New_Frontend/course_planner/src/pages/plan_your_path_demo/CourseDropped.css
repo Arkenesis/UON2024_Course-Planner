@@ -1,3 +1,13 @@
+.course{
+    cursor: grab;
+}
+
+.course:active{
+    cursor: grabbing;
+}
+
+
+
 #hamburgerImg{
     margin: 0 100px 0 0;
     text-decoration: none;

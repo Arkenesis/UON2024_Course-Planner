@@ -11,9 +11,12 @@ function CourseDropped({ id, name, level, units, grade, removeCourse, parent_ind
     
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
+    
     }),
   }));
 
+
+  
 
 
   //Allows to hide and show the menu
@@ -32,10 +35,8 @@ function CourseDropped({ id, name, level, units, grade, removeCourse, parent_ind
 
 
 
-
-
   return (
-    <div ref={drag} className="course"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "14em",
+    <div ref={drag} id="courseDropped" className="course"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "14em",
       width: "240px", margin: "10px", background: "#FFEFD7"}}>
 
 <div className="courseHeader">
