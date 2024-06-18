@@ -66,6 +66,16 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
   
    const isActive = isOver && canDrop
    
+// For search bar is below
+
+const [query, setQuery] = useState('');
+
+
+const filterCourses = courses.filter(course =>
+  course.Name.toLowerCase().includes(query.toLowerCase())
+);
+
+
 
    
    
@@ -89,13 +99,25 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
           <button className="addCoursebtn" onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
      {showDropdown && (
   <div style={{ position: 'relative', height: '200px', overflowY: 'auto', top: '80px', zIndex: 1, background: '#ffe5e3', margin:'70px 0 0 -200px', color: 'black'}}>
-    {courses.map((course) => (
-      <div className="courseName" key={course.id} style={{margin: '10% 10px', cursor: 'pointer' }} onClick={() => {
+ {/* This input takes the courses */}
+    <input
+    className="searchInput"
+  type="text"
+  placeholder="Search courses..."
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+/>
+    {filterCourses.map((course) => (
+     
+     <div key={course.id} style={{margin: '10% 10px', cursor: 'pointer', width: '300px' }} onClick={() => {
           addCourseToTrimester(item.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
      
         setShowDropDown(false);
       }}>
+        <div  className="courseName">
         {course.Name}
+
+        </div>
       </div>
     ))}
   </div>
