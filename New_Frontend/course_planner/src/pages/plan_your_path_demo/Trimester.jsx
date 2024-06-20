@@ -11,9 +11,6 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
 
 
 
-
-
-
  
  
   // Enables the components to give item(drag) 
@@ -40,15 +37,18 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
     // },
     drop: (item) => {
 
+      let Oldparent_index = [...parent_index];
+      let Oldindex = [...index];
+z
+  
       //The conditional statement prevents you from dragging empty trimester boxes with no data
       if(item.id !== undefined && item.name !== undefined) {
         addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
 
-        removeCourse(Oldparent_index, Oldindex);
       }
        
-          let Oldparent_index = [...parent_index];
-          let Oldindex = [...index];
+    
+    
      
        
     },
@@ -70,9 +70,12 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
 
 const [query, setQuery] = useState('');
 
-
+//This function will check if the input that the user adds contains the same words found from the courses' names
 const filterCourses = courses.filter(course =>
-  course.Name.toLowerCase().includes(query.toLowerCase())
+  course.Name.toLowerCase().includes(query.toLowerCase()) ||
+  course.ID.toLowerCase().includes(query.toLowerCase())
+
+
 );
 
 
