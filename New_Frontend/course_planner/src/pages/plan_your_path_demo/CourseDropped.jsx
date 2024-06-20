@@ -4,7 +4,7 @@ import hamburgerMenu from "../../assets/hamburgerMenu.png"
 import "./Course.css"
 import "./CourseDropped.css"
 
-function CourseDropped({ id, name, level, units, grade, removeCourse, parent_index, index, menuButton}) {
+function CourseDropped({ id, name, units, level, grade, removeCourse, parent_index, index, menuButton}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "course",
     item: { id, name, units, level, grade },

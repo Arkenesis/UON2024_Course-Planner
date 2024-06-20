@@ -37,13 +37,17 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
     // },
     drop: (item) => {
 
-      let Oldparent_index = [...parent_index];
-      let Oldindex = [...index];
-z
   
       //The conditional statement prevents you from dragging empty trimester boxes with no data
       if(item.id !== undefined && item.name !== undefined) {
+        
+   
+         
         addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
+        
+       
+
+     
 
       }
        

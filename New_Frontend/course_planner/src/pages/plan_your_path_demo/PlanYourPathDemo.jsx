@@ -79,31 +79,19 @@ function DragDrop() {
 
   
   const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
+ 
     if(courseId != ''){
       let selectedCourse   = coursesObject[courseId];
       let updatedTrimester = [...studentTrimester];
-    //  This prevents undefined name from adding on to the column
-      if(name != 'no name'){
-        
-
-      updatedTrimester[parent_index].course[index] = 
-       [courseId, name, units, level];
-   
-
-        setStudentTrimester(() => updatedTrimester);
-
-        
-      }
-      else{
-        updatedTrimester[parent_index].course[index]=  "";
-        setStudentTrimester(() => updatedTrimester);
-      }
-     
+      updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
+      setStudentTrimester(() => updatedTrimester);
     }
     if(key < 2)
       setKey((k) => k + 1);
     else
       setKey((k) => k - 1);
+
+
   };
 
 
