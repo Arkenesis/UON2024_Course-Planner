@@ -20,6 +20,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
 import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
+import EditStudent from "./pages/editstudent/EditStudent.jsx";
 import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 
 function App() {
@@ -35,19 +36,20 @@ function App() {
       <HomePage/>
       <TrackProgress/> */}
 
-      {/* <AboutUs />
-      <Contact />
-      <Register/>
-      <Login/>
-      <ResetPassword/> */}
+      {/* <AboutUs /> */}
+      {/* <Contact /> */}
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
-      {/* <TermsAndConditions/>
-      <PrivacyPolicy/>
-      <Footer/> */}
+      {/* <TermsAndConditions/> */}
+      {/* <PrivacyPolicy/> */}
+      <EditStudent/>
+      {/* <Footer/>  */}
       
       {/* <AdminPolicy/> */}
 
-      <ImageUpload/>
+      {/* <ImageUpload/> */}
     </>
   );
 }
