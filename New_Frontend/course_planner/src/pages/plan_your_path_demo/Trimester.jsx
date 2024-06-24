@@ -117,8 +117,8 @@ const filterCourses = courses.filter(course =>
     {filterCourses.map((course) => (
      
      <div key={course.id} style={{margin: '10% 10px', cursor: 'pointer', width: '300px' }} onClick={() => {
-          addCourseToTrimester(item.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
-     
+        addCourseToTrimester(course.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
+  
         setShowDropDown(false);
       }}>
         <div  className="courseName">
