@@ -23,6 +23,12 @@ import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
 import EditStudent from "./pages/editstudent/EditStudent.jsx";
 import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 
+
+// Admin Pages
+import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
+import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
+
+
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -32,9 +38,14 @@ function App() {
 
   return (
     <>
-      {/* <NavigationBar />
+      <NavigationBar />
+      
+      <EditStudentHomePage />
+      <EditProgram />
+
+
       <HomePage/>
-      <TrackProgress/> */}
+      <TrackProgress/>
 
       {/* <AboutUs /> */}
       {/* <Contact /> */}
