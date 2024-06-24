@@ -17,6 +17,12 @@ import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/Homepage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 
+
+// Admin Pages
+import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
+import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
+
+
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -27,6 +33,11 @@ function App() {
   return (
     <>
       <NavigationBar />
+      
+      <EditStudentHomePage />
+      <EditProgram />
+
+
       <HomePage/>
       <TrackProgress/>
 
