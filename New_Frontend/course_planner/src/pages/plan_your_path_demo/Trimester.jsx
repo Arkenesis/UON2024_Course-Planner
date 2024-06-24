@@ -42,7 +42,7 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
       if(item.id !== undefined && item.name !== undefined) {
         
    
-         
+        removeCourse(parent_index, index);
         addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
         
        
