@@ -16,6 +16,11 @@ import Footer from "./components/Footer.jsx";
 import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/Homepage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
+import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
+import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
+import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
+import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
+import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 
 
 // Admin Pages
@@ -24,11 +29,11 @@ import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
 
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+  // const toggleSidebar = () => {
+  //   setSidebarOpen(!sidebarOpen);
+  // };
 
   return (
     <>
@@ -41,14 +46,19 @@ function App() {
       <HomePage/>
       <TrackProgress/>
 
-      <AboutUs />
+      {/* <AboutUs />
       <Contact />
       <Register/>
       <Login/>
-      <ResetPassword/>
-      <TermsAndConditions/>
+      <ResetPassword/> */}
+      {/* <ChangePassword/> */}
+      {/* <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/>
+      <Footer/> */}
+      
+      {/* <AdminPolicy/> */}
+
+      <ImageUpload/>
     </>
   );
 }
