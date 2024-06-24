@@ -40,12 +40,11 @@ function App() {
     <>
       <NavigationBar />
       
-      <EditStudentHomePage />
-      <EditProgram />
+
 
 
       <HomePage/>
-      <TrackProgress/>
+      {/* <TrackProgress/> */}
 
       {/* <AboutUs /> */}
       {/* <Contact /> */}
@@ -55,12 +54,12 @@ function App() {
       {/* <ChangePassword/> */}
       {/* <TermsAndConditions/> */}
       {/* <PrivacyPolicy/> */}
-      <EditStudent/>
+      {/* <EditStudent/> */}
+      {/* <EditStudentHomePage /> */}
+      {/* <EditProgram /> */}
       {/* <Footer/>  */}
-      
       {/* <AdminPolicy/> */}
-
-      {/* <ImageUpload/> */}
+      <ImageUpload/>
     </>
   );
 }
