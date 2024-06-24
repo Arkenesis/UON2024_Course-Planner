@@ -1,0 +1,169 @@
+.Button {
+    height: 80px;
+}
+
+.PurgeButton {
+    width: 110px;
+    height: 40px;
+    float: right;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    background-color: #FE4A49;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.PurgeButton:hover {
+    background-color: #FE4A49;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.PurgeButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.Window {
+    display: grid;
+    border: 1px solid black;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    align-items: center;
+    overflow-y: auto; // Vertical scrolling
+}
+
+.Title {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    gap: 10px;
+    width: 1000px;
+    font-weight: bold;
+}
+
+.StudentList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    gap: 10px;
+    margin-top: 50px;
+    width: 1000px;
+    max-height: 1000px; 
+}
+
+.Student {
+    display: contents; //Child elements participate in the grid container's layout
+}
+
+.CheckboxAndName {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Student .CheckboxAndName {
+    grid-column: 1 / span 1;
+    display: flex;
+    align-items: center;
+}
+
+.Student span:nth-of-type(2) {
+    grid-column: 2 / span 1;
+    align-self: center;
+}
+
+.Student span:nth-of-type(3) {
+    grid-column: 3 / span 1;
+    align-self: center;
+}
+
+.Student span:nth-of-type(4) {
+    grid-column: 4 / span 1;
+    align-self: center;
+}
+
+.EditAndDelete {
+    grid-column: 5 / span 1;
+    display: flex;
+    align-self: center;
+    gap: 10px; 
+}
+
+.EditButton, .DeleteButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.EditButton:hover, .DeleteButton:hover {
+    background-color: lightgrey;
+}
+
+.editImage, .deleteImage {
+    width: 20px;
+    height: 20px;
+}
+
+.CancelAndSave {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.CancelButton, .SaveButton {
+    width: 100px;
+    height: 40px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CancelButton {
+    background-color: #696969;
+}
+
+.CancelButton:hover {
+    background-color: #999999;
+    transform: translateY(-2px);
+}
+
+.CancelButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.SaveButton {
+    background-color: #2297eb;
+}
+
+.SaveButton:hover {
+    background-color: #25a2fc;
+    transform: translateY(-2px);
+}
+
+.SaveButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
