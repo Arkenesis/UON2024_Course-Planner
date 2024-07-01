@@ -6,7 +6,7 @@ import '@fontsource/roboto/700.css';
 import { Link } from "react-router-dom";
 import "./ChangePassword.scss";
 import { useState } from "react";
-import eyeIcon from '../../assets/eyeIcon.png'; 
+import eyeIcon from '../../assets/eyeicon.png'; 
 
 const ChangePassword = () => {
     const [inputs, setInputs] = useState({
