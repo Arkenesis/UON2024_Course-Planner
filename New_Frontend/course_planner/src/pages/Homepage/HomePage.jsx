@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import courseCompleted from '../../assets/courseCompleted.png';
 import myInfo from '../../assets/myInfo.png';
 
@@ -11,9 +11,13 @@ const HomePage = () => {
       month: 'long',
       year: 'numeric'
     });
+    
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   
     // To put a comma in the date:
-    const formattedDate = currentDate.replace(/ (\d{2})/, ', $1');
+    const formattedDate = currentDate.replace(/ (\d{2})/, ' $1');
   
     return (
       <>
