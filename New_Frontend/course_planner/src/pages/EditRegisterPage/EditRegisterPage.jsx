@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import uonBuilding from '../../assets/uonBuilding.jpg'
-import './EditLoginPage.css'
+import './EditRegisterPage.css'
 
-function EditLoginPage() {
+function EditRegisterPage() {
 
      const [value, setValue] = useState(`
         
@@ -68,7 +68,7 @@ function EditLoginPage() {
     <div>
 
         <div className='editTitles'>
-            <h2>Edit Login Page</h2>
+            <h2>Edit Register Page</h2>
 
 
             <h3>Welcome Message</h3>
@@ -138,4 +138,4 @@ function EditLoginPage() {
   )
 }
 
-export default EditLoginPage;
+export default EditRegisterPage;

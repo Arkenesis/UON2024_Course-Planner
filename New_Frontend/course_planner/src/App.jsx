@@ -25,6 +25,7 @@ import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
 import EditStudent from "./pages/editstudent/EditStudent.jsx";
 import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
+import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
 
 // Admin Pages
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
@@ -90,6 +91,7 @@ function App() {
       <AdminTerm/> */}
       {/* <ImageUpload/> */}
      <EditLoginPage/>
+     <EditRegisterPage/>
 
     </>
   );
