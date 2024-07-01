@@ -41,7 +41,6 @@ const Courses = [
 
 function DragDrop() {
   const [courses, setCourses] = useState(Courses);
-  const [coursePosition, setCoursePosition] = useState({});
   let coursesObject = Courses[0];
   let courseEntries = Object.entries(coursesObject);
 
@@ -86,20 +85,11 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
-
-      let temp = {...coursePosition};
-      if(temp.name != null)
-        removeCourse(temp.name.parent_index, temp.index);
-
-      let position = {"parent_index": parent_index , "index": index};
-      setCoursePosition({...coursePosition, [name]: position});
     }
     if(key < 2)
       setKey((k) => k + 1);
     else
       setKey((k) => k - 1);
-
-
   };  
 
   const removeCourse = (parent_index, index) => {
@@ -109,7 +99,6 @@ function DragDrop() {
       setStudentTrimester(updatedTrimester);
 
     }
-    
     // Force render the sub components
     // Used to solve the weird display bug
     if(key < 2)
@@ -125,9 +114,7 @@ function DragDrop() {
       courseOptions.style.display = 'block'
     } else{
       courseOptions.style.display = 'none';
-    } 
-    // Force render the sub components
-    // Used to solve the weird display bug
+    }
     if(key < 2)
       setKey((k) => k + 1);
     else
@@ -160,12 +147,6 @@ function DragDrop() {
       setStudentTrimester(updatedTrimester);
     }
   }
-
-
-
-  
-
-
 
   return (
 
