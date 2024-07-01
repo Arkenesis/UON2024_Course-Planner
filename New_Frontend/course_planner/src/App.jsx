@@ -24,7 +24,7 @@ import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
 import EditStudent from "./pages/editstudent/EditStudent.jsx";
 import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
-
+import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
 
 // Admin Pages
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
@@ -42,41 +42,7 @@ function App() {
 
   return (
     <>
-      <DndProvider backend={HTML5Backend}>
-        <div className="App">
-          <DragDrop />
-        </div>
-      </DndProvider>
-       <NavigationBar />
-      <HomePage/>
-      <TrackProgress/>
-
-      <AboutUs />
-      <Contact />
-      <Register/>
-      <Login/>
-      <ResetPassword/>
-      <TermsAndConditions/>
-      <PrivacyPolicy/>
-      <Footer/> 
-      <NavigationBar />
-      <HomePage/>
-      {/* <TrackProgress/> */}
-
-      {/* <AboutUs /> */}
-      {/* <Contact /> */}
-      {/* <Register/> */}
-      {/* <Login/> */}
-      {/* <ResetPassword/>  */}
-      {/* <ChangePassword/> */}
-      {/* <TermsAndConditions/> */}
-      {/* <PrivacyPolicy/> */}
-      {/* <EditStudent/> */}
-      {/* <EditStudentHomePage /> */}
-      {/* <EditProgram /> */}
-      {/* <Footer/>  */}
-      {/* <AdminPolicy/> */}
-      <ImageUpload/>
+     <EditLoginPage/>
 
     </>
   );
