@@ -41,6 +41,7 @@ const Courses = [
 
 function DragDrop() {
   const [courses, setCourses] = useState(Courses);
+  const [coursePosition, setCoursePosition] = useState({});
   let coursesObject = Courses[0];
   let courseEntries = Object.entries(coursesObject);
 
@@ -85,6 +86,13 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
+
+      let temp = {...coursePosition};
+      if(temp.name != null)
+        removeCourse(temp.name.parent_index, temp.index);
+
+      let position = {"parent_index": parent_index , "index": index};
+      setCoursePosition({...coursePosition, [name]: position});
     }
     if(key < 2)
       setKey((k) => k + 1);
@@ -92,17 +100,16 @@ function DragDrop() {
       setKey((k) => k - 1);
 
 
-  };
-
-
-  
+  };  
 
   const removeCourse = (parent_index, index) => {
     if(parent_index !== undefined && index !== undefined){
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = "";
       setStudentTrimester(updatedTrimester);
+
     }
+    
     // Force render the sub components
     // Used to solve the weird display bug
     if(key < 2)
@@ -112,33 +119,24 @@ function DragDrop() {
   };
 
 
-const menuButton = (parent_index, index) =>{
-  
-
-      var courseOptions = document.getElementById('courseOptions');
-        if (courseOptions.style.display === 'none') {
-          courseOptions.style.display = 'block'
-        } else{
-          courseOptions.style.display = 'none';
-        }
-  
-      
-
-        // Force render the sub components
+  const menuButton = (parent_index, index) =>{
+    var courseOptions = document.getElementById('courseOptions');
+    if (courseOptions.style.display === 'none') {
+      courseOptions.style.display = 'block'
+    } else{
+      courseOptions.style.display = 'none';
+    } 
+    // Force render the sub components
     // Used to solve the weird display bug
     if(key < 2)
       setKey((k) => k + 1);
     else
       setKey((k) => k - 1);
-
-
-    }
+  }
   
+  //Tracks count of the trimester number
+  const [count, setCount] = useState(5);
 
-
-  
-//Tracks count of the trimester number
-   const [count, setCount] = useState(5);
 
   function addTrimester() {
 
@@ -152,16 +150,9 @@ const menuButton = (parent_index, index) =>{
     let updatedTrimester = [...studentTrimester, newTrimester];
     setStudentTrimester(updatedTrimester);
   }
-  
 
-
-function removeTrimester(){
-
-
-
+  function removeTrimester(){
     let updatedTrimester = [...studentTrimester];
-
-
     if(updatedTrimester.length > 4){
       setCount((prevCount) => prevCount - 1);
   
@@ -179,129 +170,85 @@ function removeTrimester(){
   return (
 
     <div>
-     <div className="topData">
-   <h1 className="title">Plan Your Path</h1>
-   <p className="share">Share  <img className="shareImg" src={shareImg} alt="share icon" /></p>
+      <div className="topData">
+        <h1 className="title">Plan Your Path</h1>
+        <p className="share">Share  <img className="shareImg" src={shareImg} alt="share icon" /></p>
       </div> 
 
-    <div key={key} className="planYourPathPage">
+      <div key={key} className="planYourPathPage">
 
-      
-      {/* This div holds the objects of the courses */}
-      {/* <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
-        {courses.map((code) => (
-          <Course key={code} id={code.ID} name={code.Name} level={code.Level} units={code.Units}/>
-        ))}
-      </div> */}
-
-
-    
-
-
-{/* This div holds the objects of the trimesters */}
-      {/* <div className="Trimesters">
-        
-        {studentTrimester.map((trimesters, index) => (
+        {/* This div holds the objects of the courses */}
+        {/* <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
           {courses.map((code) => (
-          <Trimesters key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
-        
-        ))}
-        
-        ))} */}
+            <Course key={code} id={code.ID} name={code.Name} level={code.Level} units={code.Units}/>
+          ))}
+        </div> */}
 
-    <div>
-      <div className="trimestersDetails">
-        {studentTrimester.map((trimesters, index) => (
-
-            <Trimesters 
-            key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
-         courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton}
-
-          />
-          )
-        )}
-
- 
-      </div>
-      <div>      <button onClick={() => addTrimester()}>Add more trimester</button>
-      <button onClick={() => removeTrimester()}>Delete trimester</button></div>
-      </div>
+        {/* This div holds the objects of the trimesters */}
+        {/* <div className="Trimesters">
+          
+          {studentTrimester.map((trimesters, index) => (
+            {courses.map((code) => (
+            <Trimesters key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
+          
+          ))}
+          
+          ))} */}
 
 
-
-      <div className="trimesterLibrary">
+        <div className="trimestersDetails">
+          {studentTrimester.map((trimesters, index) => (
+              <Trimesters 
+                key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+                courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton}
+              />
+            )
+          )}
+        </div>
         
         <div>
-        <hr />
-  
-          <h3>Econ </h3>
-          {courses.map((course) => (
-              
-              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
-  
-            
-          )
-          
-        )
-          }
-  
-          </div>
-          <div>
-          <hr />
-  
-          <h3>Ebus</h3>
-          {courses.map((course) => (
-              
-              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
-  
-            
-          )
-          
-        )
-          }
-  
-          </div>
-          <div>
-          <hr />
-  
-          <h3>INFT</h3>
-          {courses.map((course) => (
-              
-              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
-  
-            
-          )
-          
-        )
-          }
-  
-          </div>
-          <div>
-          <hr />
-  
-          <h3>SENG</h3>
-          
-          {courses.map((course) => (
-              
-              // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
-            course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
-  
-            
-          )
-          
-        )
-          }
-  
-          </div>
-  
-          
+          <div className="trimesterLibrary">
+            <div>
+              <hr />
+              <h3>Econ </h3>
+              {courses.map((course) => (
+                // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+                course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+              ))}
+            </div>
+
+            <div>
+              <hr />
+              <h3>Ebus</h3>
+              {courses.map((course) => (
+                  // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+                course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+              ))}
+            </div>
+
+            <div>
+              <hr />
+              <h3>INFT</h3>
+              {courses.map((course) => (
+                // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+                course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+              ))}
+            </div>
+
+            <div>
+              <hr />
+              <h3>SENG</h3>
+              {courses.map((course) => (
+                // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
+                course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                ))}
+            </div>
+        
+          </div>      
+          <button onClick={() => addTrimester()}>Add more trimester</button>
+          <button onClick={() => removeTrimester()}>Delete trimester</button>
         </div>
-
-    </div>
-
+      </div>
     </div>
   );
 }

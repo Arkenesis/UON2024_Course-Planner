@@ -59,8 +59,8 @@ function App() {
       <TermsAndConditions/>
       <PrivacyPolicy/>
       <Footer/> */}
-      <NavigationBar />
-      <HomePage/>
+      {/* <NavigationBar /> */}
+      {/* <HomePage/> */}
       {/* <TrackProgress/> */}
 
       {/* <AboutUs /> */}
