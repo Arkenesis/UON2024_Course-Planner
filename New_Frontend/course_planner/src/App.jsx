@@ -47,7 +47,7 @@ function App() {
           <DragDrop />
         </div>
       </DndProvider>
-      {/* <NavigationBar />
+       <NavigationBar />
       <HomePage/>
       <TrackProgress/>
 
@@ -58,7 +58,7 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/> */}
+      <Footer/> 
       <NavigationBar />
       <HomePage/>
       {/* <TrackProgress/> */}
