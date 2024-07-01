@@ -20,22 +20,17 @@ function Course({ id, name, level, units, grade}) {
     <div ref={drag} className="course"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "auto",
       width: "300px", margin: "10px", background: "#FFEFD7"}}>
 
-<div className="courseHeader">
-      <div> <h3>{id}</h3>  </div>
-      <div className="subDetails">
-Level: {level} | Units: {units} 
+      <div className="courseHeader">
+        <div> 
+          <h3>{id}</h3>
+        </div>
+        <div className="subDetails">
+          Level: {level} | Units: {units}
+        </div>
+      </div>
 
-</div>
-
-</div>
-
-    <h3  className="content">  Modules: {name} </h3>  
-       
-
+      <h3 className="content">Modules: {name}</h3>  
     </div>
-
-
-
   );
 }
 
