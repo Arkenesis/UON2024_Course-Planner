@@ -109,7 +109,9 @@ const EditProgram = () => {
     }
   };
   
-
+  const handlePreviewClick = () => {
+    alert('Previewing changes.');
+  };
 
   const handleAddCourseClick = () => {
     setModalCourse({ id: '', year: programYear !== 'All' ? programYear : '2024', trimester: trimester !== 'All' ? trimester : 'Trimester 1' });
@@ -224,10 +226,14 @@ const EditProgram = () => {
           </div>
         </div>
       </div>
-      <div className="buttons">
-        <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
-        <button className="save-button" onClick={handleSaveClick}>Save</button>
-      </div>
+      <div className="bottom-buttons">
+                <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
+                <div className="right-buttons">
+                    <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
+                    <button className="save-button" onClick={handleSaveClick}>Save</button>
+                </div>
+            </div>
+
 
       {showSuccessMessage && (
         <div className="success-message">

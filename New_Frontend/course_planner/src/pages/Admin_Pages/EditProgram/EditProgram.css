@@ -142,34 +142,64 @@ input[type="text"], select {
     font-weight: bold;
 }
 
-/* Action Buttons */
-.buttons {
+
+/* Bottom Buttons */
+.bottom-buttons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 2rem;
-    gap: 10rem;
-    margin: 0 200px 20px 200px;
-}
-
-.cancel-button, .save-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
+    margin-right: 3rem;
 }
 
 .cancel-button {
-    background-color: #ffffff;
-    border: 1px solid #1577BD;
-    color: #1577BD;
+    margin-left: 50px;
+    width: 100px;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: #d0d0d0;
+}
+
+.right-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.preview-button,
+.save-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.preview-button {
+    background-color: #2B3047;
+    color: #fff;
+}
+
+.preview-button:hover {
+    background-color: #23272b;
 }
 
 .save-button {
-    background-color: #007bff;
+    background-color: #1577BD;
     color: #fff;
 }
+
+.save-button:hover {
+    background-color: #1577BD;
+}
+
 
 /* Success Message */
 .success-message {

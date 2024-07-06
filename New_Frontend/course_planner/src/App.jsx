@@ -26,6 +26,7 @@ import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 // Admin Pages
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
 import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
+import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
 
 
 function App() {
@@ -39,8 +40,10 @@ function App() {
     <>
       <NavigationBar />
       
+      <EditNavBar />
       <EditStudentHomePage />
       <EditProgram />
+      
 
 
       <HomePage/>
