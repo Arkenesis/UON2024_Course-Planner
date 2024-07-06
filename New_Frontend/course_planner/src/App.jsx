@@ -2,6 +2,8 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react'
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import './App.css'
 import AboutUs from './pages/AboutUs/AboutUs';
@@ -20,6 +22,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
 import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
+import EditStudent from "./pages/editstudent/EditStudent.jsx";
 import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 
 
@@ -28,6 +31,8 @@ import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStu
 import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
 import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
 
+
+import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -38,30 +43,42 @@ function App() {
 
   return (
     <>
-      <NavigationBar />
-      
-      <EditNavBar />
-      <EditStudentHomePage />
-      <EditProgram />
-      
-
-
+      <DndProvider backend={HTML5Backend}>
+        <div className="App">
+          <DragDrop />
+        </div>
+      </DndProvider>
+      {/* <NavigationBar />
       <HomePage/>
       <TrackProgress/>
 
-      {/* <AboutUs />
+      <AboutUs />
       <Contact />
       <Register/>
       <Login/>
-      <ResetPassword/> */}
-      {/* <ChangePassword/> */}
-      {/* <TermsAndConditions/>
+      <ResetPassword/>
+      <TermsAndConditions/>
       <PrivacyPolicy/>
       <Footer/> */}
-      
-      {/* <AdminPolicy/> */}
+      {/* <NavigationBar /> */}
+      {/* <HomePage/> */}
+      {/* <TrackProgress/> */}
 
+      {/* <AboutUs /> */}
+      {/* <Contact /> */}
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <ResetPassword/>  */}
+      {/* <ChangePassword/> */}
+      {/* <TermsAndConditions/> */}
+      {/* <PrivacyPolicy/> */}
+      {/* <EditStudent/> */}
+      {/* <EditStudentHomePage /> */}
+      {/* <EditProgram /> */}
+      {/* <Footer/>  */}
+      {/* <AdminPolicy/> */}
       <ImageUpload/>
+
     </>
   );
 }

@@ -1,0 +1,11 @@
+.trimestersBox{
+   
+    display: flex;
+    
+ 
+}
+
+.trimesterName{
+    width: 200px;
+    
+}
