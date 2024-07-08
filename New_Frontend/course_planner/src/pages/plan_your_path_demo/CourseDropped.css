@@ -10,7 +10,6 @@
 
 
 
-
 #hamburgerImg{
     margin: 0 100px 0 0;
     text-decoration: none;
@@ -47,7 +46,6 @@
 }
 
 
-
 .subBox{
     list-style-type: none;
     transition: ease-in-out 2000ms;
@@ -65,7 +63,6 @@
 }
 
 
-
 .course{
     cursor: grab;
 }
@@ -73,7 +70,6 @@
 .course:active{
     cursor: grabbing;
 }
-
 
 
 .courseHeader{
@@ -91,4 +87,3 @@
 .content{
     margin: 10px 5px;
 }
-
