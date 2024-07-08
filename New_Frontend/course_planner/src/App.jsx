@@ -13,7 +13,6 @@ import Login from './pages/login/Login.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
-import Footer from "./components/Footer.jsx";
 
 import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/Homepage/HomePage';
@@ -29,7 +28,7 @@ import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 // Admin Pages
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
 import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
-
+import Footer from './components/Footer/Footer.jsx'
 
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
@@ -59,7 +58,7 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/> 
+   
       <NavigationBar />
       <HomePage/>
       {/* <TrackProgress/> */}
@@ -78,7 +77,9 @@ function App() {
       {/* <Footer/>  */}
       {/* <AdminPolicy/> */}
       <ImageUpload/>
-
+  
+      
+      <Footer/>
     </>
   );
 }
