@@ -48,14 +48,16 @@ label {
     font-weight: bold;
 }
 
-input[type="text"], select {
+/* input[type="text"], select {
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ddd;
     background: none;
-}
+    background-color: #f8f8f8;
+    margin-top: 10px;
+} */
 
 /* Custom Dropdown Styling */
 .custom-dropdown {

@@ -55,8 +55,10 @@
 }
 
 .search-bar {
+  background: none;
   outline: none;
   color: #00467f;
+  translate: 1px 1px;
 }
 
 .profile-section {
