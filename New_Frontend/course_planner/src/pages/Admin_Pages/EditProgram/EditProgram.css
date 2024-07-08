@@ -16,7 +16,7 @@ body {
     margin: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px; /* Adjusted to accommodate the side-by-side layout */
+    max-width: 800px;
     width: 100%;
 }
 
@@ -29,36 +29,67 @@ h1 {
 /* Flex container for side-by-side layout */
 .sections {
     display: flex;
-    justify-content: space-between;
     gap: 2rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
 }
 
-.program-name,
-.compulsory-courses {
-    margin-top: 20px;
-    flex: 1; /* Allows each section to take up equal space */
+.left-section, .right-section {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
 label {
     font-size: 1rem;
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-/* Program Name Section */
-#program-name-input {
-    width: 80%;
-    margin-top: 20px;
+input[type="text"], select {
+    width: 100%;
+    padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ddd;
     background-color: #f8f8f8;
+    margin-top: 10px;
 }
 
-/* Compulsory Courses Section */
+/* Custom Dropdown Styling */
+.custom-dropdown {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    -webkit-appearance: none; /* Remove default arrow in Webkit */
+    -moz-appearance: none; /* Remove default arrow in Firefox */
+    appearance: none; /* Remove default arrow in other browsers */
+    background-image: url('../../../assets/dropdownArrow.png'); /* Custom arrow image */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Courses Grid */
 .courses-grid {
-    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
@@ -70,36 +101,104 @@ label {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-}
-
-/* Shared Styles for Action Buttons */
-.buttons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-    gap: 10rem;
-    margin: 0 200px 20px 200px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.cancel-button, .save-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: none;
+.course img {
     cursor: pointer;
+}
+
+.add-course {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.course.hovered .edit-icon, .course.hovered .delete-icon {
+    visibility: visible;
+}
+
+.edit-icon, .delete-icon {
+    position: absolute;
+    width: 15px;
+    visibility: hidden;
+}
+
+.edit-icon {
+    left: 10px;
+}
+
+.delete-icon {
+    right: 10px;
+}
+
+.plus-icon {
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
+
+/* Bottom Buttons */
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    margin-right: 3rem;
+}
+
 .cancel-button {
-    background-color: #ffffff;
-    border: 1px solid #1577BD;
-    color: #1577BD;
+    margin-left: 50px;
+    width: 100px;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: #d0d0d0;
+}
+
+.right-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.preview-button,
+.save-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.preview-button {
+    background-color: #2B3047;
+    color: #fff;
+}
+
+.preview-button:hover {
+    background-color: #23272b;
 }
 
 .save-button {
-    background-color: #007bff;
+    background-color: #1577BD;
     color: #fff;
 }
+
+.save-button:hover {
+    background-color: #1577BD;
+}
+
 
 /* Success Message */
 .success-message {
@@ -112,8 +211,8 @@ label {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Popup Styles */
-.popup {
+/* Modal Styles */
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -125,48 +224,50 @@ label {
     align-items: center;
 }
 
-.popup-content {
+.modal-content {
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
+    position: relative;
 }
 
-.popup-actions {
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    gap: 1rem;
 }
 
-.popup-cancel, .popup-add {
+.modal-cancel, .modal-save {
     padding: 0.5rem 1rem;
-    margin-left: 10px;
-    margin-right: 10px;
     font-size: 1rem;
     border-radius: 5px;
     border: none;
     cursor: pointer;
 }
 
-.popup-cancel {
+.modal-cancel {
     background-color: #e0e0e0;
     color: #333;
 }
 
-.popup-add {
+.modal-save {
     background-color: #007bff;
     color: #fff;
 }
 
-#new-course-input {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f8f8f8;
-    box-sizing: border-box; /* Ensures padding is included in the total width */
+/* Centered Input for Modal */
+.centered-input {
+    text-align: center;
 }

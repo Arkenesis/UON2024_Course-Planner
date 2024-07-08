@@ -7,6 +7,7 @@ const EditStudentHomepage = () => {
     // State to manage visibility for each section
     const [isTrackProgressVisible, setIsTrackProgressVisible] = useState(true);
     const [isPlanYourPathVisible, setIsPlanYourPathVisible] = useState(true);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     // Toggle handlers
     const toggleTrackProgressVisibility = () => {
@@ -18,16 +19,17 @@ const EditStudentHomepage = () => {
     };
 
     // Button handlers
-    const handleCancel = () => {
+    const handleCancelClick = () => {
         alert('Changes canceled.');
     };
 
-    const handlePreview = () => {
+    const handlePreviewClick = () => {
         alert('Previewing changes.');
     };
 
-    const handleSave = () => {
-        alert('Changes saved successfully.');
+    const handleSaveClick = () => {
+        setShowSuccessMessage(true);
+        setTimeout(() => setShowSuccessMessage(false), 3000);
     };
 
     return (
@@ -61,12 +63,17 @@ const EditStudentHomepage = () => {
             </div>
 
             <div className="bottom-buttons">
-                <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
                 <div className="right-buttons">
-                    <button className="preview-button" onClick={handlePreview}>Preview</button>
-                    <button className="save-button" onClick={handleSave}>Save</button>
+                    <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
+                    <button className="save-button" onClick={handleSaveClick}>Save</button>
                 </div>
             </div>
+            {showSuccessMessage && (
+                <div className="success-message">
+                Changes saved successfully!
+                </div>
+            )}
         </div>
     );
 };
