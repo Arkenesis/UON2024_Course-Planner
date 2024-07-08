@@ -101,8 +101,10 @@ function EditRegisterPage() {
         <img
           src={profilePic}
           alt="Profile Picture"
-          
+          className='registerImg'
           id="profile-pic"
+          height={"300px"}
+          width={"300px"}
         />
       )}
 
@@ -114,6 +116,7 @@ function EditRegisterPage() {
             accept="image/jpeg, image/png, image/jpg"
             id="input-file"
             onChange={handleFileChange}
+           
         />
 
 

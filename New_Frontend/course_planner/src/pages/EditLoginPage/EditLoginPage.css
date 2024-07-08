@@ -29,7 +29,9 @@
     
 
 }
-
+input{
+  display: none;
+}
 
 .imgButtonContainer{
   display: flex;
@@ -122,3 +124,8 @@
     }
   }
   
+
+.registerImg{
+  height: 300px;
+  width: 300px;
+}

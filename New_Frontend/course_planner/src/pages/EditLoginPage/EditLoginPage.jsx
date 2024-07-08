@@ -101,7 +101,9 @@ function EditLoginPage() {
         <img
           src={profilePic}
           alt="Profile Picture"
-          
+          className='loginImg'
+          height={"300px"}
+          width={"300px"}
           id="profile-pic"
         />
       )}
