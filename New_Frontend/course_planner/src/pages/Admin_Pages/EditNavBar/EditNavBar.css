@@ -1,0 +1,219 @@
+.edit-navigation {
+    padding: 50px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .navigation-items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 50px;
+  }
+  
+  .box {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 250px;
+  }
+  
+  .box-title {
+    font-size: 1.1rem;
+    color: #555;
+    flex-grow: 1;
+    cursor: pointer;
+  }
+  
+  .eye-icon,
+  .edit-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-left: 10px;
+  }
+  
+  .eye-icon:hover,
+  .edit-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .logo-image img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .logo-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .change-logo,
+  .delete-logo {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  .change-logo {
+    background-color: #FE4A49;
+    color: #fff;
+  }
+  
+  .delete-logo {
+    background-color: #fff;
+    color: #FE4A49;
+    border: 0.5px solid black;
+  }
+
+  .delete-logo:hover {
+    color: white;
+    background-color: #ff0000;
+  }
+  
+  .color-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s, border 0.2s;
+  }
+  
+  .color-box:hover {
+    transform: scale(1.1);
+    border: 2px solid #333;
+  }
+
+  .color-picker-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 200px;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .color-picker-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .color-picker-popover {
+    position: absolute;
+    z-index: 2;
+  }
+  
+  .color-picker-cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .section-title {
+    margin-top: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Bottom Buttons */
+  .bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    margin-right: 3rem;
+  }
+  
+  .cancel-button {
+    margin-left: 50px;
+    width: 100px;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cancel-button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .right-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .preview-button,
+  .save-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .preview-button {
+    background-color: #2b3047;
+    color: #fff;
+  }
+  
+  .preview-button:hover {
+    background-color: #23272b;
+  }
+  
+  .save-button {
+    background-color: #1577bd;
+    color: #fff;
+  }
+  
+  .save-button:hover {
+    background-color: #1368a5;
+  }
+  
+  .success-message {
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+  }
+  

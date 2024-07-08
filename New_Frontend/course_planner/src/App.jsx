@@ -2,38 +2,56 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react'
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
-import NavigationBar from './components/NavigationBar';
-import HomePage from './pages/HomePage/HomePage.jsx';
-import AboutUs from './pages/AboutUs/AboutUs.jsx';
-import Contact from './pages/Contact/Contact.jsx';
-import TrackProgress from './pages/TrackProgress/TrackProgress';
+import './App.css'
+import AboutUs from './pages/AboutUs/AboutUs';
+import Contact from './pages/Contact/Contact';
 import Register from './pages/Register/Register';
 import Login from './pages/login/Login.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Footer from "./components/Footer.jsx";
-import './App.css';
 
+import NavigationBar from './components/NavigationBar';
+import HomePage from './pages/HomePage/HomePage';
+import TrackProgress from './pages/TrackProgress/TrackProgress';
+import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
+import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
+import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
+import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
+import EditStudent from "./pages/editstudent/EditStudent.jsx";
+import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
+
+
+// Admin Pages
+import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
+import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
+
+
+
+import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+  // const toggleSidebar = () => {
+  //   setSidebarOpen(!sidebarOpen);
+  // };
 
   return (
     <>
-      <NavigationBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <DndProvider backend={HTML5Backend}>
+        <div className="App">
+          <DragDrop />
+        </div>
+      </DndProvider>
+       <NavigationBar />
       <HomePage/>
       <TrackProgress/>
+
       <AboutUs />
       <Contact />
       <Register/>
@@ -41,7 +59,26 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/>
+      <Footer/> 
+      <NavigationBar />
+      <HomePage/>
+      {/* <TrackProgress/> */}
+
+      {/* <AboutUs /> */}
+      {/* <Contact /> */}
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <ResetPassword/>  */}
+      {/* <ChangePassword/> */}
+      {/* <TermsAndConditions/> */}
+      {/* <PrivacyPolicy/> */}
+      {/* <EditStudent/> */}
+      {/* <EditStudentHomePage /> */}
+      {/* <EditProgram /> */}
+      {/* <Footer/>  */}
+      {/* <AdminPolicy/> */}
+      <ImageUpload/>
+
     </>
   );
 }
