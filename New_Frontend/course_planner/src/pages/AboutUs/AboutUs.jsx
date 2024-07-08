@@ -1,12 +1,13 @@
-
 import React from 'react';
+import NavigationBar from '../../components/NavigationBar';
 import styles from './AboutUs.module.css';
 
-function AboutUs() {
+const AboutUs = () => {
   return (
     <div className={styles.about_us}>
+      <NavigationBar />
       <header className={styles.about_us_header}>
-        <h1 className="styles.about_us_header_h1">Welcome To UON Course Planner</h1>
+        <h1 className={styles.about_us_header_h1}>Welcome To UON Course Planner</h1>
       </header>
       <main className={styles.main}>
         <p>
@@ -22,8 +23,8 @@ function AboutUs() {
         </p>
       </main>
       <section className={styles.thanks_message}>
-        <p className='styles.thanks_message_p'>Thanks For Visiting Our Site </p>
-        <p className='styles.thanks_message_lastline'>Have a nice day!</p>
+        <p className={styles.thanks_message_p}>Thanks For Visiting Our Site </p>
+        <p className={styles.thanks_message_lastline}>Have a nice day!</p>
       </section>
     </div>
   );

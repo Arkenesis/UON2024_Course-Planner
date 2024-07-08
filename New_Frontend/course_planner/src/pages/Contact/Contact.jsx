@@ -1,9 +1,11 @@
 import React from 'react';
+import NavigationBar from '../../components/NavigationBar';
 import contactStyles from './Contact.module.css';
 
 const Contact = () => {
   return (
     <div className={contactStyles.contact_container}>
+      <NavigationBar />
       <div className={contactStyles.contact_info}>
         <div className={contactStyles.contact_item}>
           <i id={contactStyles.contact_item_i} className="fas fa-envelope"></i>
