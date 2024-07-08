@@ -1,5 +1,7 @@
 .course{
     cursor: grab;
+    display: flex;
+    width: 200px;
 }
 
 .course:active{
@@ -30,8 +32,8 @@
     opacity: 0;
     position: absolute;
     top: 0;
-    height: 10px;
-    width: 10px;
+    height: 20px;
+    width: 20px;
    padding: 20px 20px;
 
 }
