@@ -16,7 +16,7 @@ import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Footer from "./components/Footer.jsx";
 
 import NavigationBar from './components/NavigationBar';
-import HomePage from './pages/Homepage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
@@ -29,7 +29,7 @@ import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 // Admin Pages
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
 import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
-import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
+
 
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
@@ -51,6 +51,7 @@ function App() {
         </div>
       </DndProvider>  */}
       {/* <NavigationBar />
+       <NavigationBar />
       <HomePage/>
       <TrackProgress/>
 
@@ -61,9 +62,9 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/> */}
-      {/* <NavigationBar /> */}
-      {/* <HomePage/> */}
+      <Footer/> 
+      <NavigationBar />
+      <HomePage/>
       {/* <TrackProgress/> */}
 
       {/* <AboutUs /> */}

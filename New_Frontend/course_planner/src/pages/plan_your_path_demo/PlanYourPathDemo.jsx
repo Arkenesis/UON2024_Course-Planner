@@ -158,24 +158,7 @@ function DragDrop() {
 
       <div key={key} className="planYourPathPage">
 
-        {/* This div holds the objects of the courses */}
-        {/* <div className="Available Courses" style={{ display: "flex", flexDirection: ""}}>
-          {courses.map((code) => (
-            <Course key={code} id={code.ID} name={code.Name} level={code.Level} units={code.Units}/>
-          ))}
-        </div> */}
-
-        {/* This div holds the objects of the trimesters */}
-        {/* <div className="Trimesters">
-          
-          {studentTrimester.map((trimesters, index) => (
-            {courses.map((code) => (
-            <Trimesters key={index} id={index} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}/>
-          
-          ))}
-          
-          ))} */}
-
+    
 
         <div className="trimestersDetails">
           {studentTrimester.map((trimesters, index) => (
