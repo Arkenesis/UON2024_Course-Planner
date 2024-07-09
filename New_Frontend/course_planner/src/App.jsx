@@ -34,6 +34,8 @@ import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 
+// Login
+
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -43,11 +45,12 @@ function App() {
 
   return (
     <>
-      <DndProvider backend={HTML5Backend}>
+      {/* <DndProvider backend={HTML5Backend}>
         <div className="App">
           <DragDrop />
         </div>
-      </DndProvider>
+      </DndProvider>  */}
+      {/* <NavigationBar />
        <NavigationBar />
       <HomePage/>
       <TrackProgress/>
@@ -67,7 +70,7 @@ function App() {
       {/* <AboutUs /> */}
       {/* <Contact /> */}
       {/* <Register/> */}
-      {/* <Login/> */}
+      <Login/>
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
       {/* <TermsAndConditions/> */}
@@ -77,7 +80,8 @@ function App() {
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
       {/* <AdminPolicy/> */}
-      <ImageUpload/>
+      <AdminAboutUs/>
+      {/* <ImageUpload/> */}
 
     </>
   );
