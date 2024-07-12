@@ -10,30 +10,28 @@ import loginPic from '../../assets/login.png';
 import { Link } from "react-router-dom";
 import "./reset_password.scss";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-// import { AuthContext } from "../../context/authContext";
+import { useState } from "react";
+import axios from 'axios';
 
 const ResetPassword = () => {
     const [inputs, setInputs] = useState({
         email: "",
     });
     const [err, setErr] = useState();
-
-    // const navigate = useNavigate();
+    const [msg, setMsg] = useState();
 
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
     
-    // const { login } = useContext(AuthContext);
-
-    const handleLogin = async (e) => {
+    const navigate = useNavigate();
+    
+    const handleResetPassword = async(e) =>{
         e.preventDefault();
-        try {
-            // Uncomment if AuthContext is necessary
-            // await login(inputs);
-            navigate("/");
-        } catch (err) {
+        try{
+            const { data } = await axios.post("http://localhost:8080/users/reset-password", inputs);
+            setMsg(data.message);
+        } catch (err){
             setErr(err.response?.data || "An error occurred");
         }
     };
@@ -45,7 +43,7 @@ const ResetPassword = () => {
                     
                     <h1 className="title-1">Welcome to</h1>
                     <h1 className="title-2">UON Course Planner</h1>
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={handleResetPassword}>
                         <div className="back">
                             <img src={backLogo}/>
                             <p className="subtitle-1">Reset Password</p>

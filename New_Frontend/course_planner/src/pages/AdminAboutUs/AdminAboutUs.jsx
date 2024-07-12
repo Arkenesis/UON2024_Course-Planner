@@ -1,32 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import styles from './AdminAboutUs.module.scss';
+import axios from 'axios';
 
 const AdminAboutUs = () => {
-  const [value, setValue] = useState(`
-    <p>UON Course Planner is a Professional Educational Platform. Here we will provide you only interesting content, which you will like very much. We’re dedicated to providing you the best of Educational, with a focus on dependability and Plan Course throughout your Study. We’re working to turn our passion for Educational into a booming online website. We hope you enjoy our Educational as much as we enjoy offering them to you.</p>
-    <p>I will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
-    <p><strong>Thanks For Visiting Our Site</strong></p>
-    <p><span style="color: blue;">Have a nice day!</span></p>
-  `);
+  // const [value, setValue] = useState(`
+  //   <p>UON Course Planner is a Professional Educational Platform. Here we will provide you only interesting content, which you will like very much. We’re dedicated to providing you the best of Educational, with a focus on dependability and Plan Course throughout your Study. We’re working to turn our passion for Educational into a booming online website. We hope you enjoy our Educational as much as we enjoy offering them to you.</p>
+  //   <p>I will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
+  //   <p><strong>Thanks For Visiting Our Site</strong></p>
+  //   <p><span style="color: blue;">Have a nice day!</span></p>
+  // `);
 
-  const handleCancel = () => {
-    setValue(`
-      <p>UON Course Planner is a Professional Educational Platform. Here we will provide you only interesting content, which you will like very much. We’re dedicated to providing you the best of Educational, with a focus on dependability and Plan Course throughout your Study. We’re working to turn our passion for Educational into a booming online website. We hope you enjoy our Educational as much as we enjoy offering them to you.</p>
-      <p>I will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
-      <p><strong>Thanks For Visiting Our Site</strong></p>
-      <p><span style="color: blue;">Have a nice day!</span></p>
-    `);
-  };
+  // const handleCancel = () => {
+  //   setValue(`
+  //     <p>UON Course Planner is a Professional Educational Platform. Here we will provide you only interesting content, which you will like very much. We’re dedicated to providing you the best of Educational, with a focus on dependability and Plan Course throughout your Study. We’re working to turn our passion for Educational into a booming online website. We hope you enjoy our Educational as much as we enjoy offering them to you.</p>
+  //     <p>I will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
+  //     <p><strong>Thanks For Visiting Our Site</strong></p>
+  //     <p><span style="color: blue;">Have a nice day!</span></p>
+  //   `);
+  // };
 
   const handlePreview = () => {
     alert('Preview: ' + value);
   };
+  
+  const handleCancel = () => { setValue(); };
+  
+  const [value, setValue] = useState('');
 
-  const handleSave = () => {
-    console.log('Saved content:', value);
-    alert('Content saved successfully!');
+  useEffect(() => {
+    getData()
+  },[])
+
+  const getData = async () => {
+    try{
+      const { data } = await axios.get("http://localhost:8080/pages/about-us");
+      const updatedData = data.message;
+      setValue(updatedData);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  const handleSave = async () => {
+    try{
+      const { data } = await axios.post("http://localhost:8080/pages/about-us", {content: value});
+      alert('Good');
+    }
+    catch(error){
+      console.log(error.response?.data);
+    }
   };
 
   const modules = {
