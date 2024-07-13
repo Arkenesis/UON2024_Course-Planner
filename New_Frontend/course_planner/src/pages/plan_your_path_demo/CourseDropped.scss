@@ -1,89 +1,107 @@
-.course{
-    cursor: grab;
-    display: flex;
-    width: 200px;
+
+
+#courseDropped{
+    height: 600px;
+    width: 600px;
 }
 
-.course:active{
+.courseDropped{
+  
+    cursor: grab;
+
+    
+}
+
+.courseDropped:active{
     cursor: grabbing;
 }
 
 
 
 #hamburgerImg{
-    margin: 0 100px 0 0;
+    margin: 0 100px 0 130px;
     text-decoration: none;
-    height: 1000px;
-    margin: 0 0 0 140px;
-   position: relative;
+     position: relative;
+   cursor: pointer;
 }
 
 .hamburgerMenu{
     width: auto;
     cursor: pointer;
+    margin: 4px 50px 0 0;
    
     
 }
 
-.courseOptions{
-    background-color: rgb(229, 223, 223);
-    padding: 10px 20px;
+.courseDropped .courseDroppedOptions{
+    background-color: rgb(245, 239, 239);
     opacity: 0;
     position: absolute;
     top: 0;
     height: 100px;
     width: 100px;
-   padding: 20px 20px;
+   border-radius: 8px;
+   margin: -10px 0 0 0;
+   
 
 }
 
-.courseOptions:hover {
-    background-color: rgb(229, 223, 223);
+.courseDropped .courseDroppedOptions:hover {
     opacity: 1000;
     top: 40px;
-    
+    height: 60px;    
 
 }
 
 
-.subBox{
+.courseDropped .subBox{
     list-style-type: none;
     transition: ease-in-out 2000ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 0 6px 0 0;
     
 }
 
-.subBox li:hover{
+
+.courseDropped .subBox li{
+    padding: 10px;
+    list-style-type: none;
+    margin: 0 auto;
+   font-weight: 600;
+   font-weight: bold;
+
+    
+    
+}
+
+.courseDropped .subBox li:hover{
+    padding: 10px;
     list-style-type: none;
     background-color: gray;
+    border-radius: 8px;
     
 }
 
-.courseOptions{
-    margin: 0 0 0 0;
-}
-
-
-.course{
+.courseDropped{
     cursor: grab;
 }
 
-.course:active{
+.courseDropped .course:active{
     cursor: grabbing;
 }
 
 
-.courseHeader{
+.courseDroppedHeader{
     background: #FED766;
     display: flex;
-    width: 220px;
-    padding: 0 5px 20px 5px;
-    height: 30px;
+    width: auto;
+    height: 60px;
+    padding: 0 10px;
 }
 
-.courseHeader .subDetails{
-    margin: 18px 10%;
-}
-
-.content{
-    margin: 10px 5px;
+.courseDropped .subDetails{
+    padding: 0 10px;
 }
