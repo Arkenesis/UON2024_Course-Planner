@@ -22,19 +22,22 @@
 }
 
 .addCoursebtn:hover{
-    margin: 100px;
     background-color: rgb(45, 76, 163);
 }
 
 
 .courseName{
     width: auto;
+    height: 30px;
+    padding: 10px 0;
+
+    
 }
 
 
 
 .courseName:hover{
-    background-color: rgb(240, 209, 253);
+    background-color: #f6e855;
 }
 
 .searchInput{

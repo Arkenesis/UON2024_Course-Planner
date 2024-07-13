@@ -76,7 +76,7 @@ const filterCourses = courses.filter(course =>
           
       <button className="addCoursebtn" onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
       {showDropdown && (
-        <div style={{ position: 'relative', height: '200px', overflowY: 'auto', top: '80px', zIndex: 1, background: '#ffe5e3', margin:'70px 0 0 -200px', color: 'black'}}>
+        <div style={{ position: 'relative', height: '200px', overflowY: 'auto', top: '80px', zIndex: 1, background: '#FED766', margin:'70px 0 0 -200px', color: 'black'}}>
           {/* This input takes the courses */}
           <input className="searchInput"
                 type="text"
@@ -85,7 +85,7 @@ const filterCourses = courses.filter(course =>
                 onChange={(e) => setQuery(e.target.value)}/>
 
           {filterCourses.map((course) => (
-            <div key={course.id} style={{margin: '10% 10px', cursor: 'pointer', width: '300px' }} onClick={() => {
+            <div key={course.id} style={{display: 'flex', alignContent: 'center', margin: '4% 10px', cursor: 'pointer', width: '300px' }} onClick={() => {
               addCourseToTrimester(course.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
               setShowDropDown(false);}}>
               <div  className="courseName"> {course.Name} </div>
