@@ -77,8 +77,7 @@ function App() {
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
       {/* <AdminPolicy/> */}
-      <ImageUpload/>
-
+   
     </>
   );
 }
