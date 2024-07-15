@@ -8,6 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import App from './App.jsx'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
+import PYP from './pages/PYP/PYP'
 import Register from './pages/Register/Register';
 import Login from './pages/login/Login.jsx';
 import { UserContextProvider } from './pages/login/LoginContext.jsx';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
       path: 'about-us',
       element: <AboutUs />
+  },
+  {
+      path: 'plan-your-path',
+      element: <PYP />
   },
   {
       path: 'contact',
