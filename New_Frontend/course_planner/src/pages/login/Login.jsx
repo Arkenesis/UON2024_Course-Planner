@@ -32,12 +32,13 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         
-        const { error } = await login(inputs);
-        //navigate("/");
-        if(error){
+        try{
+            await login(inputs);
+            //navigate("/");
+        }
+        catch(error){
             setErr(error.response?.data || "Kindly check your email and password");
         }
-
     };
 
     return (

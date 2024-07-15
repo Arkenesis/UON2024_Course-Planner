@@ -307,23 +307,23 @@ const AdminPolicy = () =>{
     },[])
 
     const getData = async () => {
-    try{
-        const { data } = await axios.get("http://localhost:8080/pages/policy");
-        setValue(data.message);
-    }
-    catch(error){
-        console.log(error);
-    }
+        try{
+            const { data } = await axios.get("http://localhost:8080/pages/policy");
+            setValue(data.message);
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
     const handleSave = async () => {
-    try{
-        const { data } = await axios.post("http://localhost:8080/pages/policy", {content: value});
-        alert('Good');
-    }
-    catch(error){
-        console.log(error.response?.data);
-    }
+        try{
+            const { data } = await axios.post("http://localhost:8080/pages/policy", {content: value});
+            alert('Good');
+        }
+        catch(error){
+            console.log(error.response?.data);
+        }
     };
 
     const modules = {

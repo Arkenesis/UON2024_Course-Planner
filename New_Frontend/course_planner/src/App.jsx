@@ -46,12 +46,12 @@ function App() {
 
   return (
     <>
-    <HomePage/>
+    {/* <HomePage/>
     <TrackProgress/>
 
     <EditStudentHomePage/>
     <EditProgram/>
-    <EditNavBar/>
+    <EditNavBar/> */}
     
       {/* <DndProvider backend={HTML5Backend}>
         <div className="App">
@@ -79,6 +79,7 @@ function App() {
       {/* <Contact /> */}
       <Register/>
       <Login/>
+      <EditNavBar/>
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
       {/* <PrivacyPolicy/> */}
@@ -87,9 +88,9 @@ function App() {
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
 
-      <AdminPolicy/>
+      {/* <AdminPolicy/>
       <AdminAboutUs/>
-      <AdminTerm/>
+      <AdminTerm/> */}
       {/* <ImageUpload/> */}
 
     </>
