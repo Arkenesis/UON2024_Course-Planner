@@ -78,12 +78,12 @@ function DragDrop() {
 
 
   
-  const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
+  const addCourseToTrimester = (courseId, name, level, units, GRADE, parent_index, index) => {
  
     if(courseId != ''){
       let selectedCourse   = coursesObject[courseId];
       let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
+      updatedTrimester[parent_index].course[index] = [courseId, name, units, level, GRADE];
       setStudentTrimester(() => updatedTrimester);
     }
     if(key < 2)
@@ -91,6 +91,7 @@ function DragDrop() {
     else
       setKey((k) => k - 1);
   };  
+
 
   const removeCourse = (parent_index, index) => {
     if(parent_index !== undefined && index !== undefined){
@@ -169,7 +170,7 @@ function DragDrop() {
         <div className="trimestersDetails">
           {studentTrimester.map((trimesters, index) => (
               <Trimesters 
-                key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+                key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.GRADE} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
                 courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton}
               />
             )
