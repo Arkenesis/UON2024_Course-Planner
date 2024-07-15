@@ -5,9 +5,8 @@
 .courseBox{
     background: #FED766;
     display: flex;
-    width: auto;
+    width: 100px;
     padding: 0 10px;
-    margin: auto;
 
     div{
         margin: 18px 10%;
@@ -17,8 +16,10 @@
 
 
 .addCoursebtn{
-    margin: 100px;
+    z-index: 0;
     background-color: rgb(95, 168, 228);
+    width: 100px;
+    transition: ease 500ms;
 }
 
 .addCoursebtn:hover{
@@ -29,9 +30,15 @@
 .courseName{
     width: auto;
     height: 30px;
+    width: auto;
     padding: 10px 0;
 
     
+}
+
+.searchBox{
+    z-index: 99;
+    width: 200px;
 }
 
 
@@ -41,7 +48,7 @@
 }
 
 .searchInput{
-
-    width: auto;
+    z-index: 99;
+    width: 200px;
 
 }

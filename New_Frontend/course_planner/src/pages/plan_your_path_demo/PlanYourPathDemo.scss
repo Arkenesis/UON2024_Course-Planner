@@ -81,6 +81,7 @@
 .trimestersDetails::-webkit-scrollbar-thumb{
     background: linear-gradient(#e98f63, #da601e 70%);
     border-radius: 10px;
+    z-index: -1;
 }
 
 
