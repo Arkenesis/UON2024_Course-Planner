@@ -9,7 +9,7 @@ const PYP = () => {
     return (
         <div className={pypStyles.pyp_container}>
             <NavigationBar />
-            <div>
+            <div className={pypStyles.pyp_main}>
                 <DndProvider backend={HTML5Backend}>
                     <div className="App">
                     <DragDrop />
