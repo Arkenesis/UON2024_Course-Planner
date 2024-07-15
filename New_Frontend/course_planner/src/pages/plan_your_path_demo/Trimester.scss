@@ -1,13 +1,12 @@
 .trimesterBox{
-    margin: 40px 0;
+    margin: 40px 40px;
   
 }
 .courseBox{
     background: #FED766;
     display: flex;
-    width: auto;
+    width: 100px;
     padding: 0 10px;
-    margin: auto;
 
     div{
         margin: 18px 10%;
@@ -15,29 +14,41 @@
 }
 
 
+
 .addCoursebtn{
-    margin: 100px;
+    z-index: 0;
     background-color: rgb(95, 168, 228);
+    width: 100px;
+    transition: ease 500ms;
 }
 
 .addCoursebtn:hover{
-    margin: 100px;
     background-color: rgb(45, 76, 163);
 }
 
 
 .courseName{
     width: auto;
+    height: 30px;
+    width: auto;
+    padding: 10px 0;
+
+    
+}
+
+.searchBox{
+    z-index: 99;
+    width: 200px;
 }
 
 
 
 .courseName:hover{
-    background-color: rgb(240, 209, 253);
+    background-color: #f6e855;
 }
 
 .searchInput{
-
-    width: auto;
+    z-index: 99;
+    width: 200px;
 
 }
