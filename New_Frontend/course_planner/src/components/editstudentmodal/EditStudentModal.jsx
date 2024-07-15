@@ -22,7 +22,7 @@ function EditStudentModal({ student, onSave, onClose, onDelete }) {
         <>
     
         {student && (
-            <div className="Modal">
+            <div className="EditStudentModal">
                 <div className="ModalContent">
                     <label>
                         Name
