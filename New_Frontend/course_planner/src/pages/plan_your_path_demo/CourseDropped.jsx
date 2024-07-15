@@ -1,7 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import hamburgerMenu from "../../assets/hamburgerMenu.png"
-import "./Course.css"
 import "./CourseDropped.css"
 
 function CourseDropped({ id, name, units, level, grade, removeCourse, parent_index, index, menuButton}) {

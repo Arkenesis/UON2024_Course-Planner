@@ -1,39 +1,95 @@
 .navbar {
-    position: sticky;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #00467f;
-    padding: 10px 20px;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  width: 100%;
+  height: 80px;
+  max-height: 100px;
+  background-color: #00467f;
+  position: fixed;
+  top: 0;
+  color: white;
+  flex-wrap: wrap;
+  z-index: 1000;
+}
+
+.logo {
+  height: 80px;
+  max-height: 80px;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  margin-left: 1.8%;
+}
+
+.nav-links li {
+  margin: 0 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #e0e7f1;
+  border-radius: 50px;
+  padding: 5px 10px;
+  flex-shrink: 0;
+}
+
+.search-icon {
+  color: #00467f;
+  margin-left: 8px;
+  margin-right: 5px;
+}
+
+.search-bar {
+  background: none;
+  outline: none;
+  color: #00467f;
+  translate: 1px 1px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.profile-icon {
+  font-size: 35px;
+  margin: 23px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    order: 2; /* Move nav-links to the second row */
+    justify-content: center; /* Center the nav-links */
+    margin-top: 10px; /* Add some margin for spacing */
   }
-  
-  .navbar-left a {
-    margin-right: 40px;
-    color: white;
-    text-decoration: none;
+
+  .search-box {
+    order: 3; /* Move search-box to the third row */
+    width: 100%; /* Make the search box take full width */
+    justify-content: center; /* Center the search box */
+    margin-top: 10px; /* Add some margin for spacing */
   }
-  
-  .logo {
-    height: 60px;
-    margin-right: -100px;
-    margin-top: -10px;
-    margin-left: -20px;
-    margin-bottom: -10px;
+
+  .profile-section {
+    order: 4; /* Move profile-section to the fourth row */
+    margin-top: 10px; /* Add some margin for spacing */
   }
-  
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .search-bar {
-    padding: 5px;
-    margin-right: 15px;
-    cursor: pointer;
-  }
-  
-  .profile-icon {
-    cursor: pointer;
-    margin-left: 50px;
-  }
+}
