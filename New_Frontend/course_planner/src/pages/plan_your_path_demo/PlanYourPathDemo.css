@@ -35,6 +35,9 @@
 
 .planYourPathPage{
     display: flex;
+    width: 90vw;
+    margin: 0 10px;
+    padding: auto;
 }
 
 .card{

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import axios from 'axios';
 import './index.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -9,6 +10,7 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Register from './pages/Register/Register';
 import Login from './pages/login/Login.jsx';
+import { UserContextProvider } from './pages/login/LoginContext.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 
 const router = createBrowserRouter([
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
       element: <App />
   },
   {
-      path: 'about_us',
+      path: 'about-us',
       element: <AboutUs />
   },
   {
@@ -38,10 +40,14 @@ const router = createBrowserRouter([
   }
 ]);
 
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <React.StrictMode>
-    <RouterProvider router = { router } />
+    <UserContextProvider>
+      <RouterProvider router = { router } />
+    </UserContextProvider>
   </React.StrictMode>,
 )

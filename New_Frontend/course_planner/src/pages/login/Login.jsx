@@ -7,36 +7,37 @@ import emailLogo from '../../assets/email.svg';
 import passwordLogo from '../../assets/email.svg';
 import loginPic from '../../assets/login.png';
 
-import { Link } from "react-router-dom";
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-// import { AuthContext } from "../../context/authContext";
+import { useState, useContext } from "react";
+import { UserContext } from './LoginContext';
 
 const Login = () => {
+    
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     });
+
     const [err, setErr] = useState();
-
-    // const navigate = useNavigate();
-
+    
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
     
-    // const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const { login } = useContext(UserContext);
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        try {
-            // Uncomment if AuthContext is necessary
-            // await login(inputs);
-            navigate("/");
-        } catch (err) {
-            setErr(err.response?.data || "An error occurred");
+        
+        const { error } = await login(inputs);
+        //navigate("/");
+        if(error){
+            setErr(error.response?.data || "Kindly check your email and password");
         }
+
     };
 
     return (

@@ -32,7 +32,10 @@ import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
 import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
 
 
+
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
+
+// Login
 
 function App() {
   // const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -43,12 +46,20 @@ function App() {
 
   return (
     <>
-      <DndProvider backend={HTML5Backend}>
+    <HomePage/>
+    <TrackProgress/>
+
+    <EditStudentHomePage/>
+    <EditProgram/>
+    <EditNavBar/>
+    
+      {/* <DndProvider backend={HTML5Backend}>
         <div className="App">
           <DragDrop />
         </div>
-      </DndProvider>
+      </DndProvider>  */}
       {/* <NavigationBar />
+       <NavigationBar />
       <HomePage/>
       <TrackProgress/>
 
@@ -59,25 +70,27 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/> */}
-      {/* <NavigationBar /> */}
-      {/* <HomePage/> */}
+      <Footer/> 
+      <NavigationBar />
+      <HomePage/>
       {/* <TrackProgress/> */}
 
       {/* <AboutUs /> */}
       {/* <Contact /> */}
-      {/* <Register/> */}
-      {/* <Login/> */}
+      <Register/>
+      <Login/>
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
-      {/* <TermsAndConditions/> */}
       {/* <PrivacyPolicy/> */}
       {/* <EditStudent/> */}
       {/* <EditStudentHomePage /> */}
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
-      {/* <AdminPolicy/> */}
-      <ImageUpload/>
+
+      <AdminPolicy/>
+      <AdminAboutUs/>
+      <AdminTerm/>
+      {/* <ImageUpload/> */}
 
     </>
   );

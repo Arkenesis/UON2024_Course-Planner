@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import courseCompleted from '../../assets/courseCompleted.png';
 import myInfo from '../../assets/myInfo.png';
 
@@ -11,9 +11,13 @@ const HomePage = () => {
       month: 'long',
       year: 'numeric'
     });
+    
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   
     // To put a comma in the date:
-    const formattedDate = currentDate.replace(/ (\d{2})/, ', $1');
+    const formattedDate = currentDate.replace(/ (\d{2})/, ' $1');
   
     return (
       <>
@@ -22,7 +26,7 @@ const HomePage = () => {
         <p className="current-date" style={{color:"#1577BD"}}><b>{formattedDate}</b></p>
         <div className="course-info">
           <div className="course-completed">
-            <div className="card">
+            <div className="cardd">
               <div className="left">
                 <img src={courseCompleted} alt="course completed icon" width="80" style={{float:"left"}}/>
               </div>
@@ -47,7 +51,7 @@ const HomePage = () => {
         <div className="course-info">
           <div className="my-info">
   
-          <div className="card">
+          <div className="cardd">
             <div className="left">
               <img src={myInfo} alt="myInfo icon" width="80" style={{float:"left"}}/>
             </div>

@@ -2,6 +2,8 @@
 
 .course{
      cursor: grab;
+     display: flex;
+     flex-direction: column;
 }
 
 .course:active{
@@ -9,12 +11,10 @@
 }
 
 
-
 .courseHeader{
      background: #FED766;
      display: flex;
-     width: auto;
-     padding: 0 5px 20px 5px;
+     width: 200px;
      height: 30px;
 }
 
