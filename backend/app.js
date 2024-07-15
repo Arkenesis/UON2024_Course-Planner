@@ -5,7 +5,9 @@ import cors from "cors";
 import cookie from 'cookie-parser';
 import { register, login, logout, reset_password, setAdmin, removeAdmin, delete_account } from "./controller/user.js";
 import { getAboutUs, setAboutUs } from './controller/admin_about_us.js'
+import { getTermsAndConditions, setTermsAndConditions } from './controller/admin_terms_and_conditions.js'
 import { hasAdmin, hasToken } from './controller/middleware.js';
+import { getPolicy, setPolicy } from './controller/admin_policy.js';
 
 // Initialize variables
 // Load .env config
@@ -43,7 +45,18 @@ app.post("/users/remove-admin", hasToken, hasAdmin, removeAdmin);
 // AboutUs
 app.get("/pages/about-us", getAboutUs);
 app.post("/pages/about-us", hasToken, hasAdmin, setAboutUs);
+// Terms and Conditions
+app.get("/pages/terms-and-conditions", getTermsAndConditions);
+app.post("/pages/terms-and-conditions", hasToken, hasAdmin, setTermsAndConditions);
+// Policy
+app.get("/pages/policy", getPolicy);
+app.post("/pages/policy", hasToken, hasAdmin, setPolicy);
 
+app.get("/pages/homepage", (req, res) => {
+  console.log(req);
+  console.log(res);
+  return res.json({ message: "hi"});
+});
 
 // Start the server
 app.listen(port, () => {

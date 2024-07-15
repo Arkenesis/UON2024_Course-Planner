@@ -21,6 +21,7 @@ export const login = async (req, res) => {
     if (error.code === "auth/invalid-credential") {
       return res.status(403).json({ error: "Invalid email or password." });
     }
+    return res.status(403).json({ error: error });
   }
 };
 
@@ -38,11 +39,19 @@ export const register = async (req, res) => {
   try {
     // Proceed with registration
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    
     const profile = updateProfile(auth.currentUser, {displayName: username});
+
     await sendEmailVerification(userCredential.user);
+
+
     const docRef = db.collection('CoursePlannerUsers').doc(`${userCredential.user.uid}`);
+
+
     const { displayName, email: _email, phoneNumber, photoURL	, uid } = userCredential.user;
     await docRef.set({displayName, _email, phoneNumber, photoURL, uid});
+
+
     return res.cookie("user", userCredential.user, { httpOnly: false }).json({ message: userCredential.user});
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
