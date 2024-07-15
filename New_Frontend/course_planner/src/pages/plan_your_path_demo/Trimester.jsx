@@ -2,7 +2,7 @@ import React, {forwardRef, useState} from "react";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";
-import "./CourseDropped.css"
+import "./CourseDropped.scss"
 
 import "./Trimester.scss"
 import CourseDropped from "./CourseDropped";
@@ -65,7 +65,7 @@ const filterCourses = courses.filter(course =>
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
     //<div ref={(el)=> {drop(el); drag(el);}} key={index} style={{ height: "240px", width: "400px"}} className="trimesterBox">
      
-    <div ref={node => drag(drop(node))} key={index} style={{ opacity: isDragging? 0.5: 1, height: "240px",display: "flex", alignItems: "center", width: "300px", background: isActive ? "#FED766" : "" }} className="trimesterBox"  >
+    <div ref={node => drag(drop(node))} key={index} style={{ opacity: isDragging? 0.8: 1, position: "relative", height: "220px",display: "flex", justifyContent: "center", alignItems: "center", width: "240px", background: isActive ? "#FED766" : "" }} className="trimesterBox"  >
     {item ? <div><CourseDropped key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
     </div> : 
 
@@ -76,7 +76,7 @@ const filterCourses = courses.filter(course =>
           
       <button className="addCoursebtn" onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
       {showDropdown && (
-        <div style={{ position: 'relative', height: '200px', overflowY: 'auto', top: '80px', zIndex: 1, background: '#ffe5e3', margin:'70px 0 0 -200px', color: 'black'}}>
+        <div className="searchBox" style={{position: 'absolute', height: '200px', overflowY: 'scroll', top: '140px', zIndex: 1, background: '#FED766', margin:'0 0 0 0', color: 'black'}}>
           {/* This input takes the courses */}
           <input className="searchInput"
                 type="text"
@@ -85,7 +85,7 @@ const filterCourses = courses.filter(course =>
                 onChange={(e) => setQuery(e.target.value)}/>
 
           {filterCourses.map((course) => (
-            <div key={course.id} style={{margin: '10% 10px', cursor: 'pointer', width: '300px' }} onClick={() => {
+            <div key={course.id} style={{display: 'flex', alignContent: 'center', margin: '5% 10px', cursor: 'pointer', width: '200px' }} onClick={() => {
               addCourseToTrimester(course.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
               setShowDropDown(false);}}>
               <div  className="courseName"> {course.Name} </div>

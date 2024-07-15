@@ -12,7 +12,8 @@ const Trimesters = ({ id, name, level, units, grade, year, term, course, addCour
   return (
     <div className="trimestersBox">
       <div className="trimesterName">{year} Trimester {term}</div>
-      {course.map((i, index) => 
+     <div className="coursePerTri">
+     {course.map((i, index) => 
         <div key={index}  >
           <Trimester item={i} name={name} level={level} units={units} grade={grade} parent_index={id} index={index} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse} courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={trimesterIndex}
            menuButton={menuButton}
@@ -21,6 +22,8 @@ const Trimesters = ({ id, name, level, units, grade, year, term, course, addCour
            
         </div>
       )}
+     </div>
+    
     </div>
   );
 };
