@@ -9,6 +9,7 @@ import EditModal from '../../components/editstudentmodal/EditStudentModal.jsx';
 
 import edit from '../../assets/edit.png';
 import dustbin from '../../assets/dustbin.png';
+import AdminPolicy from '../AdminPolicy/AdminPolicy.jsx';
 
 const EditStudent = () => {
     const [students, setStudents] = useState([

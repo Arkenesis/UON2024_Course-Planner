@@ -6,8 +6,10 @@ import cookie from 'cookie-parser';
 import { register, login, logout, reset_password, setAdmin, removeAdmin, delete_account } from "./controller/user.js";
 import { getAboutUs, setAboutUs } from './controller/admin_about_us.js'
 import { getTermsAndConditions, setTermsAndConditions } from './controller/admin_terms_and_conditions.js'
-import { hasAdmin, hasToken } from './controller/middleware.js';
+import { hasAdmin, hasToken, upload} from './controller/middleware.js';
 import { getPolicy, setPolicy } from './controller/admin_policy.js';
+import { getNavigation, setNavigation } from './controller/admin_navigation.js';
+import { getFiles, uploadFiles } from './controller/image_upload.js';
 
 // Initialize variables
 // Load .env config
@@ -51,12 +53,19 @@ app.post("/pages/terms-and-conditions", hasToken, hasAdmin, setTermsAndCondition
 // Policy
 app.get("/pages/policy", getPolicy);
 app.post("/pages/policy", hasToken, hasAdmin, setPolicy);
+// Navigation
+app.get("/pages/navigation", getNavigation);
+app.post("/pages/navigation", hasToken, hasAdmin, setNavigation);
+// Image Upload
+app.get("/pages/image-upload", getFiles);
+app.post("/pages/image-upload", hasToken, hasAdmin, upload.array('files', 10), uploadFiles);
 
-app.get("/pages/homepage", (req, res) => {
-  console.log(req);
-  console.log(res);
-  return res.json({ message: "hi"});
-});
+
+// app.get("/pages/homepage", (req, res) => {
+//   console.log(req);
+//   console.log(res);
+//   return res.json({ message: "hi"});
+// });
 
 // Start the server
 app.listen(port, () => {
