@@ -11,6 +11,7 @@ import PYP from './pages/PYP/PYP'
 import Register from './pages/Register/Register';
 import Login from './pages/login/Login.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
+import TrackProgress from './pages/TrackProgress/TrackProgress.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,25 +23,29 @@ const router = createBrowserRouter([
       element: <AboutUs />
   },
   {
-      path: 'plan-your-path',
-      element: <PYP />
-  },
-  {
       path: 'contact',
       element: <Contact />
-  },
-  {
-      path: 'register',
-      element: <Register />
-  },
-  {
-      path: 'login',
-      element: <Login />
-  },
-  {
-      path: 'reset_password',
-      element: <ResetPassword />
-  }
+    },
+    {
+        path: 'plan-your-path',
+        element: <PYP />
+    },
+    {
+        path: 'track-progress',
+        element: <TrackProgress />
+    },
+    {
+        path: 'register',
+        element: <Register />
+    },
+    {
+        path: 'login',
+        element: <Login />
+    },
+    {
+        path: 'reset_password',
+        element: <ResetPassword />
+    }
 ]);
 
 
