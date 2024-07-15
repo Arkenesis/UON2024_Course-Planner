@@ -59,9 +59,12 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    height: 100px;
   }
   
-  .logo-image img {
+  .logo-image .img{
+    height: 100px;
+    width: 100px;
     max-width: 100px;
     height: auto;
   }
@@ -217,3 +220,12 @@
     font-weight: bold;
   }
   
+
+.logoBox{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e0e0e0;
+  }
