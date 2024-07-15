@@ -5,11 +5,10 @@ import '@fontsource/roboto/700.css';
 
 import React, { useState } from 'react';
 import './editStudent.scss';
-import EditModal from '../../components/editstudentmodal/EditStudentModal.jsx';
+import EditModal from '../../../components/editstudentmodal/EditStudentModal.jsx';
 
-import edit from '../../assets/edit.png';
-import dustbin from '../../assets/dustbin.png';
-import AdminPolicy from '../AdminPolicy/AdminPolicy.jsx';
+import edit from '../../../assets/edit.png';
+import dustbin from '../../../assets/dustbin.png';
 
 const EditStudent = () => {
     const [students, setStudents] = useState([
