@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import uonBuilding from '../../assets/uonBuilding.jpg'
 import './EditRegisterPage.css'
 
-function EditRegisterPage() {
+function EditLoginPage() {
 
      const [value, setValue] = useState(`
         
@@ -68,7 +68,7 @@ function EditRegisterPage() {
     <div>
 
         <div className='editTitles'>
-            <h2>Edit Register Page</h2>
+            <h2>Edit Login Page</h2>
 
 
             <h3>Welcome Message</h3>
@@ -94,42 +94,43 @@ function EditRegisterPage() {
     </div>
        
     <h3>Picture </h3>
-        <div className='imageEdit'>
+    <div className='imageEdit'>
+
+         <div className='backgroundImg'>
+          {profilePic && (
+                  <img
+                    src={profilePic}
+                    alt="background Picture"
+                    className='registerImg'
+                    height={"240px"}
+                    width={"300px"}
+                    id="profile-pic"
+                  />
+                )}
+
+         </div>
+     
+
+            <div className='imgButtonContainer'>
+            <label className='changePic' for="regInput-file">Change Picture</label>
+            <input
+                type="file"
+                accept="image/jpeg, image/png, image/jpg"
+                id="regInput-file"
+                onChange={handleFileChange}
+            />
 
 
-      {profilePic && (
-        <img
-          src={profilePic}
-          alt="Profile Picture"
-          className='registerImg'
-          id="profile-pic"
-          height={"300px"}
-          width={"300px"}
-        />
-      )}
-
-
-        <div className='imgButtonContainer'>
-        <label className='changePic' for="input-file">Change Picture</label>
-        <input
-            type="file"
-            accept="image/jpeg, image/png, image/jpg"
-            id="input-file"
-            onChange={handleFileChange}
-           
-        />
-
-
-        <button className='deletePic'>Delete Picture</button>
+              <button className='deletePic'>Delete Picture</button>
     </div>
 
 
-</div>
+    </div>
         
 
-<div>
+  <div>
     
-    </div>
+</div>
 
 </div>
     
@@ -141,4 +142,4 @@ function EditRegisterPage() {
   )
 }
 
-export default EditRegisterPage;
+export default EditLoginPage;

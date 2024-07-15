@@ -97,16 +97,19 @@ function EditLoginPage() {
         <div className='imageEdit'>
 
 
-      {profilePic && (
-        <img
-          src={profilePic}
-          alt="Profile Picture"
-          className='loginImg'
-          height={"300px"}
-          width={"300px"}
-          id="profile-pic"
-        />
-      )}
+        <div className='backgroundImg'>
+          {profilePic && (
+                  <img
+                    src={profilePic}
+                    alt="background Picture"
+                    className='registerImg'
+                    height={"240px"}
+                    width={"300px"}
+                    id="profile-pic"
+                  />
+                )}
+
+         </div>
 
 
         <div className='imgButtonContainer'>
