@@ -133,7 +133,17 @@ input{
   }
   
 
-.registerImg{
+.loginImg{
   height: 300px;
+  width: 300px;
+}
+
+
+.noImgAlt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(213, 217, 220);
+  height: 240px;
   width: 300px;
 }

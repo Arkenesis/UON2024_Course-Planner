@@ -98,16 +98,19 @@ function EditLoginPage() {
 
 
         <div className='backgroundImg'>
-          {profilePic && (
+          {profilePic ? (
                   <img
                     src={profilePic}
                     alt="background Picture"
-                    className='registerImg'
+                    className='loginImg'
                     height={"240px"}
                     width={"300px"}
                     id="profile-pic"
                   />
-                )}
+                )
+              
+              :<div className='noImgAlt'>Add Background Image</div>
+              }
 
          </div>
 

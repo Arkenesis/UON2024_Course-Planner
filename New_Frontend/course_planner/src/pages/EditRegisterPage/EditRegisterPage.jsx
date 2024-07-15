@@ -96,8 +96,8 @@ function EditLoginPage() {
     <h3>Picture </h3>
     <div className='imageEdit'>
 
-         <div className='backgroundImg'>
-          {profilePic && (
+    <div className='backgroundImg'>
+          {profilePic ? (
                   <img
                     src={profilePic}
                     alt="background Picture"
@@ -106,9 +106,13 @@ function EditLoginPage() {
                     width={"300px"}
                     id="profile-pic"
                   />
-                )}
+                )
+              
+              :<div className='noImgAlt'>Add Background Image</div>
+              }
 
          </div>
+
      
 
             <div className='imgButtonContainer'>
