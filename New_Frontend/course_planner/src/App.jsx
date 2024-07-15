@@ -68,18 +68,19 @@ function App() {
 
       {/* <AboutUs /> */}
       {/* <Contact /> */}
-      {/* <Register/> */}
+      <Register/>
       <Login/>
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
-      {/* <TermsAndConditions/> */}
       {/* <PrivacyPolicy/> */}
       {/* <EditStudent/> */}
       {/* <EditStudentHomePage /> */}
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
-      {/* <AdminPolicy/> */}
+
+      <AdminPolicy/>
       <AdminAboutUs/>
+      <AdminTerm/>
       {/* <ImageUpload/> */}
 
     </>
