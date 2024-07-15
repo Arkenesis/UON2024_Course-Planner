@@ -202,9 +202,13 @@ function EditNavBar() {
 
       <h2 className="section-title">Logo</h2>
       <div className="logo-section">
-        <div className="logo-image">
-          <img src={logo} alt="Logo" />
-        </div>
+        {logo ?
+          <div className="logo-image">
+            <img src={logo} className='img' alt="Logo" />
+          </div>:
+            <div className='logoBox'>Add Image</div>
+        }
+
         <div className="logo-buttons">
           <input
             type="file"
