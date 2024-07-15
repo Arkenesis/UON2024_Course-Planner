@@ -26,7 +26,7 @@ const HomePage = () => {
         <p className="current-date" style={{color:"#1577BD"}}><b>{formattedDate}</b></p>
         <div className="course-info">
           <div className="course-completed">
-            <div className="card">
+            <div className="cardd">
               <div className="left">
                 <img src={courseCompleted} alt="course completed icon" width="80" style={{float:"left"}}/>
               </div>
@@ -51,7 +51,7 @@ const HomePage = () => {
         <div className="course-info">
           <div className="my-info">
   
-          <div className="card">
+          <div className="cardd">
             <div className="left">
               <img src={myInfo} alt="myInfo icon" width="80" style={{float:"left"}}/>
             </div>
