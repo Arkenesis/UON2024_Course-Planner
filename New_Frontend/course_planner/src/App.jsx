@@ -77,9 +77,9 @@ function App() {
 
       {/* <AboutUs /> */}
       {/* <Contact /> */}
-      <Register/>
-      <Login/>
-      <EditNavBar/>
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <EditNavBar/> */}
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
       {/* <PrivacyPolicy/> */}
