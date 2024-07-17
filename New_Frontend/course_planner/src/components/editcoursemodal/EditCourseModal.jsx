@@ -1,153 +1,131 @@
 import React, { useState, useEffect } from 'react';
 import './editCourseModal.scss';
 
-function EditCourseModal({ course, onSave, onClose, onDelete }) {
+function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
     const [editedCourse, setEditedCourse] = useState(course);
-    const [availability, setAvailability] = useState(course.availability);
-
-
-    useEffect(() => {
-        setEditedCourse(course);
-        const initialAvailability = course.availability || [];
-        if (initialAvailability.length > 0) {
-            initialAvailability[0].enable = true; // Ensure the first row is checked
-        }
-        setAvailability(initialAvailability);
-    }, [course]);
 
     const handleSave = () => {
-        const updatedCourse = { ...editedCourse, availability };
-        onSave(updatedCourse);
+        onSave(editedCourse);
         onClose();
     };
 
     const handleDelete = () => {
-        onDelete(course.id);
+        onDelete(course.ID);
         onClose();
     };
 
-    const handleAvailabilityChange = (index, field, value) => {
-        const updatedAvailability = availability.map((item, i) =>
-            i === index ? { ...item, [field]: value } : item
-        );
-        setAvailability(updatedAvailability);
+    const handleChange = (e) => {
+        setEditedCourse({ ...editedCourse, [e.target.name]: e.target.value })
+    }
+
+    const handleTrimesterChange = (e, idx, trimesterIndex) => {
+        const checked = e.target.checked;
+        setEditedCourse(prevState => {
+            const newAvailability = [...prevState.Availability];
+            const newTrimester = [...newAvailability[idx].trimester];
+            newTrimester[trimesterIndex] = checked;
+            newAvailability[idx] = { ...newAvailability[idx], trimester: newTrimester };
+            return { ...prevState, Availability: newAvailability };
+        });
     };
 
-    const handleTrimesterChange = (index, trimester) => {
-        const updatedAvailability = availability.map((item, i) => {
-            const currentTrimester = item.trimester || [];
-            return i === index
-                ? {
-                    ...item,
-                    trimester: currentTrimester.includes(trimester)
-                        ? currentTrimester.filter(t => t !== trimester)
-                        : [...currentTrimester, trimester],
-                }
-                : item;
+    const handleEnableChange = (e, idx) => {
+        const checked = e.target.checked;
+        setEditedCourse(prevState => {
+            const newAvailability = [...prevState.Availability];
+            newAvailability[idx] = { ...newAvailability[idx], enable: checked };
+            return { ...prevState, Availability: newAvailability };
         });
-        setAvailability(updatedAvailability);
+    };
+
+    const handleYearChange = (e, idx) => {
+        const value = e.target.value;
+        setEditedCourse(prevState => {
+            const newAvailability = [...prevState.Availability];
+            newAvailability[idx] = { ...newAvailability[idx], year: value };
+            return { ...prevState, Availability: newAvailability };
+        });
+    };
+
+    const handlePrerequisiteChange = (e) => {
+        const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
+        
+        setEditedCourse(prevState => {
+            return { ...prevState, Prerequisite: selectedOptions }; 
+        });
     };
 
     const addRow = () => {
-        setAvailability([...availability, { year: '', trimester: [], enable: false }]);
+        setEditedCourse( prevState => {
+            const newAvailability = [...prevState.Availability, {year: '', trimester: [false,false,false]}];
+            return { ...prevState, Availability: newAvailability };        
+        });
     };
-
-    const handleEnableChange = (index) => {
-        const updatedAvailability = availability.map((item, i) =>
-            i === index ? { ...item, enable: !item.enable } : item
-        );
-        setAvailability(updatedAvailability);
+    const removeRow = (idx) => {
+        setEditedCourse( prevState => {
+            const newAvailability = prevState.Availability.filter((_, index) => index !== idx);
+            return { ...prevState, Availability: newAvailability };      
+        });
     };
-
     return (
         <>
-            {course && (
+            {editedCourse && (
                 <div className="Modal">
                     <div className="ModalContent">
                         <label>
                             Course Code
-                            <input
-                                type="text"
-                                value={editedCourse.courseCode}
-                                onChange={(e) => setEditedCourse({ ...editedCourse, courseCode: e.target.value })}
-                            />
+                            <input type="text" onChange={handleChange} name="ID" value={editedCourse.ID} readOnly/>
                         </label>
 
                         <label>
                             Course Name
-                            <input
-                                type="text"
-                                value={editedCourse.courseName}
-                                onChange={(e) => setEditedCourse({ ...editedCourse, courseName: e.target.value })}
-                            />
+                            <input type="text" onChange={handleChange} name="Name" value={editedCourse.Name}  />
                         </label>
 
                         <label>
                             Credits
-                            <input
-                                type="text"
-                                value={editedCourse.credits}
-                                onChange={(e) => setEditedCourse({ ...editedCourse, credits: e.target.value })}
-                            />
+                            <input type="text" onChange={handleChange} name="Units" value={editedCourse.Units}  />
                         </label>
 
                         <label>
                             Prerequisite
-                            <input
-                                type="text"
-                                value={editedCourse.prerequisite}
-                                onChange={(e) => setEditedCourse({ ...editedCourse, prerequisite: e.target.value })}
-                            />
+                            <br/>
+                            {/* <input type="text" onChange={handleChange} name="Prerequisite" value={editedCourse.Prerequisite} /> */}
+                            <select name="Prerequisite" multiple onChange={handlePrerequisiteChange}>
+                                {ids.map((i) => (
+                                    <option key={i} value={i}>{i}</option>
+                                ))}
+                            </select>
                         </label>
 
                         <label>
                             Required Credits
-                            <input
-                                type="text"
-                                value={editedCourse.requiredCredit}
-                                onChange={(e) => setEditedCourse({ ...editedCourse, requiredCredit: e.target.value })}
-                            />
+                            <input type="text" onChange={handleChange} name="RequiredCredit" value={editedCourse.RequiredCredit} />
                         </label>
 
                         <label>Availability</label>
                         <div className="availabilityContainer">
-                            {availability.map((item, index) => (
+                            {editedCourse.Availability?.length > 0 && (
+                                <div className="availabilityRow">
+                                    <p className="availabilityLabel">Year</p>
+                                    <p className="availabilityLabel">Trimester 1</p>
+                                    <p className="availabilityLabel">Trimester 2</p>
+                                    <p className="availabilityLabel">Trimester 3</p>
+                                    <p className="availabilityLabel">Enable</p>
+                                    <p className="availabilityLabel"></p>
+                                </div>
+                            )}
+                            {editedCourse.Availability?.map((i, index) => (
                                 <div key={index} className="availabilityRow">
-                                    <label className="availabilityLabel">Year
-                                        <input
-                                            type="text"
-                                            placeholder="Year"
-                                            value={item.year}
-                                            onChange={(e) => handleAvailabilityChange(index, 'year', e.target.value)}
-                                            className="yearInput"
-                                        />
-                                    </label>
-                                    
-                                    {['Trimester 1', 'Trimester 2', 'Trimester 3'].map((trimester, i) => (
-                                        <label key={i} className="availabilityLabel">{trimester}
-                                            <input
-                                                type="checkbox"
-                                                checked={(item.trimester || []).includes(i + 1)}
-                                                onChange={() => handleTrimesterChange(index, i + 1)}
-                                                className="trimesterCheckbox"
-                                            />
-                                        </label>
-                                    ))}
-
-                                    <label className="availabilityLabel">Enable
-                                        <input
-                                            type="checkbox"
-                                            checked={item.enable || false}
-                                            onChange={() => handleEnableChange(index)}
-                                            className="enableCheckbox"
-                                        />
-                                    </label>
+                                    <input type="text" placeholder="Year" value={i.year} onChange={(e) => handleYearChange(e, index)} className="availabilityLabel" />
+                                    <input type="checkbox" checked={i.trimester[0] === true} onChange={(e) => handleTrimesterChange(e, index, 0)} className="availabilityLabel" />
+                                    <input type="checkbox" checked={i.trimester[1] === true} onChange={(e) => handleTrimesterChange(e, index, 1)} className="availabilityLabel" />
+                                    <input type="checkbox" checked={i.trimester[2] === true} onChange={(e) => handleTrimesterChange(e, index, 2)} className="availabilityLabel" />
+                                    <input type="checkbox" checked={i.enable || false} onChange={(e) => handleEnableChange(e, index)} className="availabilityLabel" />
+                                    <button onClick={() => removeRow(index)} className="availabilityLabel">Remove Row</button>
                                 </div>
                             ))}
-
-                            {availability.length === 0 || availability[availability.length - 1].year ? (
-                                <button onClick={addRow} className="addRowButton">Add Row</button>
-                            ) : null}
+                            <button onClick={addRow} className="addRowButton">Add Row</button>
                         </div>
 
                         <div className="ModalButtons">
