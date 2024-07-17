@@ -8,18 +8,18 @@ export const getCourses = async (req, res) => {
         let content = [];
         if(coll_doc.size === 0){
             const Courses = [
-                {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", TYPE: "ECON"}, 
-                {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", TYPE: "SENG"}, 
-                {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database", TYPE: "COMP"}, 
-                {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy", TYPE: "EBUS"}, 
-                {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", TYPE: "SENG"}, 
-                {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", TYPE: "INFT"}, 
-                {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", TYPE: "SENG"}, 
-                {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", TYPE: "SENG"}, 
-                {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", TYPE: "COMP"}, 
-                {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", TYPE: "INFT"}, 
-                {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", TYPE: "SENG"}, 
-                {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", TYPE: "INFT"},
+                {ID:'ECON1001', Prerequisite: [],Availability: [], Level: 1, Units: 10, RequiredCredit: 0, Name: "Microeconomics for business decision", TYPE: "ECON"}, 
+                {ID:'SENG1110', Prerequisite: [],Availability: [], Level: 1, Units: 10, RequiredCredit: 0, Name: "Object Oriented Programming", TYPE: "SENG"}, 
+                {ID:'COMP3350', Prerequisite: [],Availability: [], Level: 3, Units: 10, RequiredCredit: 0, Name: "Advanced Database", TYPE: "COMP"}, 
+                {ID:'EBUS3050', Prerequisite: [],Availability: [], Level: 3, Units: 10, RequiredCredit: 0, Name: "The Digital Economy", TYPE: "EBUS"}, 
+                {ID:'SENG1120', Prerequisite: [],Availability: [], Level: 1, Units: 10, RequiredCredit: 0, Name: "Data Structure", TYPE: "SENG"}, 
+                {ID:'INFT3100', Prerequisite: [],Availability: [], Level: 3, Units: 10, RequiredCredit: 0, Name: "Project Management", TYPE: "INFT"}, 
+                {ID:'SENG1050', Prerequisite: [],Availability: [], Level: 1, Units: 10, RequiredCredit: 0, Name: "Web Technologies", TYPE: "SENG"}, 
+                {ID:'SENG2130', Prerequisite: [],Availability: [], Level: 2, Units: 10, RequiredCredit: 0, Name: "System Analysis and Design", TYPE: "SENG"}, 
+                {ID:'COMP3851A', Prerequisite: [],Availability: [], Level: 3, Units: 10, RequiredCredit: 140, Name: "Computing and Information Sciences Work Integrated Learning Part A", TYPE: "COMP"}, 
+                {ID:'INFT2051', Prerequisite: [],Availability: [], Level: 2, Units: 10, RequiredCredit: 0, Name: "Mobile Application Programming", TYPE: "INFT"}, 
+                {ID:'SENG2260', Prerequisite: [],Availability: [], Level: 2, Units: 10 , RequiredCredit: 0, Name: "Human-Computer Interaction", TYPE: "SENG"}, 
+                {ID:'INFT2060', Prerequisite: [],Availability: [], Level: 2, Units: 10, RequiredCredit: 0, Name: "Applied Artificial Intelligence", TYPE: "INFT"},
               ];
             for(let i = 0; i<Courses.length; i++){
                 let temp = Courses[i];
@@ -30,8 +30,8 @@ export const getCourses = async (req, res) => {
         }
         for(let i = 0; i < coll_doc.size; i++){
             let doc = coll_doc.docs[i];
-            let {ID, Level, Units, Name, TYPE } = doc.data();
-            content.push({ID, Level, Units, Name, TYPE })
+            let data = doc.data();
+            content.push(data);
         }
         return res.json({ message: content });
     }
@@ -41,12 +41,16 @@ export const getCourses = async (req, res) => {
   };
 
 export const setCourses = async (req, res) => {
-    const { content } = req.body;
+    const { content, deleted_courses } = req.body;
     try{
         for(let i = 0; i<content.length; i++){
             let temp = content[i];
             const page_ref = db.collection('CoursePlannerCourses').doc(temp.ID);
             await page_ref.set(temp, { merge: true});
+        }
+        for(let i = 0; i<deleted_courses.length; i++){
+            const page_ref = db.collection('CoursePlannerCourses').doc(deleted_courses[i]);
+            await page_ref.delete();
         }
         return res.json({ message: "The information was updated successfully!" });
     }
