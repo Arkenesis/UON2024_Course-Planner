@@ -24,6 +24,13 @@ const EditCourse = () => {
         const courseIndex = course.findIndex(course => course.ID === courseId);
 
         if (courseIndex > -1) {
+            try{
+                const { data } = await axios.post("http://localhost:8080/pages/delete-courses", {content: courseId});
+                alert('Delete course data success!');
+            }
+            catch(error){
+                console.log(error.response?.data);
+            }
             const updatedCourse = [...course];
             updatedCourse.splice(courseIndex, 1);
             setCourse(updatedCourse);
@@ -73,16 +80,6 @@ const EditCourse = () => {
         }
         setShowModal(false);
         setSelectedCourse(null);
-    };
-
-    const handleSaveToCloud = async () => {
-        try{
-            const { data } = await axios.post("http://localhost:8080/pages/courses", {content: course, deleted_courses: deletedCourse});
-            alert('Saving course data success!');
-        }
-        catch(error){
-            console.log(error.response?.data);
-        }
     };
 
     return (
@@ -153,7 +150,7 @@ const EditCourse = () => {
             
             <div className="CancelAndSave">
                 <button className="CancelButton" onClick={handleCancel}>Cancel</button>
-                <button className="SaveButton" onClick={handleSaveToCloud}>Save</button>
+                {/* <button className="SaveButton" onClick={handleSaveToCloud}>Save</button> */}
             </div>
 
             {showModal && selectedCourse && (

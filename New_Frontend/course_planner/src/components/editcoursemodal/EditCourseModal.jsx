@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './editCourseModal.scss';
 
 function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
     const [editedCourse, setEditedCourse] = useState(course);
 
-    const handleSave = () => {
-        onSave(editedCourse);
+    const handleSave = async () => {
+        try{
+            const { data } = await axios.post("http://localhost:8080/pages/courses", {content: editedCourse});
+            onSave(editedCourse);
+            alert('Saving user data success!');
+        }
+        catch(error){
+            console.log(error.response?.data);
+        }
         onClose();
     };
 
@@ -49,7 +57,7 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
 
     const handlePrerequisiteChange = (e) => {
         const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
-        
+
         setEditedCourse(prevState => {
             return { ...prevState, Prerequisite: selectedOptions }; 
         });
@@ -90,10 +98,10 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
                         <label>
                             Prerequisite
                             <br/>
-                            {/* <input type="text" onChange={handleChange} name="Prerequisite" value={editedCourse.Prerequisite} /> */}
-                            <select name="Prerequisite" multiple onChange={handlePrerequisiteChange}>
+                            
+                            <select name="Prerequisite" multiple onChange={handlePrerequisiteChange} value={editedCourse.Prerequisite}>
                                 {ids.map((i) => (
-                                    <option key={i} value={i}>{i}</option>
+                                    <option key={i} value={i} selected={editedCourse.Prerequisite === i}>{i}</option>
                                 ))}
                             </select>
                         </label>

@@ -1,4 +1,5 @@
 // Firebase Firestore
+import { deleteUser } from 'firebase/auth';
 import { db } from '../services/database.js';
 
 export const getCourses = async (req, res) => {
@@ -40,18 +41,23 @@ export const getCourses = async (req, res) => {
     }
   };
 
-export const setCourses = async (req, res) => {
-    const { content, deleted_courses } = req.body;
+export const setCourse = async (req, res) => {
+    const { content } = req.body;
     try{
-        for(let i = 0; i<content.length; i++){
-            let temp = content[i];
-            const page_ref = db.collection('CoursePlannerCourses').doc(temp.ID);
-            await page_ref.set(temp, { merge: true});
-        }
-        for(let i = 0; i<deleted_courses.length; i++){
-            const page_ref = db.collection('CoursePlannerCourses').doc(deleted_courses[i]);
-            await page_ref.delete();
-        }
+        const page_ref = db.collection('CoursePlannerCourses').doc(content.ID);
+        await page_ref.set(content, { merge: true});
+        return res.json({ message: "The information was updated successfully!" });
+    }
+    catch(error){
+        return res.status(403).json({ message: "The information was failed to update!" });
+    }
+};
+
+export const deleteCourse = async (req, res) => {
+    const { content } = req.body;
+    try{
+        const page_ref = db.collection('CoursePlannerCourses').doc(content);
+        await page_ref.delete();
         return res.json({ message: "The information was updated successfully!" });
     }
     catch(error){

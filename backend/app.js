@@ -10,7 +10,9 @@ import { hasAdmin, hasToken, upload} from './controller/middleware.js';
 import { getPolicy, setPolicy } from './controller/admin_policy.js';
 import { getNavigation, setNavigation } from './controller/admin_navigation.js';
 import { getFiles, uploadFiles } from './controller/image_upload.js';
-import { getCourses, setCourses } from './controller/admin_courses.js';
+import { deleteCourse, getCourses, setCourse } from './controller/admin_courses.js';
+import { getUsers, removeUser, setUser } from './controller/admin_users.js';
+import { getProgram, getPrograms, initPrograms, setProgram } from './controller/admin_programs.js';
 
 // Initialize variables
 // Load .env config
@@ -62,7 +64,16 @@ app.get("/pages/image-upload", getFiles);
 app.post("/pages/image-upload", hasToken, hasAdmin, upload.array('files', 10), uploadFiles);
 // Edit Courses
 app.get("/pages/courses", getCourses);
-app.post("/pages/courses", setCourses);
+app.post("/pages/courses", hasToken, hasAdmin, setCourse);
+app.post("/pages/delete-courses", hasToken, hasAdmin, deleteCourse);
+// Edit Courses
+app.get("/pages/users", getUsers);
+app.post("/pages/users", hasToken, hasAdmin, setUser);
+app.post("/pages/delete-users", hasToken, hasAdmin, removeUser);
+// Edit Program
+app.get("/pages/program", getProgram);
+app.get("/pages/programs", getPrograms);
+app.post("/pages/programs", setProgram);
 
 // app.get("/pages/homepage", (req, res) => {
 //   console.log(req);
@@ -71,6 +82,9 @@ app.post("/pages/courses", setCourses);
 // });
 
 // Start the server
+// Seed
+await initPrograms();
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });

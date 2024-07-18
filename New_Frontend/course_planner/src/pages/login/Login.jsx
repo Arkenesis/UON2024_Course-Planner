@@ -34,11 +34,13 @@ const Login = () => {
         
         try{
             await login(inputs);
+            alert('Login done.')
             //navigate("/");
         }
         catch(error){
             setErr(error.response?.data || "Kindly check your email and password");
         }
+
     };
 
     return (
