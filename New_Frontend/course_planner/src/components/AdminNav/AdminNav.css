@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dbsBtn{
+    background-color: white;
+    color: rgb(130, 126, 126);
+    font-weight: 550;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dbsBtn:hover{
+    background-color: white;
+    color: rgb(91, 84, 84);
+}
+
+
+.adminHomePage{
+    display: flex;
+    width: 100vw;
+}
+
+.adminNav{
+    border: 2px solid black;
+    display: flex;
+    width: 400px;
+    position: relative;
+}
+
+
+.leftNav{
+    height: 100vh;
+    width: 40px;
+    padding: 10px 0 0 14px;
+    background-color: #b6caf3;
+    border-right: 2px solid black;
+}
+
+.rightNav{
+    color: rgb(142, 142, 142);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    top: 100px;
+    font-weight: 550;
+    width: 240px;
+}
+
+.rightNav div{
+    
+}
+
+
+.rightImg{
+    height: 40px;
+    width: 40px;
+    margin: 0 10px;
+}
+
+
+
+.leftImgProfile{
+height: 40px;
+margin: 0 0 20px -8px;
+}
+
+.adminNav{
+    height: 100vh;
+    
+}
+
+.leftImg{
+    height: 20px;
+    width: 20px;
+    margin: 20px 0;
+}
+
+.hello2{
+    background-color: blue;
+}

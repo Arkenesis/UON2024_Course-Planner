@@ -36,6 +36,10 @@ import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AdSideNav from "./components/sideNav/AdSideNav.jsx";
+import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
+
+
+
 
 // Login
 
@@ -93,9 +97,17 @@ function App() {
       {/* <ImageUpload/> */}
      <EditLoginPage/>
      <EditRegisterPage/>
-     <AdSideNav/>
- 
+   
+  <AdminNav/>
+
+
+
+
     </>
+
+
+
+
   );
 }
 
