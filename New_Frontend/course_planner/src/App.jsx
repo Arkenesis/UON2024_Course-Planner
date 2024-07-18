@@ -55,12 +55,12 @@ function App() {
       {/* <EditCourse/> */}
       {/* <EditStudent/> */}
       <EditProgram/>
-    {/* <HomePage/>
-    <TrackProgress/>
-    <EditStudentHomePage/>
-    <EditNavBar/> */}
+      {/* <HomePage/>
+      <TrackProgress/>
+      <EditStudentHomePage/>
+      <EditNavBar/> */}
     
-      {/* <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={HTML5Backend}>
         <div className="App">
           <DragDrop />
         </div>
