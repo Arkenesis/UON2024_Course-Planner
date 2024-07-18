@@ -27,6 +27,11 @@
                 option{
                     padding: 0.5em;
                 }
+
+                option:checked {
+                    background-color: #1967D2;
+                    color: white;
+                }
             }
         }
         

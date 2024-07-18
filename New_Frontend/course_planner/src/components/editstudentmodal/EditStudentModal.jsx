@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './editStudentModal.scss';
 
 function EditStudentModal({ student, onSave, onClose, onDelete }) {
     const [editedStudent, setEditedStudent] = useState(student);
 
-    useEffect(() => {
-        setEditedStudent(student);
-    }, [student]);
-
-    const handleSave = () => {
-        onSave(editedStudent);
+    const handleSave = async () => {
+        try{
+            const { data } = await axios.post("http://localhost:8080/pages/users", {content: editedStudent});
+            // setEditedStudent(prevState => {...prevState, newPassword: '', newEmail: '' });
+            onSave(editedStudent);
+            alert('Saving course data success!');
+        }
+        catch(error){
+            console.log(error.response?.data);
+        }
         onClose();
     };
 
     const handleDelete = () => {
-        onDelete(student.id);
+        onDelete(student.uid);
         onClose();
+    };
+
+    const handleInputChange = (e) => {
+        setEditedStudent({...editedStudent, [e.target.name]: e.target.value})
+    };
+
+    const handleSelectChange = (e) => {
+        const temp = e.target.selectedOptions[0].value;
+        setEditedStudent({...editedStudent, [e.target.name]: e.target.selectedOptions[0].value})
     };
 
     return (
@@ -26,38 +40,39 @@ function EditStudentModal({ student, onSave, onClose, onDelete }) {
                 <div className="ModalContent">
                     <label>
                         Name
-                        <input
-                            type="text"
-                            value={editedStudent.name}
-                            onChange={(e) => setEditedStudent({ ...editedStudent, name: e.target.value })}
-                        />
+                        <input type="text" name="username" value={editedStudent.username} onChange={handleInputChange} />
                     </label>
 
                     <label>
                         Phone Number
-                        <input
-                            type="text"
-                            value={editedStudent.phone}
-                            onChange={(e) => setEditedStudent({ ...editedStudent, phone: e.target.value })}
-                        />
+                        <input type="text" name="phone" value={editedStudent.phone} onChange={handleInputChange} />
                     </label>
 
                     <label>
-                        Email Address
-                        <input
-                            type="text"
-                            value={editedStudent.email}
-                            onChange={(e) => setEditedStudent({ ...editedStudent, email: e.target.value })}
-                        />
+                        New Password
+                        <input type="text" name="newPassword" value={editedStudent.newPassword} onChange={handleInputChange} />
+                    </label>
+                    <label>
+                        Current Email Address
+                        <input type="text" name="email" value={editedStudent.email} onChange={handleInputChange} readOnly/>
+                    </label>
+                    <label>
+                        New Email Address
+                        <input type="text" name="newEmail" value={editedStudent.newEmail} onChange={handleInputChange} />
                     </label>
 
                     <label>
                         Commencement Date
-                        <input
-                            type="text"
-                            value={editedStudent.date}
-                            onChange={(e) => setEditedStudent({ ...editedStudent, date: e.target.value })}
-                        />
+                        <input type="date" name="date" value={editedStudent.date} onChange={handleInputChange} />
+                    </label>
+
+                    <label>
+                        Roles
+                        <br/>
+                        <select name="roles" onChange={handleSelectChange} value={editedStudent.roles}>
+                            <option value='Admin' selected={editedStudent.Roles}>Admin</option>
+                            <option value='Student' selected={editedStudent.Roles}>Student</option>
+                        </select>
                     </label>
 
                     <div className="ModalButtons">

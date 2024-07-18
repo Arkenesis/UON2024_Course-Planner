@@ -43,12 +43,14 @@ function App() {
 
   return (
     <>
-      <EditCourse/>
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <EditCourse/> */}
+      {/* <EditStudent/> */}
+      <EditProgram/>
     {/* <HomePage/>
     <TrackProgress/>
-
     <EditStudentHomePage/>
-    <EditProgram/>
     <EditNavBar/> */}
     
       {/* <DndProvider backend={HTML5Backend}>
@@ -63,8 +65,7 @@ function App() {
 
       <AboutUs />
       <Contact />
-      <Register/>
-      <Login/>
+
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>

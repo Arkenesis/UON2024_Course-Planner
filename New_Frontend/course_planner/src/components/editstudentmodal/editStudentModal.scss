@@ -17,14 +17,37 @@
         label {
             margin-bottom: 10px;
             font-weight: bold;
-        }
 
-        input {
-            margin-bottom: 10px;
-            width: 480px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            select{
+                width: 100%;
+                padding: 0.5em;
+
+                option{
+                    padding: 0.5em;
+                }
+
+                option:checked {
+                    background-color: #1967D2;
+                    color: white;
+                }
+            }
+
+            input {
+                margin-bottom: 10px;
+                width: 480px;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+
+            }
+            input:read-only{
+                border: none;
+                outline: none;
+            }
+            input:focus:read-only{
+                border: none;
+                outline: none;
+            }
         }
     }
 
