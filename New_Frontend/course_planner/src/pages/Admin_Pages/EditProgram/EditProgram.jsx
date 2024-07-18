@@ -79,6 +79,7 @@ const EditProgram = () => {
       } else {
         setAllCourses([...allCourses, modalCourse]);
       }
+      filterCourses();
       setIsModalVisible(false);
       setShowSuccessMessage(true);
       setUpdate(true);
@@ -146,6 +147,26 @@ const EditProgram = () => {
     }
   };
 
+  const [inputProgramName, setInputProgramName] = useState();
+  const [isInputVisible, setIsInputVisible] = useState(false);
+  const createProgram = async () => {
+    if(inputProgramName.trim()){
+      try{
+        const { data } = await axios.post("http://localhost:8080/pages/create-program", {content: inputProgramName});
+        setInputProgramName('');
+        setIsInputVisible(false);
+        alert('A new program has been created.');
+      }
+      catch(error){
+        console.log(error.response?.data);
+      }
+    }
+    else{
+      alert('Kidnly fill a new program name.');
+    }
+
+  };
+
   const handleProgramUUID = (e) => {
     const value = e.target.selectedOptions[0].value;
     setSeletedProgram(value);
@@ -161,9 +182,21 @@ const EditProgram = () => {
     }
   }
 
+  const handleDelete = async () => {
+    if(selectedProgram.trim()){
+      try{
+        const { data } = await axios.post("http://localhost:8080/pages/delete-program", {content: selectedProgram});
+        window.location.reload();
+      }
+      catch(error){
+        console.log(error.response?.data);
+      }
+    }
+  }
+
   return (
     <div className="edit-program">
-      <h1>Available Programs</h1>
+      <h1>Edit Programs</h1>
       <select className="custom-dropdown" value={selectedProgram} onChange={handleProgramUUID}>
         {onlineData.map((i, idx) => 
           <option key={idx} value={i.uuid}>{i.name}</option>
@@ -237,6 +270,8 @@ const EditProgram = () => {
         </div>
       </div>
       <div className="bottom-buttons">
+          <button className="cancel-button" onClick={() => setIsInputVisible(!isInputVisible)}>+ New Program</button>
+          <button className="cancel-button" onClick={handleDelete}>Delete Program</button>
           <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
           <div className="right-buttons">
               <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
@@ -299,9 +334,9 @@ const EditProgram = () => {
                   onChange={(e) => setModalCourse({ ...modalCourse, trimester: e.target.value })}
                   className="custom-dropdown"
                 >
-                  <option value="Trimester 1">Trimester 1</option>
-                  <option value="Trimester 2">Trimester 2</option>
-                  <option value="Trimester 3">Trimester 3</option>
+                  <option value="1">Trimester 1</option>
+                  <option value="2">Trimester 2</option>
+                  <option value="3">Trimester 3</option>
                 </select>
                 <span className="dropdown-icon">&#9660;</span>
               </div>
@@ -323,6 +358,21 @@ const EditProgram = () => {
             <div className="modal-buttons">
               <button className="modal-cancel" onClick={handleCancelConfirmNo}>No</button>
               <button className="modal-save" onClick={handleCancelConfirmYes}>Yes</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isInputVisible && (
+        <div className="modal" onClick={handleClickOutsideModal}>
+          <div className="modal-content">
+            <span className="close" onClick={() => setIsInputVisible(false)}>&times;</span>
+            <h2>Program</h2>
+            <p>Enter new program name</p>
+            <input type="text" placeholder="Bachelor of ..." value={inputProgramName} onChange={(e) => setInputProgramName(e.target.value)}/>
+            <div className="modal-buttons">
+              <button className="modal-cancel" onClick={() => setIsInputVisible(false)}>Cancel</button>
+              <button className="modal-save" onClick={createProgram}>+ New Program</button>
             </div>
           </div>
         </div>

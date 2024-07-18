@@ -12,7 +12,7 @@ import { getNavigation, setNavigation } from './controller/admin_navigation.js';
 import { getFiles, uploadFiles } from './controller/image_upload.js';
 import { deleteCourse, getCourses, setCourse } from './controller/admin_courses.js';
 import { getUsers, removeUser, setUser } from './controller/admin_users.js';
-import { getProgram, getPrograms, initPrograms, setProgram } from './controller/admin_programs.js';
+import { createProgram, deleteProgram, getProgram, getPrograms, initPrograms, setProgram } from './controller/admin_programs.js';
 
 // Initialize variables
 // Load .env config
@@ -72,6 +72,8 @@ app.post("/pages/users", hasToken, hasAdmin, setUser);
 app.post("/pages/delete-users", hasToken, hasAdmin, removeUser);
 // Edit Program
 app.get("/pages/program", getProgram);
+app.post("/pages/create-program", createProgram);
+app.post("/pages/delete-program", deleteProgram);
 app.get("/pages/programs", getPrograms);
 app.post("/pages/programs", setProgram);
 

@@ -63,3 +63,27 @@ export const setProgram = async (req, res) => {
         return res.status(403).json({ message: "The information was failed to update!" });
     }
 };
+
+export const createProgram = async (req, res) => {
+    const { content  } = req.body;
+    try{
+        const coll_ref = db.collection('CoursePlannerPrograms');
+        await coll_ref.add({ name: content, message: [] });
+        return res.json({ message: "The information was updated successfully!" });
+    }
+    catch(error){
+        return res.status(403).json({ message: "The information was failed to update!" });
+    }
+};
+
+export const deleteProgram = async (req, res) => {
+    const { content  } = req.body;
+    try{
+        const doc_ref = db.collection('CoursePlannerPrograms').doc(content);
+        await doc_ref.delete();
+        return res.json({ message: "The information was deleted successfully!" });
+    }
+    catch(error){
+        return res.status(403).json({ message: "The information was failed to update!" });
+    }
+};
