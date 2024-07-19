@@ -144,7 +144,7 @@ export default function DatabaseLink(showPage) {
           
     <div className='displayPopup'>
     {page && (
-        <div style={{ width:"60vw" }}>
+        <div className='showPagePop' style={{ width:"60vw" }}>
           {showPage()}
         </div>
 
