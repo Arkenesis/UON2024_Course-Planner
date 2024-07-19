@@ -3,4 +3,10 @@
     margin-top: 20px;
     font-family: Roboto;
     word-wrap: break-word;
+
+    .ql-tooltip{
+        .ql-hidden{
+            display: none;
+        }
+    }
 }
