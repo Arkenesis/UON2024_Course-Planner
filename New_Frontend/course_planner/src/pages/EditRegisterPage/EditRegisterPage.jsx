@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import uonBuilding from '../../assets/uonBuilding.jpg'
-import './EditLoginPage.css'
+import './EditRegisterPage.css'
 
 function EditLoginPage() {
 
@@ -94,15 +94,14 @@ function EditLoginPage() {
     </div>
        
     <h3>Picture </h3>
-        <div className='imageEdit'>
+    <div className='imageEdit'>
 
-
-        <div className='backgroundImg'>
+    <div className='backgroundImg'>
           {profilePic ? (
                   <img
                     src={profilePic}
                     alt="background Picture"
-                    className='loginImg'
+                    className='registerImg'
                     height={"240px"}
                     width={"300px"}
                     id="profile-pic"
@@ -114,27 +113,28 @@ function EditLoginPage() {
 
          </div>
 
+     
 
-        <div className='imgButtonContainer'>
-        <label className='changePic' for="input-file">Change Picture</label>
-        <input
-            type="file"
-            accept="image/jpeg, image/png, image/jpg"
-            id="input-file"
-            onChange={handleFileChange}
-        />
+            <div className='imgButtonContainer'>
+            <label className='changePic' for="regInput-file">Change Picture</label>
+            <input
+                type="file"
+                accept="image/jpeg, image/png, image/jpg"
+                id="regInput-file"
+                onChange={handleFileChange}
+            />
 
 
-        <button className='deletePic'>Delete Picture</button>
+              <button className='deletePic'>Delete Picture</button>
     </div>
 
 
-</div>
+    </div>
         
 
-<div>
+  <div>
     
-    </div>
+</div>
 
 </div>
     

@@ -24,7 +24,8 @@ import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
 import EditStudent from "./pages/editstudent/EditStudent.jsx";
 import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
-
+import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
+import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
 
 // Admin Pages
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
@@ -34,6 +35,11 @@ import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
 
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
+import AdSideNav from "./components/sideNav/AdSideNav.jsx";
+import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
+
+
+
 
 // Login
 
@@ -89,8 +95,19 @@ function App() {
       <AdminAboutUs/>
       <AdminTerm/> */}
       {/* <ImageUpload/> */}
+     <EditLoginPage/>
+     <EditRegisterPage/>
+   
+  <AdminNav/>
+
+
+
 
     </>
+
+
+
+
   );
 }
 
