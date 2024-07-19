@@ -15,6 +15,10 @@ import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Register from './pages/Register/Register';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
+import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
+
+import NavigationBar from './components/NavigationBar';
+import HomePage from './pages/HomePage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
@@ -95,8 +99,8 @@ function App() {
       <AdminAboutUs/>
       <AdminTerm/> */}
       {/* <ImageUpload/> */}
-      {/* <EditLoginPage/>
-      <EditRegisterPage/> */}
+     {/* <EditLoginPage/> */}
+     {/* <EditRegisterPage/> */}
    
       {/* <AdminNav/> */}
 
