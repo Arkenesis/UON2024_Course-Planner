@@ -28,7 +28,7 @@ import AdminTerm from "./pages/Admin_Pages/AdminTerm/AdminTerm.jsx";
 import AdminPolicy from "./pages/Admin_Pages/AdminPolicy/AdminPolicy.jsx";
 import EditStudent from "./pages/Admin_Pages/editstudent/EditStudent.jsx";
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
-import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
+import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram.jsx';
 import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
 import EditCourse from './pages/Admin_Pages/EditCourse/EditCourse.jsx';
 
@@ -54,13 +54,13 @@ function App() {
       {/* <Login/> */}
       {/* <EditCourse/> */}
       {/* <EditStudent/> */}
-      <EditProgram/>
+      {/* <EditProgram/> */}
       {/* <HomePage/>
       <TrackProgress/>
       <EditStudentHomePage/>
       <EditNavBar/> */}
     
-      <DndProvider backend={HTML5Backend}>
+      {/* <DndProvider backend={HTML5Backend}>
         <div className="App">
           <DragDrop />
         </div>
@@ -75,7 +75,7 @@ function App() {
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-      <Footer/>
+      <Footer/> */}
       {/* <TrackProgress/> */}
 
       {/* <AboutUs /> */}
@@ -86,7 +86,7 @@ function App() {
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
       {/* <PrivacyPolicy/> */}
-      {/* <EditStudent/> */}
+      <EditStudent/>
       {/* <EditStudentHomePage /> */}
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
@@ -95,10 +95,10 @@ function App() {
       <AdminAboutUs/>
       <AdminTerm/> */}
       {/* <ImageUpload/> */}
-     <EditLoginPage/>
-     <EditRegisterPage/>
+      {/* <EditLoginPage/>
+      <EditRegisterPage/> */}
    
-  <AdminNav/>
+      {/* <AdminNav/> */}
 
 
 
