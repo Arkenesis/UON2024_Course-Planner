@@ -83,7 +83,7 @@ export const AdminNav = (page) => {
 
       <div className='adminNav'>
       <div className='leftNav'>
-      <div className='mainAdminNav' ><img className='leftImgProfile' src={profilePic} alt='Database img'  onClick={() =>setLeftNav(!showProfile)}/></div>
+      <div className='mainAdminNav' ><img className='leftImgProfile' src={profilePic} alt='Database img'  onClick={() =>setShowProfile(!showProfile)}/></div>
       {showProfile && 
       (<div className='profilePage'>
       <div className='profileData'> <img src={profilePic} alt="profile picture" />  <div className='userName'>Miley Cyrus</div></div>
