@@ -100,6 +100,7 @@ color: white;
     left: 0;
     font-weight: 550;
     width: 240px;
+    margin: 40px 0 0 20px;
  
     
 }
@@ -295,7 +296,7 @@ border: 4px solid rgb(178, 48, 48, 0);
   }
 
 
-  .imgButtonContainer .addPic{
+.imgButtonContainer .addPic{
     color: rgb(22, 22, 22);
     background: rgb(175, 175, 175);   
     border: 1px solid black;
@@ -307,8 +308,82 @@ border: 4px solid rgb(178, 48, 48, 0);
     height: 40px;
     width: 280px;
 
-  }
+}
 
-  .searchDropdown{
+.searchDropdown{
+
+}
+
+.profilePage{
+    position: absolute;
+    background: white;
+    background-color: white;
+    height: 120px;
+    width: 200px;
+    margin: -20px 0 0 40px;
+    border: 2px solid black;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0 10px 10px;
+
+}
+
+.profileData{
+    display: flex;
+}
+
+
+.profileData .userName{
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.profileSettings{
+    margin: 10px 0;
+    cursor: pointer;
+    transition: ease 500ms;
+}
+
+.signOut{
+    margin: 10px 0;
+    cursor: pointer;
+    transition: ease 500ms;
+
+
+
+    
+}
+
+
+.profileSettings:hover{
+  background: rgb(194, 194, 194);
   
-  }
+}
+
+.signOut:hover{
+  background: rgb(194, 194, 194);
+   
+
+
+    
+}
+
+
+.profileData img{
+    height: 40px;
+}
+
+
+.profileSettings img{
+    height: 20px;
+}
+
+.dbsLink{
+    display: flex;
+}
+
+.dbsLink .adminText{
+    margin: 14px 0 0 0;
+}
