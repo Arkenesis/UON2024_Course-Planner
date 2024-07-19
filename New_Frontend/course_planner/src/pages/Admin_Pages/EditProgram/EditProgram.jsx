@@ -4,7 +4,7 @@ import plusButton from '../../../assets/plusButton.png';
 import trashBin from '../../../assets/trashBin.png';
 import editIcon from '../../../assets/editIcon.png';
 
-import './EditProgram.css';
+import './EditProgram.scss';
 
 const EditProgram = () => {
   const [programName, setProgramName] = useState('');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './EditStudentHomePage.css';
-import eyeIcon from '../../../assets/eyeicon.png';  // Visible eye icon
+import './EditStudentHomePage.scss';
+import eyeIcon from '../../../assets/eyeicon.png'; // Visible eye icon
 import eyeIconCrossed from '../../../assets/eyeIconCrossed.png'; // Crossed-out eye icon
 
 const EditStudentHomepage = () => {
