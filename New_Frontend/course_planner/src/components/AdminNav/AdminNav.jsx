@@ -16,10 +16,18 @@ import HomePage from '../../pages/Homepage/HomePage'
 import AdminPolicy from '../../pages/Admin_Pages/AdminPolicy/AdminPolicy'
 import courseM from '../../assets/courseM.png'
 import courseAssign from '../../assets/courseAssign.png'
+import DatabaseLink from './DatabaseLink';
+import AdminAssets from './AdminAssets';
+import help from '../../assets/help.png'
+import profilePic from '../../assets/profilePic.png'
+import picture from '../../assets/picture.png'
+import databaseIcon from '../../assets/databaseIcon.png'
+
+
 
 const Images = [
-  {id: 1 ,name: 'Logo'},
-  {id: 2, name: 'Building Background'},
+  {id: 1 ,name: 'Logo', link: 'courseAssign'},
+  {id: 2, name: 'Building Background', link: 'pageIcon'},
   {id: 3, name: 'email'},
   {id: 4, name: 'phone'},
 ]
@@ -70,13 +78,13 @@ export const AdminNav = () => {
   const [query, setQuery] = useState('');
 
   const filterCourses = images.filter(image =>
-  image.name.includes(query.toLowerCase())
+  image.name.toLowerCase().includes(query.toLowerCase())
 
   );
 
   const [showDropdown, setShowDropDown] = useState(false);
 
-
+  const [showProfile, setShowProfile] = useState(false);
 
   return (
 
@@ -87,8 +95,15 @@ export const AdminNav = () => {
       
     <div className='adminNav'>
         <div className='leftNav'>
-        <div className='mainAdminNav' ><img className='leftImgProfile' src={profileImg2} alt='Database img'/></div>
+        <div className='mainAdminNav' ><img className='leftImgProfile' src={profilePic} alt='Database img'  onClick={() =>setShowProfile(!showProfile)}/></div>
+{showProfile && 
+(<div>
+  fsdfsdfs
+  </div>
 
+)
+
+}
             <div className='mainAdminNav' onClick={() => setMainAdminNav}>
         
 
@@ -98,98 +113,28 @@ export const AdminNav = () => {
               </div>
             <div className='mainAdminNav' >
               
-              <img className='leftImg' src={imageIcon} alt='Database img'/>
+              <img className='leftImg' src={picture} alt='Database img'/>
+              
+              </div>
+
+              <div className='mainAdminNav' >
+              
+              <img className='leftImg' src={help} alt='help'/>
               
               </div>
 
         </div>
         <div className='rightNav'>
 
-
-          <div className='dataBaseBtn'> 
-          <button className='dbsBtn' onClick={ () =>setPage('adminAboutUs') }>
-           <div><img className='rightImg' src={courseM}/>Course Management</div>
-           </button>
-
-           <button className='dbsBtn'>
-           <div><img className='rightImg' src={folderIcon}/>Program Management</div>
-            
-           </button>
-
-           <button className='dbsBtn' onClick={ () =>setPage('accountManagment') }>
-           <div><img className='rightImg' src={profileImg2}/>Account Management</div>
-            
-           </button>
-         
-
-          
-      
-      <button className='dbsBtn'  onClick={() => setIsOpen(!isOpen)}><img className='rightImg' src={pageIcon}/><div className='webpageM'>Webpage Management</div>
-      {isOpen && (
-        <div className='optionBox'>
-          {options.map(option => 
-          <button className='optionsBtn' key={option} onClick={ () =>setPage(option)}>
-          {option}
-
-          </button>
-          )}
-        </div>
-      )}
-      </button>
-
-          </div>
-          
-
-
-           
+        <DatabaseLink/>
         </div>
          
          
     </div>
 
-    <div className='displayPopup'>
-    {page && (
-        <div style={{ width:"60vw" }}>
-          {showPage()}
-        </div>
-
-    )}
-
-    </div>
+  
    
-   <div className='imgChoices'>
-   <input
-    onClick={() => setShowDropDown(!showDropdown)}
-    className="searchImg"
-  type="text"
-  placeholder="Search Images..."
-  value={query}
-  onChange={(e) => setQuery(e.target.value)}
-/>
-   {showDropdown && (
-  <div style={{ position: 'relative', height: '200px', overflowY: 'auto', zIndex: 1, background: 'lightgray', margin:'70px 0 0 ', color: 'black'}}>
- {/* This input takes the Images */}
  
-    {filterCourses.map((image) => (
-     
-     <div key={image.id} style={{margin: '10% 10px', width: '200px', cursor: 'pointer' }} >
-        <div  className="imgName">
-        {image.name}
-
-        </div>
-      </div>
-    ))}
-  </div>
-)}
- <div>
-
-
- </div>
-
-
-
-   </div>
-
 
 
 

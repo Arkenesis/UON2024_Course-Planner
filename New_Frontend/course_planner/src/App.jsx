@@ -38,6 +38,8 @@ import AdSideNav from "./components/sideNav/AdSideNav.jsx";
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 
 import PYP from './pages/PYP/PYP.jsx'
+import EditStudentModal from "./components/editstudentmodal/EditStudentModal.jsx";
+import AdminAssets from "./components/AdminNav/AdminAssets.jsx";
 
 
 // Login
@@ -106,6 +108,12 @@ function App() {
 
 
 
+   <EditStudentModal/>
+
+<div style={{width:'100px', margin:'0 0 0 200px'} }>
+
+<AdminAssets/>
+</div>
 
 
     </>
