@@ -236,12 +236,6 @@ border: 4px solid rgb(178, 48, 48, 0);
     margin: -20px 0 0 60px;
 }
 
-.searchBox{
-    border: 2px solid black;
-    height: 40px;
-    
-}
-
 
 
 
@@ -273,10 +267,20 @@ top: 0;
   
 }
 
+
+.searchBox{
+    border: 2px solid black;
+    height: 40px;
+    
+}
+
+
 .imgGallery{
     width: 300px;
     border: 2px solid black;
-    min-height: 90vh;
+    min-height: 70vh;
+
+    max-height: 70vh;
     overflow: auto;
     margin: 20px 0 0 0;
 }
