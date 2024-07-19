@@ -45,8 +45,6 @@ const NavigationBar = () => {
         <li><Link to="/track-progress">Track Progress</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/about-us">About</Link></li>
-        <li><Link to="/plan-your-path">Plan Your Path</Link></li>
-        <li><Link to="/track-progress">Track Progress</Link></li>
       </ul>
 
       <div className="search-box">

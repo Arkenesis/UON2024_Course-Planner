@@ -1,4 +1,4 @@
-/* .contact_container {
+.contact_container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,4 +60,4 @@ button {
 
   button:hover {
   background-color: #b04f1f;
-}  */
+} 

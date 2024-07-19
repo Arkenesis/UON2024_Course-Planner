@@ -37,7 +37,7 @@ import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AdSideNav from "./components/sideNav/AdSideNav.jsx";
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 
-
+import PYP from './pages/PYP/PYP.jsx'
 
 
 // Login
@@ -51,6 +51,7 @@ function App() {
 
   return (
     <>
+      <PYP/>
       {/* <Register/> */}
       {/* <Login/> */}
       {/* <EditCourse/> */}
@@ -87,7 +88,7 @@ function App() {
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
       {/* <PrivacyPolicy/> */}
-      <EditStudent/>
+      {/* <EditStudent/> */}
       {/* <EditStudentHomePage /> */}
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
