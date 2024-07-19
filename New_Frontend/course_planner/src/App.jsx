@@ -15,6 +15,10 @@ import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Register from './pages/Register/Register';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
+import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
+
+import NavigationBar from './components/NavigationBar';
+import HomePage from './pages/HomePage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
@@ -29,8 +33,8 @@ import AdminPolicy from "./pages/Admin_Pages/AdminPolicy/AdminPolicy.jsx";
 import EditStudent from "./pages/Admin_Pages/editstudent/EditStudent.jsx";
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
 import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
-import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
-import EditCourse from './pages/Admin_Pages/EditCourse/EditCourse.jsx';
+import Footer from './components/Footer/Footer.jsx'
+
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AdSideNav from "./components/sideNav/AdSideNav.jsx";
@@ -95,8 +99,8 @@ function App() {
       <AdminAboutUs/>
       <AdminTerm/> */}
       {/* <ImageUpload/> */}
-     <EditLoginPage/>
-     <EditRegisterPage/>
+     {/* <EditLoginPage/> */}
+     {/* <EditRegisterPage/> */}
    
   <AdminNav/>
 
