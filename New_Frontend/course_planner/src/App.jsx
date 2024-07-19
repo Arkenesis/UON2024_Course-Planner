@@ -53,8 +53,7 @@ function App() {
 
   return (
     <>
-      <AdminNav/>
-      <AdminNav/>
+ 
 
       <PYP/>
       {/* <Register/> */}
@@ -104,16 +103,14 @@ function App() {
       {/* <ImageUpload/> */}
      {/* <EditLoginPage/> */}
      {/* <EditRegisterPage/> */}
-   
+    
+    <AdminNav/>
 
 
 
    <EditStudentModal/>
 
-<div style={{width:'100px', margin:'0 0 0 200px'} }>
 
-<AdminAssets/>
-</div>
 
 
     </>

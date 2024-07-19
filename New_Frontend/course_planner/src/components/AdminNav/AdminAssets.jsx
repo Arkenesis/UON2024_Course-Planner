@@ -94,7 +94,7 @@ function AdminAssets() {
                             background: 'lightgray',
                             margin: '0 0 0 ',
                             color: 'black',
-                            color: 'black',
+                         
                          
                         }}
                     >

@@ -22,8 +22,8 @@ import help from '../../assets/help.png'
 import profilePic from '../../assets/profilePic.png'
 import picture from '../../assets/picture.png'
 import databaseIcon from '../../assets/databaseIcon.png'
-
-
+import profSettings from '../../assets/profSettings.png'
+import signOut from '../../assets/signOut.png'
 
 const Images = [
   {id: 1 ,name: 'Logo', link: 'courseAssign'},
@@ -33,36 +33,8 @@ const Images = [
 ]
 
 
-export const AdminNav = () => {
+export const AdminNav = (page) => {
 
- const [page, setPage] = useState(null);
-  
- function showPage(){
-    switch(page){
-      case 'accountManagment':
-      return <EditProgram/>;
-      case 'adminAboutUs':
-      return <AdminAboutUs/>;
-      case 'About Us':
-      return <AboutUs/>;
-      case 'Privacy':
-      return <AdminPolicy/>;
-      case 'Term':
-      return <AdminTerm/>;
-      case 'Log-in':
-      return <EditLoginPage/>;
-      case 'Register':
-      return <EditRegisterPage/>;
-      case 'Home page':
-      return <HomePage/>;
-      case 'Navigation bar':
-      return ;
-      case 'Footer':
-      return ;
-      default: 
-      return null;
-    }
- };
 
  
 
@@ -86,55 +58,81 @@ export const AdminNav = () => {
 
   const [showProfile, setShowProfile] = useState(false);
 
+  const [leftNav, setLeftNav] = useState(null);
+
+  function showNav(){
+    switch(leftNav){
+      case 'databaseLink':
+      return <DatabaseLink/>;
+
+      case 'adminAssets':
+      return <AdminAssets/>;
+
+      default: 
+      return <AdminAssets/>;
+    }
+ };
+
+
   return (
 
     
     <div className='adminHomePage'>
 
 
-      
-    <div className='adminNav'>
-        <div className='leftNav'>
-        <div className='mainAdminNav' ><img className='leftImgProfile' src={profilePic} alt='Database img'  onClick={() =>setShowProfile(!showProfile)}/></div>
-{showProfile && 
-(<div>
-  fsdfsdfs
-  </div>
 
-)
+      <div className='adminNav'>
+      <div className='leftNav'>
+      <div className='mainAdminNav' ><img className='leftImgProfile' src={profilePic} alt='Database img'  onClick={() =>setLeftNav(!showProfile)}/></div>
+      {showProfile && 
+      (<div className='profilePage'>
+      <div className='profileData'> <img src={profilePic} alt="profile picture" />  <div className='userName'>Miley Cyrus</div></div>
+      <div className='profileSettings'> <img src={profSettings} alt="profile settings" />  Profile Settings</div>
 
-}
-            <div className='mainAdminNav' onClick={() => setMainAdminNav}>
+      <div className='signOut'><img src={signOut} alt="sign out" />  Sign Out</div>
+
+      </div>
+
+      )
+
+      }
+          <div className='mainAdminNav' onClick={ () =>setLeftNav('databaseLink')}>
         
+          <img className='leftImg' src={databaseImg} alt='Database img'/>
+          
+            </div>
+            
+          <div className='mainAdminNav'  onClick={ () =>setLeftNav('adminAssets')} >
+            
+            <img className='leftImg' src={picture} alt='Database img'/>
+            
+            </div>
 
-            
-              <img className='leftImg' src={databaseImg} alt='Database img'/>
-            
-              </div>
             <div className='mainAdminNav' >
-              
-              <img className='leftImg' src={picture} alt='Database img'/>
-              
-              </div>
+            
+            <img className='leftImg' src={help} alt='help'/>
+            
+            </div>
 
-              <div className='mainAdminNav' >
-              
-              <img className='leftImg' src={help} alt='help'/>
-              
-              </div>
+      </div>
+      <div className='rightNav'>
 
+      <div>
+    {leftNav && (
+        <div style={{ width:"60vw" }}>
+          {showNav()}
         </div>
-        <div className='rightNav'>
 
-        <DatabaseLink/>
-        </div>
-         
-         
+    )}
+
+    </div>
+ 
+      </div>
+        
+      
     </div>
 
   
-   
- 
 
 
 

@@ -30,7 +30,7 @@ const Images = [
   ]
 
 
-export default function DatabaseLink() {
+export default function DatabaseLink(showPage) {
 
 
       
@@ -93,23 +93,41 @@ export default function DatabaseLink() {
     
     <div className='dataBaseBtn'> 
           <button className='dbsBtn' onClick={ () =>setPage('adminAboutUs') }>
-           <div><img className='rightImg' src={courseAssign}/>Course Management</div>
+           <div className='dbsLink'><img className='rightImg' src={courseAssign}/>
+           <div className='adminText'>
+           Course Management
+           </div>
+           </div>
            </button>
 
            <button className='dbsBtn'>
-           <div><img className='rightImg' src={courseManagment}/>Program Management</div>
+           <div className='dbsLink'><img className='rightImg' src={courseManagment}/>
+           <div className='adminText'>        
+           Program Management
+           </div>
+           </div>
             
            </button>
 
            <button className='dbsBtn' onClick={ () =>setPage('accountManagment') }>
-           <div><img className='rightImg' src={AdminSettings}/>Account Management</div>
+           <div className='dbsLink'><img className='rightImg' src={AdminSettings}/>
+           <div className='adminText'>
+           Account Management
+           </div>
+           </div>
             
            </button>
          
 
           
       
-      <button className='dbsBtn'  onClick={() => setIsOpen(!isOpen)}><img className='rightImg' src={Page}/><div className='webpageM' >Webpage Management</div>
+      <button className='dbsBtn'  onClick={() => setIsOpen(!isOpen)}><img className='rightImg' src={Page}/><div className='webpageM' >
+      
+      <div className='adminText'>
+      Webpage Management
+
+      </div>
+        </div>
       {isOpen && (
         <div className='optionBox'>
           {options.map(option => 
@@ -124,7 +142,7 @@ export default function DatabaseLink() {
 
   </div>
           
-          <div className='displayPopup'>
+    <div className='displayPopup'>
     {page && (
         <div style={{ width:"60vw" }}>
           {showPage()}
@@ -133,6 +151,8 @@ export default function DatabaseLink() {
     )}
 
     </div>
+ 
+   
 
    </div>
   )
