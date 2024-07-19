@@ -1,48 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import plusButton from '../../../assets/plusButton.png';
 import trashBin from '../../../assets/trashBin.png';
 import editIcon from '../../../assets/editIcon.png';
 
 import './EditProgram.css';
 
+const initialCourses = [
+  { id: 'ECON1001', year: '2024', trimester: 'Trimester 1' },
+  { id: 'SENG1110', year: '2024', trimester: 'Trimester 1' },
+  { id: 'SENG1120', year: '2024', trimester: 'Trimester 2' },
+  { id: 'COMP3350', year: '2024', trimester: 'Trimester 2' },
+  { id: 'EBUS3050', year: '2024', trimester: 'Trimester 2' },
+  { id: 'SENG1050', year: '2024', trimester: 'Trimester 3' },
+  { id: 'SENG2130', year: '2024', trimester: 'Trimester 3' },
+  { id: 'INFT3100', year: '2024', trimester: 'Trimester 3' },
+  { id: 'COMP3851A', year: '2025', trimester: 'Trimester 1' },
+  { id: 'INFT2060', year: '2025', trimester: 'Trimester 1' },
+  { id: 'INFT2051', year: '2025', trimester: 'Trimester 1' },
+  { id: 'SENG2260', year: '2025', trimester: 'Trimester 1' },
+  { id: 'COMP3851B', year: '2025', trimester: 'Trimester 2' },
+  { id: 'INFT3800', year: '2025', trimester: 'Trimester 2' },
+  { id: 'INFT3950', year: '2025', trimester: 'Trimester 2' },
+  { id: 'INFT3050', year: '2025', trimester: 'Trimester 2' },
+  { id: 'COMP1140', year: '2026', trimester: 'Trimester 1' },
+  { id: 'COMP1010', year: '2026', trimester: 'Trimester 1' },
+  { id: 'COMP1140', year: '2026', trimester: 'Trimester 2' },
+  { id: 'EBUS3030', year: '2026', trimester: 'Trimester 2' },
+  { id: 'INFT2150', year: '2026', trimester: 'Trimester 3' },
+  { id: 'MATH1510', year: '2026', trimester: 'Trimester 3' },
+
+  // Add more courses as needed
+];
+
 const EditProgram = () => {
-  const [programName, setProgramName] = useState('');
-  const [originalProgramName, setOriginalProgramName] = useState(''); // Track original value
-  const [hasUpdate, setUpdate] = useState(false); // Track original value
+  const [programName, setProgramName] = useState('Bachelor of Information Technology');
+  const [originalProgramName, setOriginalProgramName] = useState('Bachelor of Information Technology'); // Track original value
+  
   const [programYear, setProgramYear] = useState('All');
   const [trimester, setTrimester] = useState('All');
-  const [allCourses, setAllCourses] = useState([]);
-  const [filteredCourses, setFilteredCourses] = useState([]);
+  const [allCourses, setAllCourses] = useState(initialCourses);
+  const [filteredCourses, setFilteredCourses] = useState(initialCourses);
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modalCourse, setModalCourse] = useState({ id: '', year: '2024', trimester: '1' });
+  const [modalCourse, setModalCourse] = useState({ id: '', year: '2024', trimester: 'Trimester 1' });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showNoChangeMessage, setShowNoChangeMessage] = useState(false);
   const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
-  
-
-  const [selectedProgram, setSeletedProgram] = useState();
-  const [onlineData, setOnlineData] = useState([]);
-
-  const getData = async () => {
-    try{
-        const { data } = await axios.get("http://localhost:8080/pages/programs");
-        setOnlineData(data.message);
-        setSeletedProgram(data.message[0].uuid)
-        setProgramName(data.message[0].name);
-        setOriginalProgramName(data.message[0].name);
-        setAllCourses(data.message[0].message);
-        setFilteredCourses(data.message[0].message);
-    }
-    catch(error){
-        console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  },[])
 
   useEffect(() => {
     filterCourses();
@@ -66,23 +69,19 @@ const EditProgram = () => {
 
   const handleCourseDelete = (courseId) => {
     setAllCourses(allCourses.filter(course => course.id !== courseId));
-    setUpdate(true);
   };
 
   const handleModalSave = () => {
     if (modalCourse.id.trim()) {
       const courseExists = allCourses.some(course => course.id === modalCourse.id);
-      
       if (courseExists) {
         const updatedCourses = allCourses.map(course => course.id === modalCourse.id ? modalCourse : course );
         setAllCourses(updatedCourses);
       } else {
         setAllCourses([...allCourses, modalCourse]);
       }
-      filterCourses();
       setIsModalVisible(false);
       setShowSuccessMessage(true);
-      setUpdate(true);
       setTimeout(() => setShowSuccessMessage(false), 3000);
     } else {
       alert('Please enter a valid course ID.');
@@ -90,23 +89,15 @@ const EditProgram = () => {
   };
 
     
-  const handleSaveClick = async () => {
+  const handleSaveClick = () => {
     // Check if programName has changed
-    if (programName !== originalProgramName || hasUpdate) {
-      try{
-        const { data } = await axios.post("http://localhost:8080/pages/programs", {uuid: selectedProgram, content: allCourses, name: programName});
-        alert('Good');
-      }
-      catch(error){
-        console.log(error.response?.data);
-      }
+    if (programName !== originalProgramName) {
       // Perform save operation here (e.g., API call, state update)
       // For demonstration, just log the changed programName
       console.log('Program Name has changed to:', programName);
       // Update originalProgramName to current value after saving
       setOriginalProgramName(programName);
       setShowSuccessMessage(true);
-      setUpdate(false);
       setTimeout(() => setShowSuccessMessage(false), 3000);
     } else {
       // Program Name has not changed, you may choose to do nothing or show a message
@@ -120,7 +111,7 @@ const EditProgram = () => {
   };
 
   const handleAddCourseClick = () => {
-    setModalCourse({ id: '', year: programYear !== 'All' ? programYear : '2024', trimester: trimester !== 'All' ? trimester : '1' });
+    setModalCourse({ id: '', year: programYear !== 'All' ? programYear : '2024', trimester: trimester !== 'All' ? trimester : 'Trimester 1' });
     setIsModalVisible(true);
   };
 
@@ -147,66 +138,14 @@ const EditProgram = () => {
     }
   };
 
-  const [inputProgramName, setInputProgramName] = useState();
-  const [isInputVisible, setIsInputVisible] = useState(false);
-  const createProgram = async () => {
-    if(inputProgramName.trim()){
-      try{
-        const { data } = await axios.post("http://localhost:8080/pages/create-program", {content: inputProgramName});
-        setInputProgramName('');
-        setIsInputVisible(false);
-        alert('A new program has been created.');
-      }
-      catch(error){
-        console.log(error.response?.data);
-      }
-    }
-    else{
-      alert('Kidnly fill a new program name.');
-    }
-
-  };
-
-  const handleProgramUUID = (e) => {
-    const value = e.target.selectedOptions[0].value;
-    setSeletedProgram(value);
-    for(let i = 0; i<onlineData.length; i++){
-      const item = onlineData[i];
-      if(item.uuid === value){
-        setProgramName(item.name);
-        setOriginalProgramName(item.name);
-        setAllCourses(item.message);
-        setFilteredCourses(item.message);
-        break;
-      }
-    }
-  }
-
-  const handleDelete = async () => {
-    if(selectedProgram.trim()){
-      try{
-        const { data } = await axios.post("http://localhost:8080/pages/delete-program", {content: selectedProgram});
-        window.location.reload();
-      }
-      catch(error){
-        console.log(error.response?.data);
-      }
-    }
-  }
-
   return (
     <div className="edit-program">
-      <h1>Edit Programs</h1>
-      <select className="custom-dropdown" value={selectedProgram} onChange={handleProgramUUID}>
-        {onlineData.map((i, idx) => 
-          <option key={idx} value={i.uuid}>{i.name}</option>
-        )}
-      </select>
+      <h1>Edit Program</h1>
       <div className="sections">
         <div className="left-section">
           <div className="form-group uniform-size">
             <label htmlFor="program-name"><strong>Program Name</strong></label>
-            <input type="text" id="program-name" value={programName} onChange={(e) => { setProgramName(e.target.value); setUpdate(true); }} />
+            <input type="text" id="program-name" value={programName} onChange={(e) => setProgramName(e.target.value)} />
           </div>
           <div className="form-group uniform-size">
             <label htmlFor="program-year"><strong>Program Year</strong></label>
@@ -225,9 +164,9 @@ const EditProgram = () => {
             <div className="dropdown-container">
               <select id="trimester" value={trimester} onChange={(e) => setTrimester(e.target.value)} className="custom-dropdown" >
                 <option value="All">All</option>
-                <option value="1">Trimester 1</option>
-                <option value="2">Trimester 2</option>
-                <option value="3">Trimester 3</option>
+                <option value="Trimester 1">Trimester 1</option>
+                <option value="Trimester 2">Trimester 2</option>
+                <option value="Trimester 3">Trimester 3</option>
               </select>
               <span className="dropdown-icon">&#9660;</span>
             </div>
@@ -270,8 +209,6 @@ const EditProgram = () => {
         </div>
       </div>
       <div className="bottom-buttons">
-          <button className="cancel-button" onClick={() => setIsInputVisible(!isInputVisible)}>+ New Program</button>
-          <button className="cancel-button" onClick={handleDelete}>Delete Program</button>
           <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
           <div className="right-buttons">
               <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
@@ -334,9 +271,9 @@ const EditProgram = () => {
                   onChange={(e) => setModalCourse({ ...modalCourse, trimester: e.target.value })}
                   className="custom-dropdown"
                 >
-                  <option value="1">Trimester 1</option>
-                  <option value="2">Trimester 2</option>
-                  <option value="3">Trimester 3</option>
+                  <option value="Trimester 1">Trimester 1</option>
+                  <option value="Trimester 2">Trimester 2</option>
+                  <option value="Trimester 3">Trimester 3</option>
                 </select>
                 <span className="dropdown-icon">&#9660;</span>
               </div>
@@ -358,21 +295,6 @@ const EditProgram = () => {
             <div className="modal-buttons">
               <button className="modal-cancel" onClick={handleCancelConfirmNo}>No</button>
               <button className="modal-save" onClick={handleCancelConfirmYes}>Yes</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {isInputVisible && (
-        <div className="modal" onClick={handleClickOutsideModal}>
-          <div className="modal-content">
-            <span className="close" onClick={() => setIsInputVisible(false)}>&times;</span>
-            <h2>Program</h2>
-            <p>Enter new program name</p>
-            <input type="text" placeholder="Bachelor of ..." value={inputProgramName} onChange={(e) => setInputProgramName(e.target.value)}/>
-            <div className="modal-buttons">
-              <button className="modal-cancel" onClick={() => setIsInputVisible(false)}>Cancel</button>
-              <button className="modal-save" onClick={createProgram}>+ New Program</button>
             </div>
           </div>
         </div>
