@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import './AdminNav.css'
 import databaseImg from '../../assets/databaseImg.png'
 import imageIcon from '../../assets/imageIcon.png'
