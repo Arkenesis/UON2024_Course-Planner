@@ -1,0 +1,107 @@
+
+
+#courseDropped{
+    height: 600px;
+    width: 600px;
+}
+
+.courseDropped{
+  
+    cursor: grab;
+
+    
+}
+
+.courseDropped:active{
+    cursor: grabbing;
+}
+
+
+
+#hamburgerImg{
+    margin: 0 100px 0 130px;
+    text-decoration: none;
+     position: relative;
+   cursor: pointer;
+}
+
+.hamburgerMenu{
+    width: auto;
+    cursor: pointer;
+    margin: 4px 50px 0 0;
+   
+    
+}
+
+.courseDropped .courseDroppedOptions{
+    background-color: rgb(245, 239, 239);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    height: 100px;
+    width: 100px;
+   border-radius: 8px;
+   margin: -10px 0 0 0;
+   
+
+}
+
+.courseDropped .courseDroppedOptions:hover {
+    opacity: 1000;
+    top: 40px;
+    height: 60px;    
+
+}
+
+
+.courseDropped .subBox{
+    list-style-type: none;
+    transition: ease-in-out 2000ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 0 6px 0 0;
+    
+}
+
+
+.courseDropped .subBox li{
+    padding: 10px;
+    list-style-type: none;
+    margin: 0 auto;
+   font-weight: 600;
+   font-weight: bold;
+
+    
+    
+}
+
+.courseDropped .subBox li:hover{
+    padding: 10px;
+    list-style-type: none;
+    background-color: gray;
+    border-radius: 8px;
+    
+}
+
+.courseDropped{
+    cursor: grab;
+}
+
+.courseDropped .course:active{
+    cursor: grabbing;
+}
+
+
+.courseDroppedHeader{
+    background: #FED766;
+    display: flex;
+    width: auto;
+    height: 60px;
+    padding: 0 10px;
+}
+
+.courseDropped .subDetails{
+    padding: 0 10px;
+}

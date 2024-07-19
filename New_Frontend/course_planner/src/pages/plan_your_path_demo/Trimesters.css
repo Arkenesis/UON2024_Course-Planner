@@ -1,11 +1,19 @@
 .trimestersBox{
-   
-    display: flex;
+    padding: 0 10px;
+    width: 400px;
+    margin: 0 10px;
     
  
 }
 
+.coursePerTri{
+    display: flex;
+}
+
 .trimesterName{
-    width: 200px;
+    font-weight: 600;
+    width: 400px;
+   
+
     
 }
