@@ -15,7 +15,7 @@ import EditRegisterPage from '../../pages/EditRegisterPage/EditRegisterPage'
 import HomePage from '../../pages/Homepage/HomePage'
 import AdminPolicy from '../../pages/Admin_Pages/AdminPolicy/AdminPolicy'
 import courseM from '../../assets/courseM.png'
-
+import courseAssign from '../../assets/courseAssign.png'
 
 const Images = [
   {id: 1 ,name: 'Logo'},
@@ -158,7 +158,6 @@ export const AdminNav = () => {
     </div>
    
    <div className='imgChoices'>
-   <button className="addImgBtn" onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
    <input
     onClick={() => setShowDropDown(!showDropdown)}
     className="searchImg"
@@ -168,18 +167,12 @@ export const AdminNav = () => {
   onChange={(e) => setQuery(e.target.value)}
 />
    {showDropdown && (
-  <div style={{ position: 'relative', height: '200px', overflowY: 'auto', zIndex: 1, background: '#ffe5e3', margin:'70px 0 0 -200px', color: 'black'}}>
+  <div style={{ position: 'relative', height: '200px', overflowY: 'auto', zIndex: 1, background: 'lightgray', margin:'70px 0 0 ', color: 'black'}}>
  {/* This input takes the Images */}
-    <input
-   type='text'
-   className='searchBox'
-/>
+ 
     {filterCourses.map((image) => (
      
-     <div key={image.id} style={{margin: '10% 10px', width: '200px', cursor: 'pointer' }} onClick={() => {
-  
-        setShowDropDown(false);
-      }}>
+     <div key={image.id} style={{margin: '10% 10px', width: '200px', cursor: 'pointer' }} >
         <div  className="imgName">
         {image.name}
 
@@ -190,15 +183,6 @@ export const AdminNav = () => {
 )}
  <div>
 
-  <div>
-  <img src="" alt="" />
-  <img src="" alt="" />
-  </div>
-
-  <div>
-  <img src="" alt="" />
-  <img src="" alt="" />
-  </div>
 
  </div>
 

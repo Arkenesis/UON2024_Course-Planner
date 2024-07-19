@@ -134,7 +134,6 @@ margin: 0 0 20px -8px;
 }
 
 .hello2{
-    background-color: blue;
 }
 
 
@@ -209,8 +208,7 @@ margin: 0 0 20px -8px;
 }
 
 .searchImg{
-    height: 200px;
-    background: blue;
+    height: 40px;
 }
 
 .imgName{
