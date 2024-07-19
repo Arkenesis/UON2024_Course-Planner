@@ -28,8 +28,10 @@ function Course({ id, name, level, units, grade}) {
           Level: {level} | Units: {units}
         </div>
       </div>
-
+      <div className="contentBox">
       <h3 className="content">Modules: {name}</h3>  
+
+      </div>
     </div>
   );
 }
