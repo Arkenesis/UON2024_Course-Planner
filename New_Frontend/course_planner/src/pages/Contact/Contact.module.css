@@ -48,7 +48,7 @@ textarea {
   border-radius: 4px;
 }
 
-button {
+.submit {
   background-color: #c75d2c;
   color: rgb(243, 248, 239);
   padding: 10px 20px;
@@ -58,6 +58,6 @@ button {
   width:100%;
 }
 
-  button:hover {
+  .submit:hover {
   background-color: #b04f1f;
 } 

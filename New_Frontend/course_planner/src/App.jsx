@@ -51,6 +51,9 @@ function App() {
 
   return (
     <>
+      <AdminNav/>
+      <AdminNav/>
+
       <PYP/>
       {/* <Register/> */}
       {/* <Login/> */}
@@ -100,7 +103,6 @@ function App() {
      {/* <EditLoginPage/> */}
      {/* <EditRegisterPage/> */}
    
-      {/* <AdminNav/> */}
 
 
 
