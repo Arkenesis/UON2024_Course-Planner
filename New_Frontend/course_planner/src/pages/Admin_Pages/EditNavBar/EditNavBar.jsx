@@ -2,9 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './EditNavBar.scss';
 import { SketchPicker } from 'react-color';
 import uonLogo from '../../../assets/uonLogo.png';
-import eyeIcon from '../../../assets/eyeIcon.png'; // Visible eye icon
+import eyeIcon from '../../../assets/editIcon.png'; // Visible eye icon
 import eyeIconCrossed from '../../../assets/eyeIconCrossed.png'; // Crossed-out eye icon
-import editIcon from '../../../assets/editIcon.png'; // Edit icon
 import ImageUpload from '../../image_upload/ImageUpload';
 import axios from 'axios';
 
