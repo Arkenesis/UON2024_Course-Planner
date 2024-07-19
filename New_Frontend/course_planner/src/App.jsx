@@ -26,6 +26,11 @@ import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 
 import PYP from './pages/PYP/PYP.jsx'
 import { UserContext } from "./pages/login/LoginContext.jsx";
+import EditStudentModal from "./components/editstudentmodal/EditStudentModal.jsx";
+import AdminAssets from "./components/AdminNav/AdminAssets.jsx";
+
+
+// Login
 
 function App() {
 
@@ -110,6 +115,10 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <EditStudentModal/>
+      <div style={{width:'100px', margin:'0 0 0 200px'} }>
+        <AdminAssets/>
+      </div>
     </>
   );
 }
