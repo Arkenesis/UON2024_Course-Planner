@@ -14,10 +14,10 @@ const AdminAboutUs = () => {
 
   // const handleCancel = () => {
   //   setValue(`
-  //     <p>UON Course Planner is a Professional Educational Platform. Here we will provide you only interesting content, which you will like very much. We’re dedicated to providing you the best of Educational, with a focus on dependability and Plan Course throughout your Study. We’re working to turn our passion for Educational into a booming online website. We hope you enjoy our Educational as much as we enjoy offering them to you.</p>
-  //     <p>I will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
-  //     <p><strong>Thanks For Visiting Our Site</strong></p>
-  //     <p><span style="color: blue;">Have a nice day!</span></p>
+      // <p>UON Course Planner is a Professional Educational Platform. Here we will provide you only interesting content, which you will like very much. We’re dedicated to providing you the best of Educational, with a focus on dependability and Plan Course throughout your Study. We’re working to turn our passion for Educational into a booming online website. We hope you enjoy our Educational as much as we enjoy offering them to you.</p>
+      // <p>I will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
+      // <p><strong>Thanks For Visiting Our Site</strong></p>
+      // <p><span style="color: blue;">Have a nice day!</span></p>
   //   `);
   // };
 
@@ -25,7 +25,9 @@ const AdminAboutUs = () => {
     alert('Preview: ' + value);
   };
   
-  const handleCancel = () => { setValue(); };
+  const handleCancel = () => { 
+    alert('Cancel: clicked');
+  };
   
   const [value, setValue] = useState('');
 
@@ -36,8 +38,8 @@ const AdminAboutUs = () => {
   const getData = async () => {
     try{
       const { data } = await axios.get("http://localhost:8080/pages/about-us");
-      const updatedData = data.message;
-      setValue(updatedData);
+      setValue(data.message);
+      setTemp(data.message);
     }
     catch(error){
       console.log(error);

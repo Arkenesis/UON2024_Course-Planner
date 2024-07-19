@@ -71,7 +71,7 @@ function EditLoginPage() {
             <h2>Edit Login Page</h2>
 
 
-            <h3>Welcome Meessage</h3>
+            <h3>Welcome Message</h3>
 
 
     
@@ -97,14 +97,22 @@ function EditLoginPage() {
         <div className='imageEdit'>
 
 
-      {profilePic && (
-        <img
-          src={profilePic}
-          alt="Profile Picture"
-          
-          id="profile-pic"
-        />
-      )}
+        <div className='backgroundImg'>
+          {profilePic ? (
+                  <img
+                    src={profilePic}
+                    alt="background Picture"
+                    className='loginImg'
+                    height={"240px"}
+                    width={"300px"}
+                    id="profile-pic"
+                  />
+                )
+              
+              :<div className='noImgAlt'>Add Background Image</div>
+              }
+
+         </div>
 
 
         <div className='imgButtonContainer'>

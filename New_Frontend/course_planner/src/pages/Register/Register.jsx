@@ -31,8 +31,9 @@ const Register =() =>{
         try{
             const { data } = await axios.post("http://localhost:8080/users/register", inputs);
             setUser(data.message);
-        } catch (err){
-            setErr(err.response?.data || "An error occurred");
+            alert('Login done.')
+        } catch (e){
+            setErr(e.response?.data.error || "An error occurred");
         }
     };
 
@@ -46,9 +47,9 @@ const Register =() =>{
                         <p className="subtitle-1">Sign Up Account</p>
                         <p className="subtitle-2">Already have account? <Link to='../login'> Sign in </Link></p>
 
-                        
+                        {err && <p>{err}</p>}
                         <div className="input-field-main">
-                            <div>
+                            <div className="image-container">
                                 <img src={userIcon} alt=""/>
                             </div>
                             <div className="input-field-1">
@@ -59,7 +60,7 @@ const Register =() =>{
 
                         
                         <div className="input-field-main">
-                            <div>
+                            <div className="image-container">
                                 <img src={emailIcon} alt=""/>
                             </div>
                             <div className="input-field-1">
@@ -70,7 +71,7 @@ const Register =() =>{
 
                
                         <div className="input-field-main">
-                            <div>
+                            <div className="image-container">
                                 <img src={passwordIcon} alt=""/>
                             </div>
                             <div className="input-field-1">

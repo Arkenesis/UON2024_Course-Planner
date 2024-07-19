@@ -3,7 +3,7 @@ import Trimesters from "./Trimesters";
 import Course from "./Course";
 import { DndProvider, useDrop } from "react-dnd";
 import {HTML5Backend} from 'react-dnd-html5-backend'
-import "./PlanYourPathDemo.css"
+import "./PlanYourPathDemo.scss"
 import shareImg from "../../assets/shareImg.png"
 
 // const Courses = [{
@@ -34,7 +34,6 @@ const Courses = [
   {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", GRADE: "HD", TYPE: "INFT"}, 
   {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", GRADE: "HD", TYPE: "SENG"}, 
   {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", GRADE: "HD", TYPE: "INFT"},
-  
 ];
 
 
@@ -150,10 +149,16 @@ function DragDrop() {
 
   return (
 
-    <div>
+    <div className="planYourPath">
       <div className="topData">
         <h1 className="title">Plan Your Path</h1>
-        <p className="share">Share  <img className="shareImg" src={shareImg} alt="share icon" /></p>
+
+        <div className="shareBlk">
+        <p className="share">Share </p>
+        <img className="shareImg" src={shareImg} alt="share icon" />
+
+
+        </div>
       </div> 
 
       <div key={key} className="planYourPathPage">
@@ -172,47 +177,61 @@ function DragDrop() {
         
         <div>
           <div className="trimesterLibrary">
+          <div className="titleList">
+             <h2>List of All Courses</h2>
+            </div>
             <div>
-              <hr />
-              <h3>Econ </h3>
+          
+              <h3 className="courseTitleLi">Econ </h3>
+              <div className="coursesPerType">
               {courses.map((course) => (
-                // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
                 course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
               ))}
+              </div>
+           
             </div>
 
             <div>
               <hr />
-              <h3>Ebus</h3>
+              <h3 className="courseTitleLi">Ebus</h3>
+              <div className="coursesPerType">
               {courses.map((course) => (
-                  // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
                 course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
               ))}
+              </div>
             </div>
 
             <div>
               <hr />
-              <h3>INFT</h3>
+              <h3 className="courseTitleLi">INFT</h3>
+              <div className="coursesPerType">
               {courses.map((course) => (
-                // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
                 course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
               ))}
+              </div>
             </div>
 
             <div>
               <hr />
-              <h3>SENG</h3>
+              <div className="coursesPerType">
+              <h3 className="courseTitleLi">SENG</h3>
               {courses.map((course) => (
-                // Diing Yang, this is called inline condtional rendering to show each category. Here to learn more about if if you don't know https://www.geeksforgeeks.org/what-are-inline-conditional-expressions-in-reactjs/
                 course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
                 ))}
+                </div>
             </div>
         
-          </div>      
+          </div>   
+
+         
+       
+        </div>
+        
+      </div>
+      <div className="triesterMod">
           <button onClick={() => addTrimester()}>Add more trimester</button>
           <button onClick={() => removeTrimester()}>Delete trimester</button>
-        </div>
-      </div>
+            </div> 
     </div>
   );
 }

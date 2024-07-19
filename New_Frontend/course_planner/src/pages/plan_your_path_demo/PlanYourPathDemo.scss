@@ -1,0 +1,158 @@
+.planYourPath{
+    padding: 0 100px;
+}
+
+.title{
+    color: #1577BD;
+    margin: auto 0 5px 0;
+    width: 300px;
+}
+
+.titleList{
+    color: #1577BD;
+    margin: auto 0 5px 80px;
+    width: 300px;
+}
+
+.trimestersDetails{
+    width: 600px;
+}
+
+
+.topData{
+    display: flex;
+    justify-content: space-between;
+}
+
+.share{
+    font-size: 24px;
+    margin-right: 10%;
+}
+
+.trimestersDetails{
+   border: 4px solid rgb(0, 0, 0);
+   display: flex; 
+   flex-direction: column;
+   overflow: auto;
+   overflow-x: scroll;
+   overflow-y: scroll;
+   height: 90vh;
+   width: 80vw;
+   margin: 0 0 0 20px;
+   
+}
+
+.trimesterLibrary{
+    background-color: #D0E1F9;
+    width: 400px;
+    overflow: auto;
+    overflow-x: scroll;
+    height: 90vh;
+    
+}
+
+.planYourPathPage{
+    display: flex;
+    width: 100vw;
+    padding: auto;
+    padding: 20px 0;
+
+}
+
+.card{
+    background: black;
+}
+
+.shareImg{
+    height: 40px;
+}
+
+
+/*This is how I desinged the scrollbar*/
+.trimestersDetails::-webkit-scrollbar{
+    width: 15px;
+}
+
+.trimestersDetails::-webkit-scrollbar-track{
+    background: #ffc37f;
+}
+
+
+.trimestersDetails::-webkit-scrollbar-thumb{
+    background: linear-gradient(#e98f63, #da601e 70%);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+
+.trimesterLibrary::-webkit-scrollbar{
+    width: 15px;
+}
+
+.trimesterLibrary::-webkit-scrollbar-track{
+    background: #6dbcfd;
+}
+
+
+.trimesterLibrary::-webkit-scrollbar-thumb{
+    background: linear-gradient(#6b75f6, #2273ff 20%);
+    border-radius: 10px;
+}
+
+
+.hamburgerMenu{
+    height: 10px;
+}
+
+.shareBlk{
+    display: flex;
+}
+
+.shareBlk{
+    display: flex;
+    gap: 20px;
+    margin:  0 40px 10px 0;
+}
+
+
+.shareBlk .share{
+    margin: 40px 0 0 0;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.shareBlk .shareImg{
+    margin: 30px 0 0 0;
+    height: 40px;
+}
+
+
+
+.trimesterLibrary .title{
+   margin: 0 120px;
+}
+
+.removeBtn{
+    display: flex;
+    justify-content: center;
+}
+
+.courseTitleLi{
+    margin: 0 20px;
+}
+
+.coursesPerType{
+    padding: 0 10px;
+}
+
+.triesterMod{
+    margin: -30px 0 0 20px;
+}
+
+.triesterMod button{
+    background-color: rgb(255, 179, 0);
+}
+
+.triesterMod button:hover{
+    background-color: rgb(220, 130, 60);
+}

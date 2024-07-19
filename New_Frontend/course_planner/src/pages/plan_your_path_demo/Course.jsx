@@ -1,6 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import "./Course.css"
+import "./Course.scss"
 
 function Course({ id, name, level, units, grade}) {
   const [{ isDragging }, drag] = useDrag(() => ({

@@ -1,4 +1,3 @@
-
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react'
@@ -8,8 +7,12 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import './App.css'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
-import Register from './pages/Register/Register';
+import Footer from "./components/Footer.jsx";
+import HomePage from './pages/Homepage/HomePage';
 import Login from './pages/login/Login.jsx';
+import NavigationBar from './components/NavigationBar';
+import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
+import Register from './pages/Register/Register';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
@@ -17,21 +20,28 @@ import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/HomePage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
-import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
-import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
-import AdminTerm from "./pages/AdminTerm/AdminTerm.jsx";
-import AdminPolicy from "./pages/AdminPolicy/AdminPolicy.jsx";
-import EditStudent from "./pages/editstudent/EditStudent.jsx";
-import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
 
+import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
+import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
+import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
+import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
 
 // Admin Pages
+import AdminAboutUs from "./pages/Admin_Pages/AdminAboutUs/AdminAboutUs.jsx";
+import AdminTerm from "./pages/Admin_Pages/AdminTerm/AdminTerm.jsx";
+import AdminPolicy from "./pages/Admin_Pages/AdminPolicy/AdminPolicy.jsx";
+import EditStudent from "./pages/Admin_Pages/editstudent/EditStudent.jsx";
 import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
 import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram';
 import Footer from './components/Footer/Footer.jsx'
 
 
 import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
+import AdSideNav from "./components/sideNav/AdSideNav.jsx";
+import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
+
+
+
 
 // Login
 
@@ -44,46 +54,65 @@ function App() {
 
   return (
     <>
-      {/* <DndProvider backend={HTML5Backend}>
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <EditCourse/> */}
+      {/* <EditStudent/> */}
+      <EditProgram/>
+      {/* <HomePage/>
+      <TrackProgress/>
+      <EditStudentHomePage/>
+      <EditNavBar/> */}
+    
+      <DndProvider backend={HTML5Backend}>
         <div className="App">
           <DragDrop />
         </div>
-      </DndProvider>  */}
-      {/* <NavigationBar />
-       <NavigationBar />
+      </DndProvider>
+      <NavigationBar />
       <HomePage/>
       <TrackProgress/>
 
       <AboutUs />
       <Contact />
-      <Register/>
-      <Login/>
+
       <ResetPassword/>
       <TermsAndConditions/>
       <PrivacyPolicy/>
-   
-      <NavigationBar />
-      <HomePage/>
+      <Footer/>
       {/* <TrackProgress/> */}
 
       {/* <AboutUs /> */}
       {/* <Contact /> */}
       {/* <Register/> */}
-      <Login/>
+      {/* <Login/> */}
+      {/* <EditNavBar/> */}
       {/* <ResetPassword/>  */}
       {/* <ChangePassword/> */}
-      {/* <TermsAndConditions/> */}
       {/* <PrivacyPolicy/> */}
       {/* <EditStudent/> */}
       {/* <EditStudentHomePage /> */}
       {/* <EditProgram /> */}
       {/* <Footer/>  */}
-      {/* <AdminPolicy/> */}
-      <ImageUpload/>
-  
-      
-      <Footer/>
+
+      {/* <AdminPolicy/>
+      <AdminAboutUs/>
+      <AdminTerm/> */}
+      {/* <ImageUpload/> */}
+     {/* <EditLoginPage/> */}
+     {/* <EditRegisterPage/> */}
+   
+  <AdminNav/>
+
+
+
+
+
     </>
+
+
+
+
   );
 }
 

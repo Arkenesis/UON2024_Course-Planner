@@ -1,34 +1,44 @@
-import React, { useState, useRef } from 'react';
-import './EditNavBar.css';
+import React, { useState, useRef, useEffect } from 'react';
+import './EditNavBar.scss';
 import { SketchPicker } from 'react-color';
 import uonLogo from '../../../assets/uonLogo.png';
-import eyeIcon from '../../../assets/eyeIcon.png'; // Visible eye icon
+import eyeIcon from '../../../assets/editIcon.png'; // Visible eye icon
 import eyeIconCrossed from '../../../assets/eyeIconCrossed.png'; // Crossed-out eye icon
-import editIcon from '../../../assets/editIcon.png'; // Edit icon
+import ImageUpload from '../../image_upload/ImageUpload';
+import axios from 'axios';
 
 function EditNavBar() {
-  const [logo, setLogo] = useState(uonLogo);
-  const [showHome, setShowHome] = useState(true);
-  const [showContact, setShowContact] = useState(true);
+  const [err, setErr] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showAbout, setShowAbout] = useState(true);
-  const [backgroundColor, setBackgroundColor] = useState('#FFFFFF');
-  const [isHomeVisible, setIsHomeVisible] = useState(true);
-  const [isContactVisible, setIsContactVisible] = useState(true);
-  const [isAboutVisible, setIsAboutVisible] = useState(true);
   const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
-
+  const [isImagePreviewVisible, setIsImagePreviewVisible] = useState(false);
+  
   const [navTitles, setNavTitles] = useState({
-    home: 'Home',
-    contact: 'Contact',
-    about: 'About',
-  });
+    backgroundColor: '#FFFFFF',
+    logo: '',
+    items: []
+  }); 
+  const setLogo = (input) => {
+    let temp = { ...navTitles };
+    temp.logo = input;
+    setNavTitles(temp);
+    setIsImagePreviewVisible(false);
+  }
 
-  const [editingTitle, setEditingTitle] = useState({
-    home: false,
-    contact: false,
-    about: false,
-  });
+  useEffect(() => {
+    getData();
+  },[])
+
+  const getData = async () => {
+    try{
+      const { data } = await axios.get("http://localhost:8080/pages/navigation");
+      const { backgroundColor, logo, items } = data.message;
+      setNavTitles({backgroundColor, logo, items});
+    }
+    catch(error){
+      setErr(error.response);
+    }
+  }
 
   const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -38,6 +48,10 @@ function EditNavBar() {
   const colorOptions = ['#FE4A49', '#FF7200', '#01847F', '#44A1A0', '#07393C', '#FDF498', '#854442'];
   
   // Button handlers
+  const handleImagePreviewClick = () => {
+    setIsImagePreviewVisible(!isImagePreviewVisible);
+  }
+
   const handleCancelClick = () => {
     setIsCancelPopupVisible(true);
   };
@@ -55,168 +69,76 @@ function EditNavBar() {
     alert('Previewing changes.');
   };
 
-  const handleSaveClick = () => {
-    setShowSuccessMessage(true);
-    setTimeout(() => setShowSuccessMessage(false), 3000);
-  };
-
-  const handleLogoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setLogo(reader.result);
-      };
-      reader.readAsDataURL(file);
+  const handleSaveClick = async () => {
+    try{
+        const { data } = await axios.post("http://localhost:8080/pages/navigation", {content: navTitles});
+        setShowSuccessMessage(true);
+        setTimeout(() => setShowSuccessMessage(false), 3000);
+    }
+    catch(error){
+        setErr(error.response?.data.error);
+        setTimeout(() => setErr(undefined), 3000);
     }
   };
 
-  const handleLogoDelete = () => {
-    setLogo('');
-  };
-
   const handleColorChange = (color) => {
-    setBackgroundColor(color.hex);
+    navTitles.backgroundColor(color.hex);
   };
 
-  const toggleHomeVisibility = () => {
-    setIsHomeVisible(!isHomeVisible);
+  // Set title to the changed value, as it is array, so done via index
+  const handleTitleChange = (e, idx) => {
+    let temp = {...navTitles};
+    temp.items[idx].title = e.target.value;
+    setNavTitles(temp);
   };
-
-  const toggleContactVisibility = () => {
-    setIsContactVisible(!isContactVisible);
-  };
-
-  const toggleAboutVisibility = () => {
-    setIsAboutVisible(!isAboutVisible);
-  };
-
-  const handleEditTitle = (section) => {
-    setEditingTitle({
-      ...editingTitle,
-      [section]: true,
-    });
-  };
-
-  const handleTitleChange = (e, section) => {
-    setNavTitles({
-      ...navTitles,
-      [section]: e.target.value,
-    });
-  };
-
-  const handleTitleBlur = (section) => {
-    setEditingTitle({
-      ...editingTitle,
-      [section]: false,
-    });
-  };
+  // Set title to the changed value, as it is array, so done via index
+  const handleVisibility = (idx) => {
+    let temp = {...navTitles};
+    temp.items[idx].visibility = !temp.items[idx].visibility;
+    setNavTitles(temp);
+  }
 
   return (
-    <div className="edit-navigation" style={{ backgroundColor }}>
+    
+    <div className="edit-navigation" style={{ backgroundColor: navTitles.backgroundColor }}>
+      {isImagePreviewVisible && (
+        <ImageUpload setImageUrl={setLogo} className="navbar-image-upload"/>
+      )}
       <h1 className="title">Edit Navigation</h1>
       <div className="boxes"></div>
       <div className="navigation-items">
-        <div className="box">
-          {editingTitle.home ? (
-            <input
-              type="text"
-              value={navTitles.home}
-              onChange={(e) => handleTitleChange(e, 'home')}
-              onBlur={() => handleTitleBlur('home')}
-              autoFocus
-            />
-          ) : (
-            <span className="box-title" onClick={() => handleEditTitle('home')}>
-              {navTitles.home}
-            </span>
-          )}
-          <img
-            src={isHomeVisible ? eyeIcon : eyeIconCrossed}
-            alt="Toggle visibility"
-            className="eye-icon"
-            onClick={toggleHomeVisibility}
-          />
-          <img
-            src={editIcon}
-            alt="Edit title"
-            className="edit-icon"
-            onClick={() => handleEditTitle('home')}
-          />
-        </div>
-        <div className="box">
-          {editingTitle.contact ? (
-            <input
-              type="text"
-              value={navTitles.contact}
-              onChange={(e) => handleTitleChange(e, 'contact')}
-              onBlur={() => handleTitleBlur('contact')}
-              autoFocus
-            />
-          ) : (
-            <span className="box-title" onClick={() => handleEditTitle('contact')}>
-              {navTitles.contact}
-            </span>
-          )}
-          <img
-            src={isContactVisible ? eyeIcon : eyeIconCrossed}
-            alt="Toggle visibility"
-            className="eye-icon"
-            onClick={toggleContactVisibility}
-          />
-          <img
-            src={editIcon}
-            alt="Edit title"
-            className="edit-icon"
-            onClick={() => handleEditTitle('contact')}
-          />
-        </div>
-        <div className="box">
-          {editingTitle.about ? (
-            <input
-              type="text"
-              value={navTitles.about}
-              onChange={(e) => handleTitleChange(e, 'about')}
-              onBlur={() => handleTitleBlur('about')}
-              autoFocus
-            />
-          ) : (
-            <span className="box-title" onClick={() => handleEditTitle('about')}>
-              {navTitles.about}
-            </span>
-          )}
-          <img
-            src={isAboutVisible ? eyeIcon : eyeIconCrossed}
-            alt="Toggle visibility"
-            className="eye-icon"
-            onClick={toggleAboutVisibility}
-          />
-          <img
-            src={editIcon}
-            alt="Edit title"
-            className="edit-icon"
-            onClick={() => handleEditTitle('about')}
-          />
-        </div>
+        {navTitles.items.map( (i, idx) => (
+          <div className="box" key={idx}>
+            <input type="text" value={i.title} onChange={(e) => handleTitleChange(e, idx)} autoFocus />
+            <img src={i.visibility ? eyeIcon : eyeIconCrossed} alt="Toggle visibility" className="eye-icon" onClick={(e) => handleVisibility(idx)} />
+            <img src={editIcon} alt="Edit title" className="edit-icon" onClick={() => handleEditTitle('home')} />
+          </div>
+        ))}
       </div>
 
       <h2 className="section-title">Logo</h2>
       <div className="logo-section">
-        <div className="logo-image">
-          <img src={logo} alt="Logo" />
-        </div>
+        {navTitles.logo 
+          ?
+            <div className="logo-image">
+              <img src={navTitles.logo} className='img' alt="Logo" />
+            </div>
+          :
+            <div className='logoBox'>Add Image</div>
+        }
+
         <div className="logo-buttons">
-          <input
+          {/* <input
             type="file"
             ref={fileInputRef}
             style={{ display: 'none' }}
             accept="image/*"
             onChange={handleLogoChange}
-          />
-          <button className="change-logo" onClick={() => fileInputRef.current.click()}>
+          /> */}
+          <button className="change-logo" onClick={handleImagePreviewClick}>
             Change Logo
           </button>
-          <button className="delete-logo" onClick={handleLogoDelete}>Delete Logo</button>
+          <button className="delete-logo" onClick={() => setLogo('')}>Delete Logo</button>
         </div>
       </div>
 
@@ -228,7 +150,7 @@ function EditNavBar() {
               key={color}
               className="color-box"
               style={{ backgroundColor: color }}
-              onClick={() => setBackgroundColor(color)}
+              onClick={() => setNavTitles((prev) => ({ ...prev, backgroundColor: color}))}
             />
           ))}
         </div>
@@ -238,7 +160,7 @@ function EditNavBar() {
         {showColorPicker && (
           <div className="color-picker-popover">
             <div className="color-picker-cover" onClick={() => setShowColorPicker(false)} />
-            <SketchPicker color={backgroundColor} onChangeComplete={handleColorChange} />
+            <SketchPicker color={navTitles.backgroundColor} onChangeComplete={handleColorChange} />
           </div>
         )}
       </div>
@@ -250,6 +172,8 @@ function EditNavBar() {
           <button className="save-button" onClick={handleSaveClick}>Save</button>
         </div>
       </div>
+
+      {err && ( <p> {err} </p> )}
 
       {showSuccessMessage && (
         <div className="success-message">

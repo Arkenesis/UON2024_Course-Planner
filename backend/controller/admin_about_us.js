@@ -14,10 +14,8 @@ export const getAboutUs = async (req, res) => {
   };
 
 export const setAboutUs = async (req, res) => {
-    const { user } = req;
     const { content } = req.body;
     try{
-
         const page_ref = db.collection('CoursePlannerPages').doc('about-us');
         await page_ref.set({ "message": content });
         return res.json({ message: "The information was updated successfully!" });
