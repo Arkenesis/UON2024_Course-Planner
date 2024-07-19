@@ -9,7 +9,7 @@ import './App.css'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Footer from "./components/Footer.jsx";
-import HomePage from './pages/HomePage/HomePage';
+import HomePage from './pages/Homepage/HomePage';
 import Login from './pages/login/Login.jsx';
 import NavigationBar from './components/NavigationBar';
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
@@ -95,8 +95,8 @@ function App() {
       <AdminAboutUs/>
       <AdminTerm/> */}
       {/* <ImageUpload/> */}
-     <EditLoginPage/>
-     <EditRegisterPage/>
+     {/* <EditLoginPage/> */}
+     {/* <EditRegisterPage/> */}
    
   <AdminNav/>
 
