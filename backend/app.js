@@ -13,6 +13,7 @@ import { getFiles, uploadFiles } from './controller/image_upload.js';
 import { deleteCourse, getCourses, setCourse } from './controller/admin_courses.js';
 import { getUsers, removeUser, setUser } from './controller/admin_users.js';
 import { createProgram, deleteProgram, getProgram, getPrograms, initPrograms, setProgram } from './controller/admin_programs.js';
+import { setProfile } from './controller/user_profile.js';
 
 // Initialize variables
 // Load .env config
@@ -76,7 +77,8 @@ app.post("/pages/create-program", createProgram);
 app.post("/pages/delete-program", deleteProgram);
 app.get("/pages/programs", getPrograms);
 app.post("/pages/programs", setProgram);
-
+// Profile
+app.post("/pages/profile", hasToken, setProfile);
 // app.get("/pages/homepage", (req, res) => {
 //   console.log(req);
 //   console.log(res);

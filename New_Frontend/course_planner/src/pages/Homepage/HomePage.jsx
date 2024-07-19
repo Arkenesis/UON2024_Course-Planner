@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import courseCompleted from '../../assets/courseCompleted.png';
 import myInfo from '../../assets/myInfo.png';
 
 import './HomePage.css';
+import NavigationBar from '../../components/NavigationBar';
+import { UserContext } from '../login/LoginContext';
 
 const HomePage = () => {
     const currentDate = new Date().toLocaleDateString('en-GB', {
@@ -19,6 +21,8 @@ const HomePage = () => {
     // To put a comma in the date:
     const formattedDate = currentDate.replace(/ (\d{2})/, ' $1');
   
+    const { user } = useContext(UserContext);
+
     return (
       <>
       <div className="course-activity">
@@ -33,8 +37,8 @@ const HomePage = () => {
               <div className="right">
                 <h2>Course Completed</h2>
                 <p style={{marginBottom:"-10px"}}><b>Enrolled</b></p>
-                <p style={{marginBottom:"-10px",fontSize:"smaller"}}>Bachelor of Information Technology </p>
-                <p style={{fontSize:"smaller"}}>(2023-2024)</p>
+                <p style={{marginBottom:"-10px",fontSize:"smaller"}}>{user?.firestore_data.program}</p>
+                <p style={{fontSize:"smaller"}}>{user?.firestore_data.start_date ? `${user?.firestore_data.start_date} till ${user?.firestore_data.end_date}` : ``}</p>
               </div>
             </div>
             
@@ -44,7 +48,7 @@ const HomePage = () => {
               </div>
               <p style={{marginLeft:"10px", fontSize:"smaller"}}>12/16</p>
             </div>
-            <button class="DetailButton">Detail</button>
+            <button className="DetailButton">Detail</button>
           </div>
         </div>
   
@@ -57,13 +61,13 @@ const HomePage = () => {
             </div>
             <div className="right">
               <h2>My Info</h2>
-              <p style={{marginBottom:"-10px"}}><b>Miley Cyrus</b></p>
-              <p style={{fontSize:"smaller"}}><b>c3438043@uon.edu.au</b></p>
-              <p style={{marginBottom:"-5px",fontSize:"smaller"}}>Campus: Singapore</p>
-              <p style={{fontSize:"smaller"}}>Level of Study: Undergraduate</p>
+              <p style={{marginBottom:"-10px"}}><b>{user?.firestore_data.username}</b></p>
+              <p style={{fontSize:"smaller"}}><b>{user?.firestore_data.email}</b></p>
+              <p style={{marginBottom:"-5px",fontSize:"smaller"}}>Campus: {user?.firestore_data.campus}</p>
+              <p style={{fontSize:"smaller"}}>Level of Study: {user?.firestore_data.level}</p>
             </div>
           </div>
-          <button class="DetailButton">Detail</button>
+          <button className="DetailButton">Detail</button>
         </div>
       
   

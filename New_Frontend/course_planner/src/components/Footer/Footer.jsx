@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css'
+import axios from 'axios';
 const Footer = () => {
+
+    const [value, setValue] = useState('');
+
+    useEffect(() => {
+      getData()
+    },[])
+  
+    const getData = async () => {
+      try{
+        const { data } = await axios.get("http://localhost:8080/pages/footer");
+        setValue(data.message);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+
     return (
         <footer style={{ backgroundColor: '#F5F5F5', padding: '10px', color: '#002481'}}>
             <div className='container' style={{display: 'flex' }}>

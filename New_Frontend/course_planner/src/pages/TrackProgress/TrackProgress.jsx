@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import NavigationBar from '../../components/NavigationBar';
-import './TrackProgress.css';
+import './TrackProgress.scss';
+import { UserContext } from '../login/LoginContext';
 
 const TrackProgress = () => {
+
+
+
+    const { user } = useContext(UserContext);
+
+    const getAbbrName = (name) => {
+      const raw = name.split(' ');
+      if(raw.length >= 2){
+        const first_letter  = raw[0].charAt(0).toUpperCase(); 
+        const second_letter = raw[1].charAt(0).toUpperCase();
+        return first_letter + second_letter;
+      }
+      else{
+        return name.charAt(0).toUpperCase();
+      }
+    }
+
     return (
       <div className="main-content">
-        <NavigationBar />
-          <h1 style={{opacity:"0.47"}}>Track Progress</h1>
-          <div className="user-info">
-          <div className="avatar">KT</div>
-          <div className="details">
-              <h2 style={{marginBottom:"5px"}}>Kennedy Tan</h2>
-              <p>c3426446 <a href="mailto:kennedy.tan@uon.edu.au">kennedy.tan@uon.edu.au</a> (Mr.) 3426446</p>
-              <p>Undergraduate - School of Engineering Science and Environment</p>
-              <p><span role="img" aria-label="location">📍</span> Singapore PSB Start Year: Trimester 1 (Singapore) 2023</p>
-          </div>
+          <div>
+            <h1 style={{opacity:"0.47"}}>Track Progress</h1>
+            <div className="user-info">
+              <div className="avatar">{user && getAbbrName(user?.firestore_data.username)}</div>
+              <div className="details">
+                <h2 style={{marginBottom:"5px"}}>{user?.firestore_data.gender === 'male' ? '(Mr.)' : '(Mrs.)'} {user?.firestore_data.username}</h2>
+                <p>{user?.firestore_data.studentid} <a href="mailto:kennedy.tan@uon.edu.au">{user?.firestore_data.email}</a></p>
+                <p>{user?.firestore_data.level ? `${user?.firestore_data.level} -` : ''} {user?.firestore_data.program}</p>
+                <p><span role="img" aria-label="location">📍</span> Singapore PSB Start Year: Trimester 1 {user?.firestore_data.campus ? `(${user?.firestore_data.campus})` : ''} {user?.firestore_data.date}</p>
+              </div>
+            </div>
           </div>
 
           <h3>Courses</h3>
@@ -37,11 +56,11 @@ const TrackProgress = () => {
           <p className="trimesterInfo">(Current) Trimester 1 Singapore 2024</p>
           
           <div className="courseStatus">
-              <p style={{color:"#888080"}}>30 Units</p>
-              <div className="courseItem">COMP3851A</div>
-              <div className="courseItem">SENG2260</div>
-              <div className="courseItem">INFT2060</div>
-              <div className="courseItem">INFT2051</div>
+            <p style={{color:"#888080"}}>30 Units</p>
+            <div className="courseItem">COMP3851A</div>
+            <div className="courseItem">SENG2260</div>
+            <div className="courseItem">INFT2060</div>
+            <div className="courseItem">INFT2051</div>
           </div>
           </div>
     

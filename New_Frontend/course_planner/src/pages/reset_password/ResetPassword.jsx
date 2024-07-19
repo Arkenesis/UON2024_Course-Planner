@@ -12,6 +12,7 @@ import "./reset_password.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios';
+import NavigationBar from '../../components/NavigationBar';
 
 const ResetPassword = () => {
     const [inputs, setInputs] = useState({
@@ -31,8 +32,10 @@ const ResetPassword = () => {
         try{
             const { data } = await axios.post("http://localhost:8080/users/reset-password", inputs);
             setMsg(data.message);
-        } catch (err){
-            setErr(err.response?.data || "An error occurred");
+            alert('Done');
+            navigate('/login');
+        } catch (ex){
+            setErr(ex.response?.data || "An error occurred");
         }
     };
 
@@ -45,7 +48,7 @@ const ResetPassword = () => {
                     <h1 className="title-2">UON Course Planner</h1>
                     <form onSubmit={handleResetPassword}>
                         <div className="back">
-                            <img src={backLogo}/>
+                            <Link to="/login"><img src={backLogo} /></Link>
                             <p className="subtitle-1">Reset Password</p>
                         </div>
                         <p className="subtitle-2">Enter your email to reset password</p>

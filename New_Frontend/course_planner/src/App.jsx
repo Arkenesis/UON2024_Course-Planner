@@ -1,116 +1,116 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, Navigate, Outlet, useLocation } from "react-router-dom";
+import { useContext, useState } from 'react'
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import './App.css'
+// Layout
+import NavigationBar from './components/NavigationBar';
+// User Page
+import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Footer from "./components/Footer/Footer.jsx";
 import HomePage from './pages/Homepage/HomePage';
 import Login from './pages/login/Login.jsx';
-import NavigationBar from './components/NavigationBar';
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Register from './pages/Register/Register';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
-
 import TrackProgress from './pages/TrackProgress/TrackProgress';
-
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
-import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
-import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
-import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
 
 // Admin Pages
-import AdminAboutUs from "./pages/Admin_Pages/AdminAboutUs/AdminAboutUs.jsx";
-import AdminTerm from "./pages/Admin_Pages/AdminTerm/AdminTerm.jsx";
-import AdminPolicy from "./pages/Admin_Pages/AdminPolicy/AdminPolicy.jsx";
-import EditStudent from "./pages/Admin_Pages/editstudent/EditStudent.jsx";
-import EditStudentHomePage from './pages/Admin_Pages/EditStudentHomePage/EditStudentHomePage';
-import EditProgram from './pages/Admin_Pages/EditProgram/EditProgram.jsx';
-import EditNavBar from './pages/Admin_Pages/EditNavBar/EditNavBar';
-import EditCourse from './pages/Admin_Pages/EditCourse/EditCourse.jsx';
-
-import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
-import AdSideNav from "./components/sideNav/AdSideNav.jsx";
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 
 import PYP from './pages/PYP/PYP.jsx'
-
-
-// Login
+import { UserContext } from "./pages/login/LoginContext.jsx";
 
 function App() {
-  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // const toggleSidebar = () => {
-  //   setSidebarOpen(!sidebarOpen);
-  // };
+  const { user } = useContext(UserContext);
+
+  const Layout = ()=>{
+    const location = useLocation();
+    // Check if the current route is '/admin'
+    const hideNavbar = location.pathname.startsWith('/admin');
+    return(
+      <>
+        {!hideNavbar && <NavigationBar />}
+        <Outlet />
+        {!hideNavbar && <Footer />}
+      </>
+    );
+  };
+
+  const ProtectedRoute = ({children}) => {
+    if(!user){
+      return <Navigate to ="login"/>
+    }
+    return children;
+  }
+
+  const AdminRoute = ({children}) => {
+    if(!user){
+      return <Navigate to ="/login"/>
+    }
+    const roles = user?.firestore_data.roles;
+    if(roles === 'Admin'){
+      return children;
+    }
+    return <Navigate to ="/login"/>
+  }
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />, // Use Layout as the common wrapper
+      children: [
+        { path: 'about-us', element: <AboutUs /> },
+        { path: 'contact', element: <Contact /> },
+        { path: 'login', element: <Login /> },
+        { path: 'register', element: <Register /> },
+        { path: 'reset-password', element: <ResetPassword /> },
+        { path: 'privacy-policy', element: <PrivacyPolicy /> },
+        { path: 'terms-and-conditions', element: <TermsAndConditions /> },
+        { path: 'change-password', element: <ChangePassword /> },
+        {
+          path: '',
+          element: (
+            <ProtectedRoute>
+              <Outlet />
+            </ProtectedRoute>
+          ),
+          children: [
+            { path: 'home', element: <HomePage /> },
+            { path: 'track-progress', element: <TrackProgress /> },
+            {
+              path: 'plan-your-path',
+              element: (
+                <DndProvider backend={HTML5Backend}>
+                  <DragDrop />
+                </DndProvider>
+              ),
+            },
+          ],
+        },
+        {
+          path: 'admin',
+          element: (
+            <AdminRoute>
+              <AdminNav/>
+            </AdminRoute>
+          )
+        },
+      ],
+    },
+  ]);
 
   return (
     <>
-      <PYP/>
-      {/* <Register/> */}
-      {/* <Login/> */}
-      {/* <EditCourse/> */}
-      {/* <EditStudent/> */}
-      {/* <EditProgram/> */}
-      {/* <HomePage/>
-      <TrackProgress/>
-      <EditStudentHomePage/>
-      <EditNavBar/> */}
-    
-      {/* <DndProvider backend={HTML5Backend}>
-        <div className="App">
-          <DragDrop />
-        </div>
-      </DndProvider>
-      <NavigationBar />
-      <HomePage/>
-      <TrackProgress/>
-
-      <AboutUs />
-      <Contact />
-
-      <ResetPassword/>
-      <TermsAndConditions/>
-      <PrivacyPolicy/>
-      <Footer/> */}
-      {/* <TrackProgress/> */}
-
-      {/* <AboutUs /> */}
-      {/* <Contact /> */}
-      {/* <Register/> */}
-      {/* <Login/> */}
-      {/* <EditNavBar/> */}
-      {/* <ResetPassword/>  */}
-      {/* <ChangePassword/> */}
-      {/* <PrivacyPolicy/> */}
-      {/* <EditStudent/> */}
-      {/* <EditStudentHomePage /> */}
-      {/* <EditProgram /> */}
-      {/* <Footer/>  */}
-
-      {/* <AdminPolicy/>
-      <AdminAboutUs/>
-      <AdminTerm/> */}
-      {/* <ImageUpload/> */}
-     {/* <EditLoginPage/> */}
-     {/* <EditRegisterPage/> */}
-   
-      {/* <AdminNav/> */}
-
-
-
-
-
+      <RouterProvider router={router} />
     </>
-
-
-
-
   );
 }
 

@@ -3,13 +3,33 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./privacyPolicy.scss"
+import axios from 'axios';
+import ReactQuill from 'react-quill';
 
 const PrivacyPolicy = () => {
+
+    const [value, setValue] = useState('');
+
+    useEffect(() => {
+      getData()
+    },[])
+  
+    const getData = async () => {
+      try{
+        const { data } = await axios.get("http://localhost:8080/pages/policy");
+        setValue(data.message);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+
     return (
         <div className="privacy">
-            <h2>Privacy Policy for Newcastle Planner</h2>
+            <ReactQuill value={value} readOnly={true} theme={"bubble"}/>
+            {/* <h2>Privacy Policy for Newcastle Planner</h2>
             <p>
                 Privacy Policy <br/><br/>
                 Last updated: February 16, 2024<br/><br/>
@@ -291,7 +311,7 @@ const PrivacyPolicy = () => {
             <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
 
             <h2>Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, You can contact us:<br/><br/><strong>Email: askuon@newcastle.edu.au</strong></p>
+            <p>If you have any questions about this Privacy Policy, You can contact us:<br/><br/><strong>Email: askuon@newcastle.edu.au</strong></p> */}
         </div>
     );
 };

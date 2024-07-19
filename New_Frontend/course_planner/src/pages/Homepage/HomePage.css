@@ -1,8 +1,9 @@
 /* src/components/CourseActivity.css */
 .course-activity {
-    padding: 0px 0px 10px 20px;
-    margin: 0px 10px 20px 30px;
-    display: inline-block;
+    margin-top: 7em;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 
   }
   

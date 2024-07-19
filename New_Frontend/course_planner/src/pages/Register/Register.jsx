@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import axios from 'axios';
 import { UserContext } from "../login/LoginContext";
+import NavigationBar from "../../components/NavigationBar";
 const Register =() =>{
     const [inputs, setInputs] = useState({
         username:"",
@@ -45,7 +46,7 @@ const Register =() =>{
                     <h1 className="title-2">UON Course Planner</h1>
                     <form onSubmit={handleRegister}>
                         <p className="subtitle-1">Sign Up Account</p>
-                        <p className="subtitle-2">Already have account? <Link to='../login'> Sign in </Link></p>
+                        <p className="subtitle-2">Already have account? <Link to='/login'> Sign in </Link></p>
 
                         {err && <p>{err}</p>}
                         <div className="input-field-main">
