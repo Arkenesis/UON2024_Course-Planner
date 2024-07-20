@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";
 import "./CourseDropped.scss"
-
+import searchBtn from '../../assets/searchBtn.png'
 import "./Trimester.scss"
 import CourseDropped from "./CourseDropped";
 
@@ -74,7 +74,13 @@ const filterCourses = courses.filter(course =>
       alignItems: 'center',
       justifyContent: 'center'}}>
           
-      <button className="addCoursebtn" onClick={() => setShowDropDown(!showDropdown)}>Add Course</button>
+      <button className="addCoursebtn" onClick={() => setShowDropDown(!showDropdown)}>
+        
+      <div class="sign"><img className="searchBtn" src={searchBtn} alt="" /></div>
+      
+        <div className="text"> Add Course</div>
+        
+        </button>
       {showDropdown && (
         <div className="searchBox" style={{position: 'absolute', height: '200px', overflowY: 'scroll', top: '140px', zIndex: 1, background: '#FED766', margin:'0 0 0 0', color: 'black'}}>
           {/* This input takes the courses */}

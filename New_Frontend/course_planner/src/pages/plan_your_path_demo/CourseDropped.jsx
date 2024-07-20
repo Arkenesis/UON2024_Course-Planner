@@ -16,8 +16,8 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
 
 
   return (
-    <div ref={drag} id="courseDropped" className="courseDropped"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "14em",
-      width: "240px", margin: "10px", backgroundColor: "#FFEFD7"}}>
+    <div ref={drag} id="courseDropped" className="courseDropped"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "16em",
+      width: "260px", margin: "10px", backgroundColor: "#FFEFD7"}}>
 
       <div className="courseDroppedHeader">
         <div className="heading"> <h3>Core</h3></div> 

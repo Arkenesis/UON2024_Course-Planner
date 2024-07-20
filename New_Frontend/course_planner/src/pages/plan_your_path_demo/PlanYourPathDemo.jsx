@@ -173,6 +173,9 @@ function DragDrop() {
               />
             )
           )}
+        
+       
+         
         </div>
         
         <div>
@@ -229,8 +232,14 @@ function DragDrop() {
         
       </div>
       <div className="triesterMod">
-          <button onClick={() => addTrimester()}>Add more trimester</button>
-          <button onClick={() => removeTrimester()}>Delete trimester</button>
+      <div>
+      <button onClick={() => addTrimester()}>Add more trimester</button>
+      </div>
+      <div>
+
+      <button onClick={() => removeTrimester()}>Delete trimester</button>
+      </div>
+          
             </div> 
     </div>
   );
