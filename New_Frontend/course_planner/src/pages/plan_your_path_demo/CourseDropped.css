@@ -2,6 +2,7 @@
     cursor: grab;
     display: flex;
     width: 200px;
+    flex: 1;
 }
 
 .course:active{
