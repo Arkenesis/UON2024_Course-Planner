@@ -70,38 +70,39 @@
 
 /*This is how I desinged the scrollbar*/
 .trimestersDetails::-webkit-scrollbar{
-    width: 15px;
+    width: 10px;
 }
 
 .trimestersDetails::-webkit-scrollbar-track{
-    background: #ffc37f;
+    background: #f1f0ee;
 }
 
 
 .trimestersDetails::-webkit-scrollbar-thumb{
-    background: linear-gradient(#e98f63, #da601e 70%);
+    background: linear-gradient(#a8a7a6, #cfcdcc 70%);
     border-radius: 10px;
     z-index: -1;
 }
 
 
 .trimesterLibrary::-webkit-scrollbar{
-    width: 15px;
+    width: 10px;
 }
 
 .trimesterLibrary::-webkit-scrollbar-track{
-    background: #6dbcfd;
+    background: #f1f0ee;
 }
 
 
 .trimesterLibrary::-webkit-scrollbar-thumb{
-    background: linear-gradient(#6b75f6, #2273ff 20%);
+    background: linear-gradient(#a8a7a6, #cfcdcc 70%);
     border-radius: 10px;
 }
 
 
 .hamburgerMenu{
     height: 10px;
+    margin-top: 17px;
 }
 
 .shareBlk{

@@ -12,7 +12,7 @@ const Contact = () => {
           <span>askuon@newcastle.edu.au</span>
         </div>
         <div className={contactStyles.contact_item}>
-          <i id={contactStyles.contact_item_i}  className="fas fa-phone" ></i>
+          <i id={contactStyles.contact_item_i} className="fas fa-phone" ></i>
           <span>+61 2 4921 5000</span>
         </div>
         <div className={contactStyles.contact_item}>
@@ -34,7 +34,7 @@ const Contact = () => {
             <label htmlFor="message">Message</label>
             <textarea id="message" placeholder="Write your message here"></textarea>
           </div>
-          <button type="submit">Send message</button>
+          <button type="submit" className={contactStyles.contact_button}>Send message</button>
         </form>
       </div>
     </div>

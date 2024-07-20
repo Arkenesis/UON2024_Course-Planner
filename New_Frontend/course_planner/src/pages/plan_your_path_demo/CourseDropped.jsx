@@ -22,7 +22,7 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
       <div className="courseDroppedHeader">
         <div className="heading"> <h3>Core</h3></div> 
         <div  id="hamburgerImg" onClick={()=> menuButton(parent_index, index)} className="hamburgerImg">
-          <img style={{height: "50px"}} className="hamburgerMenu" src={hamburgerMenu} alt="hamburgerImage" />
+          <img style={{height: "28px"}} className="hamburgerMenu" src={hamburgerMenu} alt="hamburgerImage" />
           <div id="courseDroppedOptions" className="courseDroppedOptions" >
             <ul className="subBox">
               <li>
