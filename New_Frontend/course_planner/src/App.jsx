@@ -104,7 +104,7 @@ function App() {
      {/* <EditLoginPage/> */}
      {/* <EditRegisterPage/> */}
     
-    <AdminNav/>
+
 
 
 
