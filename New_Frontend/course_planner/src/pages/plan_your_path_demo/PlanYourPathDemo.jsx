@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import Trimesters from "./Trimesters";
 import Course from "./Course";
 import { DndProvider, useDrop } from "react-dnd";
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import "./PlanYourPathDemo.scss"
 import shareImg from "../../assets/shareImg.png"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// const Courses = [{
-//   "ECON1001": {Level: 1, Units: 10, Name: "Microeconomics for business decision"}, 
-//   "SENG1110": {Level: 1, Units: 10, Name: "Object Oriented Programming"}, 
-//   "COMP3350": {Level: 3, Units: 10, Name: "Advanced Database"}, 
-//   "EBUS3050": {Level: 3, Units: 10, Name: "The Digital Economy"}, 
-//   "SENG1120": {Level: 1, Units: 10, Name: "Data Structure"}, 
-//   "INFT3100": {Level: 3, Units: 10, Name: "Project Management"}, 
-//   "SENG1050": {Level: 1, Units: 10, Name: "Web Technologies"}, 
-//   "SENG2130": {Level: 2, Units: 10, Name: "System Analysis and Design"}, 
-//   "COMP3851A":{Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A"}, 
-//   "INFT2051": {Level: 2, Units: 10, Name: "Mobile Application Programming"}, 
-//   "SENG2260": {Level: 2, Units: 10, Name: "Human-Computer Interaction"}, 
-//   "INFT2060": {Level: 2, Units: 10, Name: "Applied Artificial Intelligence"}
-// }];
+
 
 const Courses = [
   {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", GRADE: "HD", TYPE: "ECON"}, 
@@ -84,6 +73,10 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
+     
+      toast("This is a toast notification !")
+      window.alert( courseId + " added" );
+     
     }
     if(key < 2)
       setKey((k) => k + 1);

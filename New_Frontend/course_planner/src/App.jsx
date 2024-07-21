@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, Navi
 import { useContext, useState } from 'react'
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import './App.css'
 // Layout
