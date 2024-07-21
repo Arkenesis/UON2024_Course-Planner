@@ -74,15 +74,15 @@ function DragDrop() {
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
      
-      toast("This is a toast notification !")
-      window.alert( courseId + " added" );
-     
-    }
+   
     if(key < 2)
       setKey((k) => k + 1);
     else
       setKey((k) => k - 1);
+}
+
   };  
+
 
   const removeCourse = (parent_index, index) => {
     if(parent_index !== undefined && index !== undefined){
