@@ -1,4 +1,4 @@
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useState, Component} from "react";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";

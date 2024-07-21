@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import axios from 'axios';
 import './index.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import App from './App.jsx'
 import AboutUs from './pages/AboutUs/AboutUs';
@@ -14,6 +16,7 @@ import Login from './pages/login/Login.jsx';
 import { UserContextProvider } from './pages/login/LoginContext.jsx';
 import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TrackProgress from './pages/TrackProgress/TrackProgress.jsx';
+
 
 const router = createBrowserRouter([
   {
