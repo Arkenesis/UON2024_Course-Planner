@@ -109,7 +109,7 @@ function App() {
      {/* <EditRegisterPage/> */}
     
 
-
+    <AdminNav/>
 
 
    <EditStudentModal/>

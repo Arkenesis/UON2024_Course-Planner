@@ -101,11 +101,12 @@ function AdminAssets() {
                         {filterCourses.map((image) => (
                             <div
                                 key={image.id}
+                                className='ImageBox'
                                 style={{
                                     margin: '10% 10px',
                                     width: '200px',
                                     cursor: 'pointer',
-                                    width: 'calc(50% - 5px)',
+                                    width: 'calc(50% - 5px)'
                                 }}
                             >
                                 <div className='imgName'>
@@ -124,7 +125,7 @@ function AdminAssets() {
                         key={image.id}
                         src={image.path}
                         alt={image.name}
-                        style={{ width: '140px', height: 'auto', margin: '5px' }}
+                        style={{ width: '140px', height: 'auto', margin: '5px', cursor: 'pointer' }}
                     />
                 ))}
             </div>

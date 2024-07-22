@@ -25,6 +25,8 @@ import databaseIcon from '../../assets/databaseIcon.png'
 import profSettings from '../../assets/profSettings.png'
 import signOut from '../../assets/signOut.png'
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 const Images = [
   {id: 1 ,name: 'Logo', link: 'courseAssign'},
   {id: 2, name: 'Building Background', link: 'pageIcon'},
@@ -108,11 +110,7 @@ export const AdminNav = (page) => {
             
             </div>
 
-            <div className='mainAdminNav' >
-            
-            <img className='leftImg' src={help} alt='help'/>
-            
-            </div>
+           
 
       </div>
       <div className='rightNav'>
