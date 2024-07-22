@@ -86,7 +86,7 @@ const ImageUpload = ({setImageUrl}) => {
     return (
         <div className="image-upload">
             <div className="title">
-                <div> Assest</div>
+                <div className="assetName"> Assest</div>
 
                 {/* <input type='file' id="photo[]" name="photo[]" onChange={handleImageChange} className="hide" multiple="multiple"/> */}
                 <input type="file" multiple accept="image/*" onChange={handleImageChange} name="files[]" id="files"/>
@@ -109,10 +109,10 @@ const ImageUpload = ({setImageUrl}) => {
                         </div>
                     )))
                     : (images && images.filter(image => image.name.includes(search)).map((image, index) => (
-                        <>
+                        <div>
                             <img key={index} src={image.url} alt={`Image ${index}`}/>
-                            <span>{image.name}</span>
-                        </>
+                            <span className="ImageText">{image.name}</span>
+                        </div>
                     )))
                 }
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect, Component, useRef } from "react";
 import Trimesters from "./Trimesters";
 import Course from "./Course";
 import { DndProvider, useDrop } from "react-dnd";
@@ -128,6 +128,8 @@ function DragDrop() {
       term: count,
       course: ["", "", "", ""]
     };
+
+
     window.alert("Trimester " + count);
 
     let updatedTrimester = [...studentTrimester, newTrimester];
@@ -154,6 +156,9 @@ function DragDrop() {
       
     }
   }
+
+
+
 
   return (
 

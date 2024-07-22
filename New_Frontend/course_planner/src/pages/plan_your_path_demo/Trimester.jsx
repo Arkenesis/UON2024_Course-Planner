@@ -1,4 +1,4 @@
-import React, {forwardRef, useState, Component} from "react";
+import React, {forwardRef, useState, Component, useEffect} from "react";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Course from "./Course";
@@ -60,6 +60,12 @@ const filterCourses = courses.filter(course =>
 
 
 );
+
+
+
+
+
+
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
