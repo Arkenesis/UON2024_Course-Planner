@@ -9,12 +9,14 @@ import "./Trimesters.css"
          
 const Trimesters = ({ id, name, level, units, grade, year, term, course, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton}) => {
 
+  const deleteTrimester = () => {
+    
+  }
 
 
-  
   return (
     <div className="trimestersBox">
-      <div className="trimesterName">{year} Trimester {term}</div>
+      <div className="trimesterName">{year} Trimester {term} <span><button className="deleteTrimester" onClick={() => deleteTrimester(trimesterIndex)}>-</button></span></div>
      <div className="coursePerTri">
      {course.map((i, index) => 
         <div key={index}  className="trimester">

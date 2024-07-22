@@ -41,25 +41,25 @@ function DragDrop() {
       trimesterId: 1,
       year: 2023,
       term: 1,
-      course: ["", "", "", ""]
+      course: [""]
     },
     {
       trimesterId: 2,
       year: 2023,
       term: 2,
-      course: ["", "", "", ""]
+      course: [""]
     },
     {
       trimesterId: 3,
       year: 2023,
       term: 3,
-      course: ["", "", "", ""]
+      course: [""]
     },
     {
       trimesterId: 4,
       year: 2023,
       term: 4,
-      course: ["", "", "", ""]
+      course: [""]
     },
 
   ]);
@@ -70,23 +70,28 @@ function DragDrop() {
 
   //These are declared to check for the duplicate trimesters
   const currentTrimester = studentTrimester[parent_index];
- 
 
   let duplicateFound = false;
+  const checkEmpty = 0;
 
 //Checks if the row has the duplicate
   for (let j = 0; j < currentTrimester.course.length; j++) {
+
     if (currentTrimester.course[j] && currentTrimester.course[j][0] === courseId) {
       window.alert(courseId + " already exists in trimester " + currentTrimester.trimesterId);
       duplicateFound = true;
       break;
     }
+    if(currentTrimester.course[j] === "" || currentTrimester.course[j] === '' ){
+          checkEmpty + 1;
+    }
   }
 
 
-  if (courseId !== '' && duplicateFound == false) {
+  if (courseId !== '' && duplicateFound == false && currentTrimester.course.length <= 4) {
     let updatedTrimester = [...studentTrimester];
-    updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade, true];
+    
+    updatedTrimester[parent_index].course.unshift([courseId, name, units, level, grade, true]);
     setStudentTrimester(updatedTrimester);
 
   }
@@ -108,7 +113,7 @@ function DragDrop() {
   const removeCourse = (parent_index, index) => {
     if(parent_index !== undefined && index !== undefined){
       let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = "";
+      updatedTrimester[parent_index].course.splice([index], 1);
       setStudentTrimester(updatedTrimester);
       
     }
@@ -149,7 +154,7 @@ function DragDrop() {
     const newTrimester = {
       year: 2023,
       term: count,
-      course: ["", "", "", ""]
+      course: [""]
     };
   
 
