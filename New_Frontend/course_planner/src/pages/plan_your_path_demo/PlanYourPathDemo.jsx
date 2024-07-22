@@ -213,7 +213,7 @@ function DragDrop() {
           {studentTrimester.map((trimesters, index) => (
               <Trimesters 
                 key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
-                courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton}
+                courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton} deleteTrimesterPos={removeTrimester}
               />
             )
           )}

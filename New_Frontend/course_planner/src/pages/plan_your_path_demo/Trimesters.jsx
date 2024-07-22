@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
 import Trimester from "./Trimester";
@@ -7,10 +7,11 @@ import "./Trimesters.css"
 
 
          
-const Trimesters = ({ id, name, level, units, grade, year, term, course, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton}) => {
+const Trimesters = ({ id, name, level, units, grade, year, term, course, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton, deleteTrimesterPos}) => {
 
+   
   const deleteTrimester = () => {
-    
+    deleteTrimesterPos(trimesterIndex); 
   }
 
 
