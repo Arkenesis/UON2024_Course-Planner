@@ -5,7 +5,7 @@ import '@fontsource/roboto/700.css';
 
 import emailLogo from '../../assets/email.svg';
 import passwordLogo from '../../assets/passwordIcon.png';
-import loginPic from '../../assets/login.png';
+import loginPic from '../../assets/login.jpg';
 
 import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
