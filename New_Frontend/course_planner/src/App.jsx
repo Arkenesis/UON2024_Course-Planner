@@ -15,7 +15,7 @@ import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Footer from "./components/Footer/Footer.jsx";
-import HomePage from './pages/Homepage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import Login from './pages/login/Login.jsx';
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Register from './pages/Register/Register';
