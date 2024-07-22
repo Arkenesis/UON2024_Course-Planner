@@ -43,11 +43,12 @@ function App() {
 
   return (
     <>
-      <DndProvider backend={HTML5Backend}>
+      {/* <DndProvider backend={HTML5Backend}>
         <div className="App">
           <DragDrop />
         </div>
-      </DndProvider>
+      </DndProvider> */}
+      
       {/* <NavigationBar />
       <HomePage/>
       <TrackProgress/>
@@ -73,8 +74,11 @@ function App() {
       {/* <TermsAndConditions/> */}
       {/* <PrivacyPolicy/> */}
       {/* <EditStudent/> */}
-      {/* <EditStudentHomePage /> */}
-      {/* <EditProgram /> */}
+
+      <EditStudentHomePage />
+      <EditProgram />
+      <EditNavBar />
+
       {/* <Footer/>  */}
       {/* <AdminPolicy/> */}
       <ImageUpload/>
