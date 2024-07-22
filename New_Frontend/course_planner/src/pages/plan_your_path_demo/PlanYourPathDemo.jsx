@@ -165,27 +165,44 @@ function DragDrop() {
     setStudentTrimester(updatedTrimester);
     triScroll.current.scrollTop = triScroll.current.scrollHeight;
 
+   
+    for(i = 0; i <= studentTrimester.length; i++){
+      updateTerm = studentTrimester[i].term;
+      updateTerm = i+1;
+      setStudentTrimester(updateTerm);
+   }
+
+
   }
 
 
   const [showTrimesterDrop, setShowTrimesterDrop] = useState(false);
 
 
-  function removeTrimester(){
-     
-    const confirmed = window.confirm('Are you sure you want to delete trimester ' +  count + '?');
-
-    let updatedTrimester = [...studentTrimester];
-    if(confirmed && updatedTrimester.length > 4){
-      setCount((prevCount) => prevCount - 1);
+  function removeTrimester(trimesterBox){
+    
+   if(studentTrimester.length > 4){
+    setCount((prevCount) => prevCount - 1);
+   
+    const newTrimesters = studentTrimester.filter((student) => student !== trimesterBox);
+    //  This updates the trimester
+     setStudentTrimester(newTrimesters);
+     window.alert("Deleted done");
+    
+   for(i = 0; i <= studentTrimester.length; i++){
+      updateTerm = studentTrimester[i].term;
+      updateTerm = i+1;
+      setStudentTrimester(updateTerm);
+   }
+   }
+   else{
+    window.alert("You can't delete more courses");
+   }
+ 
+    
   
-      updatedTrimester.pop();
-      setStudentTrimester(updatedTrimester);
-    }
-    else if(updatedTrimester.length < 4){
-    window.alert("You cannot delete more courses");
-      
-    }
+
+ 
   }
 
 
@@ -210,13 +227,22 @@ function DragDrop() {
     
 
         <div className="trimestersDetails" ref={triScroll} >
-          {studentTrimester.map((trimesters, index) => (
-              <Trimesters 
-                key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
-                courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton} deleteTrimesterPos={removeTrimester}
-              />
-            )
+
+          {studentTrimester.map((trimesters, index) => 
+             <div>
+        <span><button className="deleteTrimester" onClick={() => removeTrimester(trimesters)}>-</button></span>
+
+            <Trimesters 
+            key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
+            courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton} deleteTrimesterPos={removeTrimester} />
+
+             </div>
+            
+              
+            
+            
           )}
+
         
        
          
@@ -286,11 +312,10 @@ function DragDrop() {
       </div>
       <div className="triesterMod">
       <div>
-      <button onClick={() => addTrimester()}>Add more trimester</button>
+      <button  onClick={() => addTrimester()}>+ Add more trimester</button>
       </div>
       <div>
 
-      <button onClick={() => removeTrimester()}>Delete trimester</button>
       </div>
           
             </div> 

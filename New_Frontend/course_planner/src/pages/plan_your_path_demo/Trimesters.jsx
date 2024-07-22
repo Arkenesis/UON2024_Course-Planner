@@ -17,7 +17,7 @@ const Trimesters = ({ id, name, level, units, grade, year, term, course, addCour
 
   return (
     <div className="trimestersBox">
-      <div className="trimesterName">{year} Trimester {term} <span><button className="deleteTrimester" onClick={() => deleteTrimester(trimesterIndex)}>-</button></span></div>
+      <div className="trimesterName">{year} Trimester {term} </div>
      <div className="coursePerTri">
      {course.map((i, index) => 
         <div key={index}  className="trimester">
