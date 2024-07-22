@@ -73,8 +73,7 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
-      toast("Hello world");  
-      window.alert("sf");
+    
    
     if(key < 2)
       setKey((k) => k + 1);

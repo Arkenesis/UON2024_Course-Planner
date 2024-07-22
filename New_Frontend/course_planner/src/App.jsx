@@ -11,7 +11,6 @@ import './App.css'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Footer from "./components/Footer/Footer.jsx";
-import HomePage from './pages/HomePage/HomePage';
 import Login from './pages/login/Login.jsx';
 import NavigationBar from './components/NavigationBar';
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
@@ -22,7 +21,7 @@ import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.js
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
-import ImageUpload from "./pages/image_upload/ImageUpload.jsx";
+import image_upload from "./pages/image_upload/image_upload.jsx";
 import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
 import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
 
@@ -56,6 +55,7 @@ function App() {
 
   return (
     <>
+<image_upload/>
  
  <EditNavBar/>
 
@@ -112,7 +112,7 @@ function App() {
     <AdminNav/>
 
 
-   <EditStudentModal/>
+
 
 
 

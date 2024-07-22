@@ -63,7 +63,7 @@ const filterCourses = courses.filter(course =>
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
-    <div ref={node => drag(drop(node))} key={index} style={{ opacity: isDragging? 0.8: 1, position: "relative", height: "220px",display: "flex", justifyContent: "center", alignItems: "center", width: isActive ? "280px" : "240px", height: isActive ? "280px" : "240px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >
+    <div ref={node => drag(drop(node))} key={index} style={{ opacity: isDragging? 0.8: 1, position: "relative", display: "flex", justifyContent: "center", alignItems: "center", width: isActive ? "280px" : "240px", height: isActive ? "280px" : "240px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >
     {item ? <div><CourseDropped key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
     </div> : 
 
