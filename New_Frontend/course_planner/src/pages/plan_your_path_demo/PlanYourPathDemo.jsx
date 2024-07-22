@@ -8,8 +8,7 @@ import shareImg from "../../assets/shareImg.png"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
+// The data for the courses
 const Courses = [
   {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", GRADE: "HD", TYPE: "ECON"}, 
   {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", GRADE: "HD", TYPE: "SENG"}, 
@@ -75,6 +74,8 @@ function DragDrop() {
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
 
+      // This is a loop to see if the duplication
+ 
    
     if(key < 2)
       setKey((k) => k + 1);
@@ -104,7 +105,7 @@ function DragDrop() {
   const menuButton = (parent_index, index) =>{
     var courseOptions = document.getElementById('courseOptions');
     if (courseOptions.style.display === 'none') {
-      courseOptions.style.display = 'block'
+      courseOptions.style.display = 'block';
     } else{
       courseOptions.style.display = 'none';
     }
@@ -134,16 +135,21 @@ function DragDrop() {
   }
 
 
+  const [showTrimesterDrop, setShowTrimesterDrop] = useState(false);
+
 
   function removeTrimester(){
+     
+    const confirmed = window.confirm('Are you sure you want to delete trimester ' +  count + '?');
+
     let updatedTrimester = [...studentTrimester];
-    if(updatedTrimester.length > 4){
+    if(confirmed && updatedTrimester.length > 4){
       setCount((prevCount) => prevCount - 1);
   
       updatedTrimester.pop();
       setStudentTrimester(updatedTrimester);
     }
-    else{
+    else if(updatedTrimester.length < 4){
     window.alert("You cannot delete more courses");
       
     }
