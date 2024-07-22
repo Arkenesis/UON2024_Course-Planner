@@ -5,7 +5,7 @@ import { DndProvider, useDrop } from "react-dnd";
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import "./PlanYourPathDemo.scss"
 import shareImg from "../../assets/shareImg.png"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -73,7 +73,8 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
-     
+      toast("Hello world");  
+      window.alert("sf");
    
     if(key < 2)
       setKey((k) => k + 1);
