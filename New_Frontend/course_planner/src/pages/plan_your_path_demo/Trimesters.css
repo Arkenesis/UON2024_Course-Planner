@@ -19,3 +19,19 @@
 
     
 }
+
+.deleteTrimester {
+    width: 40px;
+    font-size: 24px;
+    border: none;
+    transition: ease 300ms;
+    border-radius: 12px;
+}
+
+.deleteTrimester:hover {
+    color: white;
+    width: 40px;
+    font-size: 24px;
+    background: rgb(191, 191, 191);
+
+}
