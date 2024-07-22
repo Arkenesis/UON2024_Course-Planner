@@ -9,6 +9,9 @@ import "./Trimesters.css"
          
 const Trimesters = ({ id, name, level, units, grade, year, term, course, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton}) => {
 
+
+
+  
   return (
     <div className="trimestersBox">
       <div className="trimesterName">{year} Trimester {term}</div>

@@ -62,6 +62,7 @@ function DragDrop() {
       term: 4,
       course: ["", "", "", ""]
     },
+
   ]);
 
 
@@ -73,7 +74,7 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
       setStudentTrimester(() => updatedTrimester);
-    
+
    
     if(key < 2)
       setKey((k) => k + 1);
@@ -89,7 +90,7 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = "";
       setStudentTrimester(updatedTrimester);
-
+      
     }
     // Force render the sub components
     // Used to solve the weird display bug
@@ -126,9 +127,13 @@ function DragDrop() {
       term: count,
       course: ["", "", "", ""]
     };
+    window.alert("Trimester " + count);
+
     let updatedTrimester = [...studentTrimester, newTrimester];
     setStudentTrimester(updatedTrimester);
   }
+
+
 
   function removeTrimester(){
     let updatedTrimester = [...studentTrimester];
@@ -137,6 +142,10 @@ function DragDrop() {
   
       updatedTrimester.pop();
       setStudentTrimester(updatedTrimester);
+    }
+    else{
+    window.alert("You cannot delete more courses");
+      
     }
   }
 
