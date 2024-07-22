@@ -10,18 +10,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // The data for the courses
 const Courses = [
-  {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", GRADE: "HD", TYPE: "ECON"}, 
-  {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database", GRADE: "HD", TYPE: "COMP"}, 
-  {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy", GRADE: "HD", TYPE: "EBUS"}, 
-  {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", GRADE: "HD", TYPE: "INFT"}, 
-  {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", GRADE: "HD", TYPE: "COMP"}, 
-  {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", GRADE: "HD", TYPE: "INFT"}, 
-  {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", GRADE: "HD", TYPE: "SENG"}, 
-  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", GRADE: "HD", TYPE: "INFT"},
+  {ID:'ECON1001', Level: 1, Units: 10, Name: "Microeconomics for business decision", GRADE: "D", TYPE: "ECON", ADDED: false}, 
+  {ID:'SENG1110', Level: 1, Units: 10, Name: "Object Oriented Programming", GRADE: "HD", TYPE: "SENG",  ADDED: false}, 
+  {ID:'COMP3350', Level: 3, Units: 10, Name: "Advanced Database", GRADE: "HD", TYPE: "COMP",  ADDED: false}, 
+  {ID:'EBUS3050', Level: 3, Units: 10, Name: "The Digital Economy", GRADE: "HD", TYPE: "EBUS",  ADDED: false}, 
+  {ID:'SENG1120', Level: 1, Units: 10, Name: "Data Structure", GRADE: "HD", TYPE: "SENG",  ADDED: false}, 
+  {ID:'INFT3100', Level: 3, Units: 10, Name: "Project Management", GRADE: "HD", TYPE: "INFT",  ADDED: false}, 
+  {ID:'SENG1050', Level: 1, Units: 10, Name: "Web Technologies", GRADE: "HD", TYPE: "SENG",  ADDED: false}, 
+  {ID:'SENG2130', Level: 2, Units: 10, Name: "System Analysis and Design", GRADE: "HD", TYPE: "SENG",  ADDED: false}, 
+  {ID:'COMP3851A', Level: 3, Units: 10, Name: "Computing and Information Sciences Work Integrated Learning Part A", GRADE: "HD", TYPE: "COMP",  ADDED: false}, 
+  {ID:'INFT2051', Level: 2, Units: 10, Name: "Mobile Application Programming", GRADE: "HD", TYPE: "INFT",  ADDED: false}, 
+  {ID:'SENG2260', Level: 2, Units: 10, Name: "Human-Computer Interaction", GRADE: "HD", TYPE: "SENG",  ADDED: false}, 
+  {ID:'INFT2060', Level: 2, Units: 10, Name: "Applied Artificial Intelligence", GRADE: "HD", TYPE: "INFT",  ADDED: false},
 ];
 
 
@@ -67,21 +67,40 @@ function DragDrop() {
 
   
   const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
- 
-    if(courseId != ''){
-      let selectedCourse   = coursesObject[courseId];
-      let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
-      setStudentTrimester(() => updatedTrimester);
 
-      // This is a loop to see if the duplication
+  //These are declared to check for the duplicate trimesters
+  const currentTrimester = studentTrimester[parent_index];
  
-   
-    if(key < 2)
-      setKey((k) => k + 1);
-    else
-      setKey((k) => k - 1);
-}
+
+  let duplicateFound = false;
+
+//Checks if the row has the duplicate
+  for (let j = 0; j < currentTrimester.course.length; j++) {
+    if (currentTrimester.course[j] && currentTrimester.course[j][0] === courseId) {
+      window.alert(courseId + " already exists in trimester " + currentTrimester.trimesterId);
+      duplicateFound = true;
+      break;
+    }
+  }
+
+
+  if (courseId !== '' && duplicateFound == false) {
+    let updatedTrimester = [...studentTrimester];
+    updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade, true];
+    setStudentTrimester(updatedTrimester);
+
+  }
+
+     // Force render the sub components
+    // Used to solve the weird display bug
+  
+  if(key < 2)
+    setKey((k) => k + 1);
+  else
+    setKey((k) => k - 1);
+
+
+  
 
   };  
 
@@ -102,6 +121,7 @@ function DragDrop() {
   };
 
 
+  
   const menuButton = (parent_index, index) =>{
     var courseOptions = document.getElementById('courseOptions');
     if (courseOptions.style.display === 'none') {
@@ -118,6 +138,9 @@ function DragDrop() {
   //Tracks count of the trimester number
   const [count, setCount] = useState(5);
 
+  const triScroll = useRef();
+
+
 
   function addTrimester() {
 
@@ -128,12 +151,15 @@ function DragDrop() {
       term: count,
       course: ["", "", "", ""]
     };
-
+  
 
     window.alert("Trimester " + count);
+    
 
     let updatedTrimester = [...studentTrimester, newTrimester];
     setStudentTrimester(updatedTrimester);
+    triScroll.current.scrollTop = triScroll.current.scrollHeight;
+
   }
 
 
@@ -178,7 +204,7 @@ function DragDrop() {
 
     
 
-        <div className="trimestersDetails">
+        <div className="trimestersDetails" ref={triScroll} >
           {studentTrimester.map((trimesters, index) => (
               <Trimesters 
                 key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
@@ -192,7 +218,7 @@ function DragDrop() {
         </div>
         
         <div>
-          <div className="trimesterLibrary">
+          <div className="trimesterLibrary" >
           <div className="titleList">
              <h2>List of All Courses</h2>
             </div>
@@ -233,6 +259,15 @@ function DragDrop() {
               <h3 className="courseTitleLi">SENG</h3>
               {courses.map((course) => (
                 course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                ))}
+                </div>
+            </div>
+            <div>
+              <hr />
+              <div className="coursesPerType">
+              <h3 className="courseTitleLi">COMP</h3>
+              {courses.map((course) => (
+                course.TYPE === "COMP" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
                 ))}
                 </div>
             </div>

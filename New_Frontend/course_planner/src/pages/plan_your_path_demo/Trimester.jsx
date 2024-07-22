@@ -70,7 +70,7 @@ const filterCourses = courses.filter(course =>
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
     <div ref={node => drag(drop(node))} key={index} style={{ opacity: isDragging? 0.8: 1, position: "relative", display: "flex", justifyContent: "center", alignItems: "center", width: isActive ? "280px" : "240px", height: isActive ? "280px" : "240px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >
-    {item ? <div><CourseDropped key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
+    {item ? <div><CourseDropped key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]} grade={item[4]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
     </div> : 
 
     <div ref={node => drag(drop(node))} style={{  height: '100%',
@@ -96,7 +96,7 @@ const filterCourses = courses.filter(course =>
 
           {filterCourses.map((course) => (
             <div key={course.id} style={{display: 'flex', alignContent: 'center', margin: '5% 10px', cursor: 'pointer', width: '200px' }} onClick={() => {
-              addCourseToTrimester(course.ID, course.Name, course.Level, course.Units, item.Grade, parent_index, index);
+              addCourseToTrimester(course.ID, course.Name, course.Level, course.Units, course.Grade, parent_index, index);
               setShowDropDown(false);}}>
               <div  className="courseName"> {course.Name} </div>
             </div>
