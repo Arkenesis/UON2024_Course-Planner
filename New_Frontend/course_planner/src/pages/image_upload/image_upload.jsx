@@ -109,9 +109,8 @@ const ImageUpload = ({setImageUrl}) => {
                         </div>
                     )))
                     : (images && images.filter(image => image.name.includes(search)).map((image, index) => (
-                        <div>
+                        <div className="oneAsset">
                             <img key={index} src={image.url} alt={`Image ${index}`}/>
-                            <span className="ImageText">{image.name}</span>
                         </div>
                     )))
                 }
