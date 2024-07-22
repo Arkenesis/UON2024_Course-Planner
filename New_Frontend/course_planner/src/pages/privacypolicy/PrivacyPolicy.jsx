@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
     return (
         <div className="privacy">
             <ReactQuill value={value} readOnly={true} theme={"bubble"}/>
-            {/* <h2>Privacy Policy for Newcastle Planner</h2>
+            <h2>Privacy Policy for Newcastle Planner</h2>
             <p>
                 Privacy Policy <br/><br/>
                 Last updated: February 16, 2024<br/><br/>
@@ -311,7 +311,7 @@ const PrivacyPolicy = () => {
             <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
 
             <h2>Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, You can contact us:<br/><br/><strong>Email: askuon@newcastle.edu.au</strong></p> */}
+            <p>If you have any questions about this Privacy Policy, You can contact us:<br/><br/><strong>Email: askuon@newcastle.edu.au</strong></p>
         </div>
     );
 };
