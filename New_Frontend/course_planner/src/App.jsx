@@ -57,6 +57,7 @@ function App() {
   return (
     <>
  
+ <EditNavBar/>
 
       <PYP/>
       {/* <Register/> */}
