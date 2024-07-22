@@ -57,7 +57,6 @@ function App() {
     <>
 <image_upload/>
  
- <EditNavBar/>
 
       <PYP/>
       {/* <Register/> */}
