@@ -15,7 +15,6 @@ import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Footer from "./components/Footer/Footer.jsx";
-import HomePage from './pages/HomePage/HomePage';
 import Login from './pages/login/Login.jsx';
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Register from './pages/Register/Register';
@@ -23,6 +22,9 @@ import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
+import image_upload from "./pages/image_upload/image_upload.jsx";
+import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
+import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
 
 // Admin Pages
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";

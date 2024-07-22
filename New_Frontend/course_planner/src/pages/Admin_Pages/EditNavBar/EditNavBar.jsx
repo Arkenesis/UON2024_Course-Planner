@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color';
 import uonLogo from '../../../assets/uonLogo.png';
 import eyeIcon from '../../../assets/eyeIcon.png'; // Visible eye icon
 import eyeIconCrossed from '../../../assets/eyeIconCrossed.png'; // Crossed-out eye icon
-import ImageUpload from '../../image_upload/ImageUpload';
+import ImageUpload from '../../image_upload/image_upload';
 import axios from 'axios';
 
 function EditNavBar() {

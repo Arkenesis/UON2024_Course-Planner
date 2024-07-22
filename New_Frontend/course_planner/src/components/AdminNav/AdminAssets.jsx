@@ -104,7 +104,6 @@ function AdminAssets() {
                                 className='ImageBox'
                                 style={{
                                     margin: '10% 10px',
-                                    width: '200px',
                                     cursor: 'pointer',
                                     width: 'calc(50% - 5px)'
                                 }}
