@@ -16,7 +16,7 @@ import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Footer from "./components/Footer.jsx";
 
 import NavigationBar from './components/NavigationBar';
-import HomePage from './pages/Homepage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
 import AdminAboutUs from "./pages/AdminAboutUs/AdminAboutUs.jsx";
