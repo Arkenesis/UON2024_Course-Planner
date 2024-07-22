@@ -55,16 +55,15 @@ function App() {
 
   return (
     <>
-<image_upload/>
  
- <EditNavBar/>
+      {/* <EditNavBar/> */}
 
       <PYP/>
       {/* <Register/> */}
       {/* <Login/> */}
       {/* <EditCourse/> */}
       {/* <EditStudent/> */}
-      {/* <EditProgram/> */}
+
       {/* <HomePage/>
       <TrackProgress/>
       <EditStudentHomePage/>
@@ -108,7 +107,10 @@ function App() {
      {/* <EditLoginPage/> */}
      {/* <EditRegisterPage/> */}
     
+     {/* <image_upload/> */}
 
+
+     
     <AdminNav/>
 
 

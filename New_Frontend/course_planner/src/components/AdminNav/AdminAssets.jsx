@@ -17,8 +17,7 @@ import AdminPolicy from '../../pages/Admin_Pages/AdminPolicy/AdminPolicy'
 import courseM from '../../assets/courseM.png'
 import courseAssign from '../../assets/courseAssign.png'
 import DatabaseLink from './DatabaseLink';
-
-
+import ImageUpload from '../../pages/image_upload/image_upload';
 
 import './AdminNav.css';
 
@@ -52,7 +51,7 @@ function AdminAssets() {
 
     return (
         <div className='assetComp'>
-  <div className='uploadImgDiv'>
+  {/* <div className='uploadImgDiv'>
   <div className="imgButtonContainer">
             <label className="addPic" for="input-fileAssets">
               Add Asset
@@ -118,7 +117,7 @@ function AdminAssets() {
                 )}
             </div>
             <div className='imgGallery'>
-                {/* Display images here */}
+                
                 {filterCourses.map((image) => (
                     <img
                         key={image.id}
@@ -127,7 +126,9 @@ function AdminAssets() {
                         style={{ width: '140px', height: 'auto', margin: '5px', cursor: 'pointer' }}
                     />
                 ))}
-            </div>
+            </div> */}
+            <ImageUpload/>
+
         </div>
     );
 }
