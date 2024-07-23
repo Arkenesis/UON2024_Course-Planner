@@ -74,7 +74,7 @@ function DragDrop() {
   let duplicateFound = false;
   const checkEmpty = 0;
 
-//Checks if the row has the duplicate
+  //Checks if the row has the duplicate
   for (let j = 0; j < currentTrimester.course.length; j++) {
 
     if (currentTrimester.course[j] && currentTrimester.course[j][0] === courseId) {
@@ -94,7 +94,15 @@ function DragDrop() {
     updatedTrimester[parent_index].course.unshift([courseId, name, units, level, grade, true]);
     setStudentTrimester(updatedTrimester);
 
+      if(currentTrimester.course.length == 5){
+        updatedTrimester[parent_index].course.pop();   
+     
+    
+      }
+  
+
   }
+
 
      // Force render the sub components
     // Used to solve the weird display bug
@@ -111,10 +119,17 @@ function DragDrop() {
 
 
   const removeCourse = (parent_index, index) => {
+
+    const currentTrimester = studentTrimester[index];
+
     if(parent_index !== undefined && index !== undefined){
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course.splice([index], 1);
       setStudentTrimester(updatedTrimester);
+        
+      if (currentTrimester.course.length = 4){
+        updatedTrimester[parent_index].course.push("");
+      }
       
     }
     // Force render the sub components
