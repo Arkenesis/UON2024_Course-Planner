@@ -5,8 +5,8 @@ import { DndProvider, useDrop } from "react-dnd";
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import "./PlanYourPathDemo.scss"
 import shareImg from "../../assets/shareImg.png"
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
+
 
 // The data for the courses
 const Courses = [
@@ -41,25 +41,25 @@ function DragDrop() {
       trimesterId: 1,
       year: 2023,
       term: 1,
-      course: [""]
+      course: ["", "" , "" , ""]
     },
     {
       trimesterId: 2,
       year: 2023,
       term: 2,
-      course: [""]
+      course: ["", "", "", ""]
     },
     {
       trimesterId: 3,
       year: 2023,
       term: 3,
-      course: [""]
+      course:  ["", "", "", ""]
     },
     {
       trimesterId: 4,
       year: 2023,
       term: 4,
-      course: [""]
+      course:  ["", "", "", ""]
     },
 
   ]);
@@ -160,7 +160,7 @@ function DragDrop() {
 
   const triScroll = useRef();
 
-
+  const notify = () => {windows.alert("Here h")};
 
   function addTrimester() {
 
@@ -173,7 +173,7 @@ function DragDrop() {
     };
   
 
-    window.alert("Trimester " + count);
+    toast.success('Here is your toast.');
     
 
     let updatedTrimester = [...studentTrimester, newTrimester];
@@ -327,7 +327,7 @@ function DragDrop() {
       </div>
       <div className="triesterMod">
       <div>
-      <button  onClick={() => addTrimester()}>+ Add more trimester</button>
+      <button  onClick={notify}>+ Add more trimester</button>
       </div>
       <div>
 
