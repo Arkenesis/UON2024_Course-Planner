@@ -68,68 +68,30 @@ function DragDrop() {
   
   const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
 
-  //These are declared to check for the duplicate trimesters
-  const currentTrimester = studentTrimester[parent_index];
+  
+      if(courseId != ''){
+        let selectedCourse   = coursesObject[courseId];
+        let updatedTrimester = [...studentTrimester];
+        updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
+        setStudentTrimester(() => updatedTrimester);
+      
 
-  let duplicateFound = false;
-  const checkEmpty = 0;
-
-  //Checks if the row has the duplicate
-  for (let j = 0; j < currentTrimester.course.length; j++) {
-
-    if (currentTrimester.course[j] && currentTrimester.course[j][0] === courseId) {
-      window.alert(courseId + " already exists in trimester " + currentTrimester.trimesterId);
-      duplicateFound = true;
-      break;
-    }
-    if(currentTrimester.course[j] === "" || currentTrimester.course[j] === '' ){
-          checkEmpty + 1;
-    }
-  }
-
-
-  if (courseId !== '' && duplicateFound == false && currentTrimester.course.length <= 4) {
-    let updatedTrimester = [...studentTrimester];
     
-    updatedTrimester[parent_index].course.unshift([courseId, name, units, level, grade, true]);
-    setStudentTrimester(updatedTrimester);
-
-      if(currentTrimester.course.length == 5){
-        updatedTrimester[parent_index].course.pop();   
-     
-    
-      }
-  
-
+      if(key < 2)
+        setKey((k) => k + 1);
+      else
+        setKey((k) => k - 1);
   }
-
-
-     // Force render the sub components
-    // Used to solve the weird display bug
-  
-  if(key < 2)
-    setKey((k) => k + 1);
-  else
-    setKey((k) => k - 1);
-
-
-  
 
   };  
 
 
   const removeCourse = (parent_index, index) => {
-
-    const currentTrimester = studentTrimester[index];
-
     if(parent_index !== undefined && index !== undefined){
       let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course.splice([index], 1);
+      updatedTrimester[parent_index].course[index] = "";
       setStudentTrimester(updatedTrimester);
-        
-      if (currentTrimester.course.length = 4){
-        updatedTrimester[parent_index].course.push("");
-      }
+
       
     }
     // Force render the sub components
@@ -169,7 +131,7 @@ function DragDrop() {
     const newTrimester = {
       year: 2023,
       term: count,
-      course: [""]
+      course: ["","", "", ""]
     };
   
 
@@ -327,7 +289,7 @@ function DragDrop() {
       </div>
       <div className="triesterMod">
       <div>
-      <button  onClick={notify}>+ Add more trimester</button>
+      <button  onClick={() => addTrimester()}>+ Add more trimester</button>
       </div>
       <div>
 
