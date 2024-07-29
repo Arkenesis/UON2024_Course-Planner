@@ -68,13 +68,58 @@ function DragDrop() {
   
   const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
 
-  
-      if(courseId != ''){
-        let selectedCourse   = coursesObject[courseId];
-        let updatedTrimester = [...studentTrimester];
-        updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade];
-        setStudentTrimester(() => updatedTrimester);
-      
+
+    const currentTrimester = studentTrimester[parent_index];
+ 
+
+      let duplicateFound = false;
+      const checkEmpty = 0;
+
+    //Checks if the row has the duplicate
+      for (let i = 0; i < currentTrimester.course.length; i++) {
+
+        if (currentTrimester.course[i] && currentTrimester.course[i][0] === courseId) {
+          window.alert(courseId + " already exists in trimester " + currentTrimester.trimesterId);
+          duplicateFound = true;
+          break;
+        }
+        if(currentTrimester.course[i] === "" || currentTrimester.course[i] === '' ){
+              checkEmpty + 1;
+        }
+      }
+        
+
+        if (courseId !== '' && duplicateFound == false) {
+          if (courseId !== '' && duplicateFound == false && currentTrimester.course.length <= 4) {
+
+             for(let i = 0; i < currentTrimester.course.length; i++){
+
+              if(currentTrimester.course[i] === ""){
+                let updatedTrimester = [...studentTrimester];
+                updatedTrimester[parent_index].course[i] = [courseId, name, units, level, grade, true];
+                
+                setStudentTrimester(() => updatedTrimester);
+            
+                break;
+              }
+              // If the row is full, the module will be swapped on the location you added in
+              else if(currentTrimester.course[3] !== ""){
+
+                let updatedTrimester = [...studentTrimester];
+                updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade, true];
+                
+                setStudentTrimester(() => updatedTrimester);
+            
+                break;
+
+              }
+            
+
+             }
+
+
+    
+          }
 
     
       if(key < 2)
@@ -87,13 +132,56 @@ function DragDrop() {
 
 
   const removeCourse = (parent_index, index) => {
+
+    const currentTrimester = studentTrimester[parent_index];
+
     if(parent_index !== undefined && index !== undefined){
+
+
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = "";
       setStudentTrimester(updatedTrimester);
 
+      const tempArray = [];
+
+      for(let i = 0; i < currentTrimester.course.length; i++){
+        
+          if(currentTrimester.course[i] === ""){
+
+          }
+          else{
+
+            let updatedTrimester = [...studentTrimester];
+            tempArray.push(updatedTrimester[parent_index].course[i]);
+            updatedTrimester[parent_index].course[i] = "";
+            setStudentTrimester(updatedTrimester);
+          }
+
+    
+      }
+
+      for(let j = 0; j < currentTrimester.course.length && j < tempArray.length; j++){
+     
+          if(currentTrimester.course[j] === ""){
+             
+
+                let updatedTrimester = [...studentTrimester];
+                updatedTrimester[parent_index].course[j] = tempArray[j];
+                
+                setStudentTrimester(() => updatedTrimester);
+
+          }
+               
+
+         }
+
+      
+
       
     }
+
+   
+
     // Force render the sub components
     // Used to solve the weird display bug
     if(key < 2)
