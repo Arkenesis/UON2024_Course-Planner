@@ -30,7 +30,7 @@ function Course({ id, name, level, units, grade}) {
       </div>
       <div className="contentBox">
       <h3 className="content">Modules: {name}</h3>  
-
+      <p className="taken">taken</p>
       </div>
     </div>
   );
