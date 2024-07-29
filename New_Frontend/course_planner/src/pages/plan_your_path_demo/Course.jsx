@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import "./Course.scss"
 
-function Course({ id, name, level, units, grade}) {
+function Course({ id, name, level, units, grade, added}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "course",
     item: { id, name, units, level, grade },
@@ -29,8 +29,13 @@ function Course({ id, name, level, units, grade}) {
         </div>
       </div>
       <div className="contentBox">
-      <h3 className="content">Modules: {name}</h3>  
-      <p className="taken">taken</p>
+      <h3 className="content">Modules: {name}</h3> 
+
+    {added == true &&
+     <p className="taken">taken</p>
+    }
+
+    
       </div>
     </div>
   );
