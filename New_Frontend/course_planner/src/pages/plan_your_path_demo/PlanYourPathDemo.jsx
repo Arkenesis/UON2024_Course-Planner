@@ -323,7 +323,7 @@ function DragDrop() {
               <h3 className="courseTitleLi">Econ </h3>
               <div className="coursesPerType">
               {courses.map((course) => (
-                course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
               ))}
               </div>
            
@@ -334,7 +334,7 @@ function DragDrop() {
               <h3 className="courseTitleLi">Ebus</h3>
               <div className="coursesPerType">
               {courses.map((course) => (
-                course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
               ))}
               </div>
             </div>
@@ -344,7 +344,7 @@ function DragDrop() {
               <h3 className="courseTitleLi">INFT</h3>
               <div className="coursesPerType">
               {courses.map((course) => (
-                course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
               ))}
               </div>
             </div>
@@ -354,7 +354,7 @@ function DragDrop() {
               <div className="coursesPerType">
               <h3 className="courseTitleLi">SENG</h3>
               {courses.map((course) => (
-                course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
                 ))}
                 </div>
             </div>
@@ -363,7 +363,7 @@ function DragDrop() {
               <div className="coursesPerType">
               <h3 className="courseTitleLi">COMP</h3>
               {courses.map((course) => (
-                course.TYPE === "COMP" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units}/>
+                course.TYPE === "COMP" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
                 ))}
                 </div>
             </div>
