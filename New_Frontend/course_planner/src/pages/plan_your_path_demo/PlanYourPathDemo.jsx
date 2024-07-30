@@ -160,9 +160,7 @@ function DragDrop() {
 
             
   
-      let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = "";
-      setStudentTrimester(updatedTrimester);
+    
 
       let matchCount = 0;
 
@@ -186,6 +184,10 @@ function DragDrop() {
         
       }
 
+
+      let updatedTrimester = [...studentTrimester];
+      updatedTrimester[parent_index].course[index] = "";
+      setStudentTrimester(updatedTrimester);
         
 
   
@@ -238,13 +240,12 @@ function DragDrop() {
       
     }
 
-           let updatedTrimester = [...studentTrimester];
-          updatedTrimester[parent_index].course[index] = "";
-          setStudentTrimester(updatedTrimester);
+          
           
 
     // Force render the sub components
     // Used to solve the weird display bug
+
     if(key < 2)
       setKey((k) => k + 1);
     else
