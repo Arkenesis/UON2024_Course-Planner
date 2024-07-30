@@ -150,24 +150,29 @@ function DragDrop() {
   };  
 
 
-  const removeCourse = (courseId, parent_index, index) => {
+  const removeCourse = (parent_index, index, id) => {
 
     const currentTrimester = studentTrimester[parent_index];
+    
+ 
 
     if(parent_index !== undefined && index !== undefined){
 
-
-      let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = "";
-      setStudentTrimester(updatedTrimester);
-      
-      // Check if the course id to change the status of the course
       setCourses(prevCourses => 
         prevCourses.map(courseDel =>
-          courseDel.ID === courseId ? {...courseDel, ADDED: false} : window.alert(courseId)
+          courseDel.ID ===  currentTrimester.course[index][0] ? {...courseDel, ADDED: false} : courseDel 
         )
+        )
+              
+
+      
+  
+      
+      // Check if the course id to change the status of the course
+  
         
-      )
+      
+
 
       // Loop that row to organize the row
       const tempArray = [];
@@ -209,7 +214,10 @@ function DragDrop() {
       
     }
 
-   
+           let updatedTrimester = [...studentTrimester];
+          updatedTrimester[parent_index].course[index] = "";
+          setStudentTrimester(updatedTrimester);
+          
 
     // Force render the sub components
     // Used to solve the weird display bug
@@ -276,26 +284,37 @@ function DragDrop() {
 
   function removeTrimester(trimesterBox){
     
-   if(studentTrimester.length > 4){
+   if(studentTrimester.length > 4 && window.confirm("Do you really want to delete?")){
     setCount((prevCount) => prevCount - 1);
    
     const newTrimesters = studentTrimester.filter((student) => student !== trimesterBox);
     //  This updates the trimester
      setStudentTrimester(newTrimesters);
-     window.alert("Deleted done");
     
-   for(i = 0; i <= studentTrimester.length; i++){
-      updateTerm = studentTrimester[i].term;
-      updateTerm = i+1;
-      setStudentTrimester(updateTerm);
-   }
+    
+  //  for(i = 0; i <= studentTrimester.length; i++){
+  //     updateTerm = studentTrimester[i].term;
+  //     updateTerm =    {...studentTrimester, term: i+1} ;
+  //     setStudentTrimester(updateTerm);
+  //  }
+     
+  
+
+   window.alert("Selected trimester deleted");
    }
    else{
     window.alert("You can't delete more courses");
    }
  
-    
-  
+    //Update trimester number small bugs though where number won't show unless you add a course
+    count = 1;
+   let currentCount = count;
+   const updatedTrimesters = studentTrimester.map(trimester => ({
+       ...trimester, 
+       term: currentCount++
+   }));
+   setStudentTrimester(updatedTrimesters);
+   setCount(currentCount);
 
  
   }
