@@ -6,7 +6,8 @@ import {HTML5Backend} from 'react-dnd-html5-backend'
 import "./PlanYourPathDemo.scss"
 import shareImg from "../../assets/shareImg.png"
 import toast from 'react-hot-toast';
-
+import xLogo from "../../assets/xLogo.png"
+import facebookLogo from "../../assets/facebookLogo.png"
 
 // The data for the courses
 const Courses = [
@@ -98,7 +99,12 @@ function DragDrop() {
                 let updatedTrimester = [...studentTrimester];
                 updatedTrimester[parent_index].course[i] = [courseId, name, units, level, grade, true];
 
-
+                setCourses(prevCourses => 
+                  prevCourses.map(course =>
+                    course.ID.toLowerCase() ===  courseId.toLowerCase() ? {...course, ADDED: true} : course
+                  )
+                  
+                )
              
            
                 
@@ -115,11 +121,13 @@ function DragDrop() {
                 setStudentTrimester(() => updatedTrimester);
                       window.alert("found " + courses[i].ID);
 
-                for(let i = 0; i < courses.length; i++){
-
-               
+                setCourses(prevCourses => 
+                  prevCourses.map(course =>
+                    course.ID ===  courseId ? {...course, ADDED: false} : course
+                  )
                   
-               }
+                )
+              
             
                 break;
 
@@ -142,7 +150,7 @@ function DragDrop() {
   };  
 
 
-  const removeCourse = (parent_index, index) => {
+  const removeCourse = (courseId, parent_index, index) => {
 
     const currentTrimester = studentTrimester[parent_index];
 
@@ -152,7 +160,16 @@ function DragDrop() {
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = "";
       setStudentTrimester(updatedTrimester);
+      
+      // Check if the course id to change the status of the course
+      setCourses(prevCourses => 
+        prevCourses.map(courseDel =>
+          courseDel.ID === courseId ? {...courseDel, ADDED: false} : window.alert(courseId)
+        )
+        
+      )
 
+      // Loop that row to organize the row
       const tempArray = [];
 
       for(let i = 0; i < currentTrimester.course.length; i++){
@@ -166,6 +183,7 @@ function DragDrop() {
             tempArray.push(updatedTrimester[parent_index].course[i]);
             updatedTrimester[parent_index].course[i] = "";
             setStudentTrimester(updatedTrimester);
+            
           }
 
     
@@ -202,6 +220,7 @@ function DragDrop() {
   };
 
 
+    const [showDropdown, setShowDropDown] = useState(false);
   
   const menuButton = (parent_index, index) =>{
     var courseOptions = document.getElementById('courseOptions');
@@ -290,12 +309,27 @@ function DragDrop() {
       <div className="topData">
         <h1 className="title">Plan Your Path</h1>
 
-        <div className="shareBlk">
-        <p className="share">Share </p>Unexpected Application Error!
-        courses.map is not a function
+        <div className="shareBlk"  onClick={() => setShowDropDown(!showDropdown)}>
+        <p className="share">Share </p>
         <img className="shareImg" src={shareImg} alt="share icon" />
+        {showDropdown && (
 
+            <div className="shareOptions">
+              <div>
+                <img className="" src={facebookLogo} alt="FacebookBtn" />
+              <a href="https://www.facebook.com/">FaceBook</a>
+              </div>
 
+              <div>
+              <img className="" src={xLogo} alt="Xbtn" />
+
+              <a href="https://x.com/i/flow/login">X</a>
+
+              </div>
+              
+            </div>
+
+            )}
         </div>
       </div> 
 

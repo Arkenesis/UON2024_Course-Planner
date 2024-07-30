@@ -28,7 +28,7 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
       //The conditional statement prevents you from dragging empty trimester boxes with no data
       if(item.id !== undefined && item.name !== undefined) {
         addCourseToTrimester(item.id, item.name, item.level, item.units, item.grade, parent_index, index);
-        removeCourse(item.parent_index, item.index);
+        removeCourse(item.id ,item.parent_index, item.index);
       }
     },
     
@@ -46,8 +46,7 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
   
    const isActive = isOver && canDrop
    
-// For search bar is below
-
+// search bar usestate
 const [query, setQuery] = useState('');
 
 //This function will check if the input that the user adds contains the same words found from the courses' names
