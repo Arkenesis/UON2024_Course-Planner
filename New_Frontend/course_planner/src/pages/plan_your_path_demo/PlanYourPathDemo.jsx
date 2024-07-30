@@ -170,9 +170,7 @@ function DragDrop() {
         trimester.course.forEach(currentCourse => {
           if (currentCourse && currentCourse[0] === courseTrimester[0]) {
             matchCount++;
-          } else if (currentCourse) {
-            window.alert(currentCourse[0]);
-          }
+          } 
         });
       });
 
