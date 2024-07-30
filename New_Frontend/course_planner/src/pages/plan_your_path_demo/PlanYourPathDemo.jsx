@@ -153,18 +153,44 @@ function DragDrop() {
   const removeCourse = (parent_index, index, id) => {
 
     const currentTrimester = studentTrimester[parent_index];
-    
+    const courseTrimester = currentTrimester.course[index]
  
 
     if(parent_index !== undefined && index !== undefined){
 
-      setCourses(prevCourses => 
-        prevCourses.map(courseDel =>
-          courseDel.ID ===  currentTrimester.course[index][0] ? {...courseDel, ADDED: false} : courseDel 
-        )
-        )
-              
+            
+  
+      let updatedTrimester = [...studentTrimester];
+      updatedTrimester[parent_index].course[index] = "";
+      setStudentTrimester(updatedTrimester);
 
+      let matchCount = 0;
+
+      studentTrimester.forEach(trimester => {
+        trimester.course.forEach(currentCourse => {
+          if (currentCourse && currentCourse[0] === courseTrimester[0]) {
+            matchCount++;
+          } else if (currentCourse) {
+            window.alert(currentCourse[0]);
+          }
+        });
+      });
+
+      if(matchCount == 0){
+
+        
+        setCourses(prevCourses => 
+          prevCourses.map(course =>
+            course.ID.toLowerCase() ===  courseTrimester[0].toLowerCase() ? {...course, ADDED: false} : course
+          )
+          
+        )
+        
+      }
+
+        
+
+  
       
   
       
@@ -248,7 +274,7 @@ function DragDrop() {
 
   const triScroll = useRef();
 
-  const notify = () => {windows.alert("Here h")};
+
 
   function addTrimester() {
 
@@ -302,8 +328,11 @@ function DragDrop() {
 
    window.alert("Selected trimester deleted");
    }
-   else{
+   else if(studentTrimester.length <= 4){
     window.alert("You can't delete more courses");
+   }
+   else{
+    window.alert("Process cancelled");
    }
  
     //Update trimester number small bugs though where number won't show unless you add a course
