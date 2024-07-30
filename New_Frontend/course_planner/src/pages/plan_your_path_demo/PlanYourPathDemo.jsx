@@ -97,6 +97,10 @@ function DragDrop() {
               if(currentTrimester.course[i] === ""){
                 let updatedTrimester = [...studentTrimester];
                 updatedTrimester[parent_index].course[i] = [courseId, name, units, level, grade, true];
+
+
+             
+           
                 
                 setStudentTrimester(() => updatedTrimester);
             
@@ -109,6 +113,13 @@ function DragDrop() {
                 updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade, true];
                 
                 setStudentTrimester(() => updatedTrimester);
+                      window.alert("found " + courses[i].ID);
+
+                for(let i = 0; i < courses.length; i++){
+
+               
+                  
+               }
             
                 break;
 
@@ -280,7 +291,8 @@ function DragDrop() {
         <h1 className="title">Plan Your Path</h1>
 
         <div className="shareBlk">
-        <p className="share">Share </p>
+        <p className="share">Share </p>Unexpected Application Error!
+        courses.map is not a function
         <img className="shareImg" src={shareImg} alt="share icon" />
 
 
