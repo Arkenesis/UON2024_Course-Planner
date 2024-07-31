@@ -160,6 +160,10 @@ function DragDrop() {
 
             
   
+      let updatedTrimester = [...studentTrimester];
+      updatedTrimester[parent_index].course[index] = "";
+      setStudentTrimester(updatedTrimester);
+        
     
 
       let matchCount = 0;
@@ -185,10 +189,6 @@ function DragDrop() {
       }
 
 
-      let updatedTrimester = [...studentTrimester];
-      updatedTrimester[parent_index].course[index] = "";
-      setStudentTrimester(updatedTrimester);
-        
 
   
       
