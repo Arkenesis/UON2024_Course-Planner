@@ -20,7 +20,7 @@ import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
-import HomePage from "./pages/Homepage/HomePage.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
 // Admin Pages
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 // UserContext
