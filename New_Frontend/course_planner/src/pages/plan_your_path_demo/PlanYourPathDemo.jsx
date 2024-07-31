@@ -393,8 +393,8 @@ function DragDrop() {
         <div className="trimestersDetails" ref={triScroll} >
 
           {studentTrimester.map((trimesters, index) => 
-             <div>
-        <span><button className="deleteTrimester" onClick={() => removeTrimester(trimesters)}>-</button></span>
+             <div className="trimestersBox">
+        <div><button className="deleteTrimester" onClick={() => removeTrimester(trimesters)}>-</button></div>
 
             <Trimesters 
             key={index} id={index} name={courses.name} units={courses.units} level={courses.level} grade={courses.grade} year={trimesters.year} term={trimesters.term} course={trimesters.course} addCourseToTrimester={addCourseToTrimester} removeCourse={removeCourse}
