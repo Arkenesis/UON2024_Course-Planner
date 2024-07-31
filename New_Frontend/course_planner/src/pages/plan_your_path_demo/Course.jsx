@@ -32,7 +32,7 @@ function Course({ id, name, level, units, grade, added}) {
       <h3 className="content">Modules: {name}</h3> 
 
     {added == true &&
-     <p className="taken">taken</p>
+     <p className="taken">Taken</p>
     }
 
     

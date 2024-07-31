@@ -147,6 +147,18 @@
 }
 
 .courseTitleLi{
+    display: flex;
+    cursor: pointer;
+    transition: ease-in 300ms;
+    margin: 0 20px;
+    gap: 240px;
+    
+}
+
+
+
+.courseTitleLi:hover{
+    background: rgb(43, 121, 185);
     margin: 0 20px;
 }
 

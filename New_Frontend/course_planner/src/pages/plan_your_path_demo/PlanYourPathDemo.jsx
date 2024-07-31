@@ -8,6 +8,7 @@ import shareImg from "../../assets/shareImg.png"
 import toast from 'react-hot-toast';
 import xLogo from "../../assets/xLogo.png"
 import facebookLogo from "../../assets/facebookLogo.png"
+import dropDownImg from "../../assets/showDropDown.png"
 
 // The data for the courses
 const Courses = [
@@ -119,7 +120,6 @@ function DragDrop() {
                 updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade, true];
                 
                 setStudentTrimester(() => updatedTrimester);
-                      window.alert("found " + courses[i].ID);
 
                 setCourses(prevCourses => 
                   prevCourses.map(course =>
@@ -254,6 +254,12 @@ function DragDrop() {
 
 
     const [showDropdown, setShowDropDown] = useState(false);
+
+    const [showEconCourses, setShowEconCourses] = useState(false);
+    const [showEbusCourses, setShowEbusCourses] = useState(false);
+    const [showCompCourses, setShowCompCourses] = useState(false);
+    const [showInftCourses, setShowInftCourses] = useState(false);
+    const [showSengCourses, setShowSengCourses] = useState(false);
   
   const menuButton = (parent_index, index) =>{
     var courseOptions = document.getElementById('courseOptions');
@@ -413,52 +419,79 @@ function DragDrop() {
             </div>
             <div>
           
-              <h3 className="courseTitleLi">Econ </h3>
+              <h3 className="courseTitleLi" onClick={() => setShowEconCourses(!showEconCourses)} ><div> Econ</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
               <div className="coursesPerType">
-              {courses.map((course) => (
-                course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
-              ))}
+                {showEconCourses &&  
+                (
+
+                  courses.map((course) => (
+                    course.TYPE === "ECON" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
+                  ))
+              
+                )
+              }
+             
               </div>
            
             </div>
 
             <div>
               <hr />
-              <h3 className="courseTitleLi">Ebus</h3>
+              <h3 className="courseTitleLi" onClick={() => setShowEbusCourses(!showEbusCourses)} ><div>EBUS</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+
               <div className="coursesPerType">
-              {courses.map((course) => (
+              {showEbusCourses &&  
+                (
+              courses.map((course) => (
                 course.TYPE === "EBUS" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
-              ))}
+              ))
+
+            )
+          }
+
               </div>
             </div>
 
             <div>
               <hr />
-              <h3 className="courseTitleLi">INFT</h3>
-              <div className="coursesPerType">
-              {courses.map((course) => (
-                course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
-              ))}
+              <h3 className="courseTitleLi" onClick={() => setShowInftCourses(!showInftCourses)} ><div>INFT</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+
+                <div className="coursesPerType">
+                {showInftCourses &&  
+                  (courses.map((course) => (
+                                course.TYPE === "INFT" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
+                              )) 
+                            )
+                          }
               </div>
             </div>
 
             <div>
               <hr />
-              <div className="coursesPerType">
-              <h3 className="courseTitleLi">SENG</h3>
-              {courses.map((course) => (
-                course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
-                ))}
-                </div>
+              <h3 className="courseTitleLi" onClick={() => setShowSengCourses(!showSengCourses)} ><div>SENG</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+
+                <div className="coursesPerType">
+                {showSengCourses &&  
+                  (courses.map((course) => (
+                                course.TYPE === "SENG" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
+                              )) 
+                            )
+                          }
+              </div>
             </div>
+
             <div>
               <hr />
-              <div className="coursesPerType">
-              <h3 className="courseTitleLi">COMP</h3>
-              {courses.map((course) => (
-                course.TYPE === "COMP" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
-                ))}
-                </div>
+              <h3 className="courseTitleLi" onClick={() => setShowCompCourses(!showCompCourses)} ><div>COMP</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+
+                <div className="coursesPerType">
+                {showCompCourses &&  
+                  (courses.map((course) => (
+                                course.TYPE === "COMP" && <Course key={course.ID} id={course.ID} name={course.Name} level={course.Level} units={course.Units} added={course.ADDED}/>
+                              )) 
+                            )
+                          }
+              </div>
             </div>
         
           </div>   
