@@ -419,7 +419,7 @@ function DragDrop() {
             </div>
             <div>
           
-              <h3 className="courseTitleLi" onClick={() => setShowEconCourses(!showEconCourses)} ><div> Econ</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+              <div className="courseTitleLi" onClick={() => setShowEconCourses(!showEconCourses)} ><div> Econ</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </div>
               <div className="coursesPerType">
                 {showEconCourses &&  
                 (
@@ -437,7 +437,7 @@ function DragDrop() {
 
             <div>
               <hr />
-              <h3 className="courseTitleLi" onClick={() => setShowEbusCourses(!showEbusCourses)} ><div>EBUS</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+              <div className="courseTitleLi" onClick={() => setShowEbusCourses(!showEbusCourses)} ><div>EBUS</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </div>
 
               <div className="coursesPerType">
               {showEbusCourses &&  
@@ -454,7 +454,7 @@ function DragDrop() {
 
             <div>
               <hr />
-              <h3 className="courseTitleLi" onClick={() => setShowInftCourses(!showInftCourses)} ><div>INFT</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+              <div className="courseTitleLi" onClick={() => setShowInftCourses(!showInftCourses)} ><div>INFT</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </div>
 
                 <div className="coursesPerType">
                 {showInftCourses &&  
@@ -468,7 +468,7 @@ function DragDrop() {
 
             <div>
               <hr />
-              <h3 className="courseTitleLi" onClick={() => setShowSengCourses(!showSengCourses)} ><div>SENG</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+              <div className="courseTitleLi" onClick={() => setShowSengCourses(!showSengCourses)} ><div>SENG</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </div>
 
                 <div className="coursesPerType">
                 {showSengCourses &&  
@@ -482,7 +482,7 @@ function DragDrop() {
 
             <div>
               <hr />
-              <h3 className="courseTitleLi" onClick={() => setShowCompCourses(!showCompCourses)} ><div>COMP</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </h3>
+              <div className="courseTitleLi" onClick={() => setShowCompCourses(!showCompCourses)} ><div>COMP</div> <div><img src={dropDownImg} alt="dropdown"  style={{height:"20px"}}/> </div>  </div>
 
                 <div className="coursesPerType">
                 {showCompCourses &&  
