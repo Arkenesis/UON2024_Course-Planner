@@ -13,10 +13,13 @@ const auth = getAuth(app);
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    return res.cookie("access_token", `${userCredential._tokenResponse.idToken}`, { httpOnly: true, }).json({ message: userCredential.user });
+    let user = userCredential.user;
+    const doc_ref = db.collection('CoursePlannerUsers').doc(user.uid);
+    const user_info = await doc_ref.get();
+    const firestore_data = user_info.data();
+    const result = {...user, firestore_data};
+    return res.cookie("access_token", `${userCredential._tokenResponse.idToken}`, { httpOnly: true, }).json({ message: result });
   } catch (error) {
     if (error.code === "auth/invalid-credential") {
       return res.status(403).json({ error: "Invalid email or password." });
@@ -73,8 +76,8 @@ export const logout = async (req, res) => {
     console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-  return res.clearCookie("access_token");
-  return res.json({ message: "User logged out successfully" });
+  return res.clearCookie("access_token").json({ message: "User logged out successfully" });
+  // return res.json({ message: "User logged out successfully" });
 };
 
 export const reset_password = (req, res) => {

@@ -1,24 +1,53 @@
 // src/components/ProfileDropdown.js
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import './ProfileDropdown.css';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCog,
+  faUserCircle,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import "./ProfileDropdown.css";
+import axios from "axios";
+import EditProfileModal from "./editprofilemodal/EditProfileModal";
 
-const ProfileDropdown = () => {
+const ProfileDropdown = ({ userinfo, programs }) => {
+
+  const [profileVisibility, setProfileVisibility] = useState(false);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8080/users/logout");
+      localStorage.removeItem("user");
+      window.location.reload();
+    } catch (ex) {
+      console.log(ex.response?.data);
+    }
+  };
+
+  const toggleProfile = () => {
+    setProfileVisibility(prev => !prev);
+  }
+
   return (
     <div className="profile-dropdown">
       <div className="profile-info">
         <FontAwesomeIcon icon={faUserCircle} className="profile-pic" />
         <div className="profile-text">
-          <span className="profile-name">Miley Cyrus</span>
-          <span className="profile-role">Student</span>
+          <span className="profile-name">
+            {userinfo?.firestore_data.username}
+          </span>
+          <span className="profile-role">{userinfo?.firestore_data.roles}</span>
         </div>
       </div>
-      <div className="profile-option">
+      <div className="profile-option" onClick={toggleProfile}>
         <FontAwesomeIcon icon={faCog} className="profile-option-icon" />
         <span>Profile Settings</span>
       </div>
-      <div className="profile-option">
+
+      {profileVisibility && <EditProfileModal onClose={toggleProfile} programs={programs} userInfo={userinfo}/>}
+
+      <div className="profile-option" onClick={handleLogout}>
         <FontAwesomeIcon icon={faSignOutAlt} className="profile-option-icon" />
         <span>Sign Out</span>
       </div>

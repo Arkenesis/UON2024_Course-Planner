@@ -3,12 +3,32 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./privacyPolicy.scss"
+import axios from 'axios';
+import ReactQuill from 'react-quill';
 
 const PrivacyPolicy = () => {
+
+    const [value, setValue] = useState('');
+
+    useEffect(() => {
+      getData()
+    },[])
+  
+    const getData = async () => {
+      try{
+        const { data } = await axios.get("http://localhost:8080/pages/policy");
+        setValue(data.message);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+
     return (
         <div className="privacy">
+            <ReactQuill value={value} readOnly={true} theme={"bubble"}/>
             <h2>Privacy Policy for Newcastle Planner</h2>
             <p>
                 Privacy Policy <br/><br/>

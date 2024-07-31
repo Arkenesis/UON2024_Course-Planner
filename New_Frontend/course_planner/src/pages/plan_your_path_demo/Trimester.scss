@@ -54,72 +54,72 @@
 // Search button animation 
 
 .addCoursebtn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 60px;
-    height: 60px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition-duration: .3s;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-   background: #FFE297;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background: #FFE297;
+}
   
-  /* plus sign */
-  .sign {
-    width: 100%;
-    transition-duration: .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sign .searchBtn {
-    width: 24px;
-  }
-  
-  .sign .searchBtn{
-    fill: white;
-  }
-  /* text */
-  .text {
-    position: absolute;
-    right: 0%;
-    width: 0%;
-    opacity: 0;
-    color: rgb(141, 141, 141);
-    font-size: 1.2em;
-    font-weight: 600;
-    transition-duration: .3s;
-  }
-  /* hover effect on button width */
-  .addCoursebtn:hover {
-    width: 145px;
-    border-radius: 40px;
-    transition-duration: .3s;
-    background: #FFE0B2;
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  }
-  
-  .addCoursebtn:hover .sign {
-    width: 30%;
-    transition-duration: .3s;
-    padding-left: 10px;
-    margin: 0 100px 0 0;
+.sign .searchBtn {
+  width: 24px;
+}
 
-  }
-  /* hover effect button's text */
-  .addCoursebtn:hover .text {
-    opacity: 1;
-    width: 70%;
-    transition-duration: .6s;
-    padding-right: 10px;
-  }
-  /* button click effect*/
-  .addCoursebtn:active {
-    transform: translate(2px, 0);
-  }
+.sign .searchBtn{
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: rgb(141, 141, 141);
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.addCoursebtn:hover {
+  width: 145px;
+  border-radius: 40px;
+  transition-duration: .3s;
+  background: #FFE0B2;
+
+}
+
+.addCoursebtn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 10px;
+  margin: 0 100px 0 0;
+
+}
+/* hover effect button's text */
+.addCoursebtn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .6s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.addCoursebtn:active {
+  transform: translate(2px, 0);
+}

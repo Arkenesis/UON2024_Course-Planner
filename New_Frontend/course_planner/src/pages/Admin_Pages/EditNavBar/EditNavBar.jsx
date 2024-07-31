@@ -101,10 +101,8 @@ function EditNavBar() {
 
   return (
     
-    <div className="edit-navigation" style={{ backgroundColor: navTitles.backgroundColor }}>
-      {isImagePreviewVisible && (
-        <ImageUpload setImageUrl={setLogo} className="navbar-image-upload"/>
-      )}
+    <div className="edit-navigation">
+      
       <h1 className="title">Edit Navigation</h1>
       <div className="boxes"></div>
       <div className="navigation-items">
@@ -129,20 +127,14 @@ function EditNavBar() {
         }
 
         <div className="logo-buttons">
-          {/* <input
-            type="file"
-            ref={fileInputRef}
-            style={{ display: 'none' }}
-            accept="image/*"
-            onChange={handleLogoChange}
-          /> */}
+          {/* <input type="file" ref={fileInputRef} style={{ display: 'none' }} accept="image/*" onChange={handleLogoChange} /> */}
           <button className="change-logo" onClick={handleImagePreviewClick}>
             Change Logo
           </button>
           <button className="delete-logo" onClick={() => setLogo('')}>Delete Logo</button>
         </div>
       </div>
-
+      {isImagePreviewVisible && <ImageUpload setImageUrl={setLogo} /> }
       <div className="background-color">
         <h2 className="section-title">Background Color</h2>
         <div className="color-options">

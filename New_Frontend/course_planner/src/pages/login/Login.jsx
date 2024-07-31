@@ -4,25 +4,31 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import emailLogo from '../../assets/email.svg';
-import passwordLogo from '../../assets/email.svg';
+import passwordLogo from '../../assets/passwordIcon.png';
 import loginPic from '../../assets/login.png';
 
 import "./login.scss";
-import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from './LoginContext';
+import NavigationBar from '../../components/NavigationBar';
 
 const Login = () => {
     
     const [inputs, setInputs] = useState({
-        email: "",
-        password: "",
+        email: localStorage.getItem("username") || "",
+        password: localStorage.getItem("password") || "",
+        rememberMe: localStorage.getItem("rememberMe") === 'true',
     });
 
     const [err, setErr] = useState();
     
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleCheckbox = (e) => {
+        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
     };
     
     const navigate = useNavigate();
@@ -33,14 +39,28 @@ const Login = () => {
         e.preventDefault();
         
         try{
-            await login(inputs);
-            alert('Login done.')
-            //navigate("/");
+            const { message: user } = await login(inputs);
+            console.log(user);
+            if (inputs.rememberMe === true) {
+                localStorage.setItem("username", inputs.email);
+                localStorage.setItem("password", inputs.password);
+                localStorage.setItem("rememberMe", true);
+            } else {
+                localStorage.removeItem("username");
+                localStorage.removeItem("password");
+                localStorage.removeItem("rememberMe");
+            }
+            const roles = user?.firestore_data.roles;
+            if(roles === 'Admin'){
+                navigate("../admin");
+            }
+            else{
+                navigate("../home");
+            }
         }
         catch(error){
             setErr(error.response?.data || "Kindly check your email and password");
         }
-
     };
 
     return (
@@ -87,25 +107,18 @@ const Login = () => {
 
                         <div className="remember-me">
                             <div className="remember-me-1">
-                                <input
-                                    type="checkbox"
-                                    name="rememberMe"
-                                    onChange={handleChange}
-                                    value={inputs.rememberMe}
-                                />
+                                <input type="checkbox" name="rememberMe" onChange={handleCheckbox} checked={inputs.rememberMe} />
                                 <p>Remember Me</p>
                             </div>
                             <div>
-                                <p>Forgot Password</p>
+                                <Link to="/reset-password"><p>Forgot Password</p></Link>
                             </div>
                         </div>
 
                         {/* {err && <p className="error">{err}</p>} */}
                         <button type="submit">Login</button>
+                        <Link to="/register" className='login-register'> Register New Account</Link>
                     </form>
-                    {/* <Link to="/register">
-                        <button>Register</button>
-                    </Link> */}
                 </div>
 
                 <div className="right">
