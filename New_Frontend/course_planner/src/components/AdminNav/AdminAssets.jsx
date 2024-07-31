@@ -1,25 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./AdminNav.css";
-import databaseImg from "../../assets/databaseImg.png";
-import imageIcon from "../../assets/imageIcon.png";
-import profileImg2 from "../../assets/profileImg2.png";
-import folderIcon from "../../assets/folderIcon.png";
-import pageIcon from "../../assets/pageIcon.png";
-import EditProgram from "../../pages/Admin_Pages/EditProgram/EditProgram";
-import AdminAboutUs from "../../pages/Admin_Pages/AdminAboutUs/AdminAboutUs";
-import AboutUs from "../../pages/AboutUs/AboutUs";
-import AdminTerm from "../../pages/Admin_Pages/AdminTerm/AdminTerm";
-import Login from "../../pages/login/Login";
-import EditLoginPage from "../../pages/EditLoginPage/EditLoginPage";
-import EditRegisterPage from "../../pages/EditRegisterPage/EditRegisterPage";
-import HomePage from "../../pages/Homepage/HomePage.jsx";
-import AdminPolicy from "../../pages/Admin_Pages/AdminPolicy/AdminPolicy";
-import courseM from "../../assets/courseM.png";
-import courseAssign from "../../assets/courseAssign.png";
-import DatabaseLink from "./DatabaseLink";
 import ImageUpload from "../../pages/image_upload/image_upload";
-
-import "./AdminNav.css";
 
 function AdminAssets() {
 

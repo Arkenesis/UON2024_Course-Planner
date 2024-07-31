@@ -4,8 +4,6 @@ import { useDrop } from "react-dnd";
 import Trimester from "./Trimester";
 import Course from "./Course";
 import "./Trimesters.css"
-
-
          
 const Trimesters = ({ id, name, level, units, grade, year, term, course, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton, removeTrimester, trimesters}) => {
 

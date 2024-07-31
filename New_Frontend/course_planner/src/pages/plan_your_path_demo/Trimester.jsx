@@ -55,6 +55,12 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
     course.ID.toLowerCase().includes(query.toLowerCase())
   );
 
+
+
+
+
+
+
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
     <div key={index} ref={node => drop(node)}  style={{ opacity: isDragging? 0.8: 1, position: "relative", display: "flex", justifyContent: "center", alignItems: "center", width: isActive ? "280px" : "240px", height: isActive ? "280px" : "240px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >

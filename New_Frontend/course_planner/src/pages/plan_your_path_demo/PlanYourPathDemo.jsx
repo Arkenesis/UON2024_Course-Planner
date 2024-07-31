@@ -248,6 +248,9 @@ function DragDrop() {
     }, {});
   };
 
+
+
+
   return (
 
     <div className="planYourPath">
@@ -284,6 +287,10 @@ function DragDrop() {
                   courses={courses} studentTrimester={studentTrimester}  setStudentTrimester={setStudentTrimester} trimesterIndex={index} menuButton={menuButton} deleteTrimesterPos={removeTrimester} removeTrimester={removeTrimester} trimesters={trimesters}/>
              </div>
           )}
+
+        
+       
+         
         </div>
         
         <div>
