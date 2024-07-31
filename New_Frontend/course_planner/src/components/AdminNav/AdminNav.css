@@ -2,413 +2,347 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.adminNav{
-    border: 2px solid black;
-    display: flex;
-    width: 400px;
-    position: relative;
-    height: 100vh;
-    margin: 200px 100px;
-
-    
+.adminNav {
+  border: 2px solid black;
+  display: flex;
+  width: 320px;
+  position: relative;
+  height: 100vh;
 }
 
-
-
-
-.optionBox{
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    overflow: auto;
-    border: 2px solid black;
-    margin: 10px 0 0 0;
-      
+.optionBox {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  overflow: auto;
+  border: 2px solid black;
+  margin: 10px 0 0 0;
 }
 
-.dbsBtn{
-    color: rgb(130, 126, 126);
-    font-weight: 550;
-    display: flex;
-    flex-direction: column;
-    border: none;
-    width: 240px;
-    cursor: pointer;
-    background: none;
-    margin: 24px 0;
+.dbsBtn {
+  color: rgb(130, 126, 126);
+  font-weight: 550;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 240px;
+  cursor: pointer;
+  background: none;
+  margin: 24px 0;
 }
 
-
-
-.optionsBtn{
-    background: none;
-    color: rgb(130, 126, 126);
-    font-weight: 550;
-    transition: all 0.2s ease-out;
-   border: none;
-   margin: 4px 0;
-   padding: 10px 80px;
-   cursor: pointer;
-   
-
-   
+.optionsBtn {
+  background: none;
+  color: rgb(130, 126, 126);
+  font-weight: 550;
+  transition: all 0.2s ease-out;
+  border: none;
+  margin: 4px 0;
+  padding: 10px 80px;
+  cursor: pointer;
 }
 
-.dataBaseBtn{
-    margin: 100px 0 0 30px;
+.optionsBtn:hover {
+  color: white;
+  background: rgb(95, 90, 90);
 }
 
-
-.optionsBtn:hover{
-color: white;
-    background: rgb(95, 90, 90);
-
+.optionBox::-webkit-scrollbar {
+  width: 15px;
+  border: 8px;
 }
 
-
-
-
-.optionBox::-webkit-scrollbar{
-    width: 15px;
-    border: 8px;
+.optionBox::-webkit-scrollbar-track {
+  background: #ffffff;
 }
 
-.optionBox::-webkit-scrollbar-track{
-    background: #ffffff;
+.optionBox::-webkit-scrollbar-thumb {
+  background: #82b2f6;
+  border-radius: 10px;
 }
 
-
-.optionBox::-webkit-scrollbar-thumb{
-    background: #82b2f6;
-    border-radius: 10px;
+.adminHomePage {
+  display: flex;
+  width: 100vw;
 }
 
-
-
-.adminHomePage{
-    display: flex;
-    width: 100vw;
+.leftNav {
+  height: 99vh;
+  width: 60px;
+  padding: 10px 0 0 0;
+  background-color: #b6caf3;
+  border-right: 2px solid black;
 }
 
-
-
-.leftNav{
-    height: 99vh;
-    width: 60px;
-    padding: 10px 0 0 0;
-    background-color: #b6caf3;
-    border-right: 2px solid black;
+.rightNav {
+  color: rgb(142, 142, 142);
+  position: relative;
+  top: 0;
+  left: 0;
+  font-weight: 550;
+  width: 240px;
 }
 
-.rightNav{
-    color: rgb(142, 142, 142);
-    position: relative;
-    top: 0;
-    left: 0;
-    font-weight: 550;
-    width: 240px;
- 
-    
+.rightImg {
+  height: 40px;
+  width: 40px;
+  margin: 0 10px;
 }
 
-
-
-.rightImg{
-    height: 40px;
-    width: 40px;
-    margin: 0 10px;
+.leftImgProfile {
+  height: auto;
+  width: 40px;
+  margin: 10px 0 20px 0;
+  border: 4px solid rgb(178, 48, 48, 0);
 }
 
-
-
-.leftImgProfile{
-height: auto;
-width: 40px;
-margin: 10px 0 20px 0;
-border: 4px solid rgb(178, 48, 48, 0);
-
+.leftImgProfile:active {
+  border: 4px solid black;
+  border-radius: 30px;
 }
 
-.leftImgProfile:active{
-   
-    border: 4px solid black;
-    border-radius: 30px;
-    }
-
-.adminNav{
-    height: 100vh;
-    
+.adminNav {
+  height: 100vh;
 }
 
-.leftImg{
-    height: 24px;
-    width: auto;
-    margin: 20px 0;
+.leftImg {
+  height: 24px;
+  width: auto;
+  margin: 20px 0;
 }
-
-
-
 
 /**/
 .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
+  background-color: #3498db;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #d2d2d2;
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #d2d2d2;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-
-.displayPopup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 100px;
-    position: absolute;
-    width: 60vw;
-    
+.dropdown a:hover {
+  background-color: #ddd;
 }
 
-.mainAdminNav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.2s ease-in;
-    cursor: pointer;
+.show {
+  display: block;
 }
 
-.mainAdminNav:hover{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
+.displayPopup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 100px;
+  position: absolute;
+  width: 60vw;
 }
 
-.searchInputAdmin{
-    height: 10px;
-    max-width: 400px;
-    margin: 0 90px 0 0;
-    border-radius: 24px;
-
+.mainAdminNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease-in;
+  cursor: pointer;
 }
 
-.searchImg{
-    height: 10px;
-    width: 400px;
-    position: relative;
-    border: 12px;
- 
+.mainAdminNav:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
 }
 
-.imgName{
-    width: auto;
-    cursor: auto;
-    cursor: pointer;
+.searchInputAdmin {
+  height: 10px;
+  max-width: 400px;
+  margin: 0 90px 0 0;
+  border-radius: 24px;
 }
 
-.webpageM{
-    margin: -20px 0 0 60px;
+.searchImg {
+  height: 10px;
+  width: 400px;
+  position: relative;
+  border: 12px;
 }
 
+.imgName {
+  width: auto;
+  cursor: auto;
+  cursor: pointer;
+}
 
-
+.webpageM {
+  margin: -20px 0 0 60px;
+}
 
 /* DatabaseLink */
-.databaseNav{
-    position: relative;
-    display: flex;
+.databaseNav {
+  position: relative;
+  display: flex;
 }
 
-
-.showPagePop{
-    position: absolute;
-    left: 30%;
-top: 0;
+.showPagePop {
+  position: absolute;
+  left: 35%;
+  top: 0;
+  height: calc(100vh - 1em);
+  /* width: calc(60vw); */
+  overflow: auto;
 }
-
 
 /* Comp asset */
-.assetComp{
-    background: rgb(234, 234, 234);
-    max-width: 300px;
-    padding: 20px 40px;
-    border: 2px solid black;
-     position: absolute;
-     top: 0;
-     min-height: 100vh;
-     max-height: 100vh;
-     left: 0;
-  
+/* .assetComp {
+  background: rgb(234, 234, 234);
+  max-width: 300px;
+  padding: 0px 40px;
+  border: 2px solid black;
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  max-height: 100vh;
+  left: 0;
+} */
+
+.searchBox {
+  border: 2px solid black;
+  height: 40px;
 }
 
+.imgGallery {
+  width: 300px;
+  border: 2px solid black;
+  min-height: 70vh;
 
-.searchBox{
-    border: 2px solid black;
-    height: 40px;
-    
+  max-height: 70vh;
+  overflow: auto;
+  margin: 20px 0 0 0;
 }
 
-
-.imgGallery{
-    width: 300px;
-    border: 2px solid black;
-    min-height: 70vh;
-
-    max-height: 70vh;
-    overflow: auto;
-    margin: 20px 0 0 0;
+.dropDownAdminAssets {
+  position: absolute;
 }
 
-
-.dropDownAdminAssets{
-    position: absolute;
-
+.uploadImgDiv {
+  width: 700px;
 }
 
-.uploadImgDiv{
-    width: 700px;
-    
+.uploadImg {
+  font-weight: 400;
+  width: 400px;
+  background: rgb(255, 255, 255);
+  margin: 10px 20px;
+  border-radius: 8px;
 }
 
-.uploadImg{
-    font-weight: 400;
-    width: 400px;
-    background: rgb(255, 255, 255);
-    margin: 10px 20px;
-    border-radius: 8px;
-
+.imgButtonContainer {
+  display: flex;
+  flex-direction: column;
+  flex-direction: space-around;
+  gap: 20px;
+  margin: 30px 0;
 }
 
-.imgButtonContainer{
-    display: flex;
-    flex-direction: column;
-    flex-direction: space-around;
-    gap: 20px;
-    margin: 30px 0;
-    
-
-  }
-
-
-.imgButtonContainer .addPic{
-    color: rgb(22, 22, 22);
-    background: rgb(175, 175, 175);   
-    border: 1px solid black;
-    border-radius: 8px;
-    transition: ease-in-out 500ms;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    width: 280px;
-
+.imgButtonContainer .addPic {
+  color: rgb(22, 22, 22);
+  background: rgb(175, 175, 175);
+  border: 1px solid black;
+  border-radius: 8px;
+  transition: ease-in-out 500ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 280px;
 }
 
-.searchDropdown{
-
+.searchDropdown {
 }
 
-.profilePage{
-    position: absolute;
-    background: white;
-    background-color: white;
-    height: 120px;
-    width: 200px;
-    margin: -20px 0 0 40px;
-    border: 2px solid black;
-    z-index: 9;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 0 10px 10px;
-
+.profilePage {
+  position: absolute;
+  background: white;
+  background-color: white;
+  height: 120px;
+  width: 200px;
+  margin: -20px 0 0 40px;
+  border: 2px solid black;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0 10px 10px;
 }
 
-.profileData{
-    display: flex;
+.profileData {
+  display: flex;
 }
 
-
-.profileData .userName{
-    margin: 10px 0;
-    font-weight: 700;
+.profileData .userName {
+  margin: 10px 0;
+  font-weight: 700;
 }
 
-.profileSettings{
-    margin: 10px 0;
-    cursor: pointer;
-    transition: ease 500ms;
+.profileSettings {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: ease 500ms;
 }
 
-.signOut{
-    margin: 10px 0;
-    cursor: pointer;
-    transition: ease 500ms;
-
-
-
-    
+.signOut {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: ease 500ms;
 }
 
-
-.profileSettings:hover{
+.profileSettings:hover {
   background: rgb(194, 194, 194);
-  
 }
 
-.signOut:hover{
+.signOut:hover {
   background: rgb(194, 194, 194);
-   
-
-
-    
 }
 
-
-.profileData img{
-    height: 40px;
+.profileData img {
+  height: 40px;
 }
 
-
-.profileSettings img{
-    height: 20px;
+.profileSettings img {
+  height: 20px;
 }
 
-.dbsLink{
-    display: flex;
+.dbsLink {
+  display: flex;
 }
 
-.dbsLink .adminText{
-    margin: 14px 0 0 0;
+.dbsLink .adminText {
+  margin: 14px 0 0 0;
 }

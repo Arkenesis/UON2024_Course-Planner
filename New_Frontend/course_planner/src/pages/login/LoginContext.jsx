@@ -10,6 +10,7 @@ export const UserContextProvider = ({ children }) => {
     try{
       const { data } = await axios.post("http://localhost:8080/users/login", inputs);
       setUser(data.message);
+      setUser({...prev, "courses": JSON.parse(data.message.courses)});
       return data;
     }
     catch(err){

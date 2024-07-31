@@ -1,57 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import './AdminNav.css'
-import databaseImg from '../../assets/databaseImg.png'
-import imageIcon from '../../assets/imageIcon.png'
-import profileImg2 from '../../assets/profileImg2.png'
-import folderIcon from '../../assets/folderIcon.png'
-import pageIcon from '../../assets/pageIcon.png'
-import EditProgram from '../../pages/Admin_Pages/EditProgram/EditProgram'
-import AdminAboutUs from '../../pages/Admin_Pages/AdminAboutUs/AdminAboutUs'
-import AboutUs from '../../pages/AboutUs/AboutUs'
-import AdminTerm from '../../pages/Admin_Pages/AdminTerm/AdminTerm'
-import Login from '../../pages/login/Login'
-import EditLoginPage from '../../pages/EditLoginPage/EditLoginPage'
-import EditRegisterPage from '../../pages/EditRegisterPage/EditRegisterPage'
-import HomePage from '../../pages/HomePage/HomePage'
-import AdminPolicy from '../../pages/Admin_Pages/AdminPolicy/AdminPolicy'
-import courseM from '../../assets/courseM.png'
-import courseAssign from '../../assets/courseAssign.png'
-import DatabaseLink from './DatabaseLink';
-import ImageUpload from '../../pages/image_upload/image_upload';
+import React, { useState, useEffect } from "react";
+import "./AdminNav.css";
+import databaseImg from "../../assets/databaseImg.png";
+import imageIcon from "../../assets/imageIcon.png";
+import profileImg2 from "../../assets/profileImg2.png";
+import folderIcon from "../../assets/folderIcon.png";
+import pageIcon from "../../assets/pageIcon.png";
+import EditProgram from "../../pages/Admin_Pages/EditProgram/EditProgram";
+import AdminAboutUs from "../../pages/Admin_Pages/AdminAboutUs/AdminAboutUs";
+import AboutUs from "../../pages/AboutUs/AboutUs";
+import AdminTerm from "../../pages/Admin_Pages/AdminTerm/AdminTerm";
+import Login from "../../pages/login/Login";
+import EditLoginPage from "../../pages/EditLoginPage/EditLoginPage";
+import EditRegisterPage from "../../pages/EditRegisterPage/EditRegisterPage";
+import HomePage from "../../pages/Homepage/HomePage.jsx";
+import AdminPolicy from "../../pages/Admin_Pages/AdminPolicy/AdminPolicy";
+import courseM from "../../assets/courseM.png";
+import courseAssign from "../../assets/courseAssign.png";
+import DatabaseLink from "./DatabaseLink";
+import ImageUpload from "../../pages/image_upload/image_upload";
 
-import './AdminNav.css';
-
-// Define the image data
-const Images = [
-    { id: 1, name: 'Logo', link: 'courseAssign', path: courseAssign },
-    { id: 2, name: 'Building Background', link: 'pageIcon', path: courseM },
-    { id: 3, name: 'email', path: profileImg2 },
-    { id: 4, name: 'phone', path: imageIcon },
-];
+import "./AdminNav.css";
 
 function AdminAssets() {
 
+  return (
+    <div className="assetComp">
+      <ImageUpload />
+    </div>
+  );
+}
 
-    const [profilePic, setProfilePic] = useState(null);
+export default AdminAssets;
 
-    const handleFileChange = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const objectURL = URL.createObjectURL(file);
-        setProfilePic(objectURL);
-      }
-    };
-
-    const [query, setQuery] = useState('');
-    const [showDropdown, setShowDropDown] = useState(false);
-
-    const filterCourses = Images.filter((image) =>
-        image.name.toLowerCase().includes(query.toLowerCase())
-    );
-
-    return (
-        <div className='assetComp'>
-  {/* <div className='uploadImgDiv'>
+      {/* <div className='uploadImgDiv'>
   <div className="imgButtonContainer">
             <label className="addPic" for="input-fileAssets">
               Add Asset
@@ -127,10 +108,3 @@ function AdminAssets() {
                     />
                 ))}
             </div> */}
-            <ImageUpload/>
-
-        </div>
-    );
-}
-
-export default AdminAssets;

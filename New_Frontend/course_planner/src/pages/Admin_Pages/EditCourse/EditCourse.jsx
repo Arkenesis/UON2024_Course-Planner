@@ -85,6 +85,7 @@ const EditCourse = () => {
     return (
         <div>
             <div className="Window">
+                <h1>Edit Courses</h1>
                 <table className="CourseList">
                     <thead>
                         <tr>
@@ -148,10 +149,10 @@ const EditCourse = () => {
                 </table>
             </div>
             
-            <div className="CancelAndSave">
+            {/* <div className="CancelAndSave">
                 <button className="CancelButton" onClick={handleCancel}>Cancel</button>
-                {/* <button className="SaveButton" onClick={handleSaveToCloud}>Save</button> */}
-            </div>
+                <button className="SaveButton" onClick={handleSaveToCloud}>Save</button>
+            </div> */}
 
             {showModal && selectedCourse && (
                 <EditModal 

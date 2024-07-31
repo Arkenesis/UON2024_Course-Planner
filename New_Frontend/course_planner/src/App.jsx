@@ -3,10 +3,8 @@ import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, Navi
 import { useContext, useState } from 'react'
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+// Default CSS
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
 import './App.css'
 // Layout
 import NavigationBar from './components/NavigationBar';
@@ -22,20 +20,11 @@ import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
-import image_upload from "./pages/image_upload/image_upload.jsx";
-import EditLoginPage from "./pages/EditLoginPage/EditLoginPage.jsx";
-import EditRegisterPage from "./pages/EditRegisterPage/EditRegisterPage.jsx";
-
+import HomePage from "./pages/Homepage/HomePage.jsx";
 // Admin Pages
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
-
-import PYP from './pages/PYP/PYP.jsx'
+// UserContext
 import { UserContext } from "./pages/login/LoginContext.jsx";
-import EditStudentModal from "./components/editstudentmodal/EditStudentModal.jsx";
-import AdminAssets from "./components/AdminNav/AdminAssets.jsx";
-
-
-// Login
 
 function App() {
 
@@ -120,10 +109,10 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <EditStudentModal/>
-      <div style={{width:'100px', margin:'0 0 0 200px'} }>
+      {/* <EditStudentModal/> */}
+      {/* <div style={{width:'100px', margin:'0 0 0 200px'} }>
         <AdminAssets/>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -1,41 +1,43 @@
 /* style={{ opacity: isDragging ? "50%" : "100%", height: "10em", width: "150px", background: "yellow", margin: "10px"}} */
 
-.course{
+.plan-demo-course{
      cursor: grab;
      display: flex;
      flex-direction: column;
      width: 300px;
-  
+
+     .courseHeader{
+          background: #FED766;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          align-items: center;
+          width: 300px;
+          height: 40px;
+          gap: 20px;
+
+          .subDetails{
+               margin: 18px 14% 18px 0;
+           }
+     }
+
+     :active{
+          cursor: grabbing;
+     }
+     .contentBox{
+          margin: 0 10px;
+
+          .taken{
+               color: white;
+               text-align: center;
+               background-color: crimson;
+               padding: 1em 0px;
+               border-radius: 1em;
+           }
+     }
 }
 
-.course:active{
-     cursor: grabbing;
-}
+ 
 
 
-.courseHeader{
-     background: #FED766;
-     display: flex;
-     justify-content: center;
-     align-content: center;
-     align-items: center;
-     width: 300px;
-     height: 40px;
-     gap: 20px;
-
-     
-}
-
-
-.courseHeader .subDetails{
-     margin: 18px 14% 18px 0;
- }
-
- .contentBox{
-     margin: 0 10px;
- }
-
- .taken{
-     color: red;
- }
  

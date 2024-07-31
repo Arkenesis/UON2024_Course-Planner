@@ -11,7 +11,6 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
     
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
-    
     }),
   }));
 
@@ -21,15 +20,14 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
       width: "260px", margin: "10px", backgroundColor: "#FFEFD7"}}>
 
       <div className="courseDroppedHeader">
-        <div className="heading"> <h3>Core</h3></div> 
-                
-            <div className="removeDiv">
-            <button className="removeBtn" style={{padding: "0px", color: "black", backgroundColor: "transparent", border: "none", float: "left"}} onClick={() => removeCourse(parent_index, index)}>         <img style={{height: "50px"}} className="hamburgerMenu" src={cross} alt="cross" /></button>
-
-            </div>
-             
-       
-  
+        <div className="heading">
+          <h3>Core</h3>
+        </div>
+        <div className="removeDiv">
+          <button className="removeBtn" style={{padding: "0px", color: "black", backgroundColor: "transparent", border: "none", float: "left"}} onClick={(e) => removeCourse(e, parent_index, index)}>
+            <img style={{height: "50px"}} className="hamburgerMenu" src={cross} alt="cross" />
+          </button>
+        </div>
       </div>
 
       <div className="subDetails">
