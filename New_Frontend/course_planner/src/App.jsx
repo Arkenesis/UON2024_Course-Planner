@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, Navi
 import { useContext, useState } from 'react'
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-
+// Default CSS
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 // Layout
 import NavigationBar from './components/NavigationBar';
@@ -12,7 +13,6 @@ import DragDrop from './pages/plan_your_path_demo/PlanYourPathDemo.jsx';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
 import Footer from "./components/Footer/Footer.jsx";
-import HomePage from './pages/Homepage/HomePage';
 import Login from './pages/login/Login.jsx';
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Register from './pages/Register/Register';
@@ -20,11 +20,10 @@ import ResetPassword from './pages/reset_password/ResetPassword.jsx';
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions.jsx";
 import TrackProgress from './pages/TrackProgress/TrackProgress';
 import ChangePassword from "./pages/ChangePassword/ChangePassword.jsx";
-
+import HomePage from "./pages/HomePage/HomePage.jsx";
 // Admin Pages
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
-
-import PYP from './pages/PYP/PYP.jsx'
+// UserContext
 import { UserContext } from "./pages/login/LoginContext.jsx";
 
 function App() {
@@ -51,16 +50,17 @@ function App() {
     return children;
   }
 
-  const AdminRoute = ({children}) => {
-    if(!user){
-      return <Navigate to ="/login"/>
+  const AdminRoute = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
     }
-    const roles = user?.firestore_data.roles;
-    if(roles === 'Admin'){
+  
+    if (user.firestore_data.roles === 'Admin') {
       return children;
     }
-    return <Navigate to ="/login"/>
-  }
+  
+    return <Navigate to="/login" />;
+  };
 
   const router = createBrowserRouter([
     {
@@ -110,6 +110,10 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
+      {/* <EditStudentModal/> */}
+      {/* <div style={{width:'100px', margin:'0 0 0 200px'} }>
+        <AdminAssets/>
+      </div> */}
     </>
   );
 }

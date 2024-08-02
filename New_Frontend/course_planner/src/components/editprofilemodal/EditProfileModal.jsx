@@ -3,6 +3,7 @@ import axios from 'axios';
 import './editProfileModal.scss';
 
 function EditProfileModal({onClose, programs, userInfo}) {
+
     const [profile, setProfile] = useState({
         program: userInfo?.firestore_data.program || '',
         start_date: userInfo?.firestore_data.start_date || '',

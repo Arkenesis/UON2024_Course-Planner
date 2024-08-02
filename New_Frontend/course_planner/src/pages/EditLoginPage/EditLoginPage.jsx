@@ -5,9 +5,7 @@ import uonBuilding from "../../assets/uonBuilding.jpg";
 import "./EditLoginPage.scss";
 
 function EditLoginPage() {
-  const [value, setValue] = useState(`
-        
-        `);
+  const [value, setValue] = useState(` `);
 
   const handleCancel = () => {
     setValue(``);

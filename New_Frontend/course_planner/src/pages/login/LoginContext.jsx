@@ -10,6 +10,10 @@ export const UserContextProvider = ({ children }) => {
     try{
       const { data } = await axios.post("http://localhost:8080/users/login", inputs);
       setUser(data.message);
+      if (data.message.firestore_data.courses) {
+        let temp = JSON.parse(data.message.firestore_data.courses);
+        setUser(prevUser => ({ ...prevUser, "courses": temp }));
+      }
       return data;
     }
     catch(err){

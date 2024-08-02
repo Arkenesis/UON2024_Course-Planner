@@ -75,7 +75,7 @@ function EditLoginPage() {
   return (
     <div className="editRegisterPage">
       <div className="editTitles">
-        <h2>Edit Login Page</h2>
+        <h2>Edit Register Page</h2>
 
         <h3>Welcome Message</h3>
 

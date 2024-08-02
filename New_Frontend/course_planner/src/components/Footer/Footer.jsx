@@ -3,7 +3,7 @@ import './Footer.css'
 import axios from 'axios';
 const Footer = () => {
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState();
 
     useEffect(() => {
       getData()

@@ -80,12 +80,13 @@ const EditStudent = () => {
     }
 
     return (
-        <div>
-            <div className="Button">
+        <div className="EditStudent">
+            <h1>Edit Student</h1>
+            {/* <div className="Button">
                 <button className="PurgeButton">Purge Data</button>
-            </div>
+            </div> */}
             
-            <div className="Window">
+            <div className="EditStudent-Window">
                 <div className="Title">
                     <span>Student Name</span>
                     <span>Phone Number</span>
@@ -120,7 +121,7 @@ const EditStudent = () => {
             </div>
             
             <div className="CancelAndSave">
-                <button className="CancelButton" onClick={handleCancel}>Cancel</button>
+                {/* <button className="CancelButton" onClick={handleCancel}>Cancel</button> */}
                 {/* <button className="SaveButton" onClick={handleSaveToCloud}>Save</button> */}
             </div>
 

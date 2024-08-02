@@ -205,7 +205,7 @@ const EditProgram = () => {
       <div className="sections">
         <div className="left-section">
           <div className="form-group uniform-size">
-            <label htmlFor="program-name"><strong>Program Name</strong></label>
+            <label htmlFor="program-name" className="program-name"><strong>Program Name</strong></label>
             <input type="text" id="program-name" value={programName} onChange={(e) => { setProgramName(e.target.value); setUpdate(true); }} />
           </div>
           <div className="form-group uniform-size">
