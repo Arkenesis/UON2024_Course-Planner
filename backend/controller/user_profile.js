@@ -30,15 +30,15 @@ export const setProfileCourses = async (req, res) => {
   const { courses } = content;
   try{
     let result = [...courses ];
-    for(let i = 0; i<result.length; i++){
-      for(let j = 0; j<result[i].course.length; j++){
-        for(let k = 0; k<result[i].course[j].length; k++){
-          if(!result[i].course[j][k]){
-            result[i].course[j][k] = 'Unset';
-          }
-        }
-      }
-    }
+    // for(let i = 0; i<result.length; i++){
+    //   for(let j = 0; j<result[i].course.length; j++){
+    //     for(let k = 0; k<result[i].course[j].length; k++){
+    //       if(!result[i].course[j][k]){
+    //         result[i].course[j][k] = 'Unset';
+    //       }
+    //     }
+    //   }
+    // }
     const doc_ref = db.collection('CoursePlannerUsers').doc(user.uid);
     await doc_ref.set({ "courses": JSON.stringify(result) }, { merge: true });
     return res.json({ message: "The information was updated successfully!" });

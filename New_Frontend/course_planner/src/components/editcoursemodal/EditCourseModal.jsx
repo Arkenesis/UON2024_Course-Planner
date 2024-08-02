@@ -130,7 +130,7 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
                                     <input type="checkbox" checked={i.trimester[1] === true} onChange={(e) => handleTrimesterChange(e, index, 1)} className="availabilityLabel" />
                                     <input type="checkbox" checked={i.trimester[2] === true} onChange={(e) => handleTrimesterChange(e, index, 2)} className="availabilityLabel" />
                                     <input type="checkbox" checked={i.enable || false} onChange={(e) => handleEnableChange(e, index)} className="availabilityLabel" />
-                                    <button onClick={() => removeRow(index)} className="availabilityLabel">Remove Row</button>
+                                    <button onClick={() => removeRow(index)} className="availabilityLabel" id="removeRow">Remove Row</button>
                                 </div>
                             ))}
                             <button onClick={addRow} className="addRowButton">Add Row</button>

@@ -31,35 +31,44 @@ function DragDrop() {
   const [courses, setCourses] = useState(Courses);
   
   const studentDefault = [
-    { trimesterId: 1, year: 2023, term: 1, course: ["", "" , "" , ""] },
-    { trimesterId: 2, year: 2023, term: 2, course: ["", "", "", ""] },
-    { trimesterId: 3, year: 2023, term: 3, course:  ["", "", "", ""] },
-    { trimesterId: 4, year: 2023, term: 4, course:  ["", "", "", ""] },
+    { trimesterId: 1, year: 2024, term: 1, course: ["", "" , "" , ""] },
+    { trimesterId: 2, year: 2024, term: 2, course: ["", "", "", ""] },
+    { trimesterId: 3, year: 2024, term: 3, course:  ["", "", "", ""] },
+    { trimesterId: 4, year: 2024, term: 4, course:  ["", "", "", ""] },
   ];
   
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   
   const [profile, setProfile] = useState({ courses: studentDefault });
 
-  const [studentTrimester, setStudentTrimester] = useState(studentDefault);
+  const [studentTrimester, setStudentTrimester] = useState([]);
 
+  // Initialize available courses and student's courses.
   useEffect(() => {
-    let processed = JSON.parse(user?.firestore_data.courses);
-    setProfile({ courses: processed || studentDefault});
-    setStudentTrimester(processed || studentDefault);
+    let processed = user.courses;
+    if(processed){
+      setProfile(prev => ({ ...prev, "courses": processed}));
+      setStudentTrimester(() => processed);
+      updateCoursesAdded(processed);
+    }
+    else{
+      setStudentTrimester(studentDefault);
+    }
   },[])
 
+  // Update Profile Information for Saving Purpose
   useEffect(() => {
-    setProfile({ courses: studentTrimester });
+    setProfile({ "courses": studentTrimester });
+    updateCoursesAdded(studentTrimester);
   }, [studentTrimester]);
 
-  // useEffect(() => {
-  //   handleSave();
-  // }, [profile.courses]);
-
+  // Upload to firebase
   const handleSave = async () => {
     try{
         const { data } = await axios.post("http://localhost:8080/pages/profile-courses", {content: profile});
+        user.courses = profile.courses;
+        let temp = {...user};
+        setUser(temp);
         alert('Saving course data success!');
     }
     catch(ex){
@@ -67,6 +76,7 @@ function DragDrop() {
     }
   };
   
+  // Add a course
   const addCourseToTrimester = (courseId, name, level, units, grade, parent_index, index) => {
 
     const currentTrimester = studentTrimester[parent_index];
@@ -90,94 +100,35 @@ function DragDrop() {
     if (courseId !== '' && duplicateFound == false) {
       if (courseId !== '' && duplicateFound == false && currentTrimester.course.length <= 4) {
 
-        for(let i = 0; i < currentTrimester.course.length; i++){
-
-        if(currentTrimester.course[i] === ""){
-          let updatedTrimester = [...studentTrimester];
-          updatedTrimester[parent_index].course[i] = [courseId, name, units, level, grade, true];
-
-          setCourses(prevCourses => 
-            prevCourses.map(course =>
-              course.ID.toLowerCase() ===  courseId.toLowerCase() ? {...course, ADDED: true} : course
-            )
-          )
-          setStudentTrimester(() => updatedTrimester);
-      
-          break;
-        }
-        // If the row is full, the module will be swapped on the location you added in
-        else if(currentTrimester.course[3] !== ""){
-
-          let updatedTrimester = [...studentTrimester];
-          updatedTrimester[parent_index].course[index] = [courseId, name, units, level, grade, true];
-          
-          setStudentTrimester(() => updatedTrimester);
-          window.alert("found " + courses[i].ID);
-
-          setCourses(prevCourses => 
-            prevCourses.map(course =>
-              course.ID ===  courseId ? {...course, ADDED: false} : course
-            )
-          )
-          break;
+        for (let i = 0; i < currentTrimester.course.length; i++) {
+          if (currentTrimester.course[i] === "") {
+            let updatedTrimester = [...studentTrimester];
+            updatedTrimester[parent_index].course[i] = [ courseId, name, units, level, grade, true, ];
+            setStudentTrimester(updatedTrimester);
+            break;
           }
+          // If the row is full, the module will be swapped on the location you added in
+          else if (currentTrimester.course[3] !== "") {
+            let updatedTrimester = [...studentTrimester];
+            updatedTrimester[parent_index].course[index] = [ courseId, name, units, level, grade, true, ];
+            setStudentTrimester(updatedTrimester);
+            window.alert("found " + courses[i].ID);
+            break;
+          }
+        }
       }
-    }
     }
   };  
 
-
-  const removeCourse = (courseId, parent_index, index) => {
+  //
+  const removeCourse = (event, parent_index, index) => {
 
     const currentTrimester = studentTrimester[parent_index];
 
     if(parent_index !== undefined && index !== undefined){
-
-            
-  
       let updatedTrimester = [...studentTrimester];
       updatedTrimester[parent_index].course[index] = "";
       setStudentTrimester(updatedTrimester);
-        
-    
-
-      let matchCount = 0;
-
-      studentTrimester.forEach(trimester => {
-        trimester.course.forEach(currentCourse => {
-          if (currentCourse && currentCourse[0] === courseTrimester[0]) {
-            matchCount++;
-          } 
-        });
-      });
-
-      if(matchCount == 0){
-
-        
-        setCourses(prevCourses => 
-          prevCourses.map(course =>
-            course.ID.toLowerCase() ===  courseTrimester[0].toLowerCase() ? {...course, ADDED: false} : course
-          )
-          
-        )
-        
-      }
-
-
-
-  
-      
-  
-      
-      // Check if the course id to change the status of the course
-      const tempDel = [...courses];
-
-      for(let i = 0; i<tempDel.length; i++){
-        if(tempDel[i].ID === deletedCourse[0]){
-          tempDel[i].ADDED = false;
-        }
-      }      
-      setCourses(prev => tempDel);
 
       // Loop that row to organize the row
       const tempArray = [];
@@ -199,7 +150,35 @@ function DragDrop() {
           }
         }
       }
+      // Update Added Tag
+      const remaining = studentTrimester;
+      updateCoursesAdded(remaining);
   };
+  // Update Added Tag Function
+  const updateCoursesAdded = (remaining) => {
+    const newCourses = [...courses];
+    for(let i = 0; i<newCourses.length; i++){
+      newCourses[i].ADDED = false;
+    }
+
+    for(let i = 0; i<remaining.length; i++){
+      let remainingCourses = remaining[i].course;
+      for(let k = 0; k<remainingCourses.length; k++){
+        let single_course = remainingCourses[k];
+        if(single_course === ''){
+          continue;
+        }
+        for(let j = 0; j<newCourses.length; j++){
+          if(newCourses[j].ID == single_course[0]){
+            let temp = newCourses[j];
+            newCourses[j].ADDED = true;
+            break;
+          }
+        }
+      }
+    }
+    setCourses(newCourses);
+  }
 
 
   const [showDropdown, setShowDropDown] = useState(false);
@@ -261,14 +240,8 @@ function DragDrop() {
       window.alert("You can't delete more courses");
     }
   }
-  
-  /////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////
 
+  // Group courses by type
   const groupCoursesByType = (courses) => {
     return courses.reduce((acc, course) => {
       if (!acc[course.TYPE]) {
@@ -278,10 +251,7 @@ function DragDrop() {
       return acc;
     }, {});
   };
-
-
-
-
+  
   return (
 
     <div className="planYourPath">

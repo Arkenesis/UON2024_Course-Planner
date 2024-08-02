@@ -50,16 +50,17 @@ function App() {
     return children;
   }
 
-  const AdminRoute = ({children}) => {
-    if(!user){
-      return <Navigate to ="/login"/>
+  const AdminRoute = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
     }
-    const roles = user?.firestore_data.roles;
-    if(roles === 'Admin'){
+  
+    if (user.firestore_data.roles === 'Admin') {
       return children;
     }
-    return <Navigate to ="/login"/>
-  }
+  
+    return <Navigate to="/login" />;
+  };
 
   const router = createBrowserRouter([
     {

@@ -50,9 +50,9 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
   const [query, setQuery] = useState('');
 
   //This function will check if the input that the user adds contains the same words found from the courses' names
-  const filterCourses = courses.filter(course =>
-    course.Name.toLowerCase().includes(query.toLowerCase()) ||
-    course.ID.toLowerCase().includes(query.toLowerCase())
+  const filterCourses = courses.filter(prev =>
+    (prev.Name && prev.Name.toLowerCase().includes(query.toLowerCase())) ||
+    (prev.ID && prev.ID.toLowerCase().includes(query.toLowerCase()))
   );
 
 
