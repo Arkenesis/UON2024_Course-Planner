@@ -41,6 +41,14 @@ const EditCourse = () => {
         setSelectedCourse(null);
     };
 
+    const handleCreate = () => {
+        const courseToCreate = { ID: "", Name: 'None', Level: 0, Prerequisite: [], RequiredCredit: 0, TYPE: "COMP", Units: 10, Availability: [], isNew: true }
+        setSelectedCourse(courseToCreate);
+        const temp = course.map(course => course.ID);
+        SetIds(temp);
+        setShowModal(true);
+    };
+
     const handleEdit = (courseId) => {
         console.log(`Editing course with id: ${courseId}`);
         const courseToEdit = course.find(course => course.ID === courseId);
@@ -77,6 +85,9 @@ const EditCourse = () => {
             let list = [...course];
             list.splice(idx, 1, inputCourse);
             setCourse(list);
+        }
+        else{
+            setCourse([...course, inputCourse]);
         }
         setShowModal(false);
         setSelectedCourse(null);
@@ -147,7 +158,7 @@ const EditCourse = () => {
                         ))}
                     </tbody>
                 </table>
-                <button onClick={handleCancel} className="NewCourse">+ New Course</button>
+                <button onClick={() => handleCreate()} className="NewCourse">+ New Course</button>
             </div>
             
             {/* <div className="CancelAndSave"> */}

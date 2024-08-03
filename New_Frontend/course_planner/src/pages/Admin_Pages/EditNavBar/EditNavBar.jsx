@@ -46,7 +46,7 @@ function EditNavBar() {
   const fileInputRef = useRef(null);
 
   // Predefined color options
-  const colorOptions = ['#FE4A49', '#FF7200', '#01847F', '#44A1A0', '#07393C', '#FDF498', '#854442'];
+  const colorOptions = ['#00508B','#FE4A49', '#FF7200', '#01847F', '#44A1A0', '#07393C', '#FDF498', '#854442'];
   
   // Button handlers
   const handleImagePreviewClick = () => {
@@ -82,8 +82,8 @@ function EditNavBar() {
     }
   };
 
-  const handleColorChange = (color) => {
-    navTitles.backgroundColor(color.hex);
+  const handleColorChange = (e) => {
+    setNavTitles(prev => ({...prev, backgroundColor: e.target.value}));
   };
 
   // Set title to the changed value, as it is array, so done via index
@@ -100,95 +100,97 @@ function EditNavBar() {
   }
 
   return (
-    
-    <div className="edit-navigation">
-      
-      <h1 className="title">Edit Navigation</h1>
-      <div className="boxes"></div>
-      <div className="navigation-items">
-        {navTitles.items.map( (i, idx) => (
-          <div className="box" key={idx}>
-            <input type="text" value={i.title} onChange={(e) => handleTitleChange(e, idx)} autoFocus />
-            <img src={i.visibility ? eyeIcon : eyeIconCrossed} alt="Toggle visibility" className="eye-icon" onClick={(e) => handleVisibility(idx)} />
-            <img src={editIcon} alt="Edit title" className="edit-icon" onClick={() => handleEditTitle('home')} />
-          </div>
-        ))}
-      </div>
-
-      <h2 className="section-title">Logo</h2>
-      <div className="logo-section">
-        {navTitles.logo 
-          ?
-            <div className="logo-image">
-              <img src={navTitles.logo} className='img' alt="Logo" />
+    <>
+      <h1 style={{ textAlign: "center"}}>Edit Navigation</h1>
+      <div className="edit-navigation">
+        
+        <div className="boxes"></div>
+        <div className="navigation-items">
+          {navTitles.items.map( (i, idx) => (
+            <div className="box" key={idx}>
+              <input type="text" value={i.title} onChange={(e) => handleTitleChange(e, idx)} autoFocus />
+              <img src={i.visibility ? eyeIcon : eyeIconCrossed} alt="Toggle visibility" className="eye-icon" onClick={(e) => handleVisibility(idx)} />
+              {/* <img src={editIcon} alt="Edit title" className="edit-icon" onClick={() => handleEditTitle('home')} /> */}
             </div>
-          :
-            <div className='logoBox'>Add Image</div>
-        }
-
-        <div className="logo-buttons">
-          {/* <input type="file" ref={fileInputRef} style={{ display: 'none' }} accept="image/*" onChange={handleLogoChange} /> */}
-          <button className="change-logo" onClick={handleImagePreviewClick}>
-            Change Logo
-          </button>
-          <button className="delete-logo" onClick={() => setLogo('')}>Delete Logo</button>
-        </div>
-      </div>
-      {isImagePreviewVisible && <ImageUpload setImageUrl={setLogo} /> }
-      <div className="background-color">
-        <h2 className="section-title">Background Color</h2>
-        <div className="color-options">
-          {colorOptions.map((color) => (
-            <div
-              key={color}
-              className="color-box"
-              style={{ backgroundColor: color }}
-              onClick={() => setNavTitles((prev) => ({ ...prev, backgroundColor: color}))}
-            />
           ))}
         </div>
-        <button className="color-picker-button" onClick={() => setShowColorPicker(!showColorPicker)}>
-          Pick Color Manually
-        </button>
-        {showColorPicker && (
-          <div className="color-picker-popover">
-            <div className="color-picker-cover" onClick={() => setShowColorPicker(false)} />
-            <SketchPicker color={navTitles.backgroundColor} onChangeComplete={handleColorChange} />
+
+        <h2 className="section-title">Logo</h2>
+        <div className="logo-section">
+          {navTitles.logo 
+            ?
+              <div className="logo-image">
+                <img src={navTitles.logo} className='img' alt="Logo" />
+              </div>
+            :
+              <div className='logoBox'>Add Image</div>
+          }
+
+          <div className="logo-buttons">
+            {/* <input type="file" ref={fileInputRef} style={{ display: 'none' }} accept="image/*" onChange={handleLogoChange} /> */}
+            <button className="change-logo" onClick={handleImagePreviewClick}>
+              Change Logo
+            </button>
+            <button className="delete-logo" onClick={() => setLogo('')}>Delete Logo</button>
+          </div>
+        </div>
+        {isImagePreviewVisible && <ImageUpload setImageUrl={setLogo} /> }
+        <div className="background-color">
+          <h2 className="section-title">Background Color</h2>
+          <h2 style={{background: navTitles.backgroundColor}}>&nbsp;</h2>
+          <div className="color-options">
+            {colorOptions.map((color) => (
+              <div
+                key={color}
+                className="color-box"
+                style={{ backgroundColor: color }}
+                onClick={() => setNavTitles((prev) => ({ ...prev, backgroundColor: color}))}
+              />
+            ))}
+          </div>
+          <button className="color-picker-button" onClick={() => setShowColorPicker(!showColorPicker)}>
+            Pick Color Manually
+            <input className="color-picker-input" type="color" value={navTitles.backgroundColor} onChange={(e) => handleColorChange(e)}/>
+          </button>
+          {/* {showColorPicker && (
+            <div className="color-picker-popover">
+              <div className="color-picker-cover" onClick={() => setShowColorPicker(false)} />
+              <SketchPicker color={navTitles.backgroundColor} onChangeComplete={handleColorChange} />
+            </div>
+          )} */}
+        </div>
+
+        <div className="bottom-buttons">
+          <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
+          <div className="right-buttons">
+            <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
+            <button className="save-button" onClick={handleSaveClick}>Save</button>
+          </div>
+        </div>
+
+        {err && ( <p> {err} </p> )}
+
+        {showSuccessMessage && (
+          <div className="success-message">
+            Changes saved successfully!
+          </div>
+        )}
+
+        {isCancelPopupVisible && (
+          <div className="modal" onClick={() => setIsCancelPopupVisible(false)}>
+            <div className="modal-content">
+              <span className="close" onClick={() => setIsCancelPopupVisible(false)}>&times;</span>
+              <h2>Confirm Cancel</h2>
+              <p>Are you sure you want to discard your changes?</p>
+              <div className="modal-buttons">
+                <button className="modal-cancel" onClick={handleCancelConfirmNo}>No</button>
+                <button className="modal-save" onClick={handleCancelConfirmYes}>Yes</button>
+              </div>
+            </div>
           </div>
         )}
       </div>
-
-      <div className="bottom-buttons">
-        <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
-        <div className="right-buttons">
-          <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
-          <button className="save-button" onClick={handleSaveClick}>Save</button>
-        </div>
-      </div>
-
-      {err && ( <p> {err} </p> )}
-
-      {showSuccessMessage && (
-        <div className="success-message">
-          Changes saved successfully!
-        </div>
-      )}
-
-      {isCancelPopupVisible && (
-        <div className="modal" onClick={() => setIsCancelPopupVisible(false)}>
-          <div className="modal-content">
-            <span className="close" onClick={() => setIsCancelPopupVisible(false)}>&times;</span>
-            <h2>Confirm Cancel</h2>
-            <p>Are you sure you want to discard your changes?</p>
-            <div className="modal-buttons">
-              <button className="modal-cancel" onClick={handleCancelConfirmNo}>No</button>
-              <button className="modal-save" onClick={handleCancelConfirmYes}>Yes</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-    </div>
+    </>
   );
 }
 

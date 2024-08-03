@@ -1,225 +1,250 @@
-.planYourPath{
-    .title{
-        color: #1577BD;
-        margin: auto 0 5px 0;
-        width: 300px;
+.planYourPath {
+  margin-top: 5em;
+  .plan-container{
+    margin-left: 3.25em;
+    margin-left: 3.25em;
+    .plan-title {
+      color: #1577bd;
+      font-size: 2.5em;
+      margin: 0px;
     }
-    
-    .titleList{
-        color: #1577BD;
-        margin: auto 0 5px 80px;
-        width: 300px;
+    .plan-auto-complete{
+      border: none;
+      color: white;
+      padding: 0.5em 1em;
+      background-color: #7BC043;
+      width: 100%;
     }
-    
-    
-    .topData{
-        display: flex;
-        justify-content: space-between;
+  }
+
+
+  .titleList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #1577bd;
+    width: 100%;
+
+    .select-program-label{
+      margin-left: 1.25em;
+      margin-bottom: 1em;
+      color: black;
+      font-weight: bold;
+      select{
+        padding: 0.5em 1em;
+        margin-top: 0.5em;
+
+        option{
+          padding: 0.5em 1em;
+        }
+      }
     }
-    
-    .share{
-        font-size: 24px;
-        margin-right: 10%;
-    }
-    
-    .trimestersDetails{
-        display: flex; 
-        flex-wrap: wrap;
-        position: relative;
-        flex: 1;
-        width: 74vw;
-        margin: 0 0 0 20px;
-        height: 100vh;
-        overflow: auto;
-        overflow-x: hidden;
-    }
-    
-    .trimestersDetailsSub{
-    
-    }
-    
-    
-    
-    
-    .trimesterLibrary{
-        background-color: #D0E1F9;
-        width: 340px;
-        overflow: auto;
-        overflow-x: scroll;
-        height: 100vh;
-        margin-right: 1em;
-        
-    }
-    
-    .planYourPathPage{
-        display: flex;
-        width: 100vw;
-        padding: auto;
-        padding: 20px 0;
-    
-    }
-    
-    .card{
-        background: black;
-    }
-    
-    .shareImg{
-        height: 40px;
-    }
-    
-    
-    /*This is how I desinged the scrollbar*/
-    .trimestersDetails::-webkit-scrollbar{
-        width: 0.5em;
-    }
-    
-    .trimestersDetails::-webkit-scrollbar-track{
-        background: #ffffff;
-    }
-    
-    
-    .trimestersDetails::-webkit-scrollbar-thumb{
-        background: #bcbcbc;
-        border-radius: 10px;
-        z-index: -1;
-    }
-    
-    
-    .trimesterLibrary::-webkit-scrollbar{
-        width: 0.5em;
-    }
-    
-    .trimesterLibrary::-webkit-scrollbar-track{
-        background: #ffffff;
-    
-    }
-    
-    
-    .trimesterLibrary::-webkit-scrollbar-thumb{
-        background: #bcbcbc;
-        border-radius: 10px;
-        z-index: -1;
-    }
-    
-    
-    .hamburgerMenu{
-        height: 10px;
-    }
-    
-    .shareBlk{
-        display: flex;
-        cursor: pointer;
-        position: relative;
-    }
-    
-    .shareBlk{
-        display: flex;
-        gap: 20px;
-        margin:  0 40px 10px 0;
-    }
-    
-    
-    .shareBlk .share{
-        margin: 40px 0 0 0;
-        font-size: 24px;
-        text-transform: uppercase;
-    }
-    
-    .shareBlk .shareImg{
-        margin: 30px 0 0 0;
-        height: 40px;
-    }
-    
-    
-    
-    .trimesterLibrary .title{
-       margin: 0 120px;
-    }
-    
-    .removeBtn{
-        display: flex;
-        justify-content: center;
-    }
-    
-    .courseTitleLi{
-        margin: 0 20px;
-    }
-    
-    .coursesPerType{
-        padding: 0 10px;
-    }
-    
-    .triesterMod{
-       margin: 0 0 0 60px;
-    }
-    
-    .triesterMod button{
-        height: 40px;
+  }
+
+  .topData {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .share {
+    font-size: 24px;
+    margin-right: 10%;
+  }
+
+  .trimestersDetails {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex: 1;
+    width: 74vw;
+    margin: 0 0 0 20px;
+    height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  .trimestersDetailsSub {
+  }
+
+  .trimesterLibrary {
+    background-color: #d0e1f9;
+    width: 340px;
+    overflow: auto;
+    overflow-x: scroll;
+    height: 100vh;
+    margin-right: 1em;
+  }
+
+  .planYourPathPage {
+    display: flex;
+    width: 100vw;
+    padding: auto;
+  }
+
+  .card {
+    background: black;
+  }
+
+  .shareImg {
+    height: 40px;
+  }
+
+  /*This is how I desinged the scrollbar*/
+  .trimestersDetails::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  .trimestersDetails::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .trimestersDetails::-webkit-scrollbar-thumb {
+    background: #bcbcbc;
+    border-radius: 10px;
+    z-index: -1;
+  }
+
+  .trimesterLibrary::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  .trimesterLibrary::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .trimesterLibrary::-webkit-scrollbar-thumb {
+    background: #bcbcbc;
+    border-radius: 10px;
+    z-index: -1;
+  }
+
+  .hamburgerMenu {
+    height: 10px;
+  }
+
+  .shareBlk {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .shareBlk {
+    display: flex;
+    gap: 20px;
+    margin: 0 40px 10px 0;
+  }
+
+  .shareBlk .share {
+    margin: 40px 0 0 0;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  .shareBlk .shareImg {
+    margin: 30px 0 0 0;
+    height: 40px;
+  }
+
+  .trimesterLibrary .title {
+    margin: 0 120px;
+  }
+
+  .removeBtn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .courseTitleLi {
+    margin: 0 20px;
+  }
+
+  .coursesPerType {
+    padding: 0 10px;
+  }
+
+  .triesterMod{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 3.25em;
+    margin-left: 3.25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 73%;
+    .plan-add-more-trimester {
+        padding: 0.5em 1em;
         border: none;
         border-radius: 8px;
         color: white;
-        background-color: #1577BD;
+        background-color: #1577bd;
         font-weight: 600;
         cursor: pointer;
         transition: ease-in-out 500ms;
-        margin: 0 0 20px 0;
-        
-    
-        
-    
     }
-    
-    .triesterMod button:hover{
+    .plan-add-more-trimester:hover {
         background-color: #0f4293;
-    
-    
     }
-    
-    .shareOptions{
-        height: 100px;
-        width: 140px;
-        border: 4px solid black;
-        background: white;
-        position: absolute;
-        top: 80px;
+    div{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
         align-items: center;
-        font-weight: 400;
-        border-radius: 4px;
+        gap: 1em;
     }
-    
-    .shareOptions a{
-        text-decoration: none;
-        margin: 20px 0;
-        font-weight: 400;
-        color: black;
-        transition: ease-in-out 400ms;
-    
-    }
-    
-    .shareOptions a:hover{
+    .plan-save{
+        padding: 0.5em 1em;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
         color: white;
-        background: black;
-        padding: 4px;
+        background-color: #7BC043;
     }
-    
-    .shareOptions div{  
-        margin: 8px 0;
-    
-    }
-    
-    .shareOptions div:hover, .shareOptions a:hover{  
-        color: white;
-        background: black;
-        padding: 4px;
-    
-    
-    }
-    
-    .shareOptions img{
-        height: 20px;
-        margin: 0 10px;
-    }
+  }
+
+  .triesterMod 
+
+  .shareOptions {
+    height: 100px;
+    width: 140px;
+    border: 4px solid black;
+    background: white;
+    position: absolute;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    border-radius: 4px;
+  }
+
+  .shareOptions a {
+    text-decoration: none;
+    margin: 20px 0;
+    font-weight: 400;
+    color: black;
+    transition: ease-in-out 400ms;
+  }
+
+  .shareOptions a:hover {
+    color: white;
+    background: black;
+    padding: 4px;
+  }
+
+  .shareOptions div {
+    margin: 8px 0;
+  }
+
+  .shareOptions div:hover,
+  .shareOptions a:hover {
+    color: white;
+    background: black;
+    padding: 4px;
+  }
+
+  .shareOptions img {
+    height: 20px;
+    margin: 0 10px;
+  }
 }

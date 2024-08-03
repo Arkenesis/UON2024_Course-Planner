@@ -4,7 +4,7 @@ import hamburgerMenu from "../../assets/hamburgerMenu.png"
 import cross from "../../assets/cross.png"
 import "./CourseDropped.scss"
 
-function CourseDropped({ id, name, units, level, grade, removeCourse, parent_index, index, menuButton}) {
+function CourseDropped({ id, name, units, level, grade, removeCourse, parent_index, index, menuButton, handleChange}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "course",
     item: { id, name, units, level, grade, parent_index, index },
@@ -32,7 +32,13 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
 
       <div className="subDetails">
         <span> <h3>  Modules: {name} </h3>  Level: {level} | Units: {units} </span>
-        <p>Grade: {grade}</p>
+        <br/>
+        <label>
+          Grade:
+          {grade && grade 
+            ? <input type="text" value={grade} name="grade" onChange={(e) => handleChange(e, parent_index, index)}/>
+            : <input type="text" name="grade" onChange={(e) => handleChange(e, parent_index, index)}/>}
+        </label>
       </div>
     </div>
   );

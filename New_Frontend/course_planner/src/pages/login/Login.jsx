@@ -12,6 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from './LoginContext';
 import NavigationBar from '../../components/NavigationBar';
+import ReactQuill from 'react-quill';
+import axios from 'axios';
 
 const Login = () => {
     
@@ -63,13 +65,30 @@ const Login = () => {
         }
     };
 
+    const [value, setValue] = useState(loginPic);
+    const [title, setTitle] = useState("<h2>Welcome to UON Course Planner</h2>");
+
+    useEffect(() => {
+      getData()
+    },[])
+  
+    const getData = async () => {
+      try{
+        const { data } = await axios.get("http://localhost:8080/pages/login");
+        setTitle(data.message.title);
+        setValue(data.message.logo);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+
     return (
         <div className="login">
             <div className="card">
                 <div className="left">
                     
-                    <h1 className="title-1">Welcome to</h1>
-                    <h1 className="title-2">UON Course Planner</h1>
+                    <ReactQuill value={title} readOnly={true} theme={"bubble"} />
                     <form onSubmit={handleLogin}>
                         <p className="subtitle-1">Account Login</p>
                         <p className="subtitle-2">Sign in to your account</p>
@@ -122,7 +141,7 @@ const Login = () => {
                 </div>
 
                 <div className="right">
-                    <img src={loginPic}/>
+                    <img src={value}/>
                 </div>
             </div>
         </div>

@@ -9,10 +9,14 @@ export const UserContextProvider = ({ children }) => {
   const login = async (inputs) => {
     try{
       const { data } = await axios.post("http://localhost:8080/users/login", inputs);
+      const { data: program } = await axios.get("http://localhost:8080/pages/programs");
       setUser(data.message);
       if (data.message.firestore_data.courses) {
         let temp = JSON.parse(data.message.firestore_data.courses);
-        setUser(prevUser => ({ ...prevUser, "courses": temp }));
+        setUser(prev => ({ ...prev, "courses": temp }));
+      }
+      if(program){
+        setUser(prev => ({ ...prev, "program": [program.message] }));
       }
       return data;
     }
@@ -23,6 +27,7 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
+
   }, [user]);
 
   return (

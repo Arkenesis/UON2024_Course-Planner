@@ -28,7 +28,7 @@ export const hasAdmin = async (req, res, next) => {
         const user_ref = db.collection('CoursePlannerUsers').doc(`${uid}`);
         const user_doc = await user_ref.get();
         const isAdmin = await user_doc.get('roles');
-        if(isAdmin !== 'admin'){
+        if(isAdmin !== 'Admin'){
             return res.status(403).json({ message: "You are not allowed edit the page." });
         }
         next();

@@ -7,6 +7,9 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
 
     const handleSave = async () => {
         try{
+            if(editedCourse.isNew){
+                delete editedCourse.isNew;
+            }
             const { data } = await axios.post("http://localhost:8080/pages/courses", {content: editedCourse});
             onSave(editedCourse);
             alert('Saving user data success!');
@@ -79,11 +82,19 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
         <>
             {editedCourse && (
                 <div className="Modal">
+                    <h2 style={{textAlign:"center"}}>Course Registraion Form</h2>
                     <div className="ModalContent">
-                        <label>
-                            Course Code
-                            <input type="text" onChange={handleChange} name="ID" value={editedCourse.ID} readOnly/>
-                        </label>
+                        {editedCourse?.isNew && editedCourse.isNew
+                            ?   <label>
+                                    Course Code
+                                    <input type="text" onChange={handleChange} name="ID" value={editedCourse.ID} />
+                                </label>
+                            :   <label>
+                                    Course Code
+                                    <input type="text" onChange={handleChange} name="ID" value={editedCourse.ID} readOnly/>
+                                </label>
+                            }
+
 
                         <label>
                             Course Name
@@ -109,6 +120,11 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
                         <label>
                             Required Credits
                             <input type="text" onChange={handleChange} name="RequiredCredit" value={editedCourse.RequiredCredit} />
+                        </label>
+
+                        <label>
+                            Type
+                            <input type="text" onChange={handleChange} name="TYPE" value={editedCourse.TYPE} />
                         </label>
 
                         <label>Availability</label>

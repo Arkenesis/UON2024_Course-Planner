@@ -79,6 +79,26 @@ const EditStudent = () => {
         }
     }
 
+    const [registerModal, setRegisterModal] = useState(false);
+
+    const [inputs, setInputs] = useState({ username:"", email:"", password:"", });
+
+    const handleChange = (e) =>{
+        setInputs((prev) =>({...prev, [e.target.name]: e.target.value}));
+    };
+
+    const handleRegister = async(e) =>{
+        e.preventDefault();
+        try{
+            const { data } = await axios.post("http://localhost:8080/users/register", inputs);
+            alert('User registration is completed.')
+        } catch (e){
+            alert(e.response?.data.error || "An error occurred");
+        }
+        setInputs({ username:"", email:"", password:"", });
+    };
+
+
     return (
         <div className="EditStudent">
             <h1>Edit Student</h1>
@@ -119,6 +139,7 @@ const EditStudent = () => {
                     ))}
                 </div>
             </div>
+            <button onClick={() => setRegisterModal(!registerModal)} className="NewAccount">+ New Account</button>
             
             <div className="CancelAndSave">
                 {/* <button className="CancelButton" onClick={handleCancel}>Cancel</button> */}
@@ -132,6 +153,30 @@ const EditStudent = () => {
                     onClose={handleCancel}
                 />
             )}
+
+            {registerModal && (
+                <div className='registerModal'>
+                    <h2 style={{textAlign: "center"}}>Registraion Form</h2>
+                    <label className="registerModal-label"> Username
+                        <br/>
+                        <input type="text" value={inputs.username} onChange={(e) => handleChange(e)} name="username"/>
+                    </label>
+                    <label className="registerModal-label"> Email
+                        <br/>
+                        <input type="text" value={inputs.email} onChange={(e) => handleChange(e)} name="email"/>
+                    </label>
+                    <label className="registerModal-label"> Password
+                        <br/>
+                        <input type="text" value={inputs.password} onChange={(e) => handleChange(e)} name="password"/>
+                    </label>
+                    <div className="registerModal-submit">
+                        <button onClick={(e) => setRegisterModal(false)} className="registerModal-cancel">Cancel</button>
+                        <button onClick={(e) => handleRegister(e)} className="registerModal-submit">Submit</button>
+                    </div>
+
+                </div>
+            )}
+
         </div>
     );
 }

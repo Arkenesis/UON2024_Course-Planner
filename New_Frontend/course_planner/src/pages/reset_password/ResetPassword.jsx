@@ -32,7 +32,7 @@ const ResetPassword = () => {
         try{
             const { data } = await axios.post("http://localhost:8080/users/reset-password", inputs);
             setMsg(data.message);
-            alert('Done');
+            alert('Kindly proceed to your e-mail to reclaim your account.');
             navigate('/login');
         } catch (ex){
             setErr(ex.response?.data || "An error occurred");

@@ -346,14 +346,17 @@ const AdminPolicy = () =>{
       ];
 
       return(
-        <div className={styles.editorContainer}>
-            <ReactQuill value={value} onChange={setValue} modules={modules} formats={formats} className={styles.quill} />
-            <div className={styles.buttonsContainer}>
-                <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
-                <button onClick={handlePreview}>Preview</button>
-                <button onClick={handleSave}>Save</button>
+        <>
+            <h1 style={{textAlign: "center"}}>Edit Privacy Policy</h1>
+            <div className={styles.editorContainer}>
+                <ReactQuill value={value} onChange={setValue} modules={modules} formats={formats} className={styles.quill} />
+                <div className={styles.buttonsContainer}>
+                    <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+                    <button onClick={handlePreview}>Preview</button>
+                    <button onClick={handleSave}>Save</button>
+                </div>
             </div>
-        </div>
+        </>
       );
 
 }

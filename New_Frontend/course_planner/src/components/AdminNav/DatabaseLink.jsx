@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./AdminNav.css";
+import "./AdminNav.scss";
 import databaseImg from "../../assets/databaseImg.png";
 import imageIcon from "../../assets/imageIcon.png";
 import profileImg2 from "../../assets/profileImg2.png";
@@ -22,6 +22,7 @@ import EditCourse from "../../pages/Admin_Pages/EditCourse/EditCourse"
 import EditProgram from "../../pages/Admin_Pages/EditProgram/EditProgram";
 import EditAccount from "../../pages/Admin_Pages/editstudent/EditStudent";
 import EditNavBar from "../../pages/Admin_Pages/EditNavBar/EditNavBar";
+import EditFooter from "../../pages/Admin_Pages/EditFooter/EditFooter";
 
 const Images = [
   { id: 1, name: "Logo" },
@@ -53,20 +54,22 @@ export default function DatabaseLink(showPage) {
         return <EditLoginPage />;
       case "Register":
         return <EditRegisterPage />;
-      case "Home page":
-        return <HomePage />;
       case "Navigation bar":
         return <EditNavBar />;
       case "Footer":
-        return;
+        return <EditFooter/>;
       default:
         return null;
     }
   }
 
+      // case "Home page":
+      //   return <HomePage />;
+      // case "Footer":
+      //   return;
   const [isOpen, setIsOpen] = useState(false);
 
-  const options = [ "About Us", "Privacy", "Term", "Log-in", "Register", "Home page", "Navigation bar", "Footer", ];
+  const options = [ "About Us", "Privacy", "Term", "Log-in", "Register", "Navigation bar", "Footer"];
 
   const [images, setImages] = useState(Images);
 
@@ -102,7 +105,7 @@ export default function DatabaseLink(showPage) {
           </div>
         </button>
 
-        <button className="dbsBtn" onClick={() => setIsOpen(!isOpen)}>
+        <div className="dbsBtn" onClick={() => setIsOpen(!isOpen)}>
           <img className="rightImg" src={Page} />
           <div className="webpageM">
             <div className="adminText">Webpage Management</div>
@@ -114,7 +117,7 @@ export default function DatabaseLink(showPage) {
               ))}
             </div>
           )}
-        </button>
+        </div>
       </div>
 
       <div className="displayPopup">

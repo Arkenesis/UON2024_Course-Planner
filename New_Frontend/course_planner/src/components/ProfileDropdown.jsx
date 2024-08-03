@@ -10,7 +10,7 @@ import "./ProfileDropdown.css";
 import axios from "axios";
 import EditProfileModal from "./editprofilemodal/EditProfileModal";
 
-const ProfileDropdown = ({ userinfo, programs }) => {
+const ProfileDropdown = ({ userinfo }) => {
 
   const [profileVisibility, setProfileVisibility] = useState(false);
 
@@ -45,7 +45,7 @@ const ProfileDropdown = ({ userinfo, programs }) => {
         <span>Profile Settings</span>
       </div>
 
-      {profileVisibility && <EditProfileModal onClose={toggleProfile} programs={programs} userInfo={userinfo}/>}
+      {profileVisibility && <EditProfileModal onClose={toggleProfile} userInfo={userinfo}/>}
 
       <div className="profile-option" onClick={handleLogout}>
         <FontAwesomeIcon icon={faSignOutAlt} className="profile-option-icon" />

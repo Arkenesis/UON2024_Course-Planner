@@ -1,0 +1,25 @@
+.edit-footer {
+  padding: 50px;
+  // margin: 0 auto;
+  // width: 920px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+  .footer-container{
+    .footer-label{
+      input{
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 98%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .footer-bottom-buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -7,6 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import './NavigationBar.css';
 import { UserContext } from '../pages/login/LoginContext.jsx';
 import axios from 'axios';
+import uonLogo from '../assets/uonLogo.png';
 
 const NavigationBar = () => {
   const scrollToTop = () => {
@@ -22,51 +23,39 @@ const NavigationBar = () => {
 
   let menuRef = useRef();
 
-  // useEffect(() => {
-  //   let handler = (e)=>{
-  //     if(!menuRef.current.contains(e.target)){
-  //       setDropdownOpen(false);
-  //     }
-  //   };
-
-  //   document.addEventListener("mousedown", handler);
-
-  //   return() => {
-  //     document.removeEventListener("mousedown", handler);
-  //   }
-  // });
-
   const { user } = useContext(UserContext);
 
-  const [programs, setPrograms] = useState(null);
+  const [nav, setNav] = useState({
+    backgroundColor: "00508B",
+    logo: uonLogo,
+    items: [],
+  });
 
   useEffect(() => {
-      getAvailableProgram();
-  }, [])
+    getData();
+  },[])
 
-  const getAvailableProgram = async () => {
-    if(!user){
-      return;
-    }
+  const getData = async () => {
     try{
-        const { data } = await axios.get("http://localhost:8080/pages/programs");
-        setPrograms(data.message);
+      const { data } = await axios.get("http://localhost:8080/pages/navigation");
+      const { backgroundColor, logo, items } = data.message;
+      setNav({backgroundColor, logo, items});
     }
     catch(error){
-        console.log(error.response?.data);
+      setErr(error.response);
     }
-  };
+  }
 
   return (
-    <div className="navbar">
+    <div className="navbar" style={{backgroundColor: nav.backgroundColor}}>
       {!user 
       ?
       <Link to="/login" onClick={scrollToTop}>
-        <img src="uonlogo.png" alt="UON Logo" className="logo" />
+        <img src={nav.logo} alt="UON Logo" className="logo" />
       </Link>
       :
       <Link to="/home" onClick={scrollToTop}>
-        <img src="uonlogo.png" alt="UON Logo" className="logo" />
+        <img src={nav.logo} alt="UON Logo" className="logo" />
       </Link>
       }
       
@@ -75,17 +64,21 @@ const NavigationBar = () => {
         {user && <li><Link to="/plan-your-path">Plan Your Path</Link></li>}
         {user && <li><Link to="/track-progress">Track Progress</Link></li>}
         <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/about-us">About</Link></li>
+        {nav.items && nav.items.map((i, idx) => (
+          i.visibility === true &&
+          <li key={idx}><Link to={`/${i.id}`}>{i.title}</Link></li>
+        ))}
+        {/* <li><Link to="/about-us">About</Link></li> */}
       </ul>
 
-      <div className="search-box">
+      {/* <div className="search-box">
         <FontAwesomeIcon icon={faSearch} className="search-icon"/>  
         <input type="text" placeholder="Search" className="search-bar" style={{border: "none"}} />
-      </div>
+      </div> */}
 
       {user 
       ? (<div className="profile-section" ref={menuRef}>
-          {dropdownOpen && <ProfileDropdown userinfo={user} programs={programs}/>}
+          {dropdownOpen && <ProfileDropdown userinfo={user}/>}
           <FontAwesomeIcon icon={faUserCircle} className="profile-icon" onClick={toggleDropdown} />
          </div>)
       : <Link to="/login"><FontAwesomeIcon icon={faUserCircle} className="profile-icon"/></Link>

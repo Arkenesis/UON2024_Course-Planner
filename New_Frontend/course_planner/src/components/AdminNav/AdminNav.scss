@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .adminNav {
-  border: 2px solid black;
+  border: 1px solid #ddd;
   display: flex;
   width: 320px;
   position: relative;
@@ -15,8 +15,8 @@
   flex-direction: column;
   height: 200px;
   overflow: auto;
-  border: 2px solid black;
-  margin: 10px 0 0 0;
+  border: 1px solid #ddd;
+  margin: 10px 0 0 16px;
 }
 
 .dbsBtn {
@@ -67,11 +67,12 @@
 }
 
 .leftNav {
-  height: 99vh;
+  top:0;
+  bottom: 0;
   width: 60px;
   padding: 10px 0 0 0;
   background-color: #b6caf3;
-  border-right: 2px solid black;
+  border-right: 1px solid #ddd;
 }
 
 .rightNav {
@@ -162,7 +163,7 @@
   align-items: center;
   padding: 0 100px;
   position: absolute;
-  width: 60vw;
+  width: 921.6px;
 }
 
 .mainAdminNav {
@@ -215,8 +216,26 @@
   left: 35%;
   top: 0;
   height: calc(100vh - 1em);
-  /* width: calc(60vw); */
+  width: 921.6px;
   overflow: auto;
+}
+
+.showPagePop::-webkit-scrollbar {
+  width: 0.5em;
+  border: 0.25em;
+}
+.showPagePop::-webkit-scrollbar-track-piece:end {
+  margin-bottom: 3.5em; 
+}
+.showPagePop::-webkit-scrollbar-track-piece:start {
+  margin-top: 5.5em;
+}
+.showPagePop::-webkit-scrollbar-track {
+  background: white;
+}
+.showPagePop::-webkit-scrollbar-thumb {
+  background: #82b2f6;
+  border-radius: 0.5em;
 }
 
 /* Comp asset */
@@ -224,7 +243,7 @@
   background: rgb(234, 234, 234);
   max-width: 300px;
   padding: 0px 40px;
-  border: 2px solid black;
+  border: 1px solid #ddd;
   position: absolute;
   top: 0;
   min-height: 100vh;
@@ -233,13 +252,13 @@
 } */
 
 .searchBox {
-  border: 2px solid black;
+  border: 1px solid #ddd;
   height: 40px;
 }
 
 .imgGallery {
   width: 300px;
-  border: 2px solid black;
+  border: 1px solid #ddd;
   min-height: 70vh;
 
   max-height: 70vh;
@@ -294,21 +313,21 @@
   height: 120px;
   width: 200px;
   margin: -20px 0 0 40px;
-  border: 2px solid black;
+  border: 1px solid #ddd;
   z-index: 9;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 0 10px 10px;
 }
 
 .profileData {
   display: flex;
-}
-
-.profileData .userName {
-  margin: 10px 0;
-  font-weight: 700;
+  align-items: center;
+  padding: 0.5em 1em;
+  .userName {
+    margin-left: 1em;
+    font-weight: 700;
+  }
 }
 
 .profileSettings {
@@ -319,8 +338,14 @@
 
 .signOut {
   margin: 10px 0;
+  padding: 0.5em 1em;
   cursor: pointer;
   transition: ease 500ms;
+  display: flex;
+  align-items: center;
+  .signOut-desc{
+    margin-left: 2em;
+  }
 }
 
 .profileSettings:hover {

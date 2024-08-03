@@ -1,150 +1,164 @@
-.editRegisterPage{
-    .backgroundImageUpdate{
-      height: 200px;
+.editRegisterPage {
+  .backgroundImageUpdate {
+    height: 200px;
   }
 
-  .editTitles{
-      margin: 0 30px;
+  .editTitles {
+    border: 1px solid #ddd;
+    padding: 1em 1em;
+
+    .image-upload{
+      width: 100%;
+      height: auto;
+      .title{
+        display: none;
+      }
+      .list{
+        .images-container{
+          display: flex;
+          flex-direction: row;
+          height: auto;
+          div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+            span{
+              display: none;
+            }
+          }
+        }
+      }
+    }
   }
 
   .editorContainer {
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background-color: #fff;
-      max-width: 800px;
-      margin: 0 auto;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      height: 450px;
-    }
-    
-  .quill {
-      height: 400px;
-      
-      }
-
-  .imageEdit{
-      display: flex;
-      gap: 30px;
-    margin: 30px 40px;
-      
-
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 215px;
   }
 
+  .quill {
+    height: 150px;
+  }
 
-  .imgButtonContainer{
+  .imageEdit {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    .backgroundImg{
+      height: 240px;
+      width: 300px;
+      .loginImg{
+        object-position: center;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .imgButtonContainer{
+      margin: 0px;
+    }
+  }
+  // input {
+  //   display: none;
+  // }
+
+  .imgButtonContainer {
     display: flex;
     flex-direction: column;
     flex-direction: space-around;
     gap: 20px;
-    margin: 30px 0;
-    
-
   }
 
-
-  .imgButtonContainer .changePic{
+  .imgButtonContainer .changePic {
     color: white;
-    background: rgb(229, 67, 67);   
-    border: 1px solid black;
+    background: rgb(229, 67, 67);
     border-radius: 8px;
     transition: ease-in-out 500ms;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-
-
+    padding: 0.5em 1em;
   }
 
+  .imgButtonContainer .changePic:hover {
+    color: rgb(229, 67, 67);
+    background: white;
+    border-radius: 8px;
+    transition: ease-in-out 500ms;
+  }
 
-  .imgButtonContainer .changePic:hover{
-      color: rgb(229, 67, 67);
-      background: white;   
-      border: 1px solid black;
-      border-radius: 8px;
-      transition: ease-in-out 500ms;
-    
-    
-    }
-
-
-  .imgButtonContainer .deletePic{
+  .imgButtonContainer .deletePic {
     color: red;
     background: white;
-    border: 1px solid black;
     border-radius: 8px;
     transition: ease-in-out 500ms;
     height: 40px;
-
-
-
   }
 
-  .imgButtonContainer .deletePic:hover{
-      color: white;
-      background: rgb(229, 67, 67);
-      border: 1px solid black;
+  .imgButtonContainer .deletePic:hover {
+    color: white;
+    background: rgb(229, 67, 67);
     border-radius: 8px;
     transition: ease-in-out 500ms;
-  
-  
-  
   }
-  
-
 
   .buttonsContainer {
-      display: flex;
-      justify-content: center;
-      margin-top: 100px;
-    
-      button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        margin: 0 30px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    
-        &.cancel {
-          background-color: #6c757d;
-        }
-    
-        &:hover {
-          background-color: darken(#007bff, 10%);
-        }
-    
-        &.cancel:hover {
-          background-color: darken(#6c757d, 10%);
-        }
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+
+    .preview{
+      background-color: #2B3047;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+
+      &.cancel {
+        background-color: #6c757d;
+      }
+
+      &:hover {
+        background-color: darken(#007bff, 10%);
+      }
+
+      &.cancel:hover {
+        background-color: darken(#6c757d, 10%);
       }
     }
-    
-  .backgroundImg{
-    height: 300px;
-    width: 400px;
+  }
+
+  .backgroundImg {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-
-  input{
-    display: none;
-  }
-
-
-  .registerImg{
+  .loginImg {
     height: 300px;
     width: 300px;
   }
 
-
-  .noImgAlt{
+  .noImgAlt {
     display: flex;
     justify-content: center;
     align-items: center;

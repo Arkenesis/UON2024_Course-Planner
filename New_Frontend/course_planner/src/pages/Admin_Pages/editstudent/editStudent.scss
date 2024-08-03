@@ -5,7 +5,65 @@
     .Button {
         height: 80px;
     }
-    
+    .registerModal{
+        position: fixed;
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 1000; 
+        background-color: white; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        padding: 20px; 
+        border-radius: 8px; 
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        .registerModal-label{
+            input{
+                border: 1px solid #ddd;
+                padding: 5px;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+
+        }
+        .registerModal-submit{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            button{
+                display: block;
+                padding: 0.5em 1em;
+            }
+            .registerModal-cancel{
+                color:white;
+                background-color: #C05A43;
+                border:none;
+                border-radius: 0.25em;
+            }
+            .registerModal-submit{
+                color:white;
+                background-color: #7BC043;
+                border:none;
+                border-radius: 0.25em;
+            }
+        }
+
+
+    }
+
+    .NewAccount{
+        margin-top: 0.5em;
+        margin-right: 0.5em;
+        float: right;
+        background-color: #7BC043;
+        color: white;
+        border: none;
+        padding: 1em;
+        border-radius: 0.5em;
+    }
     .PurgeButton {
         width: 110px;
         height: 40px;
@@ -41,13 +99,15 @@
     
     .EditStudent-Window {
         display: grid;
-        border: 1px solid black;
+        border: 1px solid #ddd;
         max-width: fit-content;
         margin-left: auto;
         margin-right: auto;
         padding: 10px;
         align-items: center;
         // overflow-y: auto; // Vertical scrolling
+
+
     }
     
     .Title {
@@ -55,7 +115,6 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
         text-align: center;
         gap: 10px;
-        width: 1000px;
         font-weight: bold;
     }
     
