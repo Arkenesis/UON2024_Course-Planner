@@ -76,22 +76,22 @@ app.post("/pages/users", hasToken, hasAdmin, setUser);
 app.post("/pages/delete-users", hasToken, hasAdmin, removeUser);
 // Edit Program
 app.get("/pages/program", getProgram);
-app.post("/pages/create-program", createProgram);
-app.post("/pages/delete-program", deleteProgram);
+app.post("/pages/create-program", hasToken, hasAdmin, createProgram);
+app.post("/pages/delete-program", hasToken, hasAdmin, deleteProgram);
 app.get("/pages/programs", getPrograms);
-app.post("/pages/programs", setProgram);
+app.post("/pages/programs", hasToken, hasAdmin, setProgram);
 // Profile
 app.post("/pages/profile", hasToken, setProfile);
 app.post("/pages/profile-courses", hasToken, setProfileCourses);
 // Footer
 app.get("/pages/footer", getFooter);
-app.post("/pages/footer", hasToken, setFooter);
+app.post("/pages/footer", hasToken, hasToken, hasAdmin, setFooter);
 // Login
 app.get("/pages/login", getLogin);
-app.post("/pages/login", hasToken, setLogin);
+app.post("/pages/login", hasToken, hasToken, hasAdmin, setLogin);
 // Register
 app.get("/pages/register", getRegister);
-app.post("/pages/register", hasToken, setRegister);
+app.post("/pages/register", hasToken, hasToken, hasAdmin, setRegister);
 // app.get("/pages/homepage", (req, res) => {
 //   console.log(req);
 //   console.log(res);
