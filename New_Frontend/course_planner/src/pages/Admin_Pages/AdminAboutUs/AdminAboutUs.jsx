@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import styles from './AdminAboutUs.module.scss';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const AdminAboutUs = () => {
   // const [value, setValue] = useState(`
@@ -81,8 +82,7 @@ const AdminAboutUs = () => {
       <div className={styles.editorContainer}>
         <ReactQuill value={value} onChange={setValue} modules={modules} formats={formats} className={styles.quill} />
         <div className={styles.buttonsContainer}>
-          <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
-          <button onClick={handlePreview}>Preview</button>
+          <Link to="../about-us" target='_blank' className={styles.preview}>Preview</Link>
           <button onClick={handleSave}>Save</button>
         </div>
       </div>

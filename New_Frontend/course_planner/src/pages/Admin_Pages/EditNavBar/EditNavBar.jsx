@@ -7,6 +7,7 @@ import editIcon from '../../../assets/eyeIcon.png'; // Visible eye icon
 import eyeIconCrossed from '../../../assets/eyeIconCrossed.png'; // Crossed-out eye icon
 import ImageUpload from '../../image_upload/image_upload';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function EditNavBar() {
   const [err, setErr] = useState('');
@@ -161,11 +162,8 @@ function EditNavBar() {
         </div>
 
         <div className="bottom-buttons">
-          <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
-          <div className="right-buttons">
-            <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
-            <button className="save-button" onClick={handleSaveClick}>Save</button>
-          </div>
+          <Link to="../home" target="_blank" className="preview">Preview</Link>
+          <button className="save-button" onClick={handleSaveClick}>Save</button>
         </div>
 
         {err && ( <p> {err} </p> )}

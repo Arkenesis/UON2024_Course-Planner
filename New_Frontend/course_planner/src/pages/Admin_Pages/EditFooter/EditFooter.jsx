@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './EditFooter.scss';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function EditFooter() {
   
@@ -71,7 +72,7 @@ function EditFooter() {
           </label>
         </div>
         <div className="footer-bottom-buttons">
-          <div></div>
+          <Link to="../home" target="_blank" className="preview">Preview</Link>
           <button className="save-button" onClick={handleSaveClick}>Save</button>
         </div>
       </div>
