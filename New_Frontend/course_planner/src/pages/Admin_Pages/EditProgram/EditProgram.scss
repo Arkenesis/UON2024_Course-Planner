@@ -30,8 +30,6 @@
 
     h1 {
         text-align: center;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
     }
 
     /* Flex container for side-by-side layout */
@@ -154,19 +152,27 @@
 
 
     /* Bottom Buttons */
-    .bottom-buttons {
+    .edit-program-bottom-buttons {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 2rem;
-        margin-right: 3rem;
+        margin-right: 0.6em;
     }
 
-    .cancel-button {
-        margin-left: 50px;
-        width: 100px;
-        background-color: #e0e0e0;
-        color: #333;
+    .edit-program-new-button {
+        background-color: #7BC043;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        color:white;
+    }
+
+    .edit-program-delete-button {
+        background-color: #C04343;
+        color:white;
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
         border-radius: 5px;

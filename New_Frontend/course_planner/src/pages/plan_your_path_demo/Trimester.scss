@@ -6,7 +6,41 @@
     align-items: center;
     background: #FFEFD7;
     
+    .searchBox {
+        position: absolute;
+        height: 200px;
+        overflow-y: scroll;
+        top: 140px;
+        z-index: 1;
+        background-color: #FED766;
+        margin: 0 0 0 0;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        border-radius: 0.5em;
 
+      .searchInput{
+        padding: 0.4em;
+        margin: 1em;
+        z-index: 99;
+        :focus{
+          border: none;
+          outline:none;
+        }
+      }
+      .search-courses{
+        display: flex;
+        flex-direction: column;
+        margin: 5% 10px;
+        cursor: pointer;
+
+        .courseName{
+          width: auto;
+          padding: 10px 0;
+        }
+      }
+    }
     
   
 }
@@ -21,17 +55,6 @@
     }
 }
 
-
-
-.courseName{
-    width: auto;
-    height: 30px;
-    width: auto;
-    padding: 10px 0;
-
-    
-}
-
 .searchBox{
     
     z-index: 99;
@@ -44,11 +67,7 @@
     background-color: #f6e855;
 }
 
-.searchInput{
-    z-index: 99;
-    width: 200px;
 
-}
 
 
 // Search button animation 

@@ -67,12 +67,14 @@ function App() {
       path: '/',
       element: <Layout />, // Use Layout as the common wrapper
       children: [
+        { path: '', element: <Login /> },
         { path: 'about-us', element: <AboutUs /> },
         { path: 'contact', element: <Contact /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
         { path: 'reset-password', element: <ResetPassword /> },
         { path: 'privacy-policy', element: <PrivacyPolicy /> },
+        { path: 'policy', element: <PrivacyPolicy /> },
         { path: 'terms-and-conditions', element: <TermsAndConditions /> },
         { path: 'change-password', element: <ChangePassword /> },
         {

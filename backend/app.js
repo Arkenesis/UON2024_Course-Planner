@@ -14,6 +14,9 @@ import { deleteCourse, getCourses, setCourse } from './controller/admin_courses.
 import { getUsers, removeUser, setUser } from './controller/admin_users.js';
 import { createProgram, deleteProgram, getProgram, getPrograms, initPrograms, setProgram } from './controller/admin_programs.js';
 import { setProfile, setProfileCourses } from './controller/user_profile.js';
+import { getFooter, setFooter } from './controller/admin_footer.js';
+import { getLogin, setLogin } from './controller/admin_login.js';
+import { getRegister, setRegister } from './controller/admin_register.js';
 
 // Initialize variables
 // Load .env config
@@ -80,6 +83,15 @@ app.post("/pages/programs", setProgram);
 // Profile
 app.post("/pages/profile", hasToken, setProfile);
 app.post("/pages/profile-courses", hasToken, setProfileCourses);
+// Footer
+app.get("/pages/footer", getFooter);
+app.post("/pages/footer", hasToken, setFooter);
+// Login
+app.get("/pages/login", getLogin);
+app.post("/pages/login", hasToken, setLogin);
+// Register
+app.get("/pages/register", getRegister);
+app.post("/pages/register", hasToken, setRegister);
 // app.get("/pages/homepage", (req, res) => {
 //   console.log(req);
 //   console.log(res);

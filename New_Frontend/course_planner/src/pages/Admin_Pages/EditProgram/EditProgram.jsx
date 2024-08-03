@@ -269,12 +269,11 @@ const EditProgram = () => {
           </div>
         </div>
       </div>
-      <div className="bottom-buttons">
-          <button className="cancel-button" onClick={() => setIsInputVisible(!isInputVisible)}>+ New Program</button>
-          <button className="cancel-button" onClick={handleDelete}>Delete Program</button>
-          <button className="cancel-button" onClick={handleCancelClick}>Cancel</button>
+      <div className="edit-program-bottom-buttons">
+          <button className="edit-program-new-button" onClick={() => setIsInputVisible(!isInputVisible)}>+ New Program</button>
+          <button className="edit-program-delete-button" onClick={handleDelete}>Delete Current Program</button>
           <div className="right-buttons">
-              <button className="preview-button" onClick={handlePreviewClick}>Preview</button>
+              <div></div>
               <button className="save-button" onClick={handleSaveClick}>Save</button>
           </div>
       </div>

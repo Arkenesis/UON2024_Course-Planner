@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./AdminNav.css";
+import "./AdminNav.scss";
 import ImageUpload from "../../pages/image_upload/image_upload";
 
 function AdminAssets() {

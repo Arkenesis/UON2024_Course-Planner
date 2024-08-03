@@ -3,27 +3,36 @@ import './Footer.css'
 import axios from 'axios';
 const Footer = () => {
 
-    const [value, setValue] = useState();
+    const temp = {
+      year: 2024,
+      organization: "NewcastlePlanner, Inc.",
+      email: "askuon@newcastle.edu.au",
+      phone: "+61 2 4921 5000",
+    }
+
+    const [value, setValue] = useState(temp);
 
     useEffect(() => {
-      getData()
+      getData();
     },[])
   
     const getData = async () => {
       try{
         const { data } = await axios.get("http://localhost:8080/pages/footer");
-        setValue(data.message);
+        if(data.message !== undefined){
+          setValue(data.message);
+        }
       }
-      catch(error){
-        console.log(error);
+      catch(ex){
+        alert(ex.response);
       }
-    }
+    } 
 
     return (
         <footer style={{ backgroundColor: '#F5F5F5', padding: '10px', color: '#002481'}}>
             <div className='container' style={{display: 'flex' }}>
                 <div style={{textAlign: 'left', width: 'auto', marginLeft: '25px' }}>
-                    <p>Copyright @ 2024 <br/>NewcastlePlanner, Inc. <br/>All Rights Reserved.</p>
+                    <p>Copyright @ {value.year} <br/>{value.organization} <br/>All Rights Reserved.</p>
                 </div>
 
                 <div style={{textAlign: 'left', width: 'auto', marginLeft: '800px', padding: '10px', textDecoration: 'none'}}>
@@ -32,7 +41,7 @@ const Footer = () => {
                 </div>
 
                 <div style={{textAlign: 'left', marginLeft: '100px', padding: '10px', marginTop: '-15px', textDecoration: 'none'}}>
-                    <p>askuon@newcastle.edu.au <br/><br/>+61 2 4921 5000</p>
+                    <p>{value.email} <br/><br/>{value.phone}</p>
                 </div>
             </div>
         </footer>

@@ -7,21 +7,25 @@ import userIcon from '../../assets/userIcon.png';
 import emailIcon from '../../assets/emailIcon.png';
 import passwordIcon from '../../assets/passwordIcon.png';
 import register from '../../assets/registerPic.png';
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { UserContext } from "../login/LoginContext";
-import NavigationBar from "../../components/NavigationBar";
+import ReactQuill from "react-quill";
+
 const Register =() =>{
+
+    const [err, setErr] = useState();
+
+    const { setUser } = useContext(UserContext);
+
+    const navigate = useNavigate();
+
     const [inputs, setInputs] = useState({
         username:"",
         email:"",
         password:"",
     });
-    const [err, setErr] = useState();
-
-    const { setUser } = useContext(UserContext);
 
     const handleChange = (e) =>{
         setInputs((prev) =>({...prev, [e.target.name]: e.target.value}));
@@ -31,19 +35,37 @@ const Register =() =>{
         e.preventDefault();
         try{
             const { data } = await axios.post("http://localhost:8080/users/register", inputs);
-            setUser(data.message);
-            alert('Login done.')
+            navigate('/login');
+            // setUser(data.message);
+            alert('Registration successfully, kindly proceed to login page.')
         } catch (e){
             setErr(e.response?.data.error || "An error occurred");
         }
     };
 
+    const [value, setValue] = useState(register);
+    const [title, setTitle] = useState("<h2>Welcome to UON Course Planner</h2>");
+
+    useEffect(() => {
+      getData()
+    },[])
+  
+    const getData = async () => {
+      try{
+        const { data } = await axios.get("http://localhost:8080/pages/register");
+        setTitle(data.message.title);
+        setValue(data.message.logo);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+
     return(
         <div className = "register">
             <div className="card">
                 <div className="left">
-                    <h1 className="title-1">Welcome to</h1>
-                    <h1 className="title-2">UON Course Planner</h1>
+                    <ReactQuill value={title} readOnly={true} theme={"bubble"} />
                     <form onSubmit={handleRegister}>
                         <p className="subtitle-1">Sign Up Account</p>
                         <p className="subtitle-2">Already have account? <Link to='/login'> Sign in </Link></p>
@@ -77,7 +99,7 @@ const Register =() =>{
                             </div>
                             <div className="input-field-1">
                                 <p>Password</p>
-                                <input type="text" placeholder="Enter Password" name ="password" onChange={handleChange} value={inputs.password}/>
+                                <input type="password" placeholder="Enter Password" name ="password" onChange={handleChange} value={inputs.password}/>
                             </div>  
                         </div>
 
@@ -86,7 +108,7 @@ const Register =() =>{
                     </form>
                 </div>
                     <div className="right">
-                        <img src={register}/>
+                        <img src={value}/>
                     </div>
             </div>
         </div>

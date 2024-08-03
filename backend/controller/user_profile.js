@@ -15,9 +15,14 @@ export const setProfile = async (req, res) => {
     return res.status(403).json({ message: "You must fill in all the information." });
   }
   try{
+    //Set user data
     const doc_ref = db.collection('CoursePlannerUsers').doc(user.uid);
     await doc_ref.set({ program, start_date, end_date, campus, level, gender: `${gender}` }, { merge: true });
-    return res.json({ message: "The information was updated successfully!" });
+    //Retrieve latest user data and return
+    const user_info = await doc_ref.get();
+    const firestore_data = user_info.data();
+    const result = {...user, firestore_data};
+    return res.json({ message: result });
   }
   catch(error){
     return res.status(403).json({ message: "The information was failed to update!" });

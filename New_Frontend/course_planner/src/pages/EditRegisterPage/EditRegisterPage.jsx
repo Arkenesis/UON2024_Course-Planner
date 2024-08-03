@@ -1,26 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import uonBuilding from "../../assets/uonBuilding.jpg";
 import "./EditRegisterPage.scss";
+import ImageUpload from "../image_upload/image_upload";
+import axios from 'axios';
 
 function EditLoginPage() {
-  const [value, setValue] = useState(`
-        
-        `);
-
-  const handleCancel = () => {
-    setValue(``);
-  };
-
-  const handlePreview = () => {
-    alert("Preview: " + value);
-  };
-
-  const handleSave = () => {
-    console.log("Saved content:", value);
-    alert("Content saved successfully!");
-  };
 
   const modules = {
     toolbar: [
@@ -38,86 +24,107 @@ function EditLoginPage() {
     ],
   };
 
-  const formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-  ];
+  const formats = [ "header", "font", "size", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "indent", "link", "image", ];
+  
+  const [value, setValue] = useState({
+    title: "",
+    logo: "",
+  });
 
-  // let profilePic = document.getElementById("profile-pic");
-  // let inputFile = document.getElementById("input-file");
+  const [title, setTitle] = useState('');
 
-  //  changePicture = () => {
-  //     profilePic.src = URL.createObjectURL(inputFile.files[0]);
+  const setLogo = (input) => {
+    let temp = { ...value };
+    temp.logo = input;
+    setValue(temp);
+    setIsImagePreviewVisible(false);
+  }
 
-  // }
+  const [isImagePreviewVisible, setIsImagePreviewVisible] = useState(false);
 
-  const [profilePic, setProfilePic] = useState(null);
+  const handlePreview = () => {
+    console.log("Saved content:", value);
+    alert("Content saved successfully!");
+  };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const objectURL = URL.createObjectURL(file);
-      setProfilePic(objectURL);
+  const handleImagePreviewClick = () => {
+    setIsImagePreviewVisible(!isImagePreviewVisible);
+  };
+
+  useEffect(() => {
+    getData()
+  },[])
+
+  const getData = async () => {
+    try{
+      const { data } = await axios.get("http://localhost:8080/pages/register");
+      setValue((prev) => ({...prev, logo: data.message.logo}));
+      setTitle(data.message.title);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  const handleSave = async () => {
+    try{
+      const { data } = await axios.post("http://localhost:8080/pages/register", {content: {title: title, logo: value.logo}});
+      alert(data.message);
+    }
+    catch(error){
+      console.log(error.response?.data);
     }
   };
 
   return (
-    <div className="editRegisterPage">
-      <div className="editTitles">
-        <h2>Edit Register Page</h2>
+    <>
+      <h1 style={{textAlign: "center"}}>Edit Register Page</h1>
+      <div className="editRegisterPage">
+        <div className="editTitles">
 
-        <h3>Welcome Message</h3>
+          <h3>Welcome Message</h3>
 
-        <div className="editorContainer">
-          <ReactQuill value={value} onChange={setValue} modules={modules} formats={formats} />
-        </div>
-        <div className="buttonsContainer">
-          <button className="cancel" onClick={handleCancel}> Cancel </button>
-          <button className="preview" onClick={handlePreview}> Preview </button>
-          <button className="save" onClick={handleSave}> Save </button>
-        </div>
-
-        <div></div>
-
-        <h3>Picture </h3>
-        <div className="imageEdit">
-          <div className="backgroundImg">
-            {profilePic ? (
-              <img
-                src={profilePic}
-                alt="background Picture"
-                className="registerImg"
-                height={"240px"}
-                width={"300px"}
-                id="profile-pic"
-              />
-            ) : (
-              <div className="noImgAlt">Add Background Image</div>
-            )}
+          <div className="editorContainer">
+            <ReactQuill
+              value={title}
+              onChange={setTitle}
+              modules={modules}
+              formats={formats}
+            />
           </div>
 
-          <div className="imgButtonContainer">
-            <label className="changePic" for="regInput-file"> Change Picture </label>
-            <input type="file" accept="image/jpeg, image/png, image/jpg" id="regInput-file" onChange={handleFileChange} />
+          <h3>Picture </h3>
+          <div className="imageEdit">
+            <div className="backgroundImg">
+              {value.logo && value.logo 
+              ? ( <img src={value.logo} alt="background Picture" className="loginImg" height={"240px"} width={"300px"} id="profile-pic" /> ) 
+              : ( <div className="noImgAlt">Add Background Image</div> )}
+            </div>
 
-            <button className="deletePic">Delete Picture</button>
+            <div className="imgButtonContainer">
+              <button className="changePic" onClick={handleImagePreviewClick}>
+                Change Picture
+              </button>
+              <button className="deletePic" onClick={() => setLogo('')}>Delete Picture</button>
+            </div>
+          </div>
+
+          {isImagePreviewVisible && <ImageUpload setImageUrl={setLogo}/> }
+
+          <div className="buttonsContainer">
+            {/* <button className="cancel" onClick={handleCancel}>
+              Cancel
+            </button> */}
+            <button className="preview" onClick={handlePreview}>
+              Preview
+            </button>
+            <button className="save" onClick={handleSave}>
+              Save
+            </button>
           </div>
         </div>
-
-        <div></div>
       </div>
-    </div>
+    </>
   );
 }
 

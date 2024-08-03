@@ -1,22 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavigationBar from '../../components/NavigationBar';
 import './Contact.scss';
-
+import axios from 'axios';
 const Contact = () => {
+
+  const temp = {
+    year: 2024,
+    organization: "NewcastlePlanner, Inc.",
+    email: "askuon@newcastle.edu.au",
+    phone: "+61 2 4921 5000",
+    address: "6 Raffles Blvd, #03 - 200, Singapore 039594"
+  }
+
+  const [value, setValue] = useState(temp);
+
+  useEffect(() => {
+    getData();
+  },[])
+
+  const getData = async () => {
+    try{
+      const { data } = await axios.get("http://localhost:8080/pages/footer");
+      if(data.message !== undefined){
+        setValue(data.message);
+      }
+    }
+    catch(ex){
+      alert(ex.response);
+    }
+  } 
+
+
   return (
     <div className="contact_container">
       <div className="contact_info">
         <div className="contact_item">
           <i className="fas fa-envelope"></i>
-          <span>askuon@newcastle.edu.au</span>
+          <span>{value?.email}</span>
         </div>
         <div className="contact_item">
           <i className="fas fa-phone" ></i>
-          <span>+61 2 4921 5000</span>
+          <span>{value?.phone}</span>
         </div>
         <div className="contact_item">
           <i className="fas fa-map-marker-alt"></i>
-          <span>6 Raffles Blvd, #03 - 200, Singapore 039594</span>
+          <span>{value?.address}</span>
         </div>
       </div>
       <div className="contact_form">

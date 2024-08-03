@@ -103,14 +103,14 @@ const ImageUpload = ({setImageUrl}) => {
                 <div className="images-container">
                     {setImageUrl 
                     ? (images && images.filter(image => image.name.includes(search)).map((image, index) => (
-                        <div>
-                            <img key={index} src={image.url} alt={`Image ${index}`} onClick={() => setImageUrl(image.url)}/>
+                        <div key={index}>
+                            <img src={image.url} alt={`Image ${index}`} onClick={() => setImageUrl(image.url)}/>
                             <span>{image.name}</span>
                         </div>
                     )))
                     : (images && images.filter(image => image.name.includes(search)).map((image, index) => (
-                        <div className="oneAsset">
-                            <img key={index} src={image.url} alt={`Image ${index}`}/>
+                        <div className="oneAsset" key={index}>
+                            <img src={image.url} alt={`Image ${index}`}/>
                         </div>
                     )))
                 }

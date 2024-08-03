@@ -83,3 +83,16 @@
 .courseDropped .subDetails{
     padding: 0 10px;
 }
+
+.subDetails{
+    input[type=text]{
+        padding: 0.25em;
+        margin-left: 1.25em;
+        border: none;
+        background-color: rgb(255, 239, 215);
+    }
+    input[type=text]:focus{
+        outline: none;
+        background-color: white;
+    }
+}

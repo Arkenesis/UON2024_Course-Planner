@@ -1,53 +1,16 @@
-import React, { useState, useEffect } from "react";
-import "./AdminNav.css";
+import React, { useState, useEffect, useContext } from "react";
+import "./AdminNav.scss";
 import databaseImg from "../../assets/databaseImg.png";
-import imageIcon from "../../assets/imageIcon.png";
-import profileImg2 from "../../assets/profileImg2.png";
-import folderIcon from "../../assets/folderIcon.png";
-import pageIcon from "../../assets/pageIcon.png";
-import EditProgram from "../../pages/Admin_Pages/EditProgram/EditProgram";
-import AdminAboutUs from "../../pages/Admin_Pages/AdminAboutUs/AdminAboutUs";
-import AboutUs from "../../pages/AboutUs/AboutUs";
-import AdminTerm from "../../pages/Admin_Pages/AdminTerm/AdminTerm";
-import Login from "../../pages/login/Login";
-import EditLoginPage from "../../pages/EditLoginPage/EditLoginPage";
-import EditRegisterPage from "../../pages/EditRegisterPage/EditRegisterPage";
-import HomePage from "../../pages/HomePage/HomePage";
-import AdminPolicy from "../../pages/Admin_Pages/AdminPolicy/AdminPolicy";
-import courseM from "../../assets/courseM.png";
-import courseAssign from "../../assets/courseAssign.png";
 import DatabaseLink from "./DatabaseLink";
 import AdminAssets from "./AdminAssets";
-import help from "../../assets/help.png";
 import profilePic from "../../assets/profilePic.png";
 import picture from "../../assets/picture.png";
-import databaseIcon from "../../assets/databaseIcon.png";
 import profSettings from "../../assets/profSettings.png";
 import signOut from "../../assets/signOut.png";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-const Images = [
-  { id: 1, name: "Logo", link: "courseAssign" },
-  { id: 2, name: "Building Background", link: "pageIcon" },
-  { id: 3, name: "email" },
-  { id: 4, name: "phone" },
-];
+import { UserContext } from "../../pages/login/LoginContext";
+import axios from "axios";
 
 export const AdminNav = (page) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const options = [ "About Us", "Privacy", "Term", "Log-in", "Register", "Home page", "Navigation bar", "Footer", ];
-
-  const [images, setImages] = useState(Images);
-
-  const [query, setQuery] = useState("");
-
-  const filterCourses = images.filter((image) =>
-    image.name.toLowerCase().includes(query.toLowerCase())
-  );
-
-  const [showDropdown, setShowDropDown] = useState(false);
 
   const [showProfile, setShowProfile] = useState(false);
 
@@ -66,6 +29,19 @@ export const AdminNav = (page) => {
     }
   }
 
+  const { user } = useContext(UserContext);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8080/users/logout");
+      localStorage.removeItem("user");
+      window.location.reload();
+    } catch (ex) {
+      console.log(ex.response?.data);
+    }
+  };
+
   return (
     <div className="adminHomePage">
       <div className="adminNav">
@@ -83,15 +59,16 @@ export const AdminNav = (page) => {
 
               <div className="profileData">
                 <img src={profilePic} alt="profile picture" />
-                <div className="userName">Miley Cyrus</div>
+                <div className="userName">{user?.firestore_data.username}</div>
               </div>
 
-              <div className="profileSettings">
+              {/* <div className="profileSettings">
                 <img src={profSettings} alt="profile settings" /> Profile Settings
-              </div>
+              </div> */}
 
-              <div className="signOut">
-                <img src={signOut} alt="sign out" /> Sign Out
+              <div className="signOut" onClick={(e) => handleLogout(e)}>
+                <img src={signOut} alt="sign out" />
+                <div className="signOut-desc">Sign Out</div>
               </div>
               
             </div>

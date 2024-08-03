@@ -7,7 +7,7 @@ import searchBtn from '../../assets/searchBtn.png'
 import "./Trimester.scss"
 import CourseDropped from "./CourseDropped";
 
-const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton}) => {
+const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCourse, courses, studentTrimester, setStudentTrimester, trimesterIndex, menuButton, handleChange}) => {
 
   // Enables the components to give item(drag) 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -66,7 +66,7 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
     <div key={index} ref={node => drop(node)}  style={{ opacity: isDragging? 0.8: 1, position: "relative", display: "flex", justifyContent: "center", alignItems: "center", width: isActive ? "280px" : "240px", height: isActive ? "280px" : "240px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >
       {item 
         ? <div ref={node => drag(drop(node))}>
-            <CourseDropped   key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]} grade={item[4]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton}/> 
+            <CourseDropped   key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]} grade={item[4]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton} handleChange={handleChange}/> 
           </div> 
         : 
           <div style={{  height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -77,19 +77,15 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
             </button>
 
             {showDropdown && (
-              <div className="searchBox" style={{position: 'absolute', height: '200px', overflowY: 'scroll', top: '140px', zIndex: 1, background: '#FED766', margin:'0 0 0 0', color: 'black'}}>
+              <div className="searchBox">
                 {/* This input takes the courses */}
-                <input className="searchInput"
-                  type="text"
-                  placeholder="Search courses..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}/>
+                <input className="searchInput" type="text" placeholder="Search courses..." value={query} onChange={(e) => setQuery(e.target.value)}/>
 
                 {filterCourses.map((course) => (
-                  <div key={course.id} style={{display: 'flex', alignContent: 'center', margin: '5% 10px', cursor: 'pointer', width: '200px' }} onClick={() => {
+                  <div key={course.id} className="search-courses" onClick={() => {
                     addCourseToTrimester(course.ID, course.Name, course.Level, course.Units, course.Grade, parent_index, index);
                     setShowDropDown(false);}}>
-                    <div className="courseName"> {course.Name} </div>
+                    {course.Name}
                   </div>
                 ))}
               </div>

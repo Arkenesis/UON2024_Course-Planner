@@ -323,14 +323,17 @@ const AdminTerm = () =>{
       ];
 
       return (
-        <div className={styles.editorContainer}>
-            <ReactQuill value={value} onChange={setValue} modules={modules} formats={formats} className={styles.quill} />
-            <div className={styles.buttonsContainer}>
-                <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
-                <button onClick={handlePreview}>Preview</button>
-                <button onClick={handleSave}>Save</button>
-            </div>
-        </div>
+        <>
+          <h1 style={{textAlign: "center"}}>Edit Terms and Conditions</h1>
+          <div className={styles.editorContainer}>
+              <ReactQuill value={value} onChange={setValue} modules={modules} formats={formats} className={styles.quill} />
+              <div className={styles.buttonsContainer}>
+                  <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+                  <button onClick={handlePreview}>Preview</button>
+                  <button onClick={handleSave}>Save</button>
+              </div>
+          </div>
+        </>
 
       );
 };
