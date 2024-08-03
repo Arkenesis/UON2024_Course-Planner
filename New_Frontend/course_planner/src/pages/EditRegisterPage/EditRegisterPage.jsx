@@ -5,6 +5,7 @@ import uonBuilding from "../../assets/uonBuilding.jpg";
 import "./EditRegisterPage.scss";
 import ImageUpload from "../image_upload/image_upload";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function EditLoginPage() {
 
@@ -115,12 +116,8 @@ function EditLoginPage() {
             {/* <button className="cancel" onClick={handleCancel}>
               Cancel
             </button> */}
-            <button className="preview" onClick={handlePreview}>
-              Preview
-            </button>
-            <button className="save" onClick={handleSave}>
-              Save
-            </button>
+            <Link to="../register" target="_blank" className="preview">Preview</Link>
+            <button className="save" onClick={handleSave}> Save </button>
           </div>
         </div>
       </div>
