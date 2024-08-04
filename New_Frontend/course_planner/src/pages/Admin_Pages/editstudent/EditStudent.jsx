@@ -156,7 +156,7 @@ const EditStudent = () => {
 
             {registerModal && (
                 <div className='registerModal'>
-                    <h2 style={{textAlign: "center"}}>Registraion Form</h2>
+                    <h2 style={{textAlign: "center"}}>Registration Form</h2>
                     <label className="registerModal-label"> Username
                         <br/>
                         <input type="text" value={inputs.username} onChange={(e) => handleChange(e)} name="username"/>

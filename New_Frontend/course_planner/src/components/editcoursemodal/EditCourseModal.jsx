@@ -82,7 +82,7 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
         <>
             {editedCourse && (
                 <div className="Modal">
-                    <h2 style={{textAlign:"center"}}>Course Registraion Form</h2>
+                    <h2 style={{textAlign:"center"}}>Course Registration Form</h2>
                     <div className="ModalContent">
                         {editedCourse?.isNew && editedCourse.isNew
                             ?   <label>

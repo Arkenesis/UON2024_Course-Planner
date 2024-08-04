@@ -86,7 +86,7 @@ const ImageUpload = ({setImageUrl}) => {
     return (
         <div className="image-upload">
             <div className="title">
-                <div className="assetName"> Assest</div>
+                <div className="assetName"> Assets</div>
 
                 {/* <input type='file' id="photo[]" name="photo[]" onChange={handleImageChange} className="hide" multiple="multiple"/> */}
                 <input type="file" multiple accept="image/*" onChange={handleImageChange} name="files[]" id="files"/>
