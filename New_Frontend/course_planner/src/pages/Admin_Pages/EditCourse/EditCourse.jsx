@@ -106,7 +106,7 @@ const EditCourse = () => {
                             <th>Prerequisite</th>
                             <th>Required Credit</th>
                             <th>Availability</th>
-                            <th>Edit/Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
