@@ -85,14 +85,12 @@ function EditLoginPage() {
 
         <h3>Welcome Message</h3>
 
-        <div className="editorContainer">
-          <ReactQuill
-            value={title}
-            onChange={setTitle}
-            modules={modules}
-            formats={formats}
-          />
-        </div>
+        <ReactQuill
+          value={title}
+          onChange={setTitle}
+          modules={modules}
+          formats={formats}
+        />
 
         <h3>Picture </h3>
         <div className="imageEdit">
