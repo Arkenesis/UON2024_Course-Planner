@@ -3,8 +3,8 @@ import courseCompleted from "../../assets/courseCompleted.png";
 import myInfo from "../../assets/myInfo.png";
 
 import "./HomePage.scss";
-import NavigationBar from "../../components/NavigationBar";
-import { UserContext } from "../login/LoginContext";
+import NavigationBar from "../components/NavigationBar";
+import { UserContext } from "./login/LoginContext";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
