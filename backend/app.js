@@ -39,59 +39,60 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Tell server to format the data, if not "req.body" become undefined
 app.use(bodyParser.json());
 // Enabling the backend server to receive data from frontend server, if not browser will show "cross origin" 
+// app.use(cors({ origin: frontend_url }))
 app.use(cors({ origin: frontend_url }))
 // Tell server to handle the cookie from raw data, if not "req.cookie" become undefined
 app.use(cookie());
 
 // User Route
-app.post("/users/register", register);
-app.post("/users/login", login);
-app.post("/users/logout", logout);
-app.post("/users/reset-password", reset_password);
-app.post("/users/delete", hasToken, delete_account);
-app.post("/users/set-admin", hasToken, hasAdmin, setAdmin);
-app.post("/users/remove-admin", hasToken, hasAdmin, removeAdmin);
+app.post("/api/users/register", register);
+app.post("/api/users/login", login);
+app.post("/api/users/logout", logout);
+app.post("/api/users/reset-password", reset_password);
+app.post("/api/users/delete", hasToken, delete_account);
+app.post("/api/users/set-admin", hasToken, hasAdmin, setAdmin);
+app.post("/api/users/remove-admin", hasToken, hasAdmin, removeAdmin);
 // AboutUs
-app.get("/pages/about-us", getAboutUs);
-app.post("/pages/about-us", hasToken, hasAdmin, setAboutUs);
+app.get("/api/pages/about-us/", getAboutUs);
+app.post("/api/pages/about-us", hasToken, hasAdmin, setAboutUs);
 // Terms and Conditions
-app.get("/pages/terms-and-conditions", getTermsAndConditions);
-app.post("/pages/terms-and-conditions", hasToken, hasAdmin, setTermsAndConditions);
+app.get("/api/pages/terms-and-conditions", getTermsAndConditions);
+app.post("/api/pages/terms-and-conditions", hasToken, hasAdmin, setTermsAndConditions);
 // Policy
-app.get("/pages/policy", getPolicy);
-app.post("/pages/policy", hasToken, hasAdmin, setPolicy);
+app.get("/api/pages/policy", getPolicy);
+app.post("/api/pages/policy", hasToken, hasAdmin, setPolicy);
 // Navigation
-app.get("/pages/navigation", getNavigation);
-app.post("/pages/navigation", hasToken, hasAdmin, setNavigation);
+app.get("/api/pages/navigation", getNavigation);
+app.post("/api/pages/navigation", hasToken, hasAdmin, setNavigation);
 // Image Upload
-app.get("/pages/image-upload", getFiles);
-app.post("/pages/image-upload", hasToken, hasAdmin, upload.array('files', 10), uploadFiles);
+app.get("/api/pages/image-upload", getFiles);
+app.post("/api/pages/image-upload", hasToken, hasAdmin, upload.array('files', 10), uploadFiles);
 // Edit Courses
-app.get("/pages/courses", getCourses);
-app.post("/pages/courses", hasToken, hasAdmin, setCourse);
-app.post("/pages/delete-courses", hasToken, hasAdmin, deleteCourse);
+app.get("/api/pages/courses", getCourses);
+app.post("/api/pages/courses", hasToken, hasAdmin, setCourse);
+app.post("/api/pages/delete-courses", hasToken, hasAdmin, deleteCourse);
 // Edit Courses
-app.get("/pages/users", getUsers);
-app.post("/pages/users", hasToken, hasAdmin, setUser);
-app.post("/pages/delete-users", hasToken, hasAdmin, removeUser);
+app.get("/api/pages/users", getUsers);
+app.post("/api/pages/users", hasToken, hasAdmin, setUser);
+app.post("/api/pages/delete-users", hasToken, hasAdmin, removeUser);
 // Edit Program
-app.get("/pages/program", getProgram);
-app.post("/pages/create-program", hasToken, hasAdmin, createProgram);
-app.post("/pages/delete-program", hasToken, hasAdmin, deleteProgram);
-app.get("/pages/programs", getPrograms);
-app.post("/pages/programs", hasToken, hasAdmin, setProgram);
+app.get("/api/pages/program", getProgram);
+app.post("/api/pages/create-program", hasToken, hasAdmin, createProgram);
+app.post("/api/pages/delete-program", hasToken, hasAdmin, deleteProgram);
+app.get("/api/pages/programs", getPrograms);
+app.post("/api/pages/programs", hasToken, hasAdmin, setProgram);
 // Profile
-app.post("/pages/profile", hasToken, setProfile);
-app.post("/pages/profile-courses", hasToken, setProfileCourses);
+app.post("/api/pages/profile", hasToken, setProfile);
+app.post("/api/pages/profile-courses", hasToken, setProfileCourses);
 // Footer
-app.get("/pages/footer", getFooter);
-app.post("/pages/footer", hasToken, hasToken, hasAdmin, setFooter);
+app.get("/api/pages/footer", getFooter);
+app.post("/api/pages/footer", hasToken, hasToken, hasAdmin, setFooter);
 // Login
-app.get("/pages/login", getLogin);
-app.post("/pages/login", hasToken, hasToken, hasAdmin, setLogin);
+app.get("/api/pages/login", getLogin);
+app.post("/api/pages/login", hasToken, hasToken, hasAdmin, setLogin);
 // Register
-app.get("/pages/register", getRegister);
-app.post("/pages/register", hasToken, hasToken, hasAdmin, setRegister);
+app.get("/api/pages/register", getRegister);
+app.post("/api/pages/register", hasToken, hasToken, hasAdmin, setRegister);
 // app.get("/pages/homepage", (req, res) => {
 //   console.log(req);
 //   console.log(res);

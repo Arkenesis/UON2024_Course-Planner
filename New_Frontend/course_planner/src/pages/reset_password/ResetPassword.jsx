@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios';
 import NavigationBar from '../../components/NavigationBar';
+import { instance } from '../../App';
 
 const ResetPassword = () => {
     const [inputs, setInputs] = useState({
@@ -30,7 +31,7 @@ const ResetPassword = () => {
     const handleResetPassword = async(e) =>{
         e.preventDefault();
         try{
-            const { data } = await axios.post("http://localhost:8080/users/reset-password", inputs);
+            const { data } = await instance.post("/users/reset-password", inputs);
             setMsg(data.message);
             alert('Kindly proceed to your e-mail to reclaim your account.');
             navigate('/login');

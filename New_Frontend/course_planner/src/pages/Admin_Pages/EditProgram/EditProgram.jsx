@@ -5,6 +5,7 @@ import trashBin from '../../../assets/trashBin.png';
 import editIcon from '../../../assets/editIcon.png';
 
 import './EditProgram.scss';
+import { instance } from '../../../App';
 
 const EditProgram = () => {
   const [programName, setProgramName] = useState('');
@@ -27,7 +28,7 @@ const EditProgram = () => {
 
   const getData = async () => {
     try{
-        const { data } = await axios.get("http://localhost:8080/pages/programs");
+        const { data } = await instance.get("/pages/programs");
         setOnlineData(data.message);
         setSeletedProgram(data.message[0].uuid)
         setProgramName(data.message[0].name);
@@ -94,7 +95,7 @@ const EditProgram = () => {
     // Check if programName has changed
     if (programName !== originalProgramName || hasUpdate) {
       try{
-        const { data } = await axios.post("http://localhost:8080/pages/programs", {uuid: selectedProgram, content: allCourses, name: programName});
+        const { data } = await instance.post("/pages/programs", {uuid: selectedProgram, content: allCourses, name: programName});
         alert('Good');
       }
       catch(error){
@@ -152,7 +153,7 @@ const EditProgram = () => {
   const createProgram = async () => {
     if(inputProgramName.trim()){
       try{
-        const { data } = await axios.post("http://localhost:8080/pages/create-program", {content: inputProgramName});
+        const { data } = await instance.post("/pages/create-program", {content: inputProgramName});
         setInputProgramName('');
         setIsInputVisible(false);
         alert('A new program has been created.');
@@ -185,7 +186,7 @@ const EditProgram = () => {
   const handleDelete = async () => {
     if(selectedProgram.trim()){
       try{
-        const { data } = await axios.post("http://localhost:8080/pages/delete-program", {content: selectedProgram});
+        const { data } = await instance.post("/pages/delete-program", {content: selectedProgram});
         window.location.reload();
       }
       catch(error){

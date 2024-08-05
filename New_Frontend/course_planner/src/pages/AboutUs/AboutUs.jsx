@@ -3,6 +3,7 @@ import NavigationBar from '../../components/NavigationBar';
 import './AboutUs.scss';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
+import { instance } from '../../App';
 
 const AboutUs = () => {
 
@@ -14,7 +15,7 @@ const AboutUs = () => {
 
   const getData = async () => {
     try{
-      const { data } = await axios.get("http://localhost:8080/pages/about-us");
+      const { data } = await instance.get("/pages/about-us");
       setValue(data.message);
     }
     catch(error){

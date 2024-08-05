@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import "./privacyPolicy.scss"
 import axios from 'axios';
 import ReactQuill from 'react-quill';
+import { instance } from '../../App';
 
 const PrivacyPolicy = () => {
 
@@ -18,7 +19,7 @@ const PrivacyPolicy = () => {
   
     const getData = async () => {
       try{
-        const { data } = await axios.get("http://localhost:8080/pages/policy");
+        const { data } = await instance.get("/pages/policy");
         setValue(data.message);
       }
       catch(error){

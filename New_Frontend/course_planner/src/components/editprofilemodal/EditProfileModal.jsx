@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './editProfileModal.scss';
 import { UserContext } from '../../pages/login/LoginContext';
+import { instance } from '../../App';
 
 function EditProfileModal({onClose, userInfo}) {
 
@@ -19,7 +20,7 @@ function EditProfileModal({onClose, userInfo}) {
     const handleSave = async (e) => {
         e.preventDefault();
         try{
-            const { data } = await axios.post("http://localhost:8080/pages/profile", {content: profile});
+            const { data } = await instance.post("/pages/profile", {content: profile});
             let temp = user.program;
             setUser({...data.message, program: temp});
             alert('Saving course data success!');

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css'
 import axios from 'axios';
+import { instance } from '../../App';
 const Footer = () => {
 
     const temp = {
@@ -18,7 +19,7 @@ const Footer = () => {
   
     const getData = async () => {
       try{
-        const { data } = await axios.get("http://localhost:8080/pages/footer");
+        const { data } = await instance.get("/pages/footer");
         if(data.message !== undefined){
           setValue(data.message);
         }

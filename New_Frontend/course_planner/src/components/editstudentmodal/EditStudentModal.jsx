@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './editStudentModal.scss';
+import { instance } from '../../App';
 
 function EditStudentModal({ student, onSave, onClose, onDelete }) {
     const [editedStudent, setEditedStudent] = useState(student);
 
     const handleSave = async () => {
         try{
-            const { data } = await axios.post("http://localhost:8080/pages/users", {content: editedStudent});
+            const { data } = await instance.post("/pages/users", {content: editedStudent});
             // setEditedStudent(prevState => {...prevState, newPassword: '', newEmail: '' });
             onSave(editedStudent);
             alert('Saving course data success!');

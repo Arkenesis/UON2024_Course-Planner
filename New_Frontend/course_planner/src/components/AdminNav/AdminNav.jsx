@@ -9,6 +9,7 @@ import profSettings from "../../assets/profSettings.png";
 import signOut from "../../assets/signOut.png";
 import { UserContext } from "../../pages/login/LoginContext";
 import axios from "axios";
+import { instance } from "../../App";
 
 export const AdminNav = (page) => {
 
@@ -34,7 +35,7 @@ export const AdminNav = (page) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/users/logout");
+      await instance.post("/users/logout");
       localStorage.removeItem("user");
       window.location.reload();
     } catch (ex) {

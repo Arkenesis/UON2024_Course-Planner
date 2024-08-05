@@ -10,6 +10,7 @@ import xLogo from "../../assets/xLogo.png"
 import facebookLogo from "../../assets/facebookLogo.png"
 import { UserContext } from "../login/LoginContext";
 import axios from 'axios';
+import { instance } from "../../App";
 
 // The data for the courses
 // const Courses = [
@@ -67,7 +68,7 @@ function DragDrop() {
   // Upload to firebase
   const handleSave = async () => {
     try{
-        const { data } = await axios.post("http://localhost:8080/pages/profile-courses", {content: profile});
+        const { data } = await instance.post("/pages/profile-courses", {content: profile});
         user.courses = [...profile.courses];
         user.firestore_data.courses = [...profile.courses];
         let temp = {...user};
@@ -82,7 +83,7 @@ function DragDrop() {
   // Get courses from firebase
   const getCourses = async () => {
     try{
-        const { data } = await axios.get("http://localhost:8080/pages/courses");
+        const { data } = await instance.get("/pages/courses");
         return data.message;
     }
     catch(ex){

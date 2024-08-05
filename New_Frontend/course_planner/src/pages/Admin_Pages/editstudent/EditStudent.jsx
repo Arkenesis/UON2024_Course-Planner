@@ -10,6 +10,7 @@ import EditModal from '../../../components/editstudentmodal/EditStudentModal.jsx
 
 import edit from '../../../assets/edit.png';
 import dustbin from '../../../assets/dustbin.png';
+import { instance } from '../../../App.jsx';
 
 const EditStudent = () => {
     const [students, setStudents] = useState([]);
@@ -23,7 +24,7 @@ const EditStudent = () => {
 
         if (studentIndex > -1) {
             try{
-                const { data } = await axios.post("http://localhost:8080/pages/delete-users", {content: studentId});
+                const { data } = await instance.post("/pages/delete-users", {content: studentId});
                 alert('Delete user data success!');
             }
             catch(error){
@@ -71,7 +72,7 @@ const EditStudent = () => {
 
     const getData = async () => {
         try{
-            const { data } = await axios.get("http://localhost:8080/pages/users");
+            const { data } = await instance.get("/pages/users");
             setStudents(data.message);
         }
         catch(error){
@@ -90,7 +91,7 @@ const EditStudent = () => {
     const handleRegister = async(e) =>{
         e.preventDefault();
         try{
-            const { data } = await axios.post("http://localhost:8080/users/register", inputs);
+            const { data } = await instance.post("/users/register", inputs);
             alert('User registration is completed.')
         } catch (e){
             alert(e.response?.data.error || "An error occurred");

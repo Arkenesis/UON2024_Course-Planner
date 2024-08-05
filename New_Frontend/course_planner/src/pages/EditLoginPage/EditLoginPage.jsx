@@ -6,6 +6,7 @@ import "./EditLoginPage.scss";
 import ImageUpload from "../image_upload/image_upload";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { instance } from "../../App";
 
 function EditLoginPage() {
 
@@ -58,7 +59,7 @@ function EditLoginPage() {
 
   const getData = async () => {
     try{
-      const { data } = await axios.get("http://localhost:8080/pages/login");
+      const { data } = await instance.get("/pages/login");
       setValue((prev) => ({...prev, logo: data.message.logo}));
       setTitle(data.message.title);
     }
@@ -69,7 +70,7 @@ function EditLoginPage() {
 
   const handleSave = async () => {
     try{
-      const { data } = await axios.post("http://localhost:8080/pages/login", {content: {title: title, logo: value.logo}});
+      const { data } = await instance.post("/pages/login", {content: {title: title, logo: value.logo}});
       alert(data.message);
     }
     catch(error){

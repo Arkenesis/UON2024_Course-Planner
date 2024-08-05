@@ -8,6 +8,7 @@ import './NavigationBar.css';
 import { UserContext } from '../pages/login/LoginContext.jsx';
 import axios from 'axios';
 import uonLogo from '../assets/uonLogo.jpg';
+import { instance } from '../App.jsx';
 
 const NavigationBar = () => {
   const scrollToTop = () => {
@@ -37,7 +38,7 @@ const NavigationBar = () => {
 
   const getData = async () => {
     try{
-      const { data } = await axios.get("http://localhost:8080/pages/navigation");
+      const { data } = await instance.get("/pages/navigation");
       const { backgroundColor, logo, items } = data.message;
       setNav({backgroundColor, logo, items});
     }

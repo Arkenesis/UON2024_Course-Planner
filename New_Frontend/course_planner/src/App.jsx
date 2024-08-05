@@ -25,6 +25,9 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 // UserContext
 import { UserContext } from "./pages/login/LoginContext.jsx";
+import axios from "axios";
+
+export const instance = axios.create({ baseURL: 'http://localhost:8080/api', withCredentials: true });
 
 function App() {
 

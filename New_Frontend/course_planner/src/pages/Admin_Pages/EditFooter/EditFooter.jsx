@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './EditFooter.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { instance } from '../../../App';
 
 function EditFooter() {
   
@@ -21,7 +22,7 @@ function EditFooter() {
 
   const getData = async () => {
     try{
-      const { data } = await axios.get("http://localhost:8080/pages/footer");
+      const { data } = await instance.get("/pages/footer");
       if(data.message !== undefined){
         setInputs(data.message);
       }
@@ -33,7 +34,7 @@ function EditFooter() {
 
   const handleSaveClick = async () => {
     try{
-        const { data } = await axios.post("http://localhost:8080/pages/footer", {content: inputs});
+        const { data } = await instance.post("/pages/footer", {content: inputs});
         alert(data.message);
     }
     catch(ex){

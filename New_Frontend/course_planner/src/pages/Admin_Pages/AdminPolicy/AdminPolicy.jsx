@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import styles from './AdminPolicy.module.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { instance } from '../../../App';
 
 const AdminPolicy = () =>{
     // const [value, setValue] = useState(`
@@ -309,7 +310,7 @@ const AdminPolicy = () =>{
 
     const getData = async () => {
         try{
-            const { data } = await axios.get("http://localhost:8080/pages/policy");
+            const { data } = await instance.get("/pages/policy");
             setValue(data.message);
         }
         catch(error){
@@ -319,7 +320,7 @@ const AdminPolicy = () =>{
 
     const handleSave = async () => {
         try{
-            const { data } = await axios.post("http://localhost:8080/pages/policy", {content: value});
+            const { data } = await instance.post("/pages/policy", {content: value});
             alert('Good');
         }
         catch(error){

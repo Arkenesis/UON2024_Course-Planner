@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import styles from './AdminTerm.module.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { instance } from '../../../App';
 
 const AdminTerm = () =>{
     // const [value, setValue] = useState(`
@@ -286,7 +287,7 @@ const AdminTerm = () =>{
     
       const getData = async () => {
         try{
-          const { data } = await axios.get("http://localhost:8080/pages/terms-and-conditions");
+          const { data } = await instance.get("/pages/terms-and-conditions");
           setValue(data.message);
         }
         catch(error){
@@ -296,7 +297,7 @@ const AdminTerm = () =>{
     
       const handleSave = async () => {
         try{
-          const { data } = await axios.post("http://localhost:8080/pages/terms-and-conditions", {content: value});
+          const { data } = await instance.post("/pages/terms-and-conditions", {content: value});
           alert('Good');
         }
         catch(error){

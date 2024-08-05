@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { instance } from "../../App";
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
@@ -8,8 +9,8 @@ export const UserContextProvider = ({ children }) => {
 
   const login = async (inputs) => {
     try{
-      const { data } = await axios.post("http://localhost:8080/users/login", inputs);
-      const { data: program } = await axios.get("http://localhost:8080/pages/programs");
+      const { data } = await instance.post("/users/login", inputs);
+      const { data: program } = await instance.get("/pages/programs");
       setUser(data.message);
       if (data.message.firestore_data.courses) {
         let temp = JSON.parse(data.message.firestore_data.courses);

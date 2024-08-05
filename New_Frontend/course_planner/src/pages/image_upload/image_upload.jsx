@@ -2,6 +2,7 @@ import "./image_upload.scss";
 import { useEffect, useState } from "react";
 import upload from "../../assets/upload.png";
 import axios from 'axios';
+import { instance } from "../../App";
 
 const ImageUpload = ({setImageUrl}) => {
     const [images, setImages] = useState([]);
@@ -38,7 +39,7 @@ const ImageUpload = ({setImageUrl}) => {
             formData.append("files", input[i]);
         }
         try{
-            const { data } = await axios.post('http://localhost:8080/pages/image-upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+            const { data } = await instance.post('/pages/image-upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
             console.log(data.message);
         }
         catch(error){
@@ -59,7 +60,7 @@ const ImageUpload = ({setImageUrl}) => {
 
     const getData = async () => {
         try{
-            const { data } = await axios.get("http://localhost:8080/pages/image-upload");
+            const { data } = await instance.get("/pages/image-upload");
             setImages(data.files);
         }
         catch(error){

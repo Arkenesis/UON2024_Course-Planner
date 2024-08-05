@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './editCourseModal.scss';
+import { instance } from '../../App';
 
 function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
     const [editedCourse, setEditedCourse] = useState(course);
@@ -10,7 +11,7 @@ function EditCourseModal({ course, ids, onSave, onClose, onDelete }) {
             if(editedCourse.isNew){
                 delete editedCourse.isNew;
             }
-            const { data } = await axios.post("http://localhost:8080/pages/courses", {content: editedCourse});
+            const { data } = await instance.post("/pages/courses", {content: editedCourse});
             onSave(editedCourse);
             alert('Saving user data success!');
         }

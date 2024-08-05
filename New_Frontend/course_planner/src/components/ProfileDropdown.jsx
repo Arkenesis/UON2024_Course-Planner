@@ -1,14 +1,11 @@
 // src/components/ProfileDropdown.js
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCog,
-  faUserCircle,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCog, faUserCircle, faSignOutAlt, } from "@fortawesome/free-solid-svg-icons";
 import "./ProfileDropdown.css";
 import axios from "axios";
 import EditProfileModal from "./editprofilemodal/EditProfileModal";
+import { instance } from "../App";
 
 const ProfileDropdown = ({ userinfo }) => {
 
@@ -17,7 +14,7 @@ const ProfileDropdown = ({ userinfo }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/users/logout");
+      await instance.post("/users/logout");
       localStorage.removeItem("user");
       window.location.reload();
     } catch (ex) {

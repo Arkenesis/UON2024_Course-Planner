@@ -14,6 +14,7 @@ import { UserContext } from './LoginContext';
 import NavigationBar from '../../components/NavigationBar';
 import ReactQuill from 'react-quill';
 import axios from 'axios';
+import { instance } from '../../App';
 
 const Login = () => {
     
@@ -74,7 +75,7 @@ const Login = () => {
   
     const getData = async () => {
       try{
-        const { data } = await axios.get("http://localhost:8080/pages/login");
+        const { data } = await instance.get("/pages/login");
         setTitle(data.message.title);
         setValue(data.message.logo);
       }

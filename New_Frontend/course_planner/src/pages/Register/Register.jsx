@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { UserContext } from "../login/LoginContext";
 import ReactQuill from "react-quill";
+import { instance } from "../../App";
 
 const Register =() =>{
 
@@ -34,7 +35,7 @@ const Register =() =>{
     const handleRegister = async(e) =>{
         e.preventDefault();
         try{
-            const { data } = await axios.post("http://localhost:8080/users/register", inputs);
+            const { data } = await instance.post("/users/register", inputs);
             navigate('/login');
             // setUser(data.message);
             alert('Registration successfully, kindly proceed to login page.')
@@ -52,7 +53,7 @@ const Register =() =>{
   
     const getData = async () => {
       try{
-        const { data } = await axios.get("http://localhost:8080/pages/register");
+        const { data } = await instance.get("/pages/register");
         setTitle(data.message.title);
         setValue(data.message.logo);
       }

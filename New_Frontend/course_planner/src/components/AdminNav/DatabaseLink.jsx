@@ -63,10 +63,6 @@ export default function DatabaseLink(showPage) {
     }
   }
 
-      // case "Home page":
-      //   return <HomePage />;
-      // case "Footer":
-      //   return;
   const [isOpen, setIsOpen] = useState(false);
 
   const options = [ "About Us", "Privacy", "Term", "Log-in", "Register", "Navigation Bar", "Footer"];

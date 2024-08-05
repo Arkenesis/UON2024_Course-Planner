@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import "./termsAndConditions.scss";
 import ReactQuill from 'react-quill';
 import axios from "axios";
+import { instance } from '../../App';
 
 const TermsAndConditions = () => {
 
@@ -18,7 +19,7 @@ const TermsAndConditions = () => {
   
     const getData = async () => {
       try{
-        const { data } = await axios.get("http://localhost:8080/pages/terms-and-conditions");
+        const { data } = await instance.get("/pages/terms-and-conditions");
         setValue(data.message);
       }
       catch(error){

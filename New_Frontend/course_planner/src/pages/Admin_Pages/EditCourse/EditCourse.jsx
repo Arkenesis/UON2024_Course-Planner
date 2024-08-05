@@ -10,6 +10,7 @@ import EditModal from '../../../components/editcoursemodal/EditCourseModal.jsx';
 
 import edit from '../../../assets/edit.png';
 import dustbin from '../../../assets/dustbin.png';
+import { instance } from '../../../App.jsx';
 
 const EditCourse = () => {
     const [course, setCourse] = useState([]);
@@ -25,7 +26,7 @@ const EditCourse = () => {
 
         if (courseIndex > -1) {
             try{
-                const { data } = await axios.post("http://localhost:8080/pages/delete-courses", {content: courseId});
+                const { data } = await instance.post("/pages/delete-courses", {content: courseId});
                 alert('Delete course data success!');
             }
             catch(error){
@@ -70,7 +71,7 @@ const EditCourse = () => {
 
     const getData = async () => {
         try{
-            const { data } = await axios.get("http://localhost:8080/pages/courses");
+            const { data } = await instance.get("/pages/courses");
             setCourse(data.message);
         }
         catch(error){

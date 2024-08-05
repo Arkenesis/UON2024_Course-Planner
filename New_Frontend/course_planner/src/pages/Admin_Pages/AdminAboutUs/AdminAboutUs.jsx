@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import styles from './AdminAboutUs.module.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { instance } from '../../../App';
 
 const AdminAboutUs = () => {
   // const [value, setValue] = useState(`
@@ -38,7 +39,7 @@ const AdminAboutUs = () => {
 
   const getData = async () => {
     try{
-      const { data } = await axios.get("http://localhost:8080/pages/about-us");
+      const { data } = await instance.get("/pages/about-us");
       setValue(data.message);
       setTemp(data.message);
     }
@@ -49,7 +50,7 @@ const AdminAboutUs = () => {
 
   const handleSave = async () => {
     try{
-      const { data } = await axios.post("http://localhost:8080/pages/about-us", {content: value});
+      const { data } = await instance.post("/pages/about-us", {content: value});
       alert('Good');
     }
     catch(error){

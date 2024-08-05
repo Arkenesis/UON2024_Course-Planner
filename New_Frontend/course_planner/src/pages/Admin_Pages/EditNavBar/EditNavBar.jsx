@@ -8,6 +8,7 @@ import eyeIconCrossed from '../../../assets/eyeIconCrossed.png'; // Crossed-out 
 import ImageUpload from '../../image_upload/image_upload';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { instance } from '../../../App';
 
 function EditNavBar() {
   const [err, setErr] = useState('');
@@ -33,7 +34,7 @@ function EditNavBar() {
 
   const getData = async () => {
     try{
-      const { data } = await axios.get("http://localhost:8080/pages/navigation");
+      const { data } = await instance.get("/pages/navigation");
       const { backgroundColor, logo, items } = data.message;
       setNavTitles({backgroundColor, logo, items});
     }
@@ -73,7 +74,7 @@ function EditNavBar() {
 
   const handleSaveClick = async () => {
     try{
-        const { data } = await axios.post("http://localhost:8080/pages/navigation", {content: navTitles});
+        const { data } = await instance.post("/pages/navigation", {content: navTitles});
         setShowSuccessMessage(true);
         setTimeout(() => setShowSuccessMessage(false), 3000);
     }
