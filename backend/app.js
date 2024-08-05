@@ -22,7 +22,8 @@ import { getRegister, setRegister } from './controller/admin_register.js';
 // Load .env config
 dotenv.config({ path: './secret/.env' });
 const port = 8080;
-const frontend_url = "http://localhost:5173"
+const frontend_url = "http://localhost"
+// const frontend_url = "http://localhost:5173"
 const app = express();
 
 // export const auth = getAuth();
