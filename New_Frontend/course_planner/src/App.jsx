@@ -27,7 +27,7 @@ import { AdminNav } from "./components/AdminNav/AdminNav.jsx";
 import { UserContext } from "./pages/login/LoginContext.jsx";
 import axios from "axios";
 
-export const instance = axios.create({ baseURL: 'http://localhost:8080/api', withCredentials: true });
+export const instance = axios.create({ baseURL: 'http://172.188.66.193/api', withCredentials: true });
 
 function App() {
 
