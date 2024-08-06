@@ -25,35 +25,35 @@ export const getFiles = async (req, res) => {
 
 
 export const uploadFiles = async (req, res, err) => {
-    if (err) {
-        return res.status(400).send({ message: err.message })
+  // if (err) {
+  //   return res.status(400).send({ message: err.message })
+  // }
+  try {
+    const files = req.files;
+    if (!files || files.length === 0) {
+      return res.status(400).json({ message: "No files uploaded" });
     }
-    try {
-      const files = req.files;
-      if (!files || files.length === 0) {
-        return res.status(400).json({ message: "No files uploaded" });
-      }
-  
-      const fileUrls = await Promise.all(files.map(async (file) => {
-        const file_name = file.originalname;
-        const blob = image_db.file(`CoursePlanner/${file_name}`);
-        const blobStream = blob.createWriteStream({
-          resumable: false,
-          contentType: file.mimetype
-        });
-  
-        await new Promise((resolve, reject) => {
-          blobStream.on('error', (err) => reject(err));
-          blobStream.on('finish', () => resolve());
-          blobStream.end(file.buffer);
-        });
-  
-        return `https://storage.googleapis.com/${image_db.name}/${blob.name}`;
-      }));
-  
-      return res.status(200).json({ message: "Files uploaded successfully", urls: fileUrls });
-    } catch (error) {
-    //   console.error('Error uploading files:', error);
-      return res.status(500).json({ message: error });
-    }
-  };
+
+    const fileUrls = await Promise.all(files.map(async (file) => {
+      const file_name = file.originalname;
+      const blob = image_db.file(`CoursePlanner/${file_name}`);
+      const blobStream = blob.createWriteStream({
+        resumable: false,
+        contentType: file.mimetype
+      });
+
+      await new Promise((resolve, reject) => {
+        blobStream.on('error', (err) => reject(err));
+        blobStream.on('finish', () => resolve());
+        blobStream.end(file.buffer);
+      });
+
+      return `https://storage.googleapis.com/${image_db.name}/${blob.name}`;
+    }));
+
+    return res.status(200).json({ message: "Files uploaded successfully", urls: fileUrls });
+  } catch (error) {
+  //   console.error('Error uploading files:', error);
+    return res.status(500).json({ message: error });
+  }
+};
