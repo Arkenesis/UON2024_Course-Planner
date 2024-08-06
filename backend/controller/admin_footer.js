@@ -9,7 +9,7 @@ export const getFooter = async (req, res) => {
         return res.json({ message: content });
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to retrieve!" });
+        return res.status(403).json({ message: "Failed to retrieve the information!" });
     }
   };
 
@@ -34,9 +34,9 @@ export const setFooter = async (req, res) => {
         }
         const page_ref = db.collection('CoursePlannerPages').doc('footer');
         await page_ref.set({ "message": { email, phone, organization, year, address } }, {merge: true});
-        return res.json({ message: "The information was updated successfully!" });
+        return res.json({ message: "Successfully updated!" });
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to update!" });
+        return res.status(403).json({ message: "Failed to update content!" });
     }
 };

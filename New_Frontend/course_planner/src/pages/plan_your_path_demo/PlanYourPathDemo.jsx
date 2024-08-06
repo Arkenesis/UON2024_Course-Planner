@@ -395,7 +395,7 @@ function DragDrop() {
       </div>
       <div className="triesterMod">
         <div>
-        <label> Year: 
+        <label> Year:   
         <input type="number" min="2000" max="2099" step="1" value={input.year} name="year" onChange={(e) => handleInputChange(e)}/>
         </label>
         <label> Trimester: 

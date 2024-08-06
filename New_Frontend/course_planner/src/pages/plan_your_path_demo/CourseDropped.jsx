@@ -16,8 +16,8 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
 
 
   return (
-    <div ref={drag} id="courseDropped" className="courseDropped"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "16em",
-      width: "260px", margin: "10px", backgroundColor: "#FFEFD7"}}>
+    <div ref={drag} id="courseDropped" className="courseDropped"  style={{ opacity: isDragging ? "50%" : "100%", background: "#FFEFD7", height: "18.5em",
+      width: "245px", margin: "100px", backgroundColor: "#FFEFD7"}}>
 
       <div className="courseDroppedHeader">
         <div className="heading">
@@ -25,7 +25,7 @@ function CourseDropped({ id, name, units, level, grade, removeCourse, parent_ind
         </div>
         <div className="removeDiv">
           <button className="removeBtn" style={{padding: "0px", color: "black", backgroundColor: "transparent", border: "none", float: "left"}} onClick={(e) => removeCourse(e, parent_index, index)}>
-            <img style={{height: "50px"}} className="hamburgerMenu" src={cross} alt="cross" />
+            <img style={{height: "30px", transform: "translateY(13px)"}} className="hamburgerMenu" src={cross} alt="cross" />
           </button>
         </div>
       </div>
