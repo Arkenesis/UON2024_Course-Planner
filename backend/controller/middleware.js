@@ -29,7 +29,7 @@ export const hasAdmin = async (req, res, next) => {
         const user_doc = await user_ref.get();
         const isAdmin = await user_doc.get('roles');
         if(isAdmin !== 'Admin'){
-            return res.status(403).json({ message: "You are not allowed edit the page." });
+            return res.status(403).json({ message: "Page edit authority not granted." });
         }
         next();
     } catch (error) {
@@ -50,7 +50,7 @@ export const upload = multer(
       if (mimeType && extName) {
         return cb(null, true);
       }
-      cb(new Error('Only jpeg|jpg|png|gif|svg can be accepted.'));
+      cb(new Error('Only jpeg|jpg|png|gif|svg files are accepted.'));
     },
     limits: { fileSize: 5 * 1024 * 1024 }
   });

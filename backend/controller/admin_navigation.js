@@ -38,7 +38,7 @@ export const getNavigation = async (req, res) => {
         return res.json( { message: { backgroundColor: color, items: items, logo: logo}});
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to retrieve!" });
+        return res.status(403).json({ message: "Failed to retrieve the information!" });
     }
   };
 
@@ -47,9 +47,9 @@ export const setNavigation = async (req, res) => {
     try{
         const page_ref = db.collection('CoursePlannerPages').doc('navigation');
         await page_ref.set({ backgroundColor: content.backgroundColor, items: content.items, logo: content.logo }, {merge: true});
-        return res.json({ message: "The information was updated successfully!" });
+        return res.json({ message: "Successfully updated!" });
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to update!" });
+        return res.status(403).json({ message: "Failed to update content!" });
     }
 };

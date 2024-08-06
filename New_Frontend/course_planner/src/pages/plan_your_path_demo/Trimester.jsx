@@ -63,7 +63,7 @@ const Trimester = ({parent_index, item, index, addCourseToTrimester, removeCours
 
   return (
     //Enabling a ref to receive multiple attribute done by creating a lamdba function
-    <div key={index} ref={node => drop(node)}  style={{ opacity: isDragging? 0.8: 1, position: "relative", display: "flex", justifyContent: "center", alignItems: "center", width: isActive ? "280px" : "240px", height: isActive ? "280px" : "240px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >
+    <div key={index} ref={node => drop(node)}  style={{ opacity: isDragging? 0.8: 1, position: "relative", width: isActive ? "240px" : "220px", height: isActive ? "300px" : "285px", background: isActive ? "#FED766" : "", transition: 'ease 300ms' }} className="trimesterBox"  >
       {item 
         ? <div ref={node => drag(drop(node))}>
             <CourseDropped   key={item[0]}  id={item[0]} name={item[1]} units={item[2]} level={item[3]} grade={item[4]}  removeCourse={removeCourse}  parent_index={parent_index} index={index}  menuButton={menuButton} handleChange={handleChange}/> 

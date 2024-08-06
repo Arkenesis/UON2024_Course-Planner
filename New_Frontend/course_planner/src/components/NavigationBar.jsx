@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import './NavigationBar.css';
 import { UserContext } from '../pages/login/LoginContext.jsx';
 import axios from 'axios';
-import uonLogo from '../assets/uonLogo.png';
+import uonLogo from '../assets/uonLogo.jpg';
 
 const NavigationBar = () => {
   const scrollToTop = () => {
