@@ -1,6 +1,6 @@
 import "./image_upload.scss";
 import { useEffect, useState } from "react";
-import { upload } from "../../assets/upload.png";
+import upload from "../../assets/upload.png";
 import axios from 'axios';
 
 const ImageUpload = ({setImageUrl}) => {
