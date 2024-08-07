@@ -9,7 +9,7 @@ const Trimesters = ({ id, name, level, units, grade, year, term, course, addCour
 
   return (
     <div className="trimestersBox">
-      <div className="trimesterName">{year} Trimester {term} <button className="deleteTrimester" onClick={() => removeTrimester(trimesters)}>-</button></div>
+      <div className="trimesterName">{year} Trimester {term} <button className="deleteTrimester" onClick={() => removeTrimester(trimesters)}>Delete Trimester</button></div>
       <div className="coursePerTri">
 
       

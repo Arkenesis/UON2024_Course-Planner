@@ -25,7 +25,7 @@ export const setProfile = async (req, res) => {
     return res.json({ message: result });
   }
   catch(error){
-    return res.status(403).json({ message: "The information was failed to update!" });
+    return res.status(403).json({ message: "Failed to update information!" });
   }
 };
 
@@ -46,9 +46,9 @@ export const setProfileCourses = async (req, res) => {
     // }
     const doc_ref = db.collection('CoursePlannerUsers').doc(user.uid);
     await doc_ref.set({ "courses": JSON.stringify(result) }, { merge: true });
-    return res.json({ message: "The information was updated successfully!" });
+    return res.json({ message: "Successfully updated!" });
   }
   catch(error){
-    return res.status(403).json({ message: "The information was failed to update!" });
+    return res.status(403).json({ message: "Failed to update information!" });
   }
 };

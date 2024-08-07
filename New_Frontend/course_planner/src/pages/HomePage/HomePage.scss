@@ -49,6 +49,10 @@
     border-radius: 40px;
     width: 400px;
   }
+
+  .my-info {
+    margin-bottom: 5%;
+  }
   
   .course-completed h2,
   .my-info h2 {
@@ -142,7 +146,13 @@
     border-radius: 10px;
     width: 600px;
     margin-top: -350px;
+    position: relative;
+    left: 10%;
     display: inline-block;
+  }
+
+  .current-courses .course-item {
+    margin-left: 7em;
   }
   
   .course-title {

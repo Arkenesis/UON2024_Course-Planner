@@ -31,7 +31,7 @@ export const login = async (req, res) => {
 export const register = async (req, res) => {
   const { email, password, username} = req.body;
   if( !email || !password || !username){
-    return res.status(403).json({ error: "Invalid register credentials. Kindly fill in the information of email, password and username." });
+    return res.status(403).json({ error: "Invalid registration credentials. Please fill in your email, password, and username." });
   }
 
   const domain = email.split("@")[1];
@@ -62,7 +62,7 @@ export const register = async (req, res) => {
     return res.cookie("user", userCredential.user, { httpOnly: false }).json({ message: userCredential.user});
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
-      return res.status(403).json({ error: "Email already registered on the website." });
+      return res.status(403).json({ error: "Email already registered." });
     }
     console.error("Error during registration:", error.message);
     return res.status(403).json({ error: error.message });
@@ -99,7 +99,7 @@ export const setAdmin = async (req, res) => {
     const user_ref = db.collection('CoursePlannerUsers').doc(`${uid}`);
     const roles = {roles: "admin"};
     await user_ref.set(roles,{ merge: true });
-    return res.json({ message: "Successfully promote user to admin."});
+    return res.json({ message: "Successfully promoted user to admin."});
   }
   catch(error){
     console.log(error.code)
@@ -113,11 +113,11 @@ export const removeAdmin = async (req, res) => {
     const user_ref = db.collection('CoursePlannerUsers').doc(`${uid}`);
     const roles = {roles: FieldValue.delete()};
     await user_ref.update(roles,{ merge: true });
-    return res.json({ message: "Successfully remove user from admin."});
+    return res.json({ message: "Successfully removed admin role from user."});
   }
   catch(error){
     console.log(error.code)
-    return res.json({ error: "Failed to remove " + displayName + " admin roles."})
+    return res.json({ error: "Failed to remove " + displayName + "'s admin role."})
   }
 };
 
@@ -125,13 +125,13 @@ export const delete_account = async (req, res) => {
   const { uid } = req.user;
   try{
     const result = await admin.auth().deleteUser(uid);
-    res.json({ message: "Delete successfully!"})
+    res.json({ message: "Deleted successfully!"})
   }
   catch(error){
     if(error.code === 'auth/user-not-found'){
       res.json({ error: "User does not exist."})
     }
-    res.json({ error: "Error in deleting user."})
+    res.json({ error: "Error deleting user."})
   }
 };
 
