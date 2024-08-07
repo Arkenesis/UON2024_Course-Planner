@@ -54,7 +54,7 @@ export default function DatabaseLink(showPage) {
         return <EditLoginPage />;
       case "Register":
         return <EditRegisterPage />;
-      case "Navigation bar":
+      case "Navigation Bar":
         return <EditNavBar />;
       case "Footer":
         return <EditFooter/>;
@@ -69,7 +69,7 @@ export default function DatabaseLink(showPage) {
       //   return;
   const [isOpen, setIsOpen] = useState(false);
 
-  const options = [ "About Us", "Privacy", "Term", "Log-in", "Register", "Navigation bar", "Footer"];
+  const options = [ "About Us", "Privacy", "Term", "Log-in", "Register", "Navigation Bar", "Footer"];
 
   const [images, setImages] = useState(Images);
 
@@ -105,7 +105,7 @@ export default function DatabaseLink(showPage) {
           </div>
         </button>
 
-        <div className="dbsBtn" onClick={() => setIsOpen(!isOpen)}>
+        <div className="dbsBtn" style={{padding: "6px"}} onClick={() => setIsOpen(!isOpen)}>
           <img className="rightImg" src={Page} />
           <div className="webpageM">
             <div className="adminText">Webpage Management</div>

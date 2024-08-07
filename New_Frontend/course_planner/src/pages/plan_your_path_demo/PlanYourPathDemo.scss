@@ -7,6 +7,9 @@
       color: #1577bd;
       font-size: 2.5em;
       margin: 0px;
+      font-weight: 700;
+      padding: 2% 0 1% 0;
+      font-family: "Segoe UI", sans-serif;
     }
     .plan-auto-complete{
       border: none;
@@ -27,13 +30,14 @@
     width: 100%;
 
     .select-program-label{
-      margin-left: 1.25em;
+      margin-right: 3.1em;
       margin-bottom: 1em;
       color: black;
       font-weight: bold;
       select{
-        padding: 0.5em 1em;
+        padding: 0.5em 1em 0.5em 0.5em;
         margin-top: 0.5em;
+        padding-right: 20%;
 
         option{
           padding: 0.5em 1em;
@@ -57,14 +61,12 @@
     flex-wrap: wrap;
     position: relative;
     flex: 1;
-    width: 74vw;
+    width: 60%;
     margin: 0 0 0 20px;
-    height: 100vh;
+    height: 100%;
     overflow: auto;
     overflow-x: hidden;
-  }
-
-  .trimestersDetailsSub {
+    overflow-y: hidden;
   }
 
   .trimesterLibrary {
@@ -74,6 +76,7 @@
     overflow-x: scroll;
     height: 100vh;
     margin-right: 1em;
+    border-radius: 25px;
   }
 
   .planYourPathPage {
@@ -159,19 +162,27 @@
     margin: 0 20px;
   }
 
+  .courseHeader {
+    border-radius: 8px;
+    gap: 20px;
+  }
+
   .coursesPerType {
     padding: 0 10px;
+  }
+
+  .plan-demo-course {
+    border-radius: 8px;
   }
 
   .triesterMod{
     margin-top: 1em;
     margin-bottom: 1em;
     margin-left: 3.25em;
-    margin-left: 3.25em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 73%;
+    width: 70.5%;
     .plan-add-more-trimester {
         padding: 0.5em 1em;
         border: none;
@@ -198,6 +209,14 @@
         font-weight: 600;
         color: white;
         background-color: #7BC043;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    input {
+      padding: 5px;
     }
   }
 

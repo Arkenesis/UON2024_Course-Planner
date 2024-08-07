@@ -21,7 +21,7 @@ export const getUsers = async (req, res) => {
         return res.json({ message: content });
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to retrieve!" });
+        return res.status(403).json({ message: "Failed to retrieve the information!" });
     }
   };
 
@@ -50,10 +50,10 @@ export const setUser = async (req, res) => {
             result = {...result, roles};
         }
         await page_ref.set(result, { merge: true});
-        return res.json({ message: "The user information was updated successfully!" });
+        return res.json({ message: "Successfully updated!" });
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to update!" });
+        return res.status(403).json({ message: "Failed to update content!" });
     }
 };
 
@@ -63,9 +63,9 @@ export const removeUser = async (req, res) => {
         await admin.auth().deleteUser(content);
         const page_ref = db.collection('CoursePlannerUsers').doc(content);
         await page_ref.delete();
-        return res.json({ message: "The user information was deleted successfully!" });
+        return res.json({ message: "User information  deleted successfully!" });
     }
     catch(error){
-        return res.status(403).json({ message: "The information was failed to update!" });
+        return res.status(403).json({ message: "Failed to update content!" });
     }
 };

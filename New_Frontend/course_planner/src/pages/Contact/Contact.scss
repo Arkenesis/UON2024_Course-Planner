@@ -41,8 +41,8 @@
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
+        resize: none;
       }
-    
     }
     button {
       background-color: #c75d2c;
@@ -57,10 +57,12 @@
     button:hover {
       background-color: #b04f1f;
     } 
-  }
-  
+  } 
 }
-  
+
+#message {
+  height: 15vh;
+}
 
 
 

@@ -87,19 +87,21 @@ const ImageUpload = ({setImageUrl}) => {
     return (
         <div className="image-upload">
             <div className="title">
-                <div className="assetName"> Assest</div>
+                <div className="assetNameDiv">
+                    <div className="assetName"> Assets</div>
 
-                {/* <input type='file' id="photo[]" name="photo[]" onChange={handleImageChange} className="hide" multiple="multiple"/> */}
-                <input type="file" multiple accept="image/*" onChange={handleImageChange} name="files[]" id="files"/>
+                    {/* <input type='file' id="photo[]" name="photo[]" onChange={handleImageChange} className="hide" multiple="multiple"/> */}
+                    <input type="file" multiple accept="image/*" onChange={handleImageChange} name="files[]" id="files"/>
+                </div>
                 <div className="uploadImage">
                     <label htmlFor="files">
-                        {/* <img src="../../src/assets/upload.png" alt="Upload Icon" className="upload-icon" /> */}
                         <img src={upload} alt="Upload Icon" className="upload-icon" />
                     </label>
                 </div>
                 <div className="errorMessage">
                     {err && <p>{err}</p>}
                 </div>
+
             </div>
             <div className="search">
                 <input type='text' onChange={handleSearch}/>

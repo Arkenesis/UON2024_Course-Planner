@@ -19,7 +19,7 @@ export const getFiles = async (req, res) => {
     return res.json({ files: fileDetails });
   } catch (error) {
     console.error("Error listing files:", error);
-    return res.status(403).json({ message: "The information was failed to retrieve!" });
+    return res.status(403).json({ message: "Failed to retrieve the information!" });
   }
 };
 
