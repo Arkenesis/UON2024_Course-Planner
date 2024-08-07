@@ -1,5 +1,6 @@
 import "./image_upload.scss";
 import { useEffect, useState } from "react";
+import { upload } from "../../assets/upload.png";
 import axios from 'axios';
 
 const ImageUpload = ({setImageUrl}) => {
@@ -94,13 +95,12 @@ const ImageUpload = ({setImageUrl}) => {
                 </div>
                 <div className="uploadImage">
                     <label htmlFor="files">
-                        <img src="../../src/assets/upload.png" alt="Upload Icon" className="upload-icon" />
+                        <img src={upload} alt="Upload Icon" className="upload-icon" />
                     </label>
                 </div>
                 <div className="errorMessage">
                     {err && <p>{err}</p>}
                 </div>
-                    
 
             </div>
             <div className="search">
