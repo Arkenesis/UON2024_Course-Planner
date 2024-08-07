@@ -1,5 +1,6 @@
 import "./image_upload.scss";
 import { useEffect, useState } from "react";
+import { upload } from "../../assets/upload.png";
 import axios from 'axios';
 
 const ImageUpload = ({setImageUrl}) => {
@@ -90,9 +91,15 @@ const ImageUpload = ({setImageUrl}) => {
 
                 {/* <input type='file' id="photo[]" name="photo[]" onChange={handleImageChange} className="hide" multiple="multiple"/> */}
                 <input type="file" multiple accept="image/*" onChange={handleImageChange} name="files[]" id="files"/>
-                <label htmlFor="files"><i className="fa-solid fa-upload"></i></label>
-                {err && <p>{err}</p>}
-
+                <div className="uploadImage">
+                    <label htmlFor="files">
+                        {/* <img src="../../src/assets/upload.png" alt="Upload Icon" className="upload-icon" /> */}
+                        <img src={upload} alt="Upload Icon" className="upload-icon" />
+                    </label>
+                </div>
+                <div className="errorMessage">
+                    {err && <p>{err}</p>}
+                </div>
             </div>
             <div className="search">
                 <input type='text' onChange={handleSearch}/>
